@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#4c76c2</color>
+    <color name="colorPrimary">#004b91</color>
+    <color name="colorPrimaryDark">#002463</color>
+    <color name="colorSecondary">#1c3f95</color>
+    <color name="colorSecondaryDark">#001a66</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimaryLite1">#BDCDF3</color>
+    <color name="colorPrimaryDark1">#236099</color>
+    <color name="colorPrimaryDark2">#004b91</color>
+    <color name="colorPrimaryLite2">#bce0fd</color>
+    <color name="colorPrimaryLite3">#5388b8</color>
+
+
+
+    <!-- other colors -->
+    <color name="grey">#929497</color>
+    <color name="white_smoke">#eff1f4</color>
+    <color name="white_smoke_lite">#f6f7f8</color>
+    <color name="grey_ripple">#42929497</color>
+    <color name="grey_spinner">#eaeaea</color>
+
+    <color name="heading">#404040</color>
+    <color name="placeholder_bg">#dddddd</color>
+    <color name="activity_bg">#f2f2f2</color>
+    <color name="home_bg">#e3e6eb</color>
+
+    <color name="red">#ff0000</color>
+    <color name="green">#00aa00</color>
+    <color name="orange">#ffad46</color>
+
+    <color name="black_trans80">#33000000</color>
+    <color name="indicator_unselected">#4D000000</color>
+    <color name="cyan">#00BCD4</color>
+    <color name="order_green">#94ECE7</color>
+
+
+</resources>

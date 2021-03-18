@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1001888696078",
+    "project_id": "saned-c79aa",
+    "storage_bucket": "saned-c79aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001888696078:android:9742d30d6ccc97e0f4f95f",
+        "android_client_info": {
+          "package_name": "com.saned"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1001888696078-4dbde3ovifluhdhpd33lg529slag9e49.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIYeHQdzpwNqSv8-fCv-oVSGn4atPVgv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001888696078-4dbde3ovifluhdhpd33lg529slag9e49.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

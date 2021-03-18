@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:background="@drawable/exit_bg">
+
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+<!--        <ImageView-->
+<!--                android:id="@+id/no_internet"-->
+<!--                android:layout_width="120dp"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:layout_height="75dp"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:src="@drawable/logo_full_cyan"/>-->
+
+        <RelativeLayout
+                android:id="@+id/relative1"
+                android:layout_width="match_parent"
+                android:layout_height="128dp"
+                android:layout_marginTop="0dp"
+                android:background="?attr/colorPrimaryDark">
+
+            <TextView
+                    android:id="@+id/internet_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center"
+                    android:text="Are you sure want to Logout?"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"/>
+
+            <TextView
+                    android:id="@+id/okay_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="48dp"
+                    android:layout_marginBottom="16dp"
+                    android:padding="8dp"
+                    android:text="OK"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"/>
+
+            <TextView
+                    android:id="@+id/cancel_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_toStartOf="@+id/okay_text"
+                    android:padding="8dp"
+                    android:text="Cancel"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:visibility="visible"/>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.ui.activities.DashboardActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:elevation="4dp"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ThemeOverlay.MyApp.ActionBarWhite"
+            tools:targetApi="lollipop" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dashboard"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="0dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_centerInParent="true"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:id="@+id/toolbar_title" />
+
+                <RelativeLayout
+                    android:id="@+id/wallet_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="16dp">
+
+                    <!--                    <ImageView-->
+                    <!--                        android:id="@+id/wallet_imageview"-->
+                    <!--                        android:layout_width="24dp"-->
+                    <!--                        android:layout_height="match_parent"-->
+                    <!--                        android:paddingEnd="8dp"-->
+                    <!--                        android:paddingTop="8dp"-->
+                    <!--                        android:alpha = "0.5"-->
+                    <!--                        android:paddingBottom="8dp"-->
+                    <!--                        android:scaleType="centerCrop"-->
+                    <!--                        android:src="@drawable/watermark_white"-->
+                    <!--                        tools:targetApi="m" />-->
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <FrameLayout
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    android:layout_marginBottom="60dp" />
+
+
+
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
