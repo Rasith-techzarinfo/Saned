@@ -71,28 +71,18 @@ class LoginActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        //fb sdk
-//        FacebookSdk.sdkInitialize(applicationContext)
-//        AppEventsLogger.activateApp(this)
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         ButterKnife.bind(this)
         setupListener()
     }
 
-//    @OnClick(R.id.create_button)
-//    fun createBtnClicked() {
-//        intent = Intent(applicationContext, RegisterActivity::class.java)
-//        startActivity(intent)
-//        overridePendingTransition(R.anim.enter_right_to_left, R.anim.exit_left_to_right)
-//    }
-
-
 
     @OnClick(R.id.login_button)
     fun loginButtonClick(){
+
+        //temp
+        loginSuccess()
 
         userLayout.isErrorEnabled = false
         passwordLayout.isErrorEnabled = false
@@ -148,7 +138,6 @@ class LoginActivity : AppCompatActivity() {
             hashMap["password"] = "" + passwordEditText.text.toString()
             hashMap["device_type"] = "" + Constants.DEVICE_TYPE
 
-            loginSuccess()
 
 
 //            coroutineScope.launch {

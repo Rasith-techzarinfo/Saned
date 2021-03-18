@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.ui.activities.DashboardActivity">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,13 +25,39 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:elevation="4dp"
-            android:background="?attr/colorPrimary"
+            android:background="@color/grey_lite"
             android:theme="@style/ThemeOverlay.MyApp.ActionBarWhite"
             tools:targetApi="lollipop" >
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/home_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="16dp"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/home_menu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        app:tint="@color/colorPrimaryDark"
+                        android:src="@drawable/ic_menu"
+                        tools:targetApi="m" />
+
+                </RelativeLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -33,11 +69,11 @@
                     android:textStyle="bold"
                     android:layout_centerInParent="true"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorPrimaryDark"
                     android:id="@+id/toolbar_title" />
 
                 <RelativeLayout
-                    android:id="@+id/wallet_layout"
+                    android:id="@+id/search_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -45,17 +81,17 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="16dp">
 
-                    <!--                    <ImageView-->
-                    <!--                        android:id="@+id/wallet_imageview"-->
-                    <!--                        android:layout_width="24dp"-->
-                    <!--                        android:layout_height="match_parent"-->
-                    <!--                        android:paddingEnd="8dp"-->
-                    <!--                        android:paddingTop="8dp"-->
-                    <!--                        android:alpha = "0.5"-->
-                    <!--                        android:paddingBottom="8dp"-->
-                    <!--                        android:scaleType="centerCrop"-->
-                    <!--                        android:src="@drawable/watermark_white"-->
-                    <!--                        tools:targetApi="m" />-->
+                                        <ImageView
+                                            android:id="@+id/search_imageview"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:paddingEnd="8dp"
+                                            android:paddingTop="8dp"
+                                            android:paddingBottom="8dp"
+                                            android:scaleType="centerCrop"
+                                            app:tint="@color/colorPrimaryDark"
+                                            android:src="@drawable/ic_baseline_search_24"
+                                            tools:targetApi="m" />
 
                 </RelativeLayout>
 
@@ -69,28 +105,115 @@
             android:layout_below="@+id/toolbar">
 
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/headerLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:orientation="vertical">
 
 
-                <FrameLayout
-                    android:id="@+id/container"
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile_image"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="30dp"
+                        android:layout_marginTop="30dp"
+                        android:elevation="8dp"
+                        android:src="@drawable/ic_user"
+                        app:civ_border_color="@color/white_smoke"
+                        app:civ_border_width="4dp"
+                        tools:targetApi="lollipop" />
+
+
+                    <TextView
+                        android:id="@+id/profile_name"
+                        android:text="John Doe"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white_smoke"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/profile_location"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Sanjose, CA"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white_smoke"
+                        android:textSize="16sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
+
+                <com.google.android.material.tabs.TabLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabPaddingTop="15dp"
+                    app:tabPaddingBottom="8dp"
+                    android:id="@+id/tablayout"
+                    app:tabTextAppearance="@style/CustomTabStyle"
+                    android:background="@android:color/transparent"
+                    app:tabIndicatorHeight="3dp"
+                    app:tabMode="fixed"
+                    app:tabGravity="fill"
+                    app:tabInlineLabel="true"
+                    app:tabBackground="@drawable/tad_selector"
+                    app:tabSelectedTextColor="@color/colorPrimaryLite1"
+                    app:tabTextColor="@color/colorPrimaryDark" />
+
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                    android:layout_marginBottom="60dp" />
+                    />
 
 
 
 
 
-            </RelativeLayout>
+
+
+            </LinearLayout>
 
 
         </RelativeLayout>
 
-
     </RelativeLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+         </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:layout_marginStart="-65dp"
+            android:fitsSystemWindows="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include layout="@layout/navigation_layout" />
+            </RelativeLayout>
+
+        </com.google.android.material.navigation.NavigationView>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
+
+</RelativeLayout>

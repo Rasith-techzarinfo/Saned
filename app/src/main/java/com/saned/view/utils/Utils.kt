@@ -212,14 +212,6 @@ class Utils {
         }
 
         fun logoutFromApp(context: Context?) {
-            //cancel coroutine scope on forced logout, issue in login after logout
-//            try {
-//                coroutineScope.cancel()
-//            }catch (e: Exception){
-//                Log.e("coroutineCatch", "" + e.message)
-//            }
-//            prefHelper.clearAllData()
-
             prefHelper.setIsLogin("0")
             prefHelper.setBearerToken("")
             prefHelper.setUserPassword("")
