@@ -1,32 +1,33 @@
 package com.saned.view.ui.activities
 
 import android.app.Dialog
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.Window
-import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.viewpager.widget.ViewPager
+import androidx.fragment.app.Fragment
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
-import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.saned.R
-import com.saned.view.utils.PagerAdapter
+import com.saned.view.ui.fragment.dashboard.MyDashboardFragment
+import com.saned.view.ui.fragment.dashboard.WorkItemsFragment
+import com.saned.view.ui.interfaces.ResourceStore
 import com.saned.view.utils.Utils
 import org.jetbrains.anko.backgroundColor
 
@@ -72,31 +73,37 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
 
-
     private fun setupTabLayout() {
 
-        viewPager.adapter = PagerAdapter(this, arrayListOf("Content Coming soon 1", "Content Coming soon 2" ))
-//        pager.orientation = ViewPager2.ORIENTATION_VERTICAL
-        TabLayoutMediator(tabLayout, viewPager) {tab, position ->
-            when (position) {
-                0 -> { tab.text = "My Dashboard"}
-                1 -> { tab.text = "Work Items"}
+        viewPager.adapter = object : FragmentStateAdapter(this) {
+
+            override fun createFragment(position: Int): Fragment {
+                return ResourceStore.pagerFragments[position]
             }
+
+            override fun getItemCount(): Int {
+                return ResourceStore.tabList.size
+            }
+        }
+
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = ResourceStore.tabList[position]
         }.attach()
 
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-//                Toast.makeText(this@MainActivity, "Tab ${tab?.text} selected", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-//                Toast.makeText(this@MainActivity, "Tab ${tab?.text} unselected", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-//                Toast.makeText(this@MainActivity, "Tab ${tab?.text} reselected", Toast.LENGTH_SHORT).show()
-            }
-        })
+//        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+//            override fun onTabSelected(tab: TabLayout.Tab) {
+//                Toast.makeText(this@DashboardActivity, "Tab ${tab?.text} selected", Toast.LENGTH_SHORT).show()
+//                viewPager.currentItem = tab.position
+//            }
+//
+//            override fun onTabUnselected(tab: TabLayout.Tab) {
+////                Toast.makeText(this@MainActivity, "Tab ${tab?.text} unselected", Toast.LENGTH_SHORT).show()
+//            }
+//
+//            override fun onTabReselected(tab: TabLayout.Tab) {
+////                Toast.makeText(this@MainActivity, "Tab ${tab?.text} reselected", Toast.LENGTH_SHORT).show()
+//            }
+//        })
 
     }
 

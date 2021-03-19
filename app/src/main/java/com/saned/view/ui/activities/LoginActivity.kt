@@ -331,7 +331,7 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(intent)
             } else {
                 val builder = androidx.appcompat.app.AlertDialog.Builder(this)
-                builder.setIcon(R.drawable.ic_launcher_foreground).setTitle("Alert")
+                builder.setIcon(R.drawable.saned_logo).setTitle("Alert")
                 builder.setMessage("We need to access your storage to use this Application. Kindly allow permission now")
                 builder.setPositiveButton("Click here", DialogInterface.OnClickListener { dialog, which ->
                     val intent = Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)

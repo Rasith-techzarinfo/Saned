@@ -194,7 +194,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         val notificationBuilder = NotificationCompat.Builder(this, "sanedapplication")
-            .setSmallIcon(R.drawable.logo_launcher_blue)
+            .setSmallIcon(R.drawable.saned_logo)
             .setAutoCancel(true)
             .setCustomContentView(collapsedView)
             .setCustomBigContentView(expandedView)

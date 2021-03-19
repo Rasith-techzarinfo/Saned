@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark1"
+    android:background="@color/colorPrimary"
     tools:context=".view.ui.activities.LoginActivity">
 
     <androidx.core.widget.NestedScrollView
@@ -37,7 +37,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
-                    android:src="@drawable/logo_launcher"/>
+                    android:src="@drawable/saned_logo"/>
 
             </RelativeLayout>
 
