@@ -25,8 +25,6 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.saned.R
-import com.saned.view.ui.fragment.dashboard.MyDashboardFragment
-import com.saned.view.ui.fragment.dashboard.WorkItemsFragment
 import com.saned.view.ui.interfaces.ResourceStore
 import com.saned.view.utils.Utils
 import org.jetbrains.anko.backgroundColor
@@ -90,20 +88,20 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             tab.text = ResourceStore.tabList[position]
         }.attach()
 
-//        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-//            override fun onTabSelected(tab: TabLayout.Tab) {
-//                Toast.makeText(this@DashboardActivity, "Tab ${tab?.text} selected", Toast.LENGTH_SHORT).show()
-//                viewPager.currentItem = tab.position
-//            }
-//
-//            override fun onTabUnselected(tab: TabLayout.Tab) {
-////                Toast.makeText(this@MainActivity, "Tab ${tab?.text} unselected", Toast.LENGTH_SHORT).show()
-//            }
-//
-//            override fun onTabReselected(tab: TabLayout.Tab) {
-////                Toast.makeText(this@MainActivity, "Tab ${tab?.text} reselected", Toast.LENGTH_SHORT).show()
-//            }
-//        })
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+               // Toast.makeText(this@DashboardActivity, "Tab ${tab?.text} selected", Toast.LENGTH_SHORT).show()
+                viewPager.currentItem = tab.position
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab) {
+//                Toast.makeText(this@MainActivity, "Tab ${tab?.text} unselected", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab) {
+//                Toast.makeText(this@MainActivity, "Tab ${tab?.text} reselected", Toast.LENGTH_SHORT).show()
+            }
+        })
 
     }
 

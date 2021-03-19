@@ -99,20 +99,21 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar">
-
-<!--            <androidx.core.widget.NestedScrollView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent">-->
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/toolbar">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/headerLayout"
@@ -132,7 +133,7 @@
                         android:elevation="8dp"
                         android:src="@drawable/ic_user"
                         app:civ_border_color="@color/white_smoke"
-                        app:civ_border_width="4dp"
+                        app:civ_border_width="0dp"
                         tools:targetApi="lollipop" />
 
 
@@ -175,6 +176,8 @@
                     app:tabSelectedTextColor="@color/colorPrimaryLite1"
                     app:tabTextColor="@color/colorPrimary" />
 
+            </LinearLayout>
+
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/viewPager"
                     android:layout_width="match_parent"
@@ -183,18 +186,9 @@
 
 
 
-
-
-
-
-
             </LinearLayout>
 
-
-<!--            </androidx.core.widget.NestedScrollView>-->
-
-
-        </RelativeLayout>
+            </androidx.core.widget.NestedScrollView>
 
     </RelativeLayout>
 
