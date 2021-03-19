@@ -44,6 +44,7 @@
                         android:paddingEnd="8dp"
                         android:paddingTop="8dp"
                         android:paddingBottom="8dp"
+                        android:visibility="gone"
                         app:tint="@color/colorPrimaryDark"
                         android:src="@drawable/ic_baseline_arrow_back_24"
                         tools:targetApi="m" />
