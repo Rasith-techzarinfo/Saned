@@ -1,6 +1,8 @@
 package com.saned.view.ui.activities
 
 import android.app.Dialog
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +29,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.saned.R
 import com.saned.view.ui.interfaces.ResourceStore
 import com.saned.view.utils.Utils
+import com.saned.view.utils.Utils.Companion.openActivity
 import org.jetbrains.anko.backgroundColor
 
 class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -60,11 +63,11 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         setToolBar()
         setupNavigationDrawer()
         setupTabLayout()
-        setupListener()
+        init()
     }
 
 
-    private fun setupListener() {
+    private fun init() {
 
 
     }
@@ -148,12 +151,22 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     }
 
     //navigation items drawer
-    @OnClick(R.id.profile_menu)
-    fun myProfile() {
+    @OnClick(R.id.nav_profile_image)
+    fun myProfileHeader() {
         drawerLayout.closeDrawer(GravityCompat.START)
-//        val intent = Intent(applicationContext, ProfileActivity::class.java)
-//        startActivity(intent)
-//        overridePendingTransition(R.anim.enter_right_to_left, R.anim.exit_left_to_right)
+        openActivity(ProfileActivity::class.java, this@DashboardActivity){
+//            putString("string.key", "string.value")
+//            putInt("string.key", 43)
+        }
+    }
+
+    @OnClick(R.id.profile_nav_mini)
+    fun myProfileMenu() {
+        drawerLayout.closeDrawer(GravityCompat.START)
+        openActivity(ProfileActivity::class.java, this@DashboardActivity){
+//            putString("string.key", "string.value")
+//            putInt("string.key", 43)
+        }
     }
 
     @OnClick(R.id.my_employees_menu)

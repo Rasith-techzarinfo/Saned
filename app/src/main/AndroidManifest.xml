@@ -6,13 +6,17 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-feature android:name="android.hardware.camera.any"
+
+    <uses-feature
+        android:name="android.hardware.camera.any"
         android:required="true" />
-    <uses-feature android:name="android.hardware.camera.autofocus"
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
         android:required="true" />
+
     <queries>
         <intent>
             <action android:name="android.media.action.IMAGE_CAPTURE" />
@@ -24,7 +28,6 @@
             <action android:name="android.media.action.VIEW" />
         </intent>
     </queries>
-
 
     <application
         android:name=".sanedApplication"
@@ -38,7 +41,7 @@
         android:theme="@style/Theme.Saned"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
-
+        <activity android:name=".view.ui.activities.ProfileActivity"></activity>
         <!-- services -->
         <service
             android:name=".view.service.MyFirebaseMessagingService"
@@ -46,9 +49,7 @@
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </service>
-
-        <!-- activities -->
+        </service> <!-- activities -->
         <activity
             android:name=".view.ui.activities.DashboardActivity"
             android:screenOrientation="portrait"
@@ -67,7 +68,6 @@
             android:name=".view.ui.activities.SplashScreenActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
-
     </application>
 
 </manifest>

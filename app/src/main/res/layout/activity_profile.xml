@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.ui.activities.ProfileActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/grey_lite"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:elevation="4dp"
+            android:background="@color/grey_lite"
+            android:theme="@style/ThemeOverlay.MyApp.ActionBarWhite"
+            tools:targetApi="lollipop" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/home_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="16dp"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/home_menu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        app:tint="@color/colorPrimaryDark"
+                        android:src="@drawable/ic_baseline_arrow_back_24"
+                        tools:targetApi="m" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profile"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="0dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_centerInParent="true"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:id="@+id/toolbar_title" />
+
+                <RelativeLayout
+                    android:id="@+id/search_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="16dp">
+
+                    <ImageView
+                        android:id="@+id/search_imageview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="8dp"
+                        android:visibility="gone"
+                        android:paddingBottom="8dp"
+                        android:scaleType="centerCrop"
+                        app:tint="@color/colorPrimaryDark"
+                        android:src="@drawable/ic_baseline_search_24"
+                        tools:targetApi="m" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_below="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/headerLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:orientation="vertical">
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile_image"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="30dp"
+                        android:layout_marginTop="30dp"
+                        android:elevation="8dp"
+                        android:src="@drawable/ic_user"
+                        app:civ_border_color="@color/white_smoke"
+                        app:civ_border_width="0dp"
+                        tools:targetApi="lollipop" />
+
+
+                    <TextView
+                        android:id="@+id/profile_name"
+                        android:text="John Doe"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white_smoke"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/profile_location"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Sanjose, CA"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white_smoke"
+                        android:textSize="16sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@color/white"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginRight="18dp"
+                        android:orientation="vertical"
+                        android:layout_marginTop="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Basic Information"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorPrimaryLite1"
+                            android:layout_marginTop="12dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:weightSum="2"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:text="Employee Number"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Jhon Doe"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:weightSum="2"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="ID Number"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="123"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:textSize="16sp"
+                                android:textColor="@color/black"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:weightSum="2"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Gender"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Male"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:textSize="16sp"
+                                android:layout_weight="1"
+                                android:textColor="@color/black"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:weightSum="2"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Birth Date"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:textSize="16sp"
+                                />
+
+
+                            <TextView
+
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="June 26,2000"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:textSize="16sp"
+                                android:layout_weight="1"
+                                android:textColor="@color/black"/>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:weightSum="2"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Birth Place"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Sanjose"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:layout_weight="1"
+                                android:textSize="16sp"
+                                android:textColor="@color/black"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:weightSum="2"
+                            android:orientation="horizontal">
+
+
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Nationality"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:textSize="16sp"
+                                />
+
+
+
+                            <TextView
+
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="India"
+                                android:layout_weight="1"
+                                android:textSize="16sp"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:textColor="@color/black"/>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:weightSum="2"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Blood Type"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="O+"
+                                android:textSize="16sp"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:layout_weight="1"
+                                android:textColor="@color/black"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:weightSum="2"
+                            android:layout_marginBottom="8dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Qualification"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="BCA"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:textSize="16sp"
+                                android:textColor="@color/black"/>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

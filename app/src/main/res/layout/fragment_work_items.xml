@@ -2,21 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
-    android:gravity="center"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@color/grey_lite"
     >
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:text=" Content Coming soon "
-            android:background="@color/colorPrimaryLite1"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:text=" Content Coming soon "
+                    android:background="@color/colorPrimaryLite1"/>
+
+
+        </LinearLayout>
 
 </LinearLayout>
