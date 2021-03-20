@@ -41,7 +41,8 @@
         android:theme="@style/Theme.Saned"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
-        <activity android:name=".view.ui.activities.dynamicWF.ViewDynamicWFActivity"></activity>
+        <activity android:name=".view.ui.activities.EditProfileActivity"></activity>
+        <activity android:name=".view.ui.activities.dynamicWF.ViewDynamicWFActivity" />
         <activity android:name=".view.ui.activities.dynamicWF.CreateDynamicWFActivity" /> <!-- services -->
         <service
             android:name=".view.service.MyFirebaseMessagingService"

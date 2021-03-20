@@ -83,18 +83,52 @@
                     android:orientation="vertical">
 
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/profile_image"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+
+                    <RelativeLayout
+                        android:id="@+id/profile_image_layout"
                         android:layout_gravity="center"
                         android:layout_marginBottom="30dp"
                         android:layout_marginTop="30dp"
-                        android:elevation="8dp"
-                        android:src="@drawable/ic_user"
-                        app:civ_border_color="@color/white_smoke"
-                        app:civ_border_width="0dp"
-                        tools:targetApi="lollipop" />
+                        android:layout_width="150dp"
+                        android:layout_height="150dp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/profile_image"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_centerInParent="true"
+                            android:elevation="8dp"
+                            android:src="@drawable/ic_user"
+                            app:civ_border_color="@color/white_smoke"
+                            app:civ_border_width="0dp"
+                            tools:targetApi="lollipop" />
+
+
+                        <FrameLayout
+                            android:id="@+id/profile_edit_icon"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="18dp"
+                            android:layout_marginBottom="14dp"
+                            android:elevation="8dp"
+                            android:background="@drawable/round_shape"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:visibility="visible"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:padding="4dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_edit_black_24"
+                                app:tint="@color/colorPrimaryDark" />
+                        </FrameLayout>
+
+                    </RelativeLayout>
 
 
                     <TextView

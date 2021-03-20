@@ -1,20 +1,18 @@
 package com.saned.view.ui.activities
 
-import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
-import androidx.core.app.ActivityCompat.finishAfterTransition
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.saned.R
-import com.saned.view.ui.activities.dynamicWF.HistoryDynamicWFActivity
 import com.saned.view.utils.Utils.Companion.openActivity
 import kotlinx.android.synthetic.main.activity_profile.*
 
-class ProfileActivity : AppCompatActivity() {
+class EditProfileActivity : AppCompatActivity() {
+
 
 
     @BindView(R.id.toolbar)
@@ -24,9 +22,10 @@ class ProfileActivity : AppCompatActivity() {
     lateinit var toolbarTitle: TextView
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile)
+        setContentView(R.layout.activity_edit_profile)
         ButterKnife.bind(this)
         setToolBar()
         init()
@@ -37,13 +36,8 @@ class ProfileActivity : AppCompatActivity() {
 
 
 
-
     private fun init() {
 
-        //edit profile
-        profile_edit_icon.setOnClickListener {
-            openActivity(EditProfileActivity::class.java, this){}
-        }
 
     }
 
