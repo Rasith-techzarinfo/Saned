@@ -31,8 +31,7 @@ data class LoginError(
 )
 
 //FIXME just for demo
-data class SampleCatogeries(
+data class ServicesMenu(
     val title: String,
-    var thumbnail: String,
-    val subtitle: String
+    var id: String
 )

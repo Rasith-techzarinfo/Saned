@@ -127,5 +127,7 @@ dependencies {
     //time ago
     implementation 'com.github.marlonlom:timeago:4.0.1'
 
+    //lottie
+//    implementation "com.airbnb.android:lottie:3.4.0"
 
 }

@@ -163,10 +163,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     @OnClick(R.id.profile_nav_mini)
     fun myProfileMenu() {
         drawerLayout.closeDrawer(GravityCompat.START)
-        openActivity(ProfileActivity::class.java, this@DashboardActivity){
-//            putString("string.key", "string.value")
-//            putInt("string.key", 43)
-        }
+        openActivity(ProfileActivity::class.java, this@DashboardActivity){}
     }
 
     @OnClick(R.id.my_employees_menu)
@@ -180,9 +177,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     @OnClick(R.id.services_actions_menu)
     fun servicesActions() {
         drawerLayout.closeDrawer(GravityCompat.START)
-//        val intent = Intent(applicationContext, ProfileActivity::class.java)
-//        startActivity(intent)
-//        overridePendingTransition(R.anim.enter_right_to_left, R.anim.exit_left_to_right)
+        openActivity(ServicesActionsActivity::class.java, this@DashboardActivity){}
     }
 
     @OnClick(R.id.notifications_menu)

@@ -16,7 +16,7 @@
         <item name="android:fontFamily">@font/avenirnext_regular</item>
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
-        <!--        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>-->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
     </style>
 
     <!-- other theme overlays -->
@@ -75,6 +75,26 @@
         <item name="android:textSize">10sp</item>
     </style>
 
+    <style name="Widget.App.Button" parent="Widget.MaterialComponents.Button">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Button</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.Button</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
+    </style>
 
+
+    <style name="ThemeOverlay.App.Button.TextButton" parent="">
+        <item name="colorPrimary">@color/colorPrimaryLite3</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Button" parent="">
+        <item name="colorPrimary">@color/colorPrimaryLite3</item>
+        <item name="colorOnPrimary">@color/colorPrimaryLite2</item>
+    </style>
+
+    <style name="TextAppearance.App.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="textAllCaps">false</item>
+        <item name="android:textColor">@color/colorPrimaryLite2</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 
 </resources>
