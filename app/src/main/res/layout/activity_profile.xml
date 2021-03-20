@@ -45,6 +45,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:paddingStart="8dp"
+                    android:visibility="gone"
                     android:paddingEnd="16dp">
 
                     <ImageView
@@ -53,7 +54,6 @@
                         android:layout_height="wrap_content"
                         android:paddingEnd="8dp"
                         android:paddingTop="8dp"
-                        android:visibility="gone"
                         android:paddingBottom="8dp"
                         android:scaleType="centerCrop"
                         app:tint="@color/colorPrimaryDark"
