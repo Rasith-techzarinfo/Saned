@@ -7,16 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.nchores.user.model.ServicesMenu
+import com.nchores.user.model.HAData
 import com.saned.R
 import com.saned.view.ui.activities.ServicesActionsActivity
 import com.saned.view.ui.activities.dynamicWF.HistoryDynamicWFActivity
 import kotlinx.android.synthetic.main.empty_placeholder_item.view.*
-import kotlinx.android.synthetic.main.services_actions_menu_item.view.*
+import kotlinx.android.synthetic.main.dynamic_wf_list_item.view.*
 import org.jetbrains.anko.backgroundColor
 
 
-class DynamicWFHistoryAdapter(private val dataList: List<ServicesMenu>, val context: Context,
+class DynamicWFHistoryAdapter(private val dataList: List<HAData>, val context: Context,
                               val activity: HistoryDynamicWFActivity
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -33,7 +33,7 @@ class DynamicWFHistoryAdapter(private val dataList: List<ServicesMenu>, val cont
         }else {
             view = ViewHolder(
                 LayoutInflater.from(context)
-                    .inflate(R.layout.services_actions_menu_item, parent, false)
+                    .inflate(R.layout.dynamic_wf_list_item, parent, false)
             )
         }
         return view
@@ -50,7 +50,8 @@ class DynamicWFHistoryAdapter(private val dataList: List<ServicesMenu>, val cont
 
 
 
-            viewHolder.itemTitle!!.text = dataList[position].title
+            viewHolder.itemVal1!!.text = "" + dataList[position].noofdays
+            viewHolder.itemVal2!!.text = "" + dataList[position].reason
 
         }else if(itemFlag == 0) {
             val emptyViewHolder: EmptyHolder = (holder as EmptyHolder)
@@ -64,7 +65,8 @@ class DynamicWFHistoryAdapter(private val dataList: List<ServicesMenu>, val cont
 
     internal inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
-        val itemTitle = itemView.title
+        val itemVal1 = itemView.labelVal1
+        val itemVal2 = itemView.labelVal2
 
         init {
             itemView.setOnClickListener {
@@ -79,7 +81,7 @@ class DynamicWFHistoryAdapter(private val dataList: List<ServicesMenu>, val cont
     }
 
     interface ListAdapterListener{
-        fun onListItemClicked(dummyData: ServicesMenu, position: Int)
+        fun onListItemClicked(dummyData: HAData, position: Int)
     }
 
 

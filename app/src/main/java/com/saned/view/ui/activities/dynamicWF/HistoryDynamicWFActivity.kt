@@ -17,7 +17,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.facebook.shimmer.ShimmerFrameLayout
-import com.nchores.user.model.ServicesMenu
+import com.nchores.user.model.HAData
 import com.saned.R
 import com.saned.sanedApplication
 import com.saned.view.error.SANEDError
@@ -57,7 +57,7 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
 
     lateinit var dynamicWFHistoryAdapter : DynamicWFHistoryAdapter
 
-    var dynamicWFArrayList: ArrayList<ServicesMenu> = ArrayList()
+    var dynamicWFArrayList: ArrayList<HAData> = ArrayList()
 
     var currentPage: Int = 1
     var totalPages: String = ""
@@ -104,7 +104,7 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
 //                                "" + item.category!!.name
 //                            )
 //
-//                            val v1 = ServicesMenu(
+//                            val v1 = HAData(
 //                                ""+ item.id,
 //                                c1,
 //                                ""+item.question,
@@ -128,7 +128,7 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
 
 
                     //load static data for now
-//                    dynamicWFArrayList.add(ServicesMenu("Housing Advance", "101"))
+                    dynamicWFArrayList.add(HAData("30", "This is so coolllll.", "101"))
 
 
 
@@ -199,7 +199,7 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
 //                                "" + item.category!!.name
 //                            )
 //
-//                            val v1 = ServicesMenu(
+//                            val v1 = HAData(
 //                                ""+ item.id,
 //                                c1,
 //                                ""+item.question,
@@ -292,11 +292,11 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
 
 
 
-    override fun onListItemClicked(dummyData: ServicesMenu, position: Int) {
+    override fun onListItemClicked(dummyData: HAData, position: Int) {
         //send form data to new activity
-        openActivity(HistoryDynamicWFActivity::class.java, this){
-            putString("formID", "" + dummyData.id)
-            putString("formName", "" + dummyData.title)
+        openActivity(ViewDynamicWFActivity::class.java, this){
+            putString("formID", "" + formID)
+            putString("formName", "" + formName)
         }
     }
 

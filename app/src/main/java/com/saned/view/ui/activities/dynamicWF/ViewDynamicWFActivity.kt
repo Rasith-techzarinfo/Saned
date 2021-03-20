@@ -28,6 +28,8 @@ class ViewDynamicWFActivity : AppCompatActivity() {
     var formID: String = ""
     var formName: String = ""
 
+    //dynamic view page needed
+    // static for now
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_dynamic_w_f)

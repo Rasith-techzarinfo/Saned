@@ -35,3 +35,9 @@ data class ServicesMenu(
     val title: String,
     var id: String
 )
+
+data class HAData(
+    val noofdays: String,
+    val reason: String,
+    var id: String
+)
