@@ -1,4 +1,4 @@
-package com.saned.view.ui.activities
+package com.saned.view.ui.activities.dynamicWF
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,20 +19,16 @@ import butterknife.ButterKnife
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.nchores.user.model.ServicesMenu
 import com.saned.R
-import com.saned.sanedApplication.Companion.coroutineScope
+import com.saned.sanedApplication
 import com.saned.view.error.SANEDError
-import com.saned.view.ui.activities.dynamicWF.HistoryDynamicWFActivity
-import com.saned.view.ui.adapter.servicesActions.ServiceActionsAdapter
+import com.saned.view.ui.adapter.dynamicWF.DynamicWFHistoryAdapter
 import com.saned.view.utils.Utils
-import com.saned.view.utils.Utils.Companion.isInternetAvailable
 import com.saned.view.utils.Utils.Companion.openActivity
-import com.saned.view.utils.Utils.Companion.startShimmerRL
-import com.saned.view.utils.Utils.Companion.stopShimmerRL
+import kotlinx.android.synthetic.main.activity_history_dynamic_w_f.*
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListAdapterListener {
-
+class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.ListAdapterListener {
 
 
     @BindView(R.id.toolbar)
@@ -40,7 +36,7 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
 
     @BindView(R.id.toolbar_title)
     lateinit var toolbarTitle: TextView
-
+    
     @BindView(R.id.recycler_view)
     lateinit var recyclerView: RecyclerView
 
@@ -59,17 +55,21 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
     @BindView(R.id.empty_nodata_view)
     lateinit var emptyView: LinearLayout
 
-    lateinit var serviceActionsAdapter : ServiceActionsAdapter
+    lateinit var dynamicWFHistoryAdapter : DynamicWFHistoryAdapter
 
-    var servicesArrayList: ArrayList<ServicesMenu> = ArrayList()
+    var dynamicWFArrayList: ArrayList<ServicesMenu> = ArrayList()
 
     var currentPage: Int = 1
     var totalPages: String = ""
+    var formID: String = ""
+    var formName: String = ""
 
 
+    //dynamic form using fields
+    //static for now
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_services_actions)
+        setContentView(R.layout.activity_history_dynamic_w_f)
         ButterKnife.bind(this)
         setToolBar()
         init()
@@ -79,15 +79,15 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
 
     //clears and adds first 10 results
     private fun getServicesListFromServer(){
-        servicesArrayList.clear()
+        dynamicWFArrayList.clear()
         currentPage = 1
 
-        if (isInternetAvailable(this)) {
+        if (Utils.isInternetAvailable(this)) {
 
             //shimmer
-            startShimmerRL(shimmerLayout, rootLayout)
+            Utils.startShimmerRL(shimmerLayout, rootLayout)
 
-            coroutineScope.launch {
+            sanedApplication.coroutineScope.launch {
 
                 try {
 
@@ -114,33 +114,33 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
 //                                ""+item.created_at,
 //                                ""+item.updated_at
 //                            )
-//                            servicesArrayList.add(v1)
+//                            dynamicWFArrayList.add(v1)
 //                        }
 //                        totalPages = result.data!!.last_page.toString()
 //                        Log.e("result", "" + result.data!!.current_page)
 //
 //                    }else {
 //
-//                        Toast.makeText(this@ServicesActionsActivity, "" + result.message, Toast.LENGTH_SHORT)
+//                        Toast.makeText(this@HistoryDynamicWFActivity, "" + result.message, Toast.LENGTH_SHORT)
 //                            .show()
 //                    }
 //
 
 
-                     //load static data for now
-                     servicesArrayList.add(ServicesMenu("Housing Advance", "101"))
-        
-        
-        
+                    //load static data for now
+//                    dynamicWFArrayList.add(ServicesMenu("Housing Advance", "101"))
 
-                    stopShimmerRL(shimmerLayout, rootLayout)
+
+
+
+                    Utils.stopShimmerRL(shimmerLayout, rootLayout)
 
 
                     setupRecyclerView()
 
                 }catch(e: Exception){
 
-                    stopShimmerRL(shimmerLayout, rootLayout)
+                    Utils.stopShimmerRL(shimmerLayout, rootLayout)
                     Log.e("error", "" + e.message)
                     if (e is SANEDError) {
                         Log.e("Err", "" + e.getErrorResponse())
@@ -161,6 +161,7 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
         }
 
     }
+
 
 //    private fun loadMoreData(){
 //        if (Utils.isInternetAvailable(this)) {
@@ -208,20 +209,20 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
 //                                ""+item.created_at,
 //                                ""+item.updated_at
 //                            )
-//                            servicesArrayList.add(v1)
+//                            dynamicWFArrayList.add(v1)
 //                        }
 //                        totalPages = result.data.last_page.toString()
 //                        Log.e("result", "" + result.data.current_page)
 //
 //                    }else {
 //
-//                        Toast.makeText(this@ServicesActionsActivity, "" + result.message, Toast.LENGTH_SHORT)
+//                        Toast.makeText(this@HistoryDynamicWFActivity, "" + result.message, Toast.LENGTH_SHORT)
 //                            .show()
 //                    }
 //
 //                    progressDialog.dismiss()
 //                    //notify changes to adapter
-//                    serviceActionsAdapter.notifyDataSetChanged()
+//                    dynamicWFHistoryAdapter.notifyDataSetChanged()
 //
 //
 //                }catch(e: Exception){
@@ -249,7 +250,7 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
 //    }
 
     private fun setupRecyclerView() {
-        if (servicesArrayList.isEmpty()) {
+        if (dynamicWFArrayList.isEmpty()) {
             recyclerView.visibility = View.GONE
             emptyView.visibility = View.VISIBLE
 
@@ -257,26 +258,26 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
             recyclerView.visibility = View.VISIBLE
             emptyView.visibility = View.GONE
 
-                recyclerView.layoutManager = LinearLayoutManager(this)
-                //disable nsv
-                recyclerView.isNestedScrollingEnabled = false;
-                //pagination code
-                nestedScrollView.viewTreeObserver.addOnScrollChangedListener {
-                    val view =
-                        nestedScrollView.getChildAt(nestedScrollView.childCount - 1) as View
-                    val diff =
-                        view.bottom - (nestedScrollView.height + nestedScrollView
-                            .scrollY)
-                    if (diff == 0) {
+            recyclerView.layoutManager = LinearLayoutManager(this)
+            //disable nsv
+            recyclerView.isNestedScrollingEnabled = false;
+            //pagination code
+            nestedScrollView.viewTreeObserver.addOnScrollChangedListener {
+                val view =
+                    nestedScrollView.getChildAt(nestedScrollView.childCount - 1) as View
+                val diff =
+                    view.bottom - (nestedScrollView.height + nestedScrollView
+                        .scrollY)
+                if (diff == 0) {
 //                        Log.e("result", "$currentPage $totalPages")
 //                        if (currentPage < totalPages.toInt()) {
 //                            currentPage += 1
 //                            loadMoreSuccessManualData()
 //                        }
-                    }
+                }
             }
-            serviceActionsAdapter = ServiceActionsAdapter(servicesArrayList, this, this@ServicesActionsActivity)
-            recyclerView.adapter = serviceActionsAdapter
+            dynamicWFHistoryAdapter = DynamicWFHistoryAdapter(dynamicWFArrayList, this, this@HistoryDynamicWFActivity)
+            recyclerView.adapter = dynamicWFHistoryAdapter
 //            if (recyclerView.itemDecorationCount == 0) {
 //                recyclerView.addItemDecoration(
 //                    DividerItemDecoration(
@@ -290,30 +291,38 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
 
 
 
-    override fun onListItemClicked(dummyData: ServicesMenu, position: Int) {
 
+    override fun onListItemClicked(dummyData: ServicesMenu, position: Int) {
         //send form data to new activity
-        openActivity(HistoryDynamicWFActivity::class.java, this@ServicesActionsActivity){
+        openActivity(HistoryDynamicWFActivity::class.java, this){
             putString("formID", "" + dummyData.id)
             putString("formName", "" + dummyData.title)
         }
     }
 
 
-
-
-
-
-
-
-
     private fun init() {
+        //get intent data
+        formID = "" + intent.getStringExtra("formID")
+        formName = "" + intent.getStringExtra("formName")
+        Log.e("itt", "" + formID)
+        toolbarTitle.text = formName + " History"
+
+        //fab
+        add_WF_fab.setOnClickListener {
+            //send form data to new activity
+            openActivity(CreateDynamicWFActivity::class.java, this){
+                putString("formID", "" + formID)
+                putString("formName", "" + formName)
+            }
+        }
         //swipe
         swipeRefreshLayout.setOnRefreshListener {
             getServicesListFromServer()
             swipeRefreshLayout.isRefreshing = false
         }
         getServicesListFromServer()
+
     }
 
     private fun setToolBar() {
@@ -325,7 +334,6 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
         }
     }
 
-
     override fun onSupportNavigateUp(): Boolean {
 
         finishAfterTransition()
@@ -336,4 +344,5 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
 
         finishAfterTransition()
     }
+
 }

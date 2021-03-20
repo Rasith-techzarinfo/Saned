@@ -41,24 +41,17 @@
         android:theme="@style/Theme.Saned"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
-        <activity android:name=".view.ui.activities.DynamicWFActivity"></activity>
-        <activity android:name=".view.ui.activities.ServicesActionsActivity" />
-        <activity android:name=".view.ui.activities.ProfileActivity" />
-
-
-        <!-- services -->
+        <activity android:name=".view.ui.activities.dynamicWF.ViewDynamicWFActivity"></activity>
+        <activity android:name=".view.ui.activities.dynamicWF.CreateDynamicWFActivity" /> <!-- services -->
         <service
             android:name=".view.service.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </service>
-
-        <!-- activities -->
-
+        </service> <!-- activities -->
         <activity
-            android:name=".view.ui.activities.LoginActivity"
+            android:name=".view.ui.activities.DashboardActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -68,11 +61,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.ui.activities.DashboardActivity"
+            android:name=".view.ui.activities.LoginActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".view.ui.activities.SplashScreenActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".view.ui.activities.dynamicWF.HistoryDynamicWFActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".view.ui.activities.ServicesActionsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".view.ui.activities.ProfileActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
     </application>

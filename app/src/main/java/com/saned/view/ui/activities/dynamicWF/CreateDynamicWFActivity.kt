@@ -1,4 +1,4 @@
-package com.saned.view.ui.activities
+package com.saned.view.ui.activities.dynamicWF
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,8 +11,7 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.saned.R
 
-class DynamicWFActivity : AppCompatActivity() {
-
+class CreateDynamicWFActivity : AppCompatActivity() {
 
     @BindView(R.id.toolbar)
     lateinit var toolbar: Toolbar
@@ -29,21 +28,15 @@ class DynamicWFActivity : AppCompatActivity() {
     var formID: String = ""
     var formName: String = ""
 
-
     //dynamic form using fields
     //static for now
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dynamic_w_f)
+        setContentView(R.layout.activity_create_dynamic_w_f)
         ButterKnife.bind(this)
         setToolBar()
         init()
     }
-
-
-
-
-
 
 
 
@@ -54,7 +47,7 @@ class DynamicWFActivity : AppCompatActivity() {
         formID = "" + intent.getStringExtra("formID")
         formName = "" + intent.getStringExtra("formName")
         Log.e("itt", "" + formID)
-        toolbarTitle.text = formName
+        toolbarTitle.text = "New " + formName
 
 
     }
