@@ -8,23 +8,23 @@
     android:focusable="true"
     android:foreground="?attr/selectableItemBackground"
     android:orientation="vertical"
-    android:layout_marginBottom="10dp">
+    android:layout_marginBottom="0dp">
 
 
         <LinearLayout
             android:id="@+id/list_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
             android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginBottom="5dp"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:text="Housing Advance"
@@ -32,19 +32,6 @@
                     android:textSize="16sp"
                     android:textStyle="bold"/>
 
-<!--                <TextView-->
-<!--                    android:id="@+id/subtitle"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="8dp"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:layout_marginBottom="5dp"-->
-<!--                    android:ellipsize="end"-->
-<!--                    android:maxLines="1"-->
-<!--                    android:text="date"-->
-<!--                    android:textColor="@color/grey"-->
-<!--                    android:textSize="14sp"/>-->
 
             </LinearLayout>
 

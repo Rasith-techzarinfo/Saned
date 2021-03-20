@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.NestedScrollView
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -129,6 +130,7 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
 
                      //load static data for now
                      servicesArrayList.add(ServicesMenu("Housing Advance", "101"))
+                     servicesArrayList.add(ServicesMenu("Leave Request", "101"))
         
         
         
@@ -277,14 +279,14 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
             }
             serviceActionsAdapter = ServiceActionsAdapter(servicesArrayList, this, this@ServicesActionsActivity)
             recyclerView.adapter = serviceActionsAdapter
-//            if (recyclerView.itemDecorationCount == 0) {
-//                recyclerView.addItemDecoration(
-//                    DividerItemDecoration(
-//                        this,
-//                        DividerItemDecoration.VERTICAL
-//                    )
-//                )
-//            }
+            if (recyclerView.itemDecorationCount == 0) {
+                recyclerView.addItemDecoration(
+                    DividerItemDecoration(
+                        this,
+                        DividerItemDecoration.VERTICAL
+                    )
+                )
+            }
         }
     }
 
