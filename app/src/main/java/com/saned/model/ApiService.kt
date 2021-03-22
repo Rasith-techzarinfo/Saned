@@ -2,7 +2,6 @@ package com.saned.model
 
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.nchores.user.model.UserLoginData
 import com.saned.view.error.ErrorInterceptor
 import com.saned.view.utils.Constants
 import kotlinx.coroutines.Deferred

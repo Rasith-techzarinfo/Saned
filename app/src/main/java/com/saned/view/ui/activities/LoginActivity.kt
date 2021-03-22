@@ -84,21 +84,22 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-//            coroutineScope.launch {
-//                try {
-//
-//                    val result = apiService.performLogin(hashMap).await()
+            coroutineScope.launch {
+                try {
+
+                    val result = apiService.performLogin(hashMap).await()
 //
 //                    Log.e("result", "" + result)
 //
-//                    if (result.status == "1") {
+//                    if (result.success == "1") {
 //
 //
 //                        prefHelper.setBearerToken("" + result.token)
-//                        prefHelper.setUserId("" + result.userdetails!!.id)
-//                        prefHelper.setUserPassword("" + passwordEditText.text.toString())
-////                        prefHelper.setUserType("" + "${result.data?.get(0)!!.user_type}")      // 0 - subadmin(vendor), 1- user, 2- superadmin
-//                        prefHelper.setUserName("" + "${result.userdetails!!.username}")
+//                        prefHelper.setUserId("" + result.user!!.id)
+//                        prefHelper.setUserPassword("" + password_edit_text.text.toString())
+//                        prefHelper.setUserType("" + result.user!!.role_id)      //role_id 1 - manager, 2- user
+//                        prefHelper.setUserName("" + "${result.user!!.first_name} ${result.user!!.last_name}")
+//                        prefHelper.setUserEmail("" + email_edit_text.text.toString())
 ////                        prefHelper.setUserProfile("" + result.data?.get(0)!!.profile_pic)
 //                        prefHelper.setIsLogin("1")
 //
@@ -109,31 +110,31 @@ class LoginActivity : AppCompatActivity() {
 //                        Toast.makeText(this@LoginActivity, "" + result.message, Toast.LENGTH_SHORT)
 //                                .show()
 //                    }
-//
-//                    progressDialog.dismiss()
-//
-//
-//                } catch (e: Exception) {
-//
-//                    progressDialog.dismiss()
-//                    Log.e("error", "" + e.message)
-//                    if (e is SANEDError) {
-//                        Log.e("Err", "" + e.getErrorResponse())
-//                        if (e.getResponseCode() == 401) {
-//                            Utils.logoutFromApp(applicationContext)
-//                        } else if (e.getResponseCode() == 500) {
-//                            Toast.makeText(applicationContext, "Server error", Toast.LENGTH_LONG).show()
-//                        }
-//                    } else {
-//                        Toast.makeText(
-//                                applicationContext,
-//                                "Something went wrong",
-//                                Toast.LENGTH_SHORT
-//                        )
-//                                .show()
-//                    }
-//                }
-//            }
+
+                    progressDialog.dismiss()
+
+
+                } catch (e: Exception) {
+
+                    progressDialog.dismiss()
+                    Log.e("error", "" + e.message)
+                    if (e is SANEDError) {
+                        Log.e("Err", "" + e.getErrorResponse())
+                        if (e.getResponseCode() == 401) {
+                            Utils.logoutFromApp(applicationContext)
+                        } else if (e.getResponseCode() == 500) {
+                            Toast.makeText(applicationContext, "Server error", Toast.LENGTH_LONG).show()
+                        }
+                    } else {
+                        Toast.makeText(
+                                applicationContext,
+                                "Something went wrong",
+                                Toast.LENGTH_SHORT
+                        )
+                                .show()
+                    }
+                }
+            }
 
         } else {
 //            Snackbar.make(nested_scroll_view, "No Internet Available", Snackbar.LENGTH_LONG).show()
@@ -165,9 +166,6 @@ class LoginActivity : AppCompatActivity() {
         //listeners
         login_button.setOnClickListener {
 
-            //temp
-            loginSuccess()
-
             user_layout.isErrorEnabled = false
             password_layout.isErrorEnabled = false
 
@@ -178,8 +176,8 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            if(password_edit_text.text.toString() == "" || password_edit_text.text.toString().length < 6) {
-                password_layout.error = "Password must be minimum 6 characters"
+            if(password_edit_text.text.toString() == "" || password_edit_text.text.toString().length < 8) {
+                password_layout.error = "Password must be minimum 8 characters"
                 password_layout.requestFocus()
                 return@setOnClickListener
             }

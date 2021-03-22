@@ -1,18 +1,15 @@
 package com.saned.view.ui.adapter.servicesActions
 
 import android.content.Context
-import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.nchores.user.model.ServicesMenu
+import com.saned.model.ServicesMenu
 import com.saned.R
 import com.saned.view.ui.activities.ServicesActionsActivity
 import kotlinx.android.synthetic.main.empty_placeholder_item.view.*
 import kotlinx.android.synthetic.main.services_actions_menu_item.view.*
-import org.jetbrains.anko.backgroundColor
 
 
 class ServiceActionsAdapter(private val dataList: List<ServicesMenu>, val context: Context,

@@ -13,7 +13,7 @@ class ErrorInterceptor  : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
 
         val request = chain.request().newBuilder().addHeader("Authorization", "Bearer "+ prefHelper.getBearerToken())
-            .addHeader("Accept","application/json").build()
+            .addHeader("Content-Type","application/json").build()
 
         val response = chain.proceed(request)
 

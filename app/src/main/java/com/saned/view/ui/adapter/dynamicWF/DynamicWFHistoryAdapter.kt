@@ -1,19 +1,15 @@
 package com.saned.view.ui.adapter.dynamicWF
 
 import android.content.Context
-import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.nchores.user.model.HAData
+import com.saned.model.HAData
 import com.saned.R
-import com.saned.view.ui.activities.ServicesActionsActivity
 import com.saned.view.ui.activities.dynamicWF.HistoryDynamicWFActivity
 import kotlinx.android.synthetic.main.empty_placeholder_item.view.*
 import kotlinx.android.synthetic.main.dynamic_wf_list_item.view.*
-import org.jetbrains.anko.backgroundColor
 
 
 class DynamicWFHistoryAdapter(private val dataList: List<HAData>, val context: Context,
