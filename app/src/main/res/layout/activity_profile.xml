@@ -127,6 +127,8 @@
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 android:textSize="18sp"
+                                android:maxLines="1"
+                                android:ellipsize="end"
                                 />
 
                             <TextView
@@ -137,6 +139,8 @@
                                 android:text="Sanjose, CA"
                                 android:textColor="@color/white"
                                 android:textSize="12sp"
+                                android:maxLines="1"
+                                android:ellipsize="end"
                                 />
 
                         </LinearLayout>

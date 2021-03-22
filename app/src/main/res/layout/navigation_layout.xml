@@ -46,21 +46,18 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <RelativeLayout
-                        android:layout_width="86dp"
-                        android:layout_height="62dp">
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/nav_profile_image"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="86dp"
+                            android:layout_height="62dp"
                             android:src="@drawable/ic_user"
                             app:civ_border_width="0dp"
                             app:civ_border_color="#fff"/>
 
-                    </RelativeLayout>
 
-                    <RelativeLayout
+                    <LinearLayout
+                        android:orientation="vertical"
                         android:layout_gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
@@ -73,20 +70,23 @@
                             android:textColor="@color/white"
                             android:textStyle="bold"
                             android:textSize="18sp"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             />
 
                         <TextView
                             android:id="@+id/nav_userdetail"
                             android:layout_marginTop="5dp"
-                            android:layout_below="@+id/nav_username"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Sanjose, CA"
                             android:textColor="@color/white"
                             android:textSize="12sp"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             />
 
-                    </RelativeLayout>
+                    </LinearLayout>
                 </LinearLayout>
 
             </RelativeLayout>
