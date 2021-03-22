@@ -88,28 +88,28 @@ class LoginActivity : AppCompatActivity() {
                 try {
 
                     val result = apiService.performLogin(hashMap).await()
-//
-//                    Log.e("result", "" + result)
-//
-//                    if (result.success == "1") {
-//
-//
-//                        prefHelper.setBearerToken("" + result.token)
-//                        prefHelper.setUserId("" + result.user!!.id)
-//                        prefHelper.setUserPassword("" + password_edit_text.text.toString())
-//                        prefHelper.setUserType("" + result.user!!.role_id)      //role_id 1 - manager, 2- user
-//                        prefHelper.setUserName("" + "${result.user!!.first_name} ${result.user!!.last_name}")
-//                        prefHelper.setUserEmail("" + email_edit_text.text.toString())
-////                        prefHelper.setUserProfile("" + result.data?.get(0)!!.profile_pic)
-//                        prefHelper.setIsLogin("1")
-//
-//                        Toast.makeText(this@LoginActivity, "Login Success", Toast.LENGTH_SHORT).show()
-//                        loginSuccess()
-//                    } else {
-//
-//                        Toast.makeText(this@LoginActivity, "" + result.message, Toast.LENGTH_SHORT)
-//                                .show()
-//                    }
+
+                    Log.e("result", "" + result)
+
+                    if (result.success == "1") {
+
+
+                        prefHelper.setBearerToken("" + result.token)
+                        prefHelper.setUserId("" + result.user!!.id)
+                        prefHelper.setUserPassword("" + password_edit_text.text.toString())
+                        prefHelper.setUserType("" + result.user!!.role_id)      //role_id 1 - manager, 2- user
+                        prefHelper.setUserName("" + "${result.user!!.first_name} ${result.user!!.last_name}")
+                        prefHelper.setUserEmail("" + email_edit_text.text.toString())
+//                        prefHelper.setUserProfile("" + result.data?.get(0)!!.profile_pic)
+                        prefHelper.setIsLogin("1")
+
+                        Toast.makeText(this@LoginActivity, "Login Success", Toast.LENGTH_SHORT).show()
+                        loginSuccess()
+                    } else {
+
+                        Toast.makeText(this@LoginActivity, "" + result.message, Toast.LENGTH_SHORT)
+                                .show()
+                    }
 
                     progressDialog.dismiss()
 
