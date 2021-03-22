@@ -7,23 +7,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
-import butterknife.BindView
-import butterknife.ButterKnife
 import com.saned.R
+import kotlinx.android.synthetic.main.activity_view_dynamic_w_f.*
 
 class ViewDynamicWFActivity : AppCompatActivity() {
 
-    @BindView(R.id.toolbar)
-    lateinit var toolbar: Toolbar
-
-    @BindView(R.id.toolbar_title)
-    lateinit var toolbarTitle: TextView
-
-    @BindView(R.id.empty_nodata_view)
-    lateinit var emptyView: LinearLayout
-
-    @BindView(R.id.root_layout)
-    lateinit var rootLayout: LinearLayout
 
     var formID: String = ""
     var formName: String = ""
@@ -33,7 +21,6 @@ class ViewDynamicWFActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_dynamic_w_f)
-        ButterKnife.bind(this)
         setToolBar()
         init()
     }

@@ -102,8 +102,8 @@ dependencies {
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
 
     //butterknife
-    implementation "com.jakewharton:butterknife:${butterknifeVersion}"
-    kapt "com.jakewharton:butterknife-compiler:${butterknifeVersion}"
+//    implementation "com.jakewharton:butterknife:${butterknifeVersion}"
+//    kapt "com.jakewharton:butterknife-compiler:${butterknifeVersion}"
 
     //Circular ImageView
     implementation 'de.hdodenhof:circleimageview:2.2.0'

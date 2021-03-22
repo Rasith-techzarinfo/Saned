@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
-import butterknife.BindView
-import butterknife.ButterKnife
 import com.saned.R
 import com.saned.view.utils.Utils.Companion.openActivity
 import kotlinx.android.synthetic.main.activity_profile.*
@@ -15,18 +13,12 @@ class EditProfileActivity : AppCompatActivity() {
 
 
 
-    @BindView(R.id.toolbar)
-    lateinit var toolbar: Toolbar
-
-    @BindView(R.id.toolbar_title)
-    lateinit var toolbarTitle: TextView
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
-        ButterKnife.bind(this)
         setToolBar()
         init()
     }

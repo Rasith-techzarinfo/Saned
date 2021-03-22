@@ -14,8 +14,6 @@ import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import butterknife.BindView
-import butterknife.ButterKnife
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.nchores.user.model.HAData
 import com.saned.R
@@ -31,29 +29,29 @@ import java.lang.Exception
 class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.ListAdapterListener {
 
 
-    @BindView(R.id.toolbar)
-    lateinit var toolbar: Toolbar
-
-    @BindView(R.id.toolbar_title)
-    lateinit var toolbarTitle: TextView
-    
-    @BindView(R.id.recycler_view)
-    lateinit var recyclerView: RecyclerView
-
-    @BindView(R.id.success_swipe_refresh)
-    lateinit var swipeRefreshLayout: SwipeRefreshLayout
-
-    @BindView(R.id.shimmer_layout)
-    lateinit var shimmerLayout: ShimmerFrameLayout
-
-    @BindView(R.id.root_layout)
-    lateinit var rootLayout: RelativeLayout
-
-    @BindView(R.id.nested_scroll_view)
-    lateinit var nestedScrollView: NestedScrollView
-
-    @BindView(R.id.empty_nodata_view)
-    lateinit var emptyView: LinearLayout
+//    @BindView(R.id.toolbar)
+//    lateinit var toolbar: Toolbar
+//
+//    @BindView(R.id.toolbar_title)
+//    lateinit var toolbarTitle: TextView
+//
+//    @BindView(R.id.recycler_view)
+//    lateinit var recyclerView: RecyclerView
+//
+//    @BindView(R.id.success_swipe_refresh)
+//    lateinit var swipeRefreshLayout: SwipeRefreshLayout
+//
+//    @BindView(R.id.shimmer_layout)
+//    lateinit var shimmerLayout: ShimmerFrameLayout
+//
+//    @BindView(R.id.root_layout)
+//    lateinit var rootLayout: RelativeLayout
+//
+//    @BindView(R.id.nested_scroll_view)
+//    lateinit var nestedScrollView: NestedScrollView
+//
+//    @BindView(R.id.empty_nodata_view)
+//    lateinit var emptyView: LinearLayout
 
     lateinit var dynamicWFHistoryAdapter : DynamicWFHistoryAdapter
 
@@ -70,7 +68,6 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history_dynamic_w_f)
-        ButterKnife.bind(this)
         setToolBar()
         init()
     }

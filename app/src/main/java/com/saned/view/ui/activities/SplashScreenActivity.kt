@@ -8,6 +8,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.saned.R
 import com.saned.sanedApplication.Companion.prefHelper
+import com.saned.view.utils.Utils.Companion.openActivity
 
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -22,16 +23,13 @@ class SplashScreenActivity : AppCompatActivity() {
 
             if (prefHelper.getIsLogin() == "1") {
 
-                intent = Intent(applicationContext, DashboardActivity::class.java)
-                startActivity(intent)
-                overridePendingTransition(R.anim.enter_right_to_left, R.anim.exit_left_to_right)
+                openActivity(DashboardActivity::class.java, this){}
             } else {
 
 //                if(prefHelper.getIsFirstTime() == "1"){
 
-                    intent = Intent(applicationContext, LoginActivity::class.java)
-                    startActivity(intent)
-                    overridePendingTransition(R.anim.enter_right_to_left, R.anim.exit_left_to_right)
+                    openActivity(LoginActivity::class.java, this){}
+
 //                } else {
 //
 //                    intent = Intent(applicationContext, OnBoardingActivity::class.java)

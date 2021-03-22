@@ -15,8 +15,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import butterknife.BindView
-import butterknife.ButterKnife
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.nchores.user.model.ServicesMenu
 import com.saned.R
@@ -29,36 +27,12 @@ import com.saned.view.utils.Utils.Companion.isInternetAvailable
 import com.saned.view.utils.Utils.Companion.openActivity
 import com.saned.view.utils.Utils.Companion.startShimmerRL
 import com.saned.view.utils.Utils.Companion.stopShimmerRL
+import kotlinx.android.synthetic.main.activity_services_actions.*
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListAdapterListener {
 
-
-
-    @BindView(R.id.toolbar)
-    lateinit var toolbar: Toolbar
-
-    @BindView(R.id.toolbar_title)
-    lateinit var toolbarTitle: TextView
-
-    @BindView(R.id.recycler_view)
-    lateinit var recyclerView: RecyclerView
-
-    @BindView(R.id.success_swipe_refresh)
-    lateinit var swipeRefreshLayout: SwipeRefreshLayout
-
-    @BindView(R.id.shimmer_layout)
-    lateinit var shimmerLayout: ShimmerFrameLayout
-
-    @BindView(R.id.root_layout)
-    lateinit var rootLayout: RelativeLayout
-
-    @BindView(R.id.nested_scroll_view)
-    lateinit var nestedScrollView: NestedScrollView
-
-    @BindView(R.id.empty_nodata_view)
-    lateinit var emptyView: LinearLayout
 
     lateinit var serviceActionsAdapter : ServiceActionsAdapter
 
@@ -71,7 +45,6 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_services_actions)
-        ButterKnife.bind(this)
         setToolBar()
         init()
     }

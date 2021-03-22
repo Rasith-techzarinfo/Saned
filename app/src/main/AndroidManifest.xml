@@ -43,7 +43,10 @@
         tools:replace="android:allowBackup">
         <activity android:name=".view.ui.activities.EditProfileActivity"></activity>
         <activity android:name=".view.ui.activities.dynamicWF.ViewDynamicWFActivity" />
-        <activity android:name=".view.ui.activities.dynamicWF.CreateDynamicWFActivity" /> <!-- services -->
+        <activity android:name=".view.ui.activities.dynamicWF.CreateDynamicWFActivity" />
+
+
+        <!-- services -->
         <service
             android:name=".view.service.MyFirebaseMessagingService"
             android:exported="false">

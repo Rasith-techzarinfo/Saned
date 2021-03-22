@@ -19,9 +19,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.widget.NestedScrollView
-import butterknife.BindView
-import butterknife.ButterKnife
-import butterknife.OnClick
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
@@ -33,32 +30,13 @@ import com.saned.sanedApplication.Companion.prefHelper
 import com.saned.view.error.SANEDError
 import com.saned.view.utils.Constants
 import com.saned.view.utils.Utils
+import com.saned.view.utils.Utils.Companion.openActivity
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.launch
 import java.util.*
 
 
 class LoginActivity : AppCompatActivity() {
-
-    @BindView(R.id.email_edit_text)
-    lateinit var emailEditText : TextInputEditText
-
-    @BindView(R.id.password_text)
-    lateinit var passwordEditText : TextInputEditText
-
-    @BindView(R.id.user_layout)
-    lateinit var userLayout : TextInputLayout
-
-    @BindView(R.id.password_layout)
-    lateinit var passwordLayout: TextInputLayout
-
-    @BindView(R.id.login_button)
-    lateinit var loginButton: MaterialButton
-
-    @BindView(R.id.app_logo)
-    lateinit var logoImageview: ImageView
-
-    @BindView(R.id.nested_scroll_view)
-    lateinit var nestedScrollView: NestedScrollView
 
 
     private val permission_storage = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -73,50 +51,16 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        ButterKnife.bind(this)
-        setupListener()
+        init()
     }
 
-
-    @OnClick(R.id.login_button)
-    fun loginButtonClick(){
-
-        //temp
-        loginSuccess()
-
-        userLayout.isErrorEnabled = false
-        passwordLayout.isErrorEnabled = false
-
-        //upiTextLayout.editText!!.text!!
-        if (emailEditText.text.toString() == "" || !Utils.isValidEmail(emailEditText.text.toString())) {
-            userLayout.error = "Enter Valid Email"
-            userLayout.requestFocus()
-            return
-        }
-
-        if(passwordEditText.text.toString() == "" || passwordEditText.text.toString().length < 6) {
-            passwordLayout.error = "Password must be minimum 6 characters"
-            userLayout.requestFocus()
-
-            return
-        }
-
-//        if(!Utils.isValidPassword(passwordEditText.text.toString())){
-//            passwordLayout.error = "Password must contain 1 Upper case, 1 lower case ,1 special character and 1 number"
-//
-//            return
-//        }
-
-        validatePermission()
-
-    }
 
 
 
 
     private fun performLoginService() {
 
-        Utils.hideKeyBoard(loginButton, this@LoginActivity)
+        Utils.hideKeyBoard(login_button, this@LoginActivity)
 
         if (Utils.isInternetAvailable(this)) {
 
@@ -134,8 +78,8 @@ class LoginActivity : AppCompatActivity() {
 
             val hashMap: HashMap<String, String> = HashMap()
 
-            hashMap["email"] = "" + emailEditText.text.toString()
-            hashMap["password"] = "" + passwordEditText.text.toString()
+            hashMap["email"] = "" + email_edit_text.text.toString()
+            hashMap["password"] = "" + password_edit_text.text.toString()
             hashMap["device_type"] = "" + Constants.DEVICE_TYPE
 
 
@@ -192,8 +136,8 @@ class LoginActivity : AppCompatActivity() {
 //            }
 
         } else {
-            Snackbar.make(nestedScrollView, "No Internet Available", Snackbar.LENGTH_LONG).show()
-//            Toast.makeText(applicationContext, "No Internet Available", Toast.LENGTH_SHORT).show()
+//            Snackbar.make(nested_scroll_view, "No Internet Available", Snackbar.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, "No Internet Available", Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -207,9 +151,7 @@ class LoginActivity : AppCompatActivity() {
 
 
     private  fun loginSuccess(){
-        intent = Intent(applicationContext, DashboardActivity::class.java)
-        startActivity(intent)
-        overridePendingTransition(R.anim.enter_right_to_left, R.anim.exit_left_to_right)
+        openActivity(DashboardActivity::class.java, this){}
     }
 
 
@@ -219,8 +161,37 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-    private fun setupListener() {
-        //setup here
+    private fun init() {
+        //listeners
+        login_button.setOnClickListener {
+
+            //temp
+            loginSuccess()
+
+            user_layout.isErrorEnabled = false
+            password_layout.isErrorEnabled = false
+
+            //upiTextLayout.editText!!.text!!
+            if (email_edit_text.text.toString() == "" || !Utils.isValidEmail(email_edit_text.text.toString())) {
+                user_layout.error = "Enter Valid Email"
+                user_layout.requestFocus()
+                return@setOnClickListener
+            }
+
+            if(password_edit_text.text.toString() == "" || password_edit_text.text.toString().length < 6) {
+                password_layout.error = "Password must be minimum 6 characters"
+                password_layout.requestFocus()
+                return@setOnClickListener
+            }
+
+//        if(!Utils.isValidPassword(passwordEditText.text.toString())){
+//            passwordLayout.error = "Password must contain 1 Upper case, 1 lower case ,1 special character and 1 number"
+//
+//            return
+//        }
+
+            validatePermission()
+        }
 
 
 
@@ -228,12 +199,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-    override fun onSupportNavigateUp(): Boolean {
-
-        finish()
-        overridePendingTransition(R.anim.back_left_to_right, R.anim.back_right_to_left)
-        return true
-    }
 
     override fun onBackPressed() {
 
@@ -250,8 +215,7 @@ class LoginActivity : AppCompatActivity() {
         val relaiveLayout = mDialog.findViewById<RelativeLayout>(R.id.relative1)
 
         exitApp.setOnClickListener {
-            finishAffinity()
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+            finishAfterTransition()
             mDialog.dismiss()
         }
 
