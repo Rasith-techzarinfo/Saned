@@ -93,18 +93,25 @@ class LoginActivity : AppCompatActivity() {
 
                     if (result.success == "1") {
 
+                        var userType = "" + result.user!!.role_id
+                        if(userType == "1" || userType == "2" ) {
 
-                        prefHelper.setBearerToken("" + result.token)
-                        prefHelper.setUserId("" + result.user!!.id)
-                        prefHelper.setUserPassword("" + password_edit_text.text.toString())
-                        prefHelper.setUserType("" + result.user!!.role_id)      //role_id 1 - manager, 2- user
-                        prefHelper.setUserName("" + "${result.user!!.first_name} ${result.user!!.last_name}")
-                        prefHelper.setUserEmail("" + email_edit_text.text.toString())
+                            prefHelper.setBearerToken("" + result.token)
+                            prefHelper.setUserId("" + result.user!!.id)
+                            prefHelper.setUserPassword("" + password_edit_text.text.toString())
+                            prefHelper.setUserType("" + userType)      //role_id 1 - manager, 2- user
+                            prefHelper.setUserName("" + "${result.user!!.first_name} ${result.user!!.last_name}")
+                            prefHelper.setUserEmail("" + email_edit_text.text.toString())
 //                        prefHelper.setUserProfile("" + result.data?.get(0)!!.profile_pic)
-                        prefHelper.setIsLogin("1")
+                            prefHelper.setIsLogin("1")
 
-                        Toast.makeText(this@LoginActivity, "Login Success", Toast.LENGTH_SHORT).show()
-                        loginSuccess()
+                            Toast.makeText(this@LoginActivity, "Login Success", Toast.LENGTH_SHORT).show()
+                            loginSuccess()
+
+                        } else {
+                            Toast.makeText(this@LoginActivity,"You don't have access to login",Toast.LENGTH_SHORT ).show()
+                        }
+
                     } else {
 
                         Toast.makeText(this@LoginActivity, "" + result.message, Toast.LENGTH_SHORT)

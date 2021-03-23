@@ -54,6 +54,13 @@ data class LoginError(
     val password: ArrayList<String>?
 )
 
+data class ResData(
+
+        val success: String,
+        val message: String
+)
+
+
 //FIXME just for demo
 data class ServicesMenu(
     val title: String,

@@ -7,29 +7,39 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.Window
+import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.saned.R
+import com.saned.sanedApplication.Companion.apiService
+import com.saned.sanedApplication.Companion.coroutineScope
+import com.saned.sanedApplication.Companion.prefHelper
+import com.saned.view.error.SANEDError
 import com.saned.view.ui.interfaces.ResourceStore
+import com.saned.view.utils.Constants.Companion.BASE_URL
 import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.openActivity
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.activity_dashboard.home_layout
 import kotlinx.android.synthetic.main.navigation_layout.*
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.backgroundColor
 
 class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -128,8 +138,81 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             mDialog.show()
         }
 
+        //api calls
+        Log.e("bearer", "" + prefHelper.getBearerToken())
+        Log.e("fcm", "" + prefHelper.getFCMToken())
+        submitFCMToServer()
 
+        //dashboard
+        setupDashboard()
     }
+
+    private fun setupDashboard() {
+        //set values
+        profile_name.text = prefHelper.getUserName()
+        profile_detail.text = prefHelper.getUserEmail()
+
+        //set images
+        Glide.with(this)
+                .load(BASE_URL + prefHelper.getUserProfile())
+                .placeholder(R.drawable.ic_user)
+                .error(R.drawable.ic_user)
+                .into(profile_image)
+
+        //handle permissions
+        if(prefHelper.getUserType() == "1"){
+            //manager
+
+        } else if(prefHelper.getUserType() == "2") {
+            //user
+
+        }
+    }
+
+    private fun submitFCMToServer() {
+
+        if (Utils.isInternetAvailable(this)) {
+
+
+            val hashMap: HashMap<String, String> = HashMap()
+
+            hashMap["fcm_code"] = "" + prefHelper.getFCMToken()
+            hashMap["device_type"] = "1"  //(1-android, 2-IOS)
+
+
+            coroutineScope.launch {
+
+                try {
+//                    var result = apiService.updateFcmToken(hashMap).await()
+//
+//                    Log.e("result", "" + result)
+//
+//                    if(result.success == "1"){
+//                        //on success
+//
+//                    }
+
+                } catch (e: Exception) {
+                    Log.e("error", "" + e.message)
+                    if (e is SANEDError) {
+                        Log.e("Err", "" + e.getErrorResponse())
+                        if (e.getResponseCode() == 401) {
+                            Utils.logoutFromApp(this@DashboardActivity)
+                        } else if (e.getResponseCode() == 500) {
+                            Toast.makeText(this@DashboardActivity, "Server error", Toast.LENGTH_LONG).show()
+                        }
+                    } else {
+                        Toast.makeText(this@DashboardActivity, "Something went wrong", Toast.LENGTH_SHORT)
+                                .show()
+                    }
+                }
+            }
+
+        } else {
+            Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 
     private fun setupTabLayout() {
 
@@ -168,20 +251,22 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
     private fun setupNavigationDrawer() {
 
-//        profileUrl = BASE_URL + prefHelper.getUserProfile().toString()
-//
-//        var profileImage = navDrawerLayout.findViewById(R.id.profile_image) as ImageView
-//        var nameTextView = navDrawerLayout.findViewById<TextView>(R.id.profile_name)
-//
-//        nameTextView.text = prefHelper.getUserName().toString()
-//        //set images
-//        Glide.with(this)
-//                .load(profileUrl)
-//                .placeholder(R.drawable.ic_user)
-//                .error(R.drawable.ic_user)
-//                .into(profileImage)
-//
-//        navigationView.setNavigationItemSelectedListener(this)
+        var profileUrl = BASE_URL + prefHelper.getUserProfile().toString()
+
+        var profileImage = drawer_layout.findViewById(R.id.nav_profile_image) as ImageView
+        var nameTextView = drawer_layout.findViewById<TextView>(R.id.nav_username)
+        var emailTextView = drawer_layout.findViewById<TextView>(R.id.nav_userdetail)
+
+        nameTextView.text = prefHelper.getUserName().toString()
+        emailTextView.text = prefHelper.getUserEmail().toString()
+        //set images
+        Glide.with(this)
+                .load(profileUrl)
+                .placeholder(R.drawable.ic_user)
+                .error(R.drawable.ic_user)
+                .into(profileImage)
+
+        nav_view.setNavigationItemSelectedListener(this)
 
     }
 

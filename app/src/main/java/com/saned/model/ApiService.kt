@@ -21,7 +21,12 @@ interface ApiService {
         @FieldMap values: HashMap<String, String>
     ): Deferred<UserLoginData>
 
+    @POST( "api/update-fcm")
+    @FormUrlEncoded
+    fun updateFcmToken(
+            @FieldMap values: java.util.HashMap<String, String>
 
+    ): Deferred<ResData>
 
 
 
