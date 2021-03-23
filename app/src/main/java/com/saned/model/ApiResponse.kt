@@ -1,5 +1,7 @@
 package com.saned.model
 
+import java.text.FieldPosition
+
 
 data class UserLoginData (
 
@@ -71,4 +73,27 @@ data class HAData(
     val noofdays: String,
     val reason: String,
     var id: String
+)
+
+data class HousingWFData (
+
+        val id : String,
+        val wkid : String,
+        val sern : String,
+        val labl : String,
+        val data : String,
+        val form_name : String,
+        val email : String
+)
+
+data class HAData1(
+        val position: Int,
+        val wfid: String
+)
+
+data class HousingWFList (
+
+        val success : String,
+        val message : String,
+        val data : List<HousingWFData>
 )

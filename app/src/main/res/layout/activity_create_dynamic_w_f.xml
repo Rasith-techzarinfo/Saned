@@ -70,25 +70,38 @@
         <LinearLayout
             android:id="@+id/rootLayout"
             android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
 
 
+            <TextView
+                android:id="@+id/to_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="No of days*"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
             <LinearLayout
-                android:id="@+id/category_layout"
+                android:id="@+id/spinner_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/text_bg"
                 android:orientation="vertical">
 
 
                 <Spinner
-                    android:id="@+id/spinner"
+                    android:id="@+id/daysSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:backgroundTint="@android:color/black"
@@ -99,35 +112,51 @@
             </LinearLayout>
 
 
-            <LinearLayout
-                android:id="@+id/name_layout"
+            <TextView
+                android:id="@+id/noOfDaysLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Reason*"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/reason_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:background="@drawable/text_bg"
-                android:orientation="vertical">
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
 
-                <EditText
-                    android:id="@+id/heading_edit_text"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/reasonEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@android:color/white"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Reason"
+                    android:background="@drawable/text_bg"
                     android:imeOptions="actionNext"
-                    android:importantForAutofill="noExcludeDescendants"
-                    android:inputType="textCapSentences|textMultiLine"
-                    android:hint="Reason*"
-                    android:maxLength="240"
-                    android:maxLines="2"
-                    android:singleLine="false"
-                    android:ems="10"
+                    android:inputType="text"
+                    android:maxLength="75"
+                    android:maxLines="1"
                     android:paddingStart="8dp"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    android:paddingLeft="8dp" />
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
 
-            </LinearLayout>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
 
 
@@ -172,7 +201,7 @@
 
 
                 <HorizontalScrollView
-                    android:id="@+id/attachment_layout"
+                    android:id="@+id/attachmentLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -180,7 +209,7 @@
 
 
                     <LinearLayout
-                        android:id="@+id/image_layout"
+                        android:id="@+id/imageLinearLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"

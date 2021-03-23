@@ -1,49 +1,27 @@
 package com.saned.view.ui.activities.dynamicWF
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.saned.model.HAData
 import com.saned.R
-import com.saned.sanedApplication
+import com.saned.model.HAData
+import com.saned.model.HAData1
+import com.saned.model.HousingWFData
+import com.saned.sanedApplication.Companion.apiService
+import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.view.error.SANEDError
 import com.saned.view.ui.adapter.dynamicWF.DynamicWFHistoryAdapter
 import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.openActivity
 import kotlinx.android.synthetic.main.activity_history_dynamic_w_f.*
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.ListAdapterListener {
 
-
-//    @BindView(R.id.toolbar)
-//    lateinit var toolbar: Toolbar
-//
-//    @BindView(R.id.toolbar_title)
-//    lateinit var toolbarTitle: TextView
-//
-//    @BindView(R.id.recycler_view)
-//    lateinit var recyclerView: RecyclerView
-//
-//    @BindView(R.id.success_swipe_refresh)
-//    lateinit var swipeRefreshLayout: SwipeRefreshLayout
-//
-//    @BindView(R.id.shimmer_layout)
-//    lateinit var shimmerLayout: ShimmerFrameLayout
-//
-//    @BindView(R.id.root_layout)
-//    lateinit var rootLayout: RelativeLayout
-//
-//    @BindView(R.id.nested_scroll_view)
-//    lateinit var nestedScrollView: NestedScrollView
-//
-//    @BindView(R.id.empty_nodata_view)
-//    lateinit var emptyView: LinearLayout
 
     lateinit var dynamicWFHistoryAdapter : DynamicWFHistoryAdapter
 
@@ -75,49 +53,144 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
 
             //shimmer
             Utils.startShimmerRL(shimmerLayout, rootLayout)
+            emptyView.visibility = View.GONE
 
-            sanedApplication.coroutineScope.launch {
+            coroutineScope.launch {
 
                 try {
 
-//                    val result = netwoApplication.apiService.getTicketFAQList(currentPage).await()
-//                    Log.e("result", "" + result)
+                    val result = apiService.getHousingWFList().await()
+                    Log.e("result", "" + result)
+
+                    if(result.success == "1"){
+
+                        var tempArrayList: ArrayList<HousingWFData> = ArrayList()
+                        var tempWFPOSArrayList: ArrayList<HAData1> = ArrayList()
+                        var tempWFIDArrayList: ArrayList<String> = ArrayList()
+                        var tempPOSArrayList: ArrayList<Int> = ArrayList()
+
+                        for(item in result.data!!){
+
+                            val v1 = HousingWFData(
+                                    "" + item.id,
+                                    "" + item.wkid,
+                                    "" + item.sern,
+                                    "" + item.labl,
+                                    "" + item.data,
+                                    "" + item.form_name,
+                                    "" + item.email
+                            )
+                            tempArrayList.add(v1)
+
+                            val v2 = HAData1(
+                                    tempArrayList.size - 1,
+                                    "" + item.wkid
+                            )
+                            tempWFPOSArrayList.add(v2)
+                        }
+
+
+                        for ((i, item) in tempWFPOSArrayList.withIndex()){
+
+                            tempWFIDArrayList.add("" + item.wfid)
+                            tempPOSArrayList.add(item.position)
+                        }
+
+                        val foo: Set<String> = HashSet<String>(tempWFIDArrayList)
+                        Log.e("tempWFID", "$tempWFIDArrayList")
+                        Log.e("tempPos", "$tempPOSArrayList")
+                        Log.e("tempPos", "$tempWFPOSArrayList")
+
+                        for (item in tempWFPOSArrayList){
+
+
+
+
+                        }
+
+//                        var firstArrayList: ArrayList<HouseData> = ArrayList()
+//                        var secondArrayList: ArrayList<CustomSecond> = ArrayList()
 //
-//                    if(result.success == "1"){
+//                        for (item in topic.data) {
 //
-//                        for(item in result.data!!.data!!){
-////                            Log.e("current page info",""+item.question)
+//                            var v1 = HouseData("" + item.id, "" + item.wkid, "" + item.sern, "" + item.labl, "" + item.data, "" + item.form_name, "" + item.email)
 //
-//                            val c1 = TicketCategory(
-//                                "" + item.category!!.id,
-//                                "" + item.category!!.name
-//                            )
+//                            firstArrayList.add(v1)
 //
-//                            val v1 = HAData(
-//                                ""+ item.id,
-//                                c1,
-//                                ""+item.question,
-//                                ""+item.answer,
-//                                ""+item.user_id,
-//                                ""+item.active,
-//                                ""+item.created_at,
-//                                ""+item.updated_at
-//                            )
-//                            dynamicWFArrayList.add(v1)
+//                            var v2 = CustomSecond("" + (firstArrayList.size - 1), "" + item.wkid)
+//                            secondArrayList.add(v2)
 //                        }
+//
+//                        val hashMap: HashMap<String, MutableList<Int>> = HashMap()
+//
+//
+//                        for (i in 0 until secondArrayList.size) {
+//                            if (hashMap[secondArrayList[i].wkid] != null) {
+//                                val indexList = hashMap[secondArrayList.get(i).wkid]
+//                                indexList!!.add(i)
+//                                hashMap[secondArrayList.get(i).wkid] = indexList!!
+//                            } else {
+//                                val indexList: MutableList<Int> = ArrayList()
+//                                indexList.add(i)
+//                                hashMap[secondArrayList.get(i).wkid] = indexList
+//                            }
+//                        }
+//                        Log.e("HashMap", "" + hashMap.toString())
+
+                        //format data for now.. by wkid similar fields row
+//                        var currentWkid = "";
+//                        var oldWkid = "";
+//                        var month = "";
+//                        var reason = "";
+//                        var count = 0;
+//                        for ( (i,item) in tempArrayList.withIndex()) {
+//
+//                            oldWkid = if(i!=0) tempArrayList[i - 1].wkid else item.wkid
+//                            currentWkid = item.wkid
+//
+//                            if(oldWkid == currentWkid){
+//                                if(item.labl == "Month No" && item.data != "") {
+//                                    month = item.data
+//                                    count++
+//                                } else if(item.labl == "Reason" && item.data != ""){
+//                                    reason = item.data
+//                                    count++
+//                                }
+//
+//
+//                                Log.e("workflow IF", "$i $currentWkid $oldWkid $count ${item.data}")
+//
+//                            } else {
+//                                Log.e("workflow Else1", "$i $currentWkid $oldWkid $count $month $reason")
+//                                if(count == 2) {
+//                                    count = 0
+//                                    Log.e("workflow Else2", "$i $currentWkid $oldWkid $count $month $reason")
+//
+//                                    val v2 = HAData(
+//                                            "" + month,
+//                                            "" + reason,
+//                                            "" + item.wkid
+//                                    )
+//                                    dynamicWFArrayList.add(v2)
+//                                    Log.e("WF", "" + v2)
+//                                }
+//                            }
+//                        }
+
+
 //                        totalPages = result.data!!.last_page.toString()
 //                        Log.e("result", "" + result.data!!.current_page)
-//
-//                    }else {
-//
-//                        Toast.makeText(this@HistoryDynamicWFActivity, "" + result.message, Toast.LENGTH_SHORT)
-//                            .show()
-//                    }
-//
+
+                    }else {
+
+                        Toast.makeText(this@HistoryDynamicWFActivity, "" + result.message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
+
 
 
                     //load static data for now
-                    dynamicWFArrayList.add(HAData("30", "This is so coolllll.", "101"))
+//                    dynamicWFArrayList.add(HAData("30", "This is so coolllll.", "101"))
 
 
 
@@ -127,7 +200,7 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
 
                     setupRecyclerView()
 
-                }catch(e: Exception){
+                }catch (e: Exception){
 
                     Utils.stopShimmerRL(shimmerLayout, rootLayout)
                     Log.e("error", "" + e.message)

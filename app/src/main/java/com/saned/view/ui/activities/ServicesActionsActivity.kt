@@ -95,7 +95,7 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
 
                      //load static data for now
                      servicesArrayList.add(ServicesMenu("Housing Advance", "101"))
-                     servicesArrayList.add(ServicesMenu("Leave Request", "101"))
+//                     servicesArrayList.add(ServicesMenu("Leave Request", "101"))
         
         
         

@@ -1,12 +1,19 @@
 package com.saned.view.ui.activities
 
+import android.Manifest
 import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
+import android.provider.Settings
 import android.util.Log
 import android.view.MenuItem
 import android.view.Window
@@ -16,7 +23,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -43,6 +52,15 @@ import kotlinx.coroutines.launch
 import org.jetbrains.anko.backgroundColor
 
 class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+
+    private val permission_storage = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    private val PERMISSION_REQUEST_CODE = 103
+    private val permission_camera = arrayOf(Manifest.permission.CAMERA)
+    private val CAMERA_PERMISSION_REQUEST_CODE = 104
+    private val permission_audio =
+            arrayOf(Manifest.permission.RECORD_AUDIO)
+    private val AUDIO_PERMISSION_REQUEST_CODE = 105
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -144,6 +162,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         submitFCMToServer()
 
         //dashboard
+        validatePermission()
         setupDashboard()
     }
 
@@ -158,6 +177,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 .placeholder(R.drawable.ic_user)
                 .error(R.drawable.ic_user)
                 .into(profile_image)
+
 
         //handle permissions
         if(prefHelper.getUserType() == "1"){
@@ -176,21 +196,21 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
             val hashMap: HashMap<String, String> = HashMap()
 
-            hashMap["fcm_code"] = "" + prefHelper.getFCMToken()
+            hashMap["fcm_token"] = "" + prefHelper.getFCMToken()
             hashMap["device_type"] = "1"  //(1-android, 2-IOS)
 
 
             coroutineScope.launch {
 
                 try {
-//                    var result = apiService.updateFcmToken(hashMap).await()
-//
-//                    Log.e("result", "" + result)
-//
-//                    if(result.success == "1"){
-//                        //on success
-//
-//                    }
+                    var result = apiService.updateFcmToken(hashMap).await()
+
+                    Log.e("result", "" + result)
+
+                    if(result.success == "1"){
+                        //on success
+
+                    }
 
                 } catch (e: Exception) {
                     Log.e("error", "" + e.message)
@@ -331,4 +351,272 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
     }
+
+    private fun validatePermission() {
+
+        if(checkStoragePermission()){
+            if(checkCameraPermission()){
+                if (checkAudioPermission()) {
+                    //okay
+
+                } else {
+                    if (prefHelper.getAudioPermission() == "0") {
+                        requestAudioPermission()
+                    } else {
+                        showAudioPermissionDialog()
+                    }
+                }
+
+
+            }else{
+
+                if(prefHelper.getCameraPermission() == "0"){
+                    requestCameraPermission()
+                }
+                else{
+                    showCameraPermissionDialog()
+                }
+
+            }
+
+        } else {
+
+            if (prefHelper.getStoragePermission() == "0") {
+                requestStoragePermission()
+            } else {
+                showStoragePermissionDialog()
+            }
+
+        }
+
+        checkStorageManagerPermission()
+    }
+
+    //permission functions
+    private fun checkStoragePermission(): Boolean {
+        val result = ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
+        return result == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun checkStorageManagerPermission() {
+        //request AllFileAccess above & on R
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (!Environment.isExternalStorageManager()) {
+                val intent = Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+                startActivity(intent)
+            } else {
+                val builder = androidx.appcompat.app.AlertDialog.Builder(this)
+                builder.setIcon(R.drawable.saned_logo).setTitle("Alert")
+                builder.setMessage("We need to access your storage to use this Application. Kindly allow permission now")
+                builder.setPositiveButton("Click here", DialogInterface.OnClickListener { dialog, which ->
+                    val intent = Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+                    startActivity(intent)
+                    dialog.dismiss()
+                })
+                //builder.show();
+                val dialog = builder.create()
+                dialog.show() //Only after .show() was called
+                dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)
+                        .setTextColor(resources.getColor(R.color.colorPrimary))
+                dialog.setCancelable(false)
+                dialog.setCanceledOnTouchOutside(false)
+                dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)
+                        .setTextColor(resources.getColor(R.color.colorPrimary))
+            }
+        }
+    }
+
+    private fun checkCameraPermission(): Boolean {
+        val result = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+        return result == PackageManager.PERMISSION_GRANTED
+    }
+
+
+    private fun requestStoragePermission() {
+        ActivityCompat.requestPermissions(
+                this,
+                permission_storage,
+                PERMISSION_REQUEST_CODE
+        )
+    }
+
+
+    private fun requestCameraPermission() {
+        ActivityCompat.requestPermissions(
+                this,
+                permission_camera,
+                CAMERA_PERMISSION_REQUEST_CODE
+        )
+    }
+
+    override fun onRequestPermissionsResult(
+            requestCode: Int,
+            permissions: Array<out String>,
+            grantResults: IntArray
+    ) {
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty()) {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    validatePermission()
+                } else if (Build.VERSION.SDK_INT >= 23 && !shouldShowRequestPermissionRationale(
+                                permissions[0]
+                        )) {
+
+                    Log.e("Never", "Go to Settings and Grant the permission to use this feature.")
+
+                    prefHelper.setStoragePermission("1")
+
+                    // User selected the Never Ask Again Option
+                } else {
+
+                    prefHelper.setStoragePermission("1")
+                    Log.e("Denied", "Permission Denied")
+                }
+            }
+        }
+
+        if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty()) {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    validatePermission()
+                } else if (Build.VERSION.SDK_INT >= 23 && !shouldShowRequestPermissionRationale(
+                                permissions[0]
+                        ))
+                {
+
+                    Log.e("Never", "Go to Settings and Grant the permission to use this feature.")
+
+                    prefHelper.setCameraPermission("1")
+
+                    // User selected the Never Ask Again Option
+                } else {
+
+                    prefHelper.setCameraPermission("1")
+                    Log.e("Denied", "Permission Denied")
+                }
+            }
+        }
+
+        if (requestCode == AUDIO_PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty()) {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    validatePermission()
+                } else if (Build.VERSION.SDK_INT >= 23 && !shouldShowRequestPermissionRationale(
+                                permissions[0]
+                        )
+                ) {
+
+                    Log.e("Never", "Go to Settings and Grant the permission to use this feature.")
+
+                    prefHelper.setAudioPermission("1")
+
+                    // User selected the Never Ask Again Option
+                } else {
+
+                    prefHelper.setAudioPermission("1")
+                    Log.e("Denied", "Permission Denied")
+                }
+            }
+        }
+
+    }
+
+
+
+    private fun checkAudioPermission(): Boolean {
+        val result = ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
+        return result == PackageManager.PERMISSION_GRANTED
+    }
+
+
+    private fun requestAudioPermission() {
+        ActivityCompat.requestPermissions(
+                this,
+                permission_audio,
+                AUDIO_PERMISSION_REQUEST_CODE
+        )
+    }
+
+
+    fun showAudioPermissionDialog() {
+
+        val builder = androidx.appcompat.app.AlertDialog.Builder(this)
+        builder.setTitle("Alert")
+        builder.setMessage("We need to access your Microphone to use this Application. Kindly allow permission now")
+        builder.setPositiveButton("Click here", DialogInterface.OnClickListener { dialog, which ->
+            val intent = Intent()
+            intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+            val uri = Uri.fromParts("package", packageName, null)
+            intent.data = uri
+            startActivity(intent)
+            dialog.dismiss()
+        })
+        //builder.show();
+        val dialog = builder.create()
+        dialog.show() //Only after .show() was called
+        dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)
+                .setTextColor(resources.getColor(R.color.colorPrimary))
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)
+                .setTextColor(resources.getColor(R.color.colorPrimary))
+
+    }
+
+    fun showStoragePermissionDialog() {
+        val builder = androidx.appcompat.app.AlertDialog.Builder(this)
+        // builder.setIcon(R.drawable.ic_baseline_warning_24).setTitle("Alert")
+        builder.setTitle("Alert")
+        builder.setMessage("We need to access your storage to use this Application. Kindly allow permission now")
+        builder.setPositiveButton("Click here", DialogInterface.OnClickListener { dialog, which ->
+            val intent = Intent()
+            intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+            val uri = Uri.fromParts("package", packageName, null)
+            intent.data = uri
+            startActivity(intent)
+            dialog.dismiss()
+        })
+        val dialog = builder.create()
+        dialog.show()
+        dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)
+                .setTextColor(resources.getColor(R.color.colorPrimary))
+        dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_NEGATIVE)
+                .setTextColor(resources.getColor(R.color.colorPrimary))
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
+
+
+    }
+
+    fun showCameraPermissionDialog() {
+
+        val builder = androidx.appcompat.app.AlertDialog.Builder(this)
+        builder.setTitle("Alert")
+        builder.setMessage("We need to access your Camera to use this Application.Kindly allow permission now")
+        builder.setPositiveButton("Click here", DialogInterface.OnClickListener { dialog, which ->
+            val intent = Intent()
+            intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+            val uri = Uri.fromParts("package", packageName, null)
+            intent.data = uri
+            startActivity(intent)
+            dialog.dismiss()
+        })
+        //builder.show();
+        val dialog = builder.create()
+        dialog.show() //Only after .show() was called
+        dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)
+                .setTextColor(resources.getColor(R.color.colorPrimary))
+        dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_NEGATIVE)
+                .setTextColor(resources.getColor(R.color.colorPrimary))
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
+
+    }
+
 }

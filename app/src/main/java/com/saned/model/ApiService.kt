@@ -5,7 +5,9 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import com.saned.view.error.ErrorInterceptor
 import com.saned.view.utils.Constants
 import kotlinx.coroutines.Deferred
+import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
+import okhttp3.RequestBody
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
@@ -21,14 +23,25 @@ interface ApiService {
         @FieldMap values: HashMap<String, String>
     ): Deferred<UserLoginData>
 
-    @POST( "api/update-fcm")
+    @POST( "v1/api/user/fcm-update")
     @FormUrlEncoded
     fun updateFcmToken(
             @FieldMap values: java.util.HashMap<String, String>
 
     ): Deferred<ResData>
 
+    @GET("v1/api/workflow/housing-advance/list")
+    fun getHousingWFList(
 
+    ): Deferred<HousingWFList>
+
+    @POST("api/send-mail")
+    @Multipart
+    fun sendHA(
+        @Part("reason") reason: RequestBody,
+        @Part("days") days: RequestBody,
+        @Part files: ArrayList<MultipartBody.Part>?
+    ): Deferred<UserLoginData>
 
 
 

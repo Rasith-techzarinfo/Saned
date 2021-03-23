@@ -130,4 +130,10 @@ dependencies {
     //lottie
 //    implementation "com.airbnb.android:lottie:3.4.0"
 
+    //multimedia picker
+    implementation  'com.fxn769:pix:1.5.6'
+
+    //Multiple File Picker
+    implementation 'com.droidninja:filepicker:2.2.5'
+
 }

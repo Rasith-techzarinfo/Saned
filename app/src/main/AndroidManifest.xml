@@ -40,7 +40,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Saned"
         android:usesCleartextTraffic="true"
-        tools:replace="android:allowBackup">
+        tools:replace="android:allowBackup,android:theme">
 
 
         <!-- services -->
@@ -52,7 +52,7 @@
             </intent-filter>
         </service> <!-- activities -->
         <activity
-            android:name=".view.ui.activities.SplashScreenActivity"
+            android:name=".view.ui.activities.dynamicWF.HistoryDynamicWFActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -70,7 +70,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".view.ui.activities.dynamicWF.HistoryDynamicWFActivity"
+            android:name=".view.ui.activities.SplashScreenActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
