@@ -398,6 +398,24 @@ class Utils {
 
         }
 
+        fun convertDbtoNormalDateTime1(inputString: String): String {
+            var formattedDate: String = ""
+            try {
+                val originalFormat =
+                        SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH)
+                val targetFormat = SimpleDateFormat("dd MMM, hh:mm aaa")
+                val date = originalFormat.parse(inputString)
+                formattedDate = targetFormat.format(date)
+            } catch (e: Exception) {
+                Log.e("Exception", "" + e.message)
+            }
+
+
+
+            return "" + formattedDate
+
+        }
+
         fun convertNormalDbtoMonthDate(inputString: String): String {
             var formattedDate: String = ""
             try {

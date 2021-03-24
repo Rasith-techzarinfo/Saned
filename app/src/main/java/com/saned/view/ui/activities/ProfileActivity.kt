@@ -72,7 +72,7 @@ class ProfileActivity : AppCompatActivity() {
                         userEmail.text = "" + "${result.user!!.email}"
                         userPhone.text = "" + "${result.user!!.phone}"
                         profileName.text = "" + "${result.user!!.first_name} ${result.user!!.last_name}"
-                        profileDetails.text =  "last login: " + Utils.convertDbtoNormalDateTime("" + result.user!!.previous_login)
+                        profileDetails.text =  "Last Login: " + Utils.convertDbtoNormalDateTime1("" + result.user!!.previous_login)
 //                        profileDetails.text = "" + "${result.user!!.email}"
 
                         //save to pref

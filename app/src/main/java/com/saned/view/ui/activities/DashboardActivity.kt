@@ -176,7 +176,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         //set values
         profile_name.text = prefHelper.getUserName()
-        profile_detail.text = "last login: " + Utils.convertDbtoNormalDateTime(prefHelper.getLastLogin().toString())  //getUserEmail
+        profile_detail.text = "Last Login: " + Utils.convertDbtoNormalDateTime1(prefHelper.getLastLogin().toString())  //getUserEmail
 
         //set images
         Glide.with(this)
@@ -349,7 +349,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         var emailTextView = drawer_layout.findViewById<TextView>(R.id.nav_userdetail)
 
         nameTextView.text = prefHelper.getUserName().toString()
-        emailTextView.text = "last login: " + Utils.convertDbtoNormalDateTime(prefHelper.getLastLogin().toString())  //getUserEmail
+        emailTextView.text = "Last Login: " + Utils.convertDbtoNormalDateTime1(prefHelper.getLastLogin().toString())  //getUserEmail
         //set images
         Glide.with(this)
                 .load(profileUrl)
