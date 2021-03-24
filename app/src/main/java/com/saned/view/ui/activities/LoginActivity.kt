@@ -102,6 +102,7 @@ class LoginActivity : AppCompatActivity() {
                             prefHelper.setUserType("" + userType)      //role_id 1 - manager, 2- user
                             prefHelper.setUserName("" + "${result.user!!.first_name} ${result.user!!.last_name}")
                             prefHelper.setUserEmail("" + email_edit_text.text.toString())
+                            prefHelper.setLastLogin("" + result.user!!.previous_login)
 //                        prefHelper.setUserProfile("" + result.data?.get(0)!!.profile_pic)
                             prefHelper.setIsLogin("1")
 

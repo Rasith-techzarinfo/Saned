@@ -71,13 +71,26 @@ class ProfileActivity : AppCompatActivity() {
                         userName.text = "" + "${result.user!!.first_name} ${result.user!!.last_name}"
                         userEmail.text = "" + "${result.user!!.email}"
                         userPhone.text = "" + "${result.user!!.phone}"
-                        lastUserLogin.text = "" + result.user!!.previous_login
                         profileName.text = "" + "${result.user!!.first_name} ${result.user!!.last_name}"
-                        profileDetails.text = "" + "${result.user!!.email}"
+                        profileDetails.text =  "last login: " + Utils.convertDbtoNormalDateTime("" + result.user!!.previous_login)
+//                        profileDetails.text = "" + "${result.user!!.email}"
 
                         //save to pref
                         prefHelper.setUserName("" + "${result.user!!.first_name} ${result.user!!.last_name}")
                         prefHelper.setUserEmail("" + result.user!!.email)
+                        prefHelper.setLastLogin("" + result.user!!.previous_login)
+
+                        //listeners
+                        userEmail.setOnClickListener {
+                            userEmail.isSelected = true
+                        }
+                        userName.setOnClickListener {
+                            userName.isSelected = true
+                        }
+                        userPhone.setOnClickListener {
+                            userPhone.isSelected = true
+                        }
+
 
                         // no profile for now
 //                        if (result.user!!.profile_pic != null) {

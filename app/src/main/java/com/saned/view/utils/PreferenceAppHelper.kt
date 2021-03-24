@@ -11,6 +11,7 @@ class PreferenceAppHelper(context: Context) {
     val USER_ID = "user_id"
     val USER_TYPE = "user_type"
     val IS_LOGIN = "islogin"
+    val LAST_LOGIN = "last_login"
     val IS_FIRST_TIME = "isfirsttime"
     val USER_PASSWORD = "password"
     val USER_NAME = "user_name"
@@ -71,6 +72,16 @@ class PreferenceAppHelper(context: Context) {
     fun getFCMToken(): String? {
         return mSharedPreferences!!.getString(FCM_TOKEN, "")
     }
+
+    fun setLastLogin(status: String) {
+        setStringInPrefs(LAST_LOGIN, status)
+    }
+
+    fun getLastLogin(): String? {
+        return mSharedPreferences!!.getString(LAST_LOGIN, "")
+    }
+
+
     fun setStoragePermission(status: String) {
         setStringInPrefs(SOTRAGE_PERMISSION, status)
     }
