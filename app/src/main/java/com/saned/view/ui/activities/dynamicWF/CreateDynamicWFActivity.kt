@@ -237,10 +237,11 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
 
     private fun addToSpinner() {
-        //spinner 1
+        //spinner 1  //static for now
         list.add("Select No of months")
-        list.add("1")
-        list.add("2")
+        list.add("3")
+        list.add("6")
+        list.add("12")
 //        Log.e("List", list.toString())
 
         val subscriberAdapter = object : ArrayAdapter<Any>(

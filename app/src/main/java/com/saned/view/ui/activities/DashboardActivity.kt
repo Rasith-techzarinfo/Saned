@@ -16,6 +16,7 @@ import android.os.Environment
 import android.provider.Settings
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import android.view.Window
 import android.widget.ImageView
 import android.widget.RelativeLayout
@@ -47,6 +48,10 @@ import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.openActivity
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.activity_dashboard.home_layout
+import kotlinx.android.synthetic.main.activity_dashboard.search_layout
+import kotlinx.android.synthetic.main.activity_dashboard.toolbar
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.navigation_layout.*
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.backgroundColor
@@ -163,10 +168,12 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         //dashboard
         validatePermission()
+        updateProfileData()
         setupDashboard()
     }
 
     private fun setupDashboard() {
+
         //set values
         profile_name.text = prefHelper.getUserName()
         profile_detail.text = prefHelper.getUserEmail()
@@ -186,6 +193,69 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         } else if(prefHelper.getUserType() == "2") {
             //user
 
+        }
+    }
+
+
+    private fun updateProfileData() {
+        if (Utils.isInternetAvailable(this)) {
+
+//            Utils.startShimmerRL(shimmerLayout, rootLayout)
+//            emptyView.visibility = View.GONE
+
+            coroutineScope.launch {
+                try {
+                    val result = apiService.getProfileData().await()
+                    Log.e("profile", "" + result)
+
+                    if (result.success == "1") {
+
+
+                        //save to pref
+                        prefHelper.setUserName("" + "${result.user!!.first_name} ${result.user!!.last_name}")
+                        prefHelper.setUserEmail("" + result.user!!.email)
+                        setupNavigationDrawer()
+                        setupDashboard()
+
+                        // no profile for now
+//                        if (result.user!!.profile_pic != null) {
+//
+//                            Glide.with(this@ProfileActivity).load(BASE_URL + result.user.profile_pic).placeholder(
+//                                    R.drawable.ic_user
+//                            ).into(profileImage)
+//                        }
+
+
+                    } else {
+                        Toast.makeText(this@DashboardActivity, "" + result.message, Toast.LENGTH_SHORT).show()
+                    }
+
+//                    Utils.stopShimmerRL(shimmerLayout, rootLayout)
+
+                } catch (e: java.lang.Exception) {
+//                    Utils.stopShimmerRL(shimmerLayout, rootLayout)
+                    Log.e("error", "" + e.message)
+                    if (e is SANEDError) {
+                        Log.e("Err", "" + e.getErrorResponse())
+                        if (e.getResponseCode() == 401) {
+                            Utils.logoutFromApp(applicationContext)
+                        } else if (e.getResponseCode() == 500) {
+                            Toast.makeText(applicationContext, "Server error", Toast.LENGTH_LONG)
+                                    .show()
+                        }
+                    } else {
+                        Toast.makeText(
+                                applicationContext,
+                                "Something went wrong",
+                                Toast.LENGTH_SHORT
+                        )
+                                .show()
+                    }
+
+                }
+            }
+        } else {
+            Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
         }
     }
 

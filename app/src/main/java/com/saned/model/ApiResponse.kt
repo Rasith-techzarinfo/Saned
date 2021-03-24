@@ -12,21 +12,6 @@ data class UserLoginData (
     val errors: LoginError?
 )
 
-//data class UserData (
-//
-//    val id : String,
-//    val username : String,
-//    val email : String,
-//    val phone : String,
-//    val gender : String,
-//    val password : String,
-//    val device_type : String,
-//    val otp : String,
-//    val otp_expire_at : String,
-//    val created_at : String,
-//    val updated_at : String
-//)
-
 data class UserData (
 
     val id : String,

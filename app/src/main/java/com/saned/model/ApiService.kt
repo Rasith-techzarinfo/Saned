@@ -30,6 +30,18 @@ interface ApiService {
 
     ): Deferred<ResData>
 
+    @GET("v1/api/user/profile")
+    fun getProfileData(
+
+    ): Deferred<UserLoginData>
+
+    @POST( "v1/api/user/profile/update")
+    @FormUrlEncoded
+    fun editProfile(
+            @FieldMap values: java.util.HashMap<String, String>
+
+    ): Deferred<UserLoginData>
+
     @GET("v1/api/workflow/housing-advance/list")
     fun getHousingWFList(
 
