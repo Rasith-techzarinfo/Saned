@@ -64,12 +64,10 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
 
                     if(result.success == "1"){
 
-                        var tempArrayList: ArrayList<HousingWFData> = ArrayList()
-                        var tempWFPOSArrayList: ArrayList<HAData1> = ArrayList()
-                        var tempWFIDArrayList: ArrayList<String> = ArrayList()
-                        var tempPOSArrayList: ArrayList<Int> = ArrayList()
+                        var firstArrayList: ArrayList<HousingWFData> = ArrayList()
+                        var secondArrayList: ArrayList<HAData1> = ArrayList()
 
-                        for(item in result.data!!){
+                        for (item in result.data!!) {
 
                             val v1 = HousingWFData(
                                     "" + item.id,
@@ -80,102 +78,57 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
                                     "" + item.form_name,
                                     "" + item.email
                             )
-                            tempArrayList.add(v1)
+                            firstArrayList.add(v1)
 
-                            val v2 = HAData1(
-                                    tempArrayList.size - 1,
-                                    "" + item.wkid
-                            )
-                            tempWFPOSArrayList.add(v2)
+                            var v2 = HAData1((firstArrayList.size - 1), "" + item.wkid)
+                            secondArrayList.add(v2)
                         }
 
+                        val hashMap: HashMap<String, MutableList<Int>> = HashMap()
 
-                        for ((i, item) in tempWFPOSArrayList.withIndex()){
 
-                            tempWFIDArrayList.add("" + item.wfid)
-                            tempPOSArrayList.add(item.position)
+                        for (i in 0 until secondArrayList.size) {
+                            if (hashMap[secondArrayList[i].wkid] != null) {
+                                var indexList = hashMap[secondArrayList.get(i).wkid]
+                                indexList!!.add(i)
+                                hashMap[secondArrayList.get(i).wkid] = indexList!!
+                            } else {
+                                var indexList: MutableList<Int> = ArrayList()
+                                indexList.add(i)
+                                hashMap[secondArrayList.get(i).wkid] = indexList
+                            }
+                        }
+                        Log.e("HashMap", "" + hashMap.toString())
+
+                        for (item in hashMap){
+
+                            var indexList: MutableList<Int> = ArrayList()
+                            indexList = item.value
+                            Log.e("HashMap Item", "" + item.key + " " +  indexList)
+
+                            var month = ""
+                            var reason = ""
+                            var wkid = ""
+                            for (item in indexList){
+                                var t1 = firstArrayList[item]
+                                if(t1.labl == "Month No" ){
+                                  month = t1.data
+                                }
+                                if(t1.labl == "Reason"){
+                                    reason = t1.data
+                                }
+                                wkid = t1.wkid
+
+                            }
+                            val v2 = HAData(
+                                            "" + month,
+                                            "" + reason,
+                                            "" + wkid
+                                    )
+                                    dynamicWFArrayList.add(v2)
+                                    Log.e("WF", "" + v2)
                         }
 
-                        val foo: Set<String> = HashSet<String>(tempWFIDArrayList)
-                        Log.e("tempWFID", "$tempWFIDArrayList")
-                        Log.e("tempPos", "$tempPOSArrayList")
-                        Log.e("tempPos", "$tempWFPOSArrayList")
-
-                        for (item in tempWFPOSArrayList){
-
-
-
-
-                        }
-
-//                        var firstArrayList: ArrayList<HouseData> = ArrayList()
-//                        var secondArrayList: ArrayList<CustomSecond> = ArrayList()
-//
-//                        for (item in topic.data) {
-//
-//                            var v1 = HouseData("" + item.id, "" + item.wkid, "" + item.sern, "" + item.labl, "" + item.data, "" + item.form_name, "" + item.email)
-//
-//                            firstArrayList.add(v1)
-//
-//                            var v2 = CustomSecond("" + (firstArrayList.size - 1), "" + item.wkid)
-//                            secondArrayList.add(v2)
-//                        }
-//
-//                        val hashMap: HashMap<String, MutableList<Int>> = HashMap()
-//
-//
-//                        for (i in 0 until secondArrayList.size) {
-//                            if (hashMap[secondArrayList[i].wkid] != null) {
-//                                val indexList = hashMap[secondArrayList.get(i).wkid]
-//                                indexList!!.add(i)
-//                                hashMap[secondArrayList.get(i).wkid] = indexList!!
-//                            } else {
-//                                val indexList: MutableList<Int> = ArrayList()
-//                                indexList.add(i)
-//                                hashMap[secondArrayList.get(i).wkid] = indexList
-//                            }
-//                        }
-//                        Log.e("HashMap", "" + hashMap.toString())
-
-                        //format data for now.. by wkid similar fields row
-//                        var currentWkid = "";
-//                        var oldWkid = "";
-//                        var month = "";
-//                        var reason = "";
-//                        var count = 0;
-//                        for ( (i,item) in tempArrayList.withIndex()) {
-//
-//                            oldWkid = if(i!=0) tempArrayList[i - 1].wkid else item.wkid
-//                            currentWkid = item.wkid
-//
-//                            if(oldWkid == currentWkid){
-//                                if(item.labl == "Month No" && item.data != "") {
-//                                    month = item.data
-//                                    count++
-//                                } else if(item.labl == "Reason" && item.data != ""){
-//                                    reason = item.data
-//                                    count++
-//                                }
-//
-//
-//                                Log.e("workflow IF", "$i $currentWkid $oldWkid $count ${item.data}")
-//
-//                            } else {
-//                                Log.e("workflow Else1", "$i $currentWkid $oldWkid $count $month $reason")
-//                                if(count == 2) {
-//                                    count = 0
-//                                    Log.e("workflow Else2", "$i $currentWkid $oldWkid $count $month $reason")
-//
-//                                    val v2 = HAData(
-//                                            "" + month,
-//                                            "" + reason,
-//                                            "" + item.wkid
-//                                    )
-//                                    dynamicWFArrayList.add(v2)
-//                                    Log.e("WF", "" + v2)
-//                                }
-//                            }
-//                        }
 
 
 //                        totalPages = result.data!!.last_page.toString()

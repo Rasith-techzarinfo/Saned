@@ -104,9 +104,9 @@ class CreateDynamicWFActivity : AppCompatActivity() {
         submitButton.setOnClickListener{
 
             // validate all fields
-            if (daysSpinner.selectedItemPosition == 0) {
+            if (monthsSpinner.selectedItemPosition == 0) {
 
-                  Toast.makeText(this, "Select No of days", Toast.LENGTH_SHORT).show()
+                  Toast.makeText(this, "Select No of months", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -163,7 +163,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
             }
 
-            val daysBody: RequestBody =
+            val monthsBody: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     userSpinnerSelectedInt.toString()
@@ -181,7 +181,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
                     var result = apiService.sendHA(
                         reasonBody,
-                        daysBody,
+                        monthsBody,
                         attachmentArrayList
                     ).await()
 
@@ -238,7 +238,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
     private fun addToSpinner() {
         //spinner 1
-        list.add("Select No of days")
+        list.add("Select No of months")
         list.add("1")
         list.add("2")
 //        Log.e("List", list.toString())
@@ -253,7 +253,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                 parent: ViewGroup
             ): View {
                 return super.getDropDownView(position, convertView, parent).also { view ->
-                    if (position == daysSpinner.selectedItemPosition) {
+                    if (position == monthsSpinner.selectedItemPosition) {
                         // view.setBackgroundColor(resources.getColor(R.color.color_light))
 //                        view.findViewById<TextView>(android.R.id.text1)
 //                            .setTextColor(Color.parseColor(primaryHexColor))
@@ -296,16 +296,16 @@ class CreateDynamicWFActivity : AppCompatActivity() {
         }
 
         subscriberAdapter.setDropDownViewResource(R.layout.spinner_sample_one)
-        daysSpinner.adapter = subscriberAdapter
+        monthsSpinner.adapter = subscriberAdapter
 
         //spinner 1
-        daysSpinner.setOnTouchListener(View.OnTouchListener { v, event ->
-            Utils.hideKeyBoard(daysSpinner, this)
+        monthsSpinner.setOnTouchListener(View.OnTouchListener { v, event ->
+            Utils.hideKeyBoard(monthsSpinner, this)
             false
         })
 
         // Set an on item selected listener for spinner object
-        daysSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        monthsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,
                 view: View,
@@ -315,7 +315,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                 Log.e("Res", parent.getItemAtPosition(position).toString())
 
                 //check list
-                if(parent.getItemAtPosition(position).toString() == "Select No of days"){
+                if(parent.getItemAtPosition(position).toString() == "Select No of months"){
                     userSpinnerSelectedInt = 0
                 } else {
                     for (item in list){

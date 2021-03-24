@@ -97,7 +97,7 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="No of days"
+                        android:text="No of months"
                         android:textColor="@color/heading"
                         android:textSize="16sp"
                         android:textStyle="bold"/>

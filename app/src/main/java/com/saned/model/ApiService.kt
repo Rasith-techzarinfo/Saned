@@ -39,7 +39,7 @@ interface ApiService {
     @Multipart
     fun sendHA(
         @Part("reason") reason: RequestBody,
-        @Part("days") days: RequestBody,
+        @Part("months") months: RequestBody,
         @Part files: ArrayList<MultipartBody.Part>?
     ): Deferred<UserLoginData>
 

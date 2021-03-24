@@ -46,7 +46,7 @@ class DynamicWFHistoryAdapter(private val dataList: List<HAData>, val context: C
 
 
 
-            viewHolder.itemVal1!!.text = "" + dataList[position].noofdays
+            viewHolder.itemVal1!!.text = "" + dataList[position].noofmonths
             viewHolder.itemVal2!!.text = "" + dataList[position].reason
 
         }else if(itemFlag == 0) {

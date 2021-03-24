@@ -70,7 +70,7 @@ data class ServicesMenu(
 )
 
 data class HAData(
-    val noofdays: String,
+    val noofmonths: String,
     val reason: String,
     var id: String
 )
@@ -88,7 +88,7 @@ data class HousingWFData (
 
 data class HAData1(
         val position: Int,
-        val wfid: String
+        val wkid: String
 )
 
 data class HousingWFList (
