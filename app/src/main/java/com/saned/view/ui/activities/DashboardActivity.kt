@@ -114,7 +114,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             openActivity(ProfileActivity::class.java, this@DashboardActivity){}
         }
         my_employees_menu.setOnClickListener {
-            drawer_layout.openDrawer(GravityCompat.START)
+            drawer_layout.closeDrawer(GravityCompat.START)
         }
         services_actions_menu.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -215,6 +215,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                         prefHelper.setUserName("" + "${result.user!!.first_name} ${result.user!!.last_name}")
                         prefHelper.setUserEmail("" + result.user!!.email)
                         prefHelper.setLastLogin("" + result.user!!.previous_login)
+                        prefHelper.setUserType("" + result.user!!.role_id)  //update n check role id freq
                         setupNavigationDrawer()
                         setupDashboard()
 
