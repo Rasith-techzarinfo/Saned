@@ -1,6 +1,7 @@
 package com.saned.view.ui.activities
 
 import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -21,6 +22,7 @@ import com.saned.view.ui.activities.dynamicWF.HistoryDynamicWFActivity
 import com.saned.view.utils.Constants.Companion.BASE_URL
 import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.openActivity
+import com.saned.view.utils.Utils.Companion.openActivityWithResult
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.coroutines.launch
@@ -47,7 +49,7 @@ class ProfileActivity : AppCompatActivity() {
 
         //edit profile
         profile_edit_icon.setOnClickListener {
-            openActivity(EditProfileActivity::class.java, this){}
+            openActivityWithResult(EditProfileActivity::class.java, this, 101){}
         }
         //get values
         getMyProfileData()
@@ -131,6 +133,19 @@ class ProfileActivity : AppCompatActivity() {
             }
         } else {
             Toast.makeText(this@ProfileActivity, "No Internet Available", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    //getting value from onbackpressed
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 101) {  //editprofile
+            if (resultCode == RESULT_OK) {
+                var temp1 = data!!.getStringExtra("isUpdated")
+                if(temp1 == "true") {
+                    getMyProfileData()
+                }
+            }
         }
     }
 

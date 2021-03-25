@@ -28,6 +28,7 @@ import android.widget.RelativeLayout
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.widget.NestedScrollView
@@ -1331,6 +1332,13 @@ class Utils {
             val intent = Intent(this, it)
             intent.putExtras(Bundle().apply(extras))
             startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle())
+//            activity.overridePendingTransition(R.anim.enter_right_to_left, R.anim.exit_left_to_right)
+        }
+
+        fun <T> Context.openActivityWithResult(it: Class<T>, activity: Activity, reqCode: Int, extras: Bundle.() -> Unit = {}, ) {
+            val intent = Intent(this, it)
+            intent.putExtras(Bundle().apply(extras))
+            startActivityForResult(activity, intent, reqCode, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle())
 //            activity.overridePendingTransition(R.anim.enter_right_to_left, R.anim.exit_left_to_right)
         }
 

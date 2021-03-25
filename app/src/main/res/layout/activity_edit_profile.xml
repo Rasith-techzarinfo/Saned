@@ -237,14 +237,14 @@
                 app:errorTextAppearance="@style/error_appearance">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/reasonEditText"
+                    android:id="@+id/phoneEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:theme="@style/primaryEditTextTheme"
                     android:hint="Reason"
                     android:background="@drawable/text_bg"
                     android:imeOptions="actionNext"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="75"
                     android:maxLines="1"
                     android:paddingStart="8dp"
