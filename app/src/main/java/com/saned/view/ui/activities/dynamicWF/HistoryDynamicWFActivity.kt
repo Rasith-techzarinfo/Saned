@@ -13,6 +13,7 @@ import com.saned.model.HAData1
 import com.saned.model.HousingWFData
 import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
+import com.saned.sanedApplication.Companion.prefHelper
 import com.saned.view.error.SANEDError
 import com.saned.view.ui.adapter.dynamicWF.DynamicWFHistoryAdapter
 import com.saned.view.utils.Utils
@@ -322,6 +323,9 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
         formName = "" + intent.getStringExtra("formName")
         Log.e("itt", "" + formID)
         toolbarTitle.text = formName + " History"
+
+        //user permission, hide for manager
+        add_WF_fab.visibility = if(prefHelper.getUserType() == "1") View.GONE else View.VISIBLE
 
         //fab
         add_WF_fab.setOnClickListener {
