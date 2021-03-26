@@ -67,9 +67,8 @@
         android:layout_height="wrap_content">
 
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/rootLayout"
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -184,7 +183,7 @@
 
 
                     <LinearLayout
-                        android:id="@+id/image_layout"
+                        android:id="@+id/imageLinearLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
@@ -192,12 +191,119 @@
 
                 </HorizontalScrollView>
 
+
+                <LinearLayout
+                    android:id="@+id/approvalStatusLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/statusLabel"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.9"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="Status"
+                        android:textColor="@color/heading"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.1"
+                        />
+
+                    <TextView
+                        android:id="@+id/statusTextView"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="Approved"
+                        android:textStyle="bold"
+                        android:textColor="@color/green"
+                        android:textSize="16sp"/>
+
+
+                </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:id="@+id/verifyLayout"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:orientation="vertical">
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginStart="36dp"
+                        android:layout_marginEnd="36dp"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/approve_button"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/colorAccent"
+                            android:textAllCaps="true"
+                            android:textStyle="bold"
+                            android:text="Approve"
+                            tools:targetApi="lollipop" />
+
+                        <RadioButton
+                            android:id="@+id/reject_button"
+                            android:layout_width="0dp"
+                            android:textSize="14sp"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/colorAccent"
+                            android:textAllCaps="true"
+                            android:textStyle="bold"
+                            android:text="Reject"
+                            tools:targetApi="lollipop" />
+
+                    </RadioGroup>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/submitButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="84dp"
+                        android:layout_marginTop="36dp"
+                        android:layout_marginEnd="84dp"
+                        android:text="Submit"
+                        style="@style/Widget.App.Button"
+                        android:textStyle="bold"/>
+
+
+                </LinearLayout>
+
+
             </LinearLayout>
 
 
 
 
-        </LinearLayout>
+
+        </RelativeLayout>
 
 
     </androidx.core.widget.NestedScrollView>

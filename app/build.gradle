@@ -136,4 +136,7 @@ dependencies {
     //Multiple File Picker
     implementation 'com.droidninja:filepicker:2.2.5'
 
+    //mediaslideview
+    implementation 'com.github.Zeuskartik:MediaSliderView:1.1'
+
 }

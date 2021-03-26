@@ -25,6 +25,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.saned.R
 import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
+import com.saned.sanedApplication.Companion.prefHelper
 import com.saned.view.error.SANEDError
 import com.saned.view.utils.URIPathHelper
 import com.saned.view.utils.Utils
@@ -45,7 +46,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
     var formID: String = ""
     var formName: String = ""
 
-    var userSpinnerSelectedInt: Int = 0
+    var monthsSpinnerSelected = ""
     var hashMap: HashMap<String, Int> = HashMap<String, Int>()
     val list: MutableList<String> = ArrayList()
     var listImages = ArrayList<String>()
@@ -155,7 +156,8 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                 val reqFile: RequestBody = RequestBody.create(MediaType.parse("*/*"), f)
                 attachmentArrayList.add(
                     MultipartBody.Part.createFormData(
-                        "attachments[" + d + "]",
+                        //"attachments[" + d + "]",
+                        "Document",
                         f!!.name,
                         reqFile
                     )
@@ -166,13 +168,18 @@ class CreateDynamicWFActivity : AppCompatActivity() {
             val monthsBody: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
-                    userSpinnerSelectedInt.toString()
+                    monthsSpinnerSelected.toString()
                 )
             val reasonBody: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     reasonEditText.text.toString()
                 )
+            val userIdBody: RequestBody =
+                    RequestBody.create(
+                            MediaType.parse("text/plain"),
+                            prefHelper.getUserId().toString()
+                    )
 
 
             coroutineScope.launch {
@@ -182,6 +189,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                     var result = apiService.sendHA(
                         reasonBody,
                         monthsBody,
+                        userIdBody,
                         attachmentArrayList
                     ).await()
 
@@ -317,13 +325,13 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
                 //check list
                 if(parent.getItemAtPosition(position).toString() == "Select No of months"){
-                    userSpinnerSelectedInt = 0
+                    monthsSpinnerSelected = "Select No of months"
                 } else {
                     for (item in list){
                         if(parent.getItemAtPosition(position).toString() == item) {
                             Log.e("ResSelected", item)
-                            userSpinnerSelectedInt = hashMap.get(item)!!
-                            Log.e("ResSelected", userSpinnerSelectedInt.toString())
+                            monthsSpinnerSelected = item
+                            Log.e("ResSelected", monthsSpinnerSelected.toString())
                         }
                     }
                 }
@@ -344,7 +352,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
         if (listImages.size < 1) {
             FilePickerBuilder.instance
                     .setMaxCount(iCount)
-                    .setActivityTheme(R.style.LibAppTheme1)
+                    .setActivityTheme(R.style.LibAppTheme)
                     .pickFile(this, PICKFILE_RESULT_CODE)
         } else {
             Toast.makeText(this, "Maximum files added", Toast.LENGTH_SHORT).show()

@@ -36,6 +36,6 @@
             android:background="@android:color/black"
             android:padding="4dp"
             android:src="@drawable/ic_close_image"
-            app:tint="@android:color/white" />
+            app:tint="@color/white" />
     </RelativeLayout>
 </LinearLayout>

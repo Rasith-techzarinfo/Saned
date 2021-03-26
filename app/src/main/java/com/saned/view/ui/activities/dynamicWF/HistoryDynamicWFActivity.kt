@@ -1,5 +1,6 @@
 package com.saned.view.ui.activities.dynamicWF
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -18,6 +19,7 @@ import com.saned.view.error.SANEDError
 import com.saned.view.ui.adapter.dynamicWF.DynamicWFHistoryAdapter
 import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.openActivity
+import com.saned.view.utils.Utils.Companion.openActivityWithResult
 import kotlinx.android.synthetic.main.activity_history_dynamic_w_f.*
 import kotlinx.coroutines.launch
 
@@ -60,7 +62,8 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
 
                 try {
 
-                    val result = apiService.getHousingWFList().await()
+                    val result = if(prefHelper.getUserType() == "3") apiService.getHousingWFListUser().await() else if (prefHelper.getManagerLevel() == "1") apiService.getHousingWFListManager1().await() else apiService.getHousingWFListManager2().await()
+
                     Log.e("result", "" + result)
 
                     if(result.success == "1"){
@@ -109,22 +112,32 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
 
                             var month = ""
                             var reason = ""
+                            var userID = ""
+                            var document = ""
                             var wkid = ""
                             for (item in indexList){
                                 var t1 = firstArrayList[item]
-                                if(t1.labl == "Month No" ){
+                                if(t1.sern == "1" ){ //month no
                                   month = t1.data
                                 }
-                                if(t1.labl == "Reason"){
+                                if(t1.sern == "2"){ //reason
                                     reason = t1.data
+                                }
+                                if(t1.sern == "3"){ //user id
+                                    userID = t1.data
+                                }
+                                if(t1.sern == "4"){ //document
+                                    document = t1.data
                                 }
                                 wkid = t1.wkid
 
                             }
                             val v2 = HAData(
-                                            "" + month,
-                                            "" + reason,
-                                            "" + wkid
+                                    "" + month,
+                                    "" + reason,
+                                    "" + userID,
+                                    "" + document,
+                                    "" + wkid
                                     )
                                     dynamicWFArrayList.add(v2)
                                     Log.e("WF", "" + v2)
@@ -310,9 +323,23 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
 
     override fun onListItemClicked(dummyData: HAData, position: Int) {
         //send form data to new activity
-        openActivity(ViewDynamicWFActivity::class.java, this){
+        openActivityWithResult(ViewDynamicWFActivity::class.java, this, 101){
             putString("formID", "" + formID)
             putString("formName", "" + formName)
+            putString("wkid", "" + dummyData.id)
+        }
+    }
+
+    //getting value from onbackpressed
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 101) {  //editprofile
+            if (resultCode == RESULT_OK) {
+                var temp1 = data!!.getStringExtra("isUpdated")
+                if(temp1 == "true") {
+                    getServicesListFromServer()
+                }
+            }
         }
     }
 
@@ -325,7 +352,7 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
         toolbarTitle.text = formName + " History"
 
         //user permission, hide for manager
-        add_WF_fab.visibility = if(prefHelper.getUserType() == "1") View.GONE else View.VISIBLE
+        add_WF_fab.visibility = if(prefHelper.getUserType() == "2") View.GONE else View.VISIBLE
 
         //fab
         add_WF_fab.setOnClickListener {

@@ -47,6 +47,12 @@ class LoginActivity : AppCompatActivity() {
             arrayOf(Manifest.permission.RECORD_AUDIO)
     private val AUDIO_PERMISSION_REQUEST_CODE = 105
 
+//    Manager Leval 1:
+//    rightcursor33@gmail.com - 12345678
+//    Manager Leval 2:
+//    immu@gmail.com - immu!@#
+//    User:
+//    mohamedafrith0599@gmail.com - 12345678
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,17 +100,19 @@ class LoginActivity : AppCompatActivity() {
                     if (result.success == "1") {
 
                         var userType = "" + result.user!!.role_id
-                        if(userType == "1" || userType == "2" ) {
+                        if(userType == "2" || userType == "3" ) {
 
                             prefHelper.setBearerToken("" + result.token)
                             prefHelper.setUserId("" + result.user!!.id)
                             prefHelper.setUserPassword("" + password_edit_text.text.toString())
-                            prefHelper.setUserType("" + userType)      //role_id 1 - manager, 2- user
+                            prefHelper.setUserType("" + userType)      //role_id 2 - manager, 3 - user
                             prefHelper.setUserName("" + "${result.user!!.first_name} ${result.user!!.last_name}")
                             prefHelper.setUserEmail("" + email_edit_text.text.toString())
                             prefHelper.setLastLogin("" + result.user!!.previous_login)
 //                        prefHelper.setUserProfile("" + result.data?.get(0)!!.profile_pic)
                             prefHelper.setIsLogin("1")
+                            //for now, approval matrix
+                            prefHelper.setManagerLevel( if(result.user.email == "rightcursor33@gmail.com") "1" else if(result.user.email == "immu@gmail.com") "2" else "") //"" not a manager
 
                             Toast.makeText(this@LoginActivity, "Login Success", Toast.LENGTH_SHORT).show()
                             loginSuccess()
@@ -184,8 +192,8 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            if(password_edit_text.text.toString() == "" || password_edit_text.text.toString().length < 8) {
-                password_layout.error = "Password must be minimum 8 characters"
+            if(password_edit_text.text.toString() == "" || password_edit_text.text.toString().length < 5) {
+                password_layout.error = "Password must be minimum 5 characters"
                 password_layout.requestFocus()
                 return@setOnClickListener
             }
@@ -281,7 +289,7 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-        checkStorageManagerPermission()
+//        checkStorageManagerPermission()
     }
 
     //permission functions

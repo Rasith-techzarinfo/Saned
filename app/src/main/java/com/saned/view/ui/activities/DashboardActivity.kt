@@ -78,7 +78,11 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         init()
     }
 
-
+    override fun onResume() {
+        super.onResume()
+        //for now, make result code
+        updateProfileData()
+    }
 
 
 
@@ -187,10 +191,11 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
         //handle permissions
-        if(prefHelper.getUserType() == "1"){
+        Log.e("user", "" + prefHelper.getUserType() + " " + prefHelper.getManagerLevel())
+        if(prefHelper.getUserType() == "2"){
             //manager
 
-        } else if(prefHelper.getUserType() == "2") {
+        } else if(prefHelper.getUserType() == "3") {
             //user
 
         }
@@ -216,6 +221,9 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                         prefHelper.setUserEmail("" + result.user!!.email)
                         prefHelper.setLastLogin("" + result.user!!.previous_login)
                         prefHelper.setUserType("" + result.user!!.role_id)  //update n check role id freq
+                        //for now, approval matrix
+                        prefHelper.setManagerLevel( if(result.user.email == "rightcursor33@gmail.com") "1" else if(result.user.email == "immu@gmail.com") "2" else "") //"" not a manager
+
                         setupNavigationDrawer()
                         setupDashboard()
 
@@ -461,7 +469,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         }
 
-        checkStorageManagerPermission()
+//        checkStorageManagerPermission()
     }
 
     //permission functions

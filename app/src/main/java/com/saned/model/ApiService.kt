@@ -42,19 +42,54 @@ interface ApiService {
 
     ): Deferred<UserLoginData>
 
+    //user
     @GET("v1/api/workflow/housing-advance/list")
-    fun getHousingWFList(
+    fun getHousingWFListUser(
 
     ): Deferred<HousingWFList>
 
-    @POST("api/send-mail")
+    //manager 1
+    @GET("v1/api/workflow/housing-advance/pending/list")
+    fun getHousingWFListManager1(
+
+    ): Deferred<HousingWFList>
+
+    //manager 2
+    @GET("v1/api/workflow/housing-advance/first-approved/list")
+    fun getHousingWFListManager2(
+
+    ): Deferred<HousingWFList>
+
+    @GET("v1/api/workflow/housing-advance/{id}")
+    fun getHousingWFDetail(
+         @Path("id") id: String,
+
+    ): Deferred<HADetailData>
+
+    @POST("v1/api/workflow/housing-advance/create")
     @Multipart
     fun sendHA(
-        @Part("reason") reason: RequestBody,
-        @Part("months") months: RequestBody,
+        @Part("Reason") reason: RequestBody,
+        @Part("Month No") months: RequestBody,
+        @Part("User ID") userID: RequestBody,
         @Part files: ArrayList<MultipartBody.Part>?
     ): Deferred<UserLoginData>
 
+    //manager 1
+    @POST( "v1/api/workflow/housing-advance/verify")
+    @FormUrlEncoded
+    fun verifyHAStatus1(
+            @FieldMap values: java.util.HashMap<String, String>
+
+    ): Deferred<UserLoginData>
+
+    //manager 2
+    @POST( "v1/api/workflow/housing-advance/main/verify")
+    @FormUrlEncoded
+    fun verifyHAStatus2(
+            @FieldMap values: java.util.HashMap<String, String>
+
+    ): Deferred<UserLoginData>
 
 
 

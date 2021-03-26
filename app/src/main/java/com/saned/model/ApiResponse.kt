@@ -55,10 +55,13 @@ data class ServicesMenu(
 )
 
 data class HAData(
-    val noofmonths: String,
-    val reason: String,
-    var id: String
+        val noofmonths: String,
+        val reason: String,
+        val userID: String,
+        val document: String,
+        var id: String
 )
+
 
 data class HousingWFData (
 
@@ -81,4 +84,43 @@ data class HousingWFList (
         val success : String,
         val message : String,
         val data : List<HousingWFData>
+)
+
+data class HADetailData (
+
+        val success : String,
+        val message : String,
+        val data : List<HousingWFData>,
+        val approvalstatus : Approvalstatus,
+        val history : List<History>
+)
+
+data class History (
+
+        val id : String,
+        val wkid : String,
+        val type : String,
+        val emno : String,
+        val date : String,
+        val time : String,
+        val step : String,
+        val stnm : String,
+        val nemn : String,
+        val ndat : String,
+        val ntim : String
+)
+
+data class Approvalstatus (
+
+        val id : String,
+        val wkid : String,
+        val type : String,
+        val emno : String,
+        val date : String,
+        val time : String,
+        val step : String,
+        val stnm : String,
+        val nemn : String,
+        val ndat : String,
+        val ntim : String
 )

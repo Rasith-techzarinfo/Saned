@@ -98,7 +98,7 @@
     </style>
 
 
-    <style name="LibAppTheme1" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="LibAppTheme" parent="Theme.MaterialComponents.NoActionBar">
     <!-- Customize your theme here. -->
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -106,25 +106,24 @@
         <item name="colorOnPrimary">@android:color/white</item>
     <item name="android:colorBackground">@android:color/background_light</item>
     <item name="android:windowBackground">@android:color/white</item>
-    <item name="toolbarStyle">@style/ToolbarTheme1</item>
-    <item name="tabStyle">@style/PickerTabLayout2</item>
+    <item name="toolbarStyle">@style/ToolbarTheme</item>
+    <item name="tabStyle">@style/PickerTabLayout</item>
 </style>
 
-<style name="LibAppTheme.Dark" parent="LibAppTheme1">
+<style name="LibAppTheme.Dark" parent="LibAppTheme">
 <!-- Customize your theme here. -->
 <item name="colorAccent">@android:color/white</item>
-<item name="toolbarStyle">@style/ToolbarTheme1</item>
-<item name="tabStyle">@style/PickerTabLayout2</item>
+<item name="toolbarStyle">@style/ToolbarTheme</item>
+<item name="tabStyle">@style/PickerTabLayout</item>
 </style>
 
-<style name="PickerTabLayout2" parent="Widget.MaterialComponents.TabLayout">
+<style name="PickerTabLayout" parent="Widget.MaterialComponents.TabLayout">
 <!--        tab background-->
-<item name="tabBackground">@color/white</item>
+<item name="tabBackground">@color/colorPrimary</item>
 <!--        tab text color selector : set selector accordingly to dark or light theme-->
 <item name="tabTextColor">@color/selector_tab_text_color_custom</item>
 <!--        tab indicator color: set indicator color accordingly-->
 <item name="tabIndicatorColor">@color/white</item>
-<item name="colorOnPrimary">@android:color/white</item>
 <item name="tabGravity">fill</item>
 <item name="tabMaxWidth">0dp</item>
 <!--        <item name="materialThemeOverlay">@style/ThemeOverlay.App.TabLayout</item>-->
@@ -136,12 +135,12 @@
         <item name="colorOnSurface">@color/colorPrimaryDark</item>
     </style>
 
-<style name="ToolbarTheme1" parent="Widget.MaterialComponents.Toolbar.Primary">
-<item name="materialThemeOverlay">@style/ThemeOverlay.App.Toolbar.Light1</item>
-<item name="android:theme">@style/ThemeOverlay.App.Toolbar.Light1</item>
+<style name="ToolbarTheme" parent="Widget.MaterialComponents.Toolbar.Primary">
+<item name="materialThemeOverlay">@style/ThemeOverlay.App.Toolbar.Light</item>
+<item name="android:theme">@style/ThemeOverlay.App.Toolbar.Light</item>
 </style>
 
-    <style name="ThemeOverlay.App.Toolbar.Light1" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+    <style name="ThemeOverlay.App.Toolbar.Light" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
         <!--        toolbar text and overflow menu color-->
         <item name="colorOnPrimary">@android:color/white</item>
         <item name="android:textColor">@android:color/white</item>

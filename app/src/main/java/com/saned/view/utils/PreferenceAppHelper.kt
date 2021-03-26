@@ -17,6 +17,7 @@ class PreferenceAppHelper(context: Context) {
     val USER_NAME = "user_name"
     val USER_PROFILE = "user_profile"
     val USER_EMAIL = "user_email"
+    val MANAGER_STATUS = "manager_status"
     val SOTRAGE_PERMISSION = "storage_permission"
     val CAMERA_PERMISSION = "camera_permission"
     val AUDIO_PERMISSION = "record_audio_permission"
@@ -192,6 +193,15 @@ class PreferenceAppHelper(context: Context) {
     fun getUserEmail(): String? {
         return mSharedPreferences!!.getString(USER_EMAIL, "")
     }
+
+    fun setManagerLevel(status: String) {
+        setStringInPrefs(MANAGER_STATUS, status)
+    }
+
+    fun getManagerLevel(): String? {
+        return mSharedPreferences!!.getString(MANAGER_STATUS, "")
+    }
+
 
 
     fun setUserProfile(status: String) {
