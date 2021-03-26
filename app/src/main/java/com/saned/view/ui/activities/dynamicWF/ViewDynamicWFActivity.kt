@@ -247,9 +247,8 @@ class ViewDynamicWFActivity : AppCompatActivity() {
                     .error(R.drawable.placeholder_bg)
                     .into(uploadedImage)
         } else {
-            val selectedImage = BitmapFactory.decodeFile(docUrl)
             Glide.with(this)
-                    .load(selectedImage)
+                    .load(docUrl)
                     .placeholder(R.drawable.placeholder_bg)
                     .error(R.drawable.placeholder_bg)
                     .into(uploadedImage)
@@ -272,17 +271,18 @@ class ViewDynamicWFActivity : AppCompatActivity() {
                 mediaList.add(docUrl)
 
                 //send form data to new activity
-                openActivity(SliderDemo::class.java, this){
-                    putString("list", "" + formID)
-                    putString("media", "image")
-                    putString("title", "" + fileNameWithoutExtn)
-                }
-//                val intent = Intent(this, SliderDemo::class.java)
-//                intent.putExtra("list",  mediaList)
-//                intent.putExtra("list", "image")
-//                intent.putExtra("title", "" + fileNameWithoutExtn)
-//                startActivity(intent)
-//                overridePendingTransition(R.anim.enter_right_to_left, R.anim.exit_left_to_right)
+//                openActivity(SliderDemo::class.java, this){
+//                    putExtra("list", mediaList)
+//                    putString("media", "image")
+//                    putString("title", "" + fileNameWithoutExtn)
+//                }
+                //for now
+                val intent = Intent(this, SliderDemo::class.java)
+                intent.putExtra("list",  mediaList)
+                intent.putExtra("media", "image")
+                intent.putExtra("title", "" + fileNameWithoutExtn)
+                startActivity(intent)
+                overridePendingTransition(R.anim.enter_right_to_left, R.anim.exit_left_to_right)
 
             } else {
                 //document
