@@ -83,16 +83,16 @@ data class HousingWFList (
 
         val success : String,
         val message : String,
-        val data : List<HousingWFData>
+        val data : List<HousingWFData>?
 )
 
 data class HADetailData (
 
         val success : String,
         val message : String,
-        val data : List<HousingWFData>,
-        val approvalstatus : Approvalstatus,
-        val history : List<History>
+        val data : List<HousingWFData>?,
+        val approvalstatus : Approvalstatus?,
+        val history : List<History>?
 )
 
 data class History (

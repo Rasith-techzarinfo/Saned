@@ -125,16 +125,28 @@ class ViewDynamicWFActivity : AppCompatActivity() {
                             var wkid = ""
                             for (item in indexList){
                                 var t1 = firstArrayList[item]
-                                if(t1.sern == "1" ){ //month no
+                                //                                if(t1.sern == "1" ){ //month no
+//                                  month = t1.data
+//                                }
+//                                if(t1.sern == "2"){ //reason
+//                                    reason = t1.data
+//                                }
+//                                if(t1.sern == "3"){ //user id
+//                                    userID = t1.data
+//                                }
+//                                if(t1.sern == "4"){ //document
+//                                    document = t1.data
+//                                }
+                                if(t1.labl.equals("Month No",true)){ //month no
                                     month = t1.data
                                 }
-                                if(t1.sern == "2"){ //reason
+                                if(t1.labl.equals("Reason",true)){ //reason
                                     reason = t1.data
                                 }
-                                if(t1.sern == "3"){ //user id
+                                if(t1.labl.equals("User Id",true)){ //user id
                                     userID = t1.data
                                 }
-                                if(t1.sern == "4"){ //document
+                                if(t1.labl.equals("Document",true)){ //document
                                     document = t1.data
                                 }
                                 wkid = t1.wkid
@@ -165,10 +177,10 @@ class ViewDynamicWFActivity : AppCompatActivity() {
                         if(result.approvalstatus == null){
                             statusTextView.text = "Pending"
                             statusTextView.textColor = Color.parseColor("#ffad46")
-                        } else if(result.approvalstatus.step == "100"){
+                        } else if(result.approvalstatus!!.step == "100"){
                             statusTextView.text = "Approved"
                             statusTextView.textColor = Color.parseColor("#00aa00")
-                        } else if(result.approvalstatus.step == "200"){
+                        } else if(result.approvalstatus!!.step == "200"){
                             statusTextView.text = "Rejected"
                             statusTextView.textColor = Color.parseColor("#ff0000")
                         }
