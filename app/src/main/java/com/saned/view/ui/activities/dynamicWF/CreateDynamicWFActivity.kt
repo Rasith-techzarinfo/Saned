@@ -65,7 +65,6 @@ class CreateDynamicWFActivity : AppCompatActivity() {
         init()
     }
 
-//TODO: check spinner action & file picker fix
 
 
 
@@ -115,10 +114,14 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
             if (reasonEditText.text.toString() == "") {
 
-                Snackbar.make(rootLayout, "Enter the Reason", Snackbar.LENGTH_LONG).show()
+                Toast.makeText(this, "Enter the Reason", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            //attachment optional for now
+            //attachment mandatory for now
+            if(listImages.size != 1){
+                Toast.makeText(this, "Select atleast 1 Attachment", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
 
             sendDataToServer()
@@ -465,7 +468,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                             ) || docFile.name.toLowerCase()
                             .endsWith("text") || docFile.name.toLowerCase().endsWith(
                             "tex"
-                        ) ||
+                        ) || docFile.name.toLowerCase().endsWith("xls") ||
                         docFile.name.toLowerCase().endsWith("txt") || docFile.name.toLowerCase()
                             .endsWith(
                                 "wpd"

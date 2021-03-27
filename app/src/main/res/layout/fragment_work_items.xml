@@ -7,22 +7,233 @@
     android:background="@color/grey_lite"
     >
 
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center"
             >
 
 
-                <TextView
-                    android:layout_width="wrap_content"
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="25sp"
-                    android:text=" Content Coming soon "
-                    android:background="@color/colorPrimaryLite1"/>
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/white"
+                    >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Training History"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorPrimaryDark"/>
+
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/grey_lite"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_marginTop="12dp" />
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:weightSum="2"
+                                    android:orientation="horizontal">
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:maxLines="1"
+                                            android:ellipsize="end"
+                                            android:text="Project Management Course"
+                                            android:textColor="@color/heading"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"
+                                            />
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:maxLines="1"
+                                            android:ellipsize="end"
+                                            android:gravity="end"
+                                            android:textAlignment="gravity"
+                                            android:text="Aug 1 2020"
+                                            android:textColor="@color/grey"
+                                            android:textSize="12sp"
+                                            />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:weightSum="2"
+                                    android:orientation="horizontal">
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:maxLines="1"
+                                            android:ellipsize="end"
+                                            android:text="Course in SQL"
+                                            android:textColor="@color/heading"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"
+                                            />
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:maxLines="1"
+                                            android:ellipsize="end"
+                                            android:gravity="end"
+                                            android:textAlignment="gravity"
+                                            android:text="May 1 2020"
+                                            android:textColor="@color/grey"
+                                            android:textSize="12sp"
+                                            />
+
+                                </LinearLayout>
+
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/grey_lite"
+                                    android:layout_marginTop="12dp" />
+
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Show All Records"
+                                    android:textColor="@color/colorPrimaryLite3"
+                                    android:textAppearance="@style/TextAppearance.App.TextButton"
+                                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                                    android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/white"
+                    >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Basic Salary History"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorPrimaryDark"/>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/grey_lite"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_marginTop="12dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Basic Salary"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorPrimaryDark"/>
+
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:weightSum="2"
+                                    android:orientation="horizontal">
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:maxLines="1"
+                                            android:ellipsize="end"
+                                            android:text="10,000 (+ 7%)"
+                                            android:textColor="@color/heading"
+                                            android:textStyle="bold"
+                                            android:textSize="14sp"
+                                            />
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:maxLines="1"
+                                            android:ellipsize="end"
+                                            android:gravity="end"
+                                            android:textAlignment="gravity"
+                                            android:text="Aug 1 2020"
+                                            android:textColor="@color/grey"
+                                            android:textSize="12sp"
+                                            />
+
+                                </LinearLayout>
+
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/grey_lite"
+                                    android:layout_marginTop="12dp" />
+
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Show All Records"
+                                    android:textColor="@color/colorPrimaryLite3"
+                                    android:textAppearance="@style/TextAppearance.App.TextButton"
+                                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                                    android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                </LinearLayout>
+
+
 
 
         </LinearLayout>

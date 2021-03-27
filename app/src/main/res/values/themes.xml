@@ -97,6 +97,11 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="TextAppearance.App.TextButton" parent="TextAppearance.MaterialComponents.Button">
+        <item name="textAllCaps">false</item>
+        <item name="android:textColor">@color/colorPrimaryLite3</item>
+        <item name="android:textSize">12sp</item>
+    </style>
 
     <style name="LibAppTheme" parent="Theme.MaterialComponents.NoActionBar">
     <!-- Customize your theme here. -->
