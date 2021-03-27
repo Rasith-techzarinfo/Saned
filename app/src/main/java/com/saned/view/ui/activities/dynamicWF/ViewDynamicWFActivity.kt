@@ -36,6 +36,7 @@ import kotlinx.android.synthetic.main.activity_view_dynamic_w_f.shimmerLayout
 import kotlinx.android.synthetic.main.activity_view_dynamic_w_f.toolbar
 import kotlinx.android.synthetic.main.activity_view_dynamic_w_f.toolbarTitle
 import kotlinx.coroutines.launch
+import org.intellij.lang.annotations.RegExp
 import org.jetbrains.anko.textColor
 import java.io.File
 import java.lang.Exception
@@ -67,9 +68,9 @@ class ViewDynamicWFActivity : AppCompatActivity() {
             Utils.startShimmerRL(shimmerLayout, rootLayout)
             emptyView.visibility = View.GONE
 
-            sanedApplication.coroutineScope.launch {
+            coroutineScope.launch {
                 try {
-                    val result = sanedApplication.apiService.getHousingWFDetail(wkid).await()
+                    val result = apiService.getHousingWFDetail(wkid).await()
                     Log.e("result", "" + result)
 
                     if (result.success == "1") {
@@ -216,6 +217,7 @@ class ViewDynamicWFActivity : AppCompatActivity() {
     }
 
     private fun showDocuments(documentUrl: String) {
+        Log.e("tempUrl", "$documentUrl ${documentUrl.replace("\\", "/") }")
         //full path
         var docUrl = Constants.BASE_URL + documentUrl
 

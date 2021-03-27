@@ -84,6 +84,8 @@ class CreateDynamicWFActivity : AppCompatActivity() {
             mDialog.setCancelable(false)
             val galleryLayout = mDialog.findViewById(R.id.gallery_layout) as LinearLayout
             val documentLayout = mDialog.findViewById(R.id.document_layout) as LinearLayout
+            //hidden for now
+            galleryLayout.visibility = View.GONE
 
             galleryLayout.setOnClickListener {
                 mDialog.dismiss()
