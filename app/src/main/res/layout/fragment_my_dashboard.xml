@@ -135,7 +135,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         android:maxLines="1"
                         android:ellipsize="end"
                         android:text="Obelican Investment Group"
@@ -146,9 +146,10 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="0.5"
                         android:maxLines="1"
                         android:ellipsize="end"
+                        android:gravity="end"
                         android:text="Mar 1 2020"
                         android:textColor="@color/grey"
                         android:textSize="14sp"
@@ -633,7 +634,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         android:maxLines="1"
                         android:ellipsize="end"
                         android:text="Project Management Course"
@@ -645,7 +646,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="0.5"
                         android:maxLines="1"
                         android:ellipsize="end"
                         android:gravity="end"
@@ -667,7 +668,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         android:maxLines="1"
                         android:ellipsize="end"
                         android:text="Course in SQL"
@@ -679,7 +680,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="0.5"
                         android:maxLines="1"
                         android:ellipsize="end"
                         android:gravity="end"
@@ -763,7 +764,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         android:maxLines="1"
                         android:ellipsize="end"
                         android:text="10,000 (+ 7%)"
@@ -775,7 +776,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="0.5"
                         android:maxLines="1"
                         android:ellipsize="end"
                         android:gravity="end"
