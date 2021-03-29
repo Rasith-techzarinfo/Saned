@@ -348,14 +348,8 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
         if (requestCode == 101) {  //update
             if (resultCode == RESULT_OK) {
                 var temp1 = data!!.getStringExtra("isUpdated")
-                if(temp1 == "true") {
-                    getServicesListFromServer()
-                }
-            }
-        } else if(resultCode == 102){ //create
-            if (resultCode == RESULT_OK) {
-                var temp1 = data!!.getStringExtra("isAdded")
-                if(temp1 == "true") {
+                var temp2 = data!!.getStringExtra("isAdded")
+                if(temp1 == "true" || temp2 == "true") {
                     getServicesListFromServer()
                 }
             }
@@ -376,7 +370,7 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
         //fab
         add_WF_fab.setOnClickListener {
             //send form data to new activity
-            openActivityWithResult(CreateDynamicWFActivity::class.java, this, 102){
+            openActivityWithResult(CreateDynamicWFActivity::class.java, this, 101){
                 putString("formID", "" + formID)
                 putString("formName", "" + formName)
             }
