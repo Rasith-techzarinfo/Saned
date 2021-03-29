@@ -45,6 +45,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
     var formID: String = ""
     var formName: String = ""
+    var res: String = ""
 
     var monthsSpinnerSelected = ""
     var hashMap: HashMap<String, Int> = HashMap<String, Int>()
@@ -83,8 +84,8 @@ class CreateDynamicWFActivity : AppCompatActivity() {
             mDialog.setCancelable(false)
             val galleryLayout = mDialog.findViewById(R.id.gallery_layout) as LinearLayout
             val documentLayout = mDialog.findViewById(R.id.document_layout) as LinearLayout
-            //hidden for now
-            galleryLayout.visibility = View.GONE
+//            //hidden for now
+//            galleryLayout.visibility = View.GONE
 
             galleryLayout.setOnClickListener {
                 mDialog.dismiss()
@@ -118,10 +119,10 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             //attachment mandatory for now
-            if(listImages.size != 1){
-                Toast.makeText(this, "Select atleast 1 Attachment", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+//            if(listImages.size != 1){
+//                Toast.makeText(this, "Select atleast 1 Attachment", Toast.LENGTH_SHORT).show()
+//                return@setOnClickListener
+//            }
 
 
             sendDataToServer()
@@ -203,7 +204,8 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
                     if (result.success == "1") {
 
-                        //navigateback
+                        //on success
+                        res = "true"
                         onBackPressed()
                         Toast.makeText(
                             this@CreateDynamicWFActivity,
@@ -620,12 +622,18 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
 
+        var intent = Intent()
+        intent.putExtra("isAdded", "" + res)
+        setResult(RESULT_OK, intent)
         finishAfterTransition()
         return true
     }
 
     override fun onBackPressed() {
 
+        var intent = Intent()
+        intent.putExtra("isAdded", "" + res)
+        setResult(RESULT_OK, intent)
         finishAfterTransition()
     }
 }

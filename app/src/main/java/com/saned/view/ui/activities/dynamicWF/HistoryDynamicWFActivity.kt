@@ -345,9 +345,16 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
     //getting value from onbackpressed
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 101) {  //editprofile
+        if (requestCode == 101) {  //update
             if (resultCode == RESULT_OK) {
                 var temp1 = data!!.getStringExtra("isUpdated")
+                if(temp1 == "true") {
+                    getServicesListFromServer()
+                }
+            }
+        } else if(resultCode == 102){ //create
+            if (resultCode == RESULT_OK) {
+                var temp1 = data!!.getStringExtra("isAdded")
                 if(temp1 == "true") {
                     getServicesListFromServer()
                 }
@@ -369,7 +376,7 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
         //fab
         add_WF_fab.setOnClickListener {
             //send form data to new activity
-            openActivity(CreateDynamicWFActivity::class.java, this){
+            openActivityWithResult(CreateDynamicWFActivity::class.java, this, 102){
                 putString("formID", "" + formID)
                 putString("formName", "" + formName)
             }
