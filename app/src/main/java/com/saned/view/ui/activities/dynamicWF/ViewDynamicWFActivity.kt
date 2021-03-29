@@ -174,15 +174,33 @@ class ViewDynamicWFActivity : AppCompatActivity() {
                             showDocuments(haDetail.document)
                         }
 
-                        if(result.approvalstatus == null){
-                            statusTextView.text = "Pending"
-                            statusTextView.textColor = Color.parseColor("#ffad46")
-                        } else if(result.approvalstatus!!.step == "100"){
-                            statusTextView.text = "Approved"
-                            statusTextView.textColor = Color.parseColor("#00aa00")
-                        } else if(result.approvalstatus!!.step == "200"){
+
+                        //status check, static 2
+                        var cnt = 0
+                        var lvlCount = 2
+                        for (item in result.history!!) {
+                            if(cnt != -1) {
+                                if (item.step == "100") {
+                                    cnt++
+                                } else if (item.step == "200") {
+                                    cnt = -1
+                                }
+                            }
+                        }
+                        if(result.history == null || result.history.size == 0){
+                            cnt = -2
+                        }
+                        Log.e("itm", "" + cnt)
+
+                        if(cnt == -1){
                             statusTextView.text = "Rejected"
                             statusTextView.textColor = Color.parseColor("#ff0000")
+                        } else if(cnt < lvlCount || cnt == -2){
+                            statusTextView.text = "Pending"
+                            statusTextView.textColor = Color.parseColor("#ffad46")
+                        } else if(cnt == lvlCount){
+                            statusTextView.text = "Approved"
+                            statusTextView.textColor = Color.parseColor("#00aa00")
                         }
 
 
@@ -256,7 +274,7 @@ class ViewDynamicWFActivity : AppCompatActivity() {
         if (!isImage) {
             Glide.with(this)
 //               .asBitmap()
-                    .load(R.drawable.ic_file_alt)
+                    .load(R.drawable.ic_docs)
                     .placeholder(R.drawable.placeholder_bg)
                     .error(R.drawable.placeholder_bg)
                     .into(uploadedImage)

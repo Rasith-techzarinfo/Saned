@@ -91,26 +91,11 @@ data class HADetailData (
         val success : String,
         val message : String,
         val data : List<HousingWFData>?,
-        val approvalstatus : Approvalstatus?,
-        val history : List<History>?
+        val approvalstatus : HAApprovalStatus?,
+        val history : List<HAApprovalStatus>?
 )
 
-data class History (
-
-        val id : String,
-        val wkid : String,
-        val type : String,
-        val emno : String,
-        val date : String,
-        val time : String,
-        val step : String,
-        val stnm : String,
-        val nemn : String,
-        val ndat : String,
-        val ntim : String
-)
-
-data class Approvalstatus (
+data class HAApprovalStatus (
 
         val id : String,
         val wkid : String,

@@ -578,7 +578,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
         if (isFile) {
             Glide.with(this)
 //               .asBitmap()
-                    .load(R.drawable.ic_file_alt)
+                    .load(R.drawable.ic_docs)
                     .placeholder(R.drawable.placeholder_bg)
                     .error(R.drawable.placeholder_bg)
                     .into(uploadedImage)
