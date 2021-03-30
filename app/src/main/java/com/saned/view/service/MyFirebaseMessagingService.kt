@@ -162,7 +162,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         val pendingIntent = PendingIntent.getBroadcast(
                 this, 0, intent,
-                PendingIntent.FLAG_CANCEL_CURRENT
+                PendingIntent.FLAG_ONE_SHOT
         )
 
         val notificationManager =
