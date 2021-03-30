@@ -67,6 +67,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         //data: {
         //     title: '"Title of the notification"',
         //     body: '" Message,
+//             userid:'"' user_id '"',
         //     wkid: '"'workflowid '"',
         //     type: '"1"'
         //}
@@ -151,12 +152,17 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
 
         //cancel notification on click
-        val actionIntent = Intent(this, ActionReceiver::class.java)
-        actionIntent.putExtra("noti_id", 0)
+//        val actionIntent = Intent(this, ActionReceiver::class.java)
+//        actionIntent.putExtra("noti_id", 0)
+//
+//        val pendingIntent = PendingIntent.getBroadcast(
+//            this, 0, actionIntent,
+//            PendingIntent.FLAG_CANCEL_CURRENT
+//        )
 
         val pendingIntent = PendingIntent.getBroadcast(
-            this, 0, actionIntent,
-            PendingIntent.FLAG_CANCEL_CURRENT
+                this, 0, intent,
+                PendingIntent.FLAG_CANCEL_CURRENT
         )
 
         val notificationManager =
