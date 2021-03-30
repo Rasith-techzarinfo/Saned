@@ -79,7 +79,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             val wkid = json.getString("wkid")
             val userID = json.getString("userid")
             var titleString  = json.getString("title").toString()
-            var descriptionString  = json.getString("message")
+            var descriptionString  = json.getString("body")
 
 
 //            //type 1 > HADetail
