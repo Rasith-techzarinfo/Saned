@@ -16,6 +16,7 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.saned.R
 import com.saned.sanedApplication.Companion.prefHelper
+import com.saned.view.ui.activities.dynamicWF.ViewDynamicWFActivity
 import com.saned.view.utils.Utils.Companion.getCurrentTime
 import org.json.JSONException
 import org.json.JSONObject
@@ -63,76 +64,49 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     private fun handleDataMessage(json: JSONObject) {
 
         Log.e(TAG, "push json: $json")
-        //{user_id=2, id=147, type=1, title=New Post Created in saned Community!, message=Test Post for FCM}
+        //data: {
+        //     title: '"Title of the notification"',
+        //     body: '" Message,
+        //     wkid: '"'workflowid '"',
+        //     type: '"1"'
+        //}
 
         try {
 
 
             val moduleType = json.getString("type")
-            var userID = json.getString("user_id")
-            val moduleID = json.getString("id")
+            val wkid = json.getString("wkid")
+            val userID = json.getString("userid")
             var titleString  = json.getString("title").toString()
             var descriptionString  = json.getString("message")
 
 
-//            //type 1,2,3,4,5,6 > mail,announcement,order_update,new_post,exam_scheduled
+//            //type 1 > HADetail
 
             Log.e(TAG, "moduleType: $moduleType")
-            Log.e(TAG, "notifyUserID: $userID")
-            Log.e(TAG, "moduleID: $moduleID")
+            Log.e(TAG, "responseUserID: $userID")
+            Log.e(TAG, "wkid: $wkid")
             Log.e(TAG, "userType: " + prefHelper.getUserType())
             Log.e(TAG, "userType: " + prefHelper.getUserId())
 
             //NOTIFICATION LOGICS HERE
 
 
-//            if (prefHelper.getUserId() == userID) {
+            if (prefHelper.getUserId() == userID) {
 //
-//                if(moduleType == "1"){
-//
-//                //need to handle
-//                    val intent = Intent(applicationContext, MailDetailActivity::class.java)
-//                            intent.putExtra("id", "" + moduleID)
-//                    intent.putExtra("catogery", "Inbox")
-//                            showNotificationDatas(titleString, descriptionString, intent)
-//
-//                } else if(moduleType == "2"){
-//
-//                    //need to handle
-//                    val intent = Intent(applicationContext, MailDetailActivity::class.java)
-//                    intent.putExtra("id", "" + moduleID)
-//                    intent.putExtra("catogery", "Inbox")
-//                    showNotificationDatas(titleString, descriptionString, intent)
-//
-//                } else if(moduleType == "3"){
-//
-//                    //need to handle
-//                    val intent = Intent(applicationContext, MailDetailActivity::class.java)
-//                    intent.putExtra("id", "" + moduleID)
-//                    intent.putExtra("catogery", "Inbox")
-//                    showNotificationDatas(titleString, descriptionString, intent)
-//
-//                } else if(moduleType == "4"){
-//
-//                    //need to handle
-//                    val intent = Intent(applicationContext, MailDetailActivity::class.java)
-//                    intent.putExtra("id", "" + moduleID)
-//                    intent.putExtra("catogery", "Inbox")
-//                    showNotificationDatas(titleString, descriptionString, intent)
-//
-//                } else if(moduleType == "5"){
-//
-//                    //need to handle
-//                    val intent = Intent(applicationContext, MailDetailActivity::class.java)
-//                    intent.putExtra("id", "" + moduleID)
-//                    intent.putExtra("catogery", "Inbox")
-//                    showNotificationDatas(titleString, descriptionString, intent)
-//
-//                }
+                if(moduleType == "1") {
 
-//
-//
-//            }
+                    //static formid, name for now
+                    val intent = Intent(applicationContext, ViewDynamicWFActivity::class.java)
+                    intent.putExtra("formID", "" + "101")
+                    intent.putExtra("formName", "HAForm")
+                    intent.putExtra("wkid", "" + wkid)
+                    showNotificationDatas(titleString, descriptionString, intent)
+                }
+
+
+
+            }
 
         } catch (e: JSONException) {
             Log.e(TAG, "Json Exception: " + e.message)
@@ -175,11 +149,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         )
 
-        //need to handle
-//        val pendingIntent = PendingIntent.getActivity(
-//            this, 0, intent,
-//            PendingIntent.FLAG_ONE_SHOT
-//        )
 
         //cancel notification on click
         val actionIntent = Intent(this, ActionReceiver::class.java)

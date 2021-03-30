@@ -3,8 +3,8 @@ package com.saned.view.ui.activities.dynamicWF
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
-import android.content.pm.ActivityInfo
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -21,17 +21,16 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.fxn.pix.Options
 import com.fxn.pix.Pix
-import com.google.android.material.snackbar.Snackbar
 import com.saned.R
 import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.sanedApplication.Companion.prefHelper
 import com.saned.view.error.SANEDError
+import com.saned.view.ui.design.ModalBottomSheet
 import com.saned.view.utils.URIPathHelper
 import com.saned.view.utils.Utils
 import droidninja.filepicker.FilePickerBuilder
 import droidninja.filepicker.FilePickerConst
-import droidninja.filepicker.models.sort.SortingTypes
 import kotlinx.android.synthetic.main.activity_create_dynamic_w_f.*
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
@@ -78,28 +77,32 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
         //listeners
         attach_layout.setOnClickListener {
-            val mDialog = Dialog(this)
-            mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-            mDialog.setContentView(R.layout.attachment_dialog_layout)
-            mDialog.setCancelable(false)
-            val galleryLayout = mDialog.findViewById(R.id.gallery_layout) as LinearLayout
-            val documentLayout = mDialog.findViewById(R.id.document_layout) as LinearLayout
-//            //hidden for now
-//            galleryLayout.visibility = View.GONE
 
-            galleryLayout.setOnClickListener {
-                mDialog.dismiss()
-                addPhotoVideoFromDevice()
+            val modalBottomSheet = ModalBottomSheet(this)
+            modalBottomSheet.show(supportFragmentManager, ModalBottomSheet.TAG)
 
-            }
-
-            documentLayout.setOnClickListener {
-                mDialog.dismiss()
-                openDocuments()
-
-            }
-            mDialog.setCancelable(true)
-            mDialog.show()
+//            val mDialog = Dialog(this)
+//            mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+//            mDialog.setContentView(R.layout.attachment_dialog_layout)
+//            mDialog.setCancelable(false)
+//            val galleryLayout = mDialog.findViewById(R.id.gallery_layout) as LinearLayout
+//            val documentLayout = mDialog.findViewById(R.id.document_layout) as LinearLayout
+////            //hidden for now
+////            galleryLayout.visibility = View.GONE
+//
+//            galleryLayout.setOnClickListener {
+//                mDialog.dismiss()
+//                addPhotoVideoFromDevice()
+//
+//            }
+//
+//            documentLayout.setOnClickListener {
+//                mDialog.dismiss()
+//                openDocuments()
+//
+//            }
+//            mDialog.setCancelable(true)
+//            mDialog.show()
         }
         //spinner
         addToSpinner()
@@ -161,25 +164,25 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
                 val reqFile: RequestBody = RequestBody.create(MediaType.parse("*/*"), f)
                 attachmentArrayList.add(
-                    MultipartBody.Part.createFormData(
-                        //"attachments[" + d + "]",
-                        "Document",
-                        f!!.name,
-                        reqFile
-                    )
+                        MultipartBody.Part.createFormData(
+                                //"attachments[" + d + "]",
+                                "Document",
+                                f!!.name,
+                                reqFile
+                        )
                 )
 
             }
 
             val monthsBody: RequestBody =
                 RequestBody.create(
-                    MediaType.parse("text/plain"),
-                    monthsSpinnerSelected.toString()
+                        MediaType.parse("text/plain"),
+                        monthsSpinnerSelected.toString()
                 )
             val reasonBody: RequestBody =
                 RequestBody.create(
-                    MediaType.parse("text/plain"),
-                    reasonEditText.text.toString()
+                        MediaType.parse("text/plain"),
+                        reasonEditText.text.toString()
                 )
             val userIdBody: RequestBody =
                     RequestBody.create(
@@ -193,10 +196,10 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                 try {
 
                     var result = apiService.sendHA(
-                        reasonBody,
-                        monthsBody,
-                        userIdBody,
-                        attachmentArrayList
+                            reasonBody,
+                            monthsBody,
+                            userIdBody,
+                            attachmentArrayList
                     ).await()
 
                     Log.e("result", "" + result)
@@ -208,18 +211,18 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                         res = "true"
                         onBackPressed()
                         Toast.makeText(
-                            this@CreateDynamicWFActivity,
-                            "Workflow submitted",
-                            Toast.LENGTH_SHORT
+                                this@CreateDynamicWFActivity,
+                                "Workflow submitted",
+                                Toast.LENGTH_SHORT
                         ).show()
 
 
                     } else {
 
                         Toast.makeText(
-                            this@CreateDynamicWFActivity,
-                            "" + result.message,
-                            Toast.LENGTH_SHORT
+                                this@CreateDynamicWFActivity,
+                                "" + result.message,
+                                Toast.LENGTH_SHORT
                         ).show()
                     }
                     progressDialog.dismiss()
@@ -236,9 +239,9 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                         }
                     } else {
                         Toast.makeText(
-                            applicationContext,
-                            "Something went wrong",
-                            Toast.LENGTH_SHORT
+                                applicationContext,
+                                "Something went wrong",
+                                Toast.LENGTH_SHORT
                         ).show()
                     }
                 }
@@ -260,13 +263,13 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 //        Log.e("List", list.toString())
 
         val subscriberAdapter = object : ArrayAdapter<Any>(
-            this, R.layout.spinner_item_layout,
-            list as List<Any>
+                this, R.layout.spinner_item_layout,
+                list as List<Any>
         ) {
             override fun getDropDownView(
-                position: Int,
-                convertView: View?,
-                parent: ViewGroup
+                    position: Int,
+                    convertView: View?,
+                    parent: ViewGroup
             ): View {
                 return super.getDropDownView(position, convertView, parent).also { view ->
                     if (position == monthsSpinner.selectedItemPosition) {
@@ -276,35 +279,35 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                         if (position != 0) {
                             view.findViewById<TextView>(android.R.id.text1)
                                 .setCompoundDrawablesWithIntrinsicBounds(
-                                    0,
-                                    0,
-                                    R.drawable.ic_tick_24dp,
-                                    0
+                                        0,
+                                        0,
+                                        R.drawable.ic_tick_24dp,
+                                        0
                                 )
 
                         } else {
                             view.findViewById<TextView>(android.R.id.text1)
                                 .setCompoundDrawablesWithIntrinsicBounds(
-                                    0,
-                                    0,
-                                    0,
-                                    0
+                                        0,
+                                        0,
+                                        0,
+                                        0
                                 )
                         }
                     } else {
 
                         view.findViewById<TextView>(android.R.id.text1)
                             .setTextColor(
-                                resources.getColor(
-                                    android.R.color.black
-                                )
+                                    resources.getColor(
+                                            android.R.color.black
+                                    )
                             )
                         view.findViewById<TextView>(android.R.id.text1)
                             .setCompoundDrawablesWithIntrinsicBounds(
-                                0,
-                                0,
-                                0,
-                                0
+                                    0,
+                                    0,
+                                    0,
+                                    0
                             )
                     }
                 }
@@ -323,10 +326,10 @@ class CreateDynamicWFActivity : AppCompatActivity() {
         // Set an on item selected listener for spinner object
         monthsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
-                position: Int,
-                id: Long
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
             ) {
                 Log.e("Res", parent.getItemAtPosition(position).toString())
 
@@ -352,7 +355,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
         }
     }
 
-    private fun openDocuments(){
+    public fun openDocuments(){
         var iCount = 1 - listImages.size
         Log.e("size", "${listImages.size} $iCount")
 
@@ -367,7 +370,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
     }
 
 
-    private fun addPhotoVideoFromDevice() {
+    public fun addPhotoVideoFromDevice() {
         var iCount = 1 - listImages.size
         Log.e("size", "${listImages.size} $iCount")
 
@@ -403,7 +406,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
         when (requestCode) {
             PICKPHOTO_RESULT_CODE -> if (resultCode == Activity.RESULT_OK && data != null) {
                 var returnValue: ArrayList<Uri> = data!!.getParcelableArrayListExtra<Uri>(
-                    FilePickerConst.KEY_SELECTED_MEDIA
+                        FilePickerConst.KEY_SELECTED_MEDIA
                 )!!
                 //has to be an ArrayList
                 val uris = ArrayList<Uri>()
@@ -417,7 +420,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
             PICKFILE_RESULT_CODE -> if (resultCode == Activity.RESULT_OK && data != null) {
                 val returnValue: ArrayList<Uri> =
-                    data?.getParcelableArrayListExtra(FilePickerConst.KEY_SELECTED_DOCS)!!
+                        data?.getParcelableArrayListExtra(FilePickerConst.KEY_SELECTED_DOCS)!!
                 Log.e("chooser", "${returnValue.toString()}")
                 docPaths.addAll(data.getParcelableArrayListExtra<Uri>(FilePickerConst.KEY_SELECTED_DOCS)!!)
 
@@ -442,39 +445,39 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
 
                     val layoutInflater =
-                        baseContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                            baseContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
                     val layoutParams = RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.MATCH_PARENT,
-                        RelativeLayout.LayoutParams.WRAP_CONTENT
+                            RelativeLayout.LayoutParams.MATCH_PARENT,
+                            RelativeLayout.LayoutParams.WRAP_CONTENT
                     )
 
 
                     layoutParams.setMargins(8, 8, 8, 8)
 
                     val uploadedImageViewItem = layoutInflater.inflate(
-                        R.layout.action_custom_image_item,
-                        null
+                            R.layout.action_custom_image_item,
+                            null
                     )
 
                     if (docFile.name.toLowerCase().endsWith("doc") || docFile.name.toLowerCase()
-                            .endsWith(
-                                "docx"
-                            ) || docFile.name.toLowerCase()
-                            .endsWith("pdf") || docFile.name.toLowerCase().endsWith(
-                            "odt"
-                        ) ||
-                        docFile.name.toLowerCase().endsWith("rtf") || docFile.name.toLowerCase()
-                            .endsWith(
-                                "text"
-                            ) || docFile.name.toLowerCase()
-                            .endsWith("text") || docFile.name.toLowerCase().endsWith(
-                            "tex"
-                        ) || docFile.name.toLowerCase().endsWith("xls") ||
-                        docFile.name.toLowerCase().endsWith("txt") || docFile.name.toLowerCase()
-                            .endsWith(
-                                "wpd"
-                            )
+                                    .endsWith(
+                                            "docx"
+                                    ) || docFile.name.toLowerCase()
+                                    .endsWith("pdf") || docFile.name.toLowerCase().endsWith(
+                                    "odt"
+                            ) ||
+                            docFile.name.toLowerCase().endsWith("rtf") || docFile.name.toLowerCase()
+                                    .endsWith(
+                                            "text"
+                                    ) || docFile.name.toLowerCase()
+                                    .endsWith("text") || docFile.name.toLowerCase().endsWith(
+                                    "tex"
+                            ) || docFile.name.toLowerCase().endsWith("xls") ||
+                            docFile.name.toLowerCase().endsWith("txt") || docFile.name.toLowerCase()
+                                    .endsWith(
+                                            "wpd"
+                                    )
                     ) {
                         gotAttachmentImages(docFile, uploadedImageViewItem, layoutParams)
                     } else {
@@ -494,46 +497,46 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                     for (item in returnValue) {
 
                         val layoutInflater =
-                            baseContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                                baseContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
 
                         val layoutParams = RelativeLayout.LayoutParams(
-                            RelativeLayout.LayoutParams.MATCH_PARENT,
-                            RelativeLayout.LayoutParams.WRAP_CONTENT
+                                RelativeLayout.LayoutParams.MATCH_PARENT,
+                                RelativeLayout.LayoutParams.WRAP_CONTENT
                         )
 
 
                         layoutParams.setMargins(8, 8, 8, 8)
 
                         val uploadedImageViewItem = layoutInflater.inflate(
-                            R.layout.action_custom_image_item, null
+                                R.layout.action_custom_image_item, null
                         )
 
 
                         var imageFile: File = File(item)
 
                         if (imageFile.name.endsWith("jpeg") || imageFile.name.endsWith("jpg") || imageFile.name.endsWith(
-                                "png"
-                            ) || imageFile.name.endsWith("gif") ||
-                            imageFile.name.endsWith("tiff") || imageFile.name.endsWith("raw") || imageFile.name.endsWith(
-                                "mp4"
-                            ) || imageFile.name.endsWith("mpeg-4") ||
-                            imageFile.name.endsWith("mov") || imageFile.name.endsWith("wmv") || imageFile.name.endsWith(
-                                "flv"
-                            ) || imageFile.name.endsWith("avi") || imageFile.name.endsWith("avchd") ||
-                            imageFile.name.endsWith("webm") || imageFile.name.endsWith("mkv")
+                                        "png"
+                                ) || imageFile.name.endsWith("gif") ||
+                                imageFile.name.endsWith("tiff") || imageFile.name.endsWith("raw") || imageFile.name.endsWith(
+                                        "mp4"
+                                ) || imageFile.name.endsWith("mpeg-4") ||
+                                imageFile.name.endsWith("mov") || imageFile.name.endsWith("wmv") || imageFile.name.endsWith(
+                                        "flv"
+                                ) || imageFile.name.endsWith("avi") || imageFile.name.endsWith("avchd") ||
+                                imageFile.name.endsWith("webm") || imageFile.name.endsWith("mkv")
                         ) {
 
                             //tiff,raw,mp4,mpeg-4,mov,wmv,flv,avi,avchd,webm,mkv
                             gotAttachmentImages(
-                                imageFile,
-                                uploadedImageViewItem,
-                                layoutParams
+                                    imageFile,
+                                    uploadedImageViewItem,
+                                    layoutParams
                             )
 
                         } else {
                             Toast.makeText(this, "Unsupported File Format", Toast.LENGTH_SHORT)
-                                .show()
+                                    .show()
                         }
                     }
                 }
@@ -547,9 +550,9 @@ class CreateDynamicWFActivity : AppCompatActivity() {
     }
 
     private fun gotAttachmentImages(
-        file: File,
-        uploadedImageViewItem: View,
-        layoutParams: RelativeLayout.LayoutParams
+            file: File,
+            uploadedImageViewItem: View,
+            layoutParams: RelativeLayout.LayoutParams
     ) {
 
         //image or video choose before compression
@@ -557,8 +560,8 @@ class CreateDynamicWFActivity : AppCompatActivity() {
         var newFile: File
         //check type
         if (file.name.endsWith("png") || file.name.endsWith("jpg") || file.name.endsWith("jpeg") || file.name.endsWith(
-                "jfif"
-            )
+                        "jfif"
+                )
         ) {
             newFile = Utils.convertCustomFileSize(file, 1024, file.name)
             isFile = false
