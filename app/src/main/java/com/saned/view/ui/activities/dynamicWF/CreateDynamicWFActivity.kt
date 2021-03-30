@@ -77,33 +77,21 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
         //listeners
         attach_layout.setOnClickListener {
+            var iCount = 1 - listImages.size
+            Log.e("size", "${listImages.size} $iCount")
 
-            val modalBottomSheet = ModalBottomSheet(this)
-            modalBottomSheet.show(supportFragmentManager, ModalBottomSheet.TAG)
+            //maximum pick limit set 1
+            if (listImages.size < 1) {
+                Utils.hideKeyBoard(rootLayout, this@CreateDynamicWFActivity)
+                //modal sheet
+                val modalBottomSheet = ModalBottomSheet(this)
+                modalBottomSheet.show(supportFragmentManager, ModalBottomSheet.TAG)
 
-//            val mDialog = Dialog(this)
-//            mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-//            mDialog.setContentView(R.layout.attachment_dialog_layout)
-//            mDialog.setCancelable(false)
-//            val galleryLayout = mDialog.findViewById(R.id.gallery_layout) as LinearLayout
-//            val documentLayout = mDialog.findViewById(R.id.document_layout) as LinearLayout
-////            //hidden for now
-////            galleryLayout.visibility = View.GONE
-//
-//            galleryLayout.setOnClickListener {
-//                mDialog.dismiss()
-//                addPhotoVideoFromDevice()
-//
-//            }
-//
-//            documentLayout.setOnClickListener {
-//                mDialog.dismiss()
-//                openDocuments()
-//
-//            }
-//            mDialog.setCancelable(true)
-//            mDialog.show()
+            } else {
+                Toast.makeText(this, "Maximum files added", Toast.LENGTH_SHORT).show()
+            }
         }
+
         //spinner
         addToSpinner()
         //btn listener
@@ -121,11 +109,6 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                 Toast.makeText(this, "Enter the Reason", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            //attachment mandatory for now
-//            if(listImages.size != 1){
-//                Toast.makeText(this, "Select atleast 1 Attachment", Toast.LENGTH_SHORT).show()
-//                return@setOnClickListener
-//            }
 
 
             sendDataToServer()
