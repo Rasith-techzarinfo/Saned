@@ -77,16 +77,15 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
         //listeners
         attach_layout.setOnClickListener {
+            Utils.hideKeyBoard(rootLayout, this@CreateDynamicWFActivity)
             var iCount = 1 - listImages.size
             Log.e("size", "${listImages.size} $iCount")
 
             //maximum pick limit set 1
             if (listImages.size < 1) {
-                Utils.hideKeyBoard(rootLayout, this@CreateDynamicWFActivity)
                 //modal sheet
                 val modalBottomSheet = ModalBottomSheet(this)
                 modalBottomSheet.show(supportFragmentManager, ModalBottomSheet.TAG)
-
             } else {
                 Toast.makeText(this, "Maximum files added", Toast.LENGTH_SHORT).show()
             }
