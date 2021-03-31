@@ -229,7 +229,7 @@ class LoginActivity : AppCompatActivity() {
         val relaiveLayout = mDialog.findViewById<RelativeLayout>(R.id.relative1)
 
         exitApp.setOnClickListener {
-            finishAfterTransition()
+            finishAffinity()
             mDialog.dismiss()
         }
 
@@ -237,17 +237,6 @@ class LoginActivity : AppCompatActivity() {
             mDialog.dismiss()
         }
         mDialog.show()
-
-//        MaterialAlertDialogBuilder(this@LoginActivity)
-//                .setMessage("Are you sure want to Exit?")
-//                .setPositiveButton("OK") { dialogInterface, _ ->
-//                    finishAffinity()
-//                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-//                }
-//                .setNegativeButton("CANCEL") { dialogInterface, _ ->
-//                 }
-//                .show()
-//                .setCanceledOnTouchOutside(false)
 
     }
 

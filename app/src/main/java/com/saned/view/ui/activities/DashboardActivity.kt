@@ -408,7 +408,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             val cancelExitApp = mDialog.findViewById(R.id.cancel_button) as MaterialButton
 
             exitApp.setOnClickListener {
-                finishAfterTransition()
+                finishAffinity()
                 mDialog.dismiss()
             }
 
@@ -417,16 +417,6 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             }
             mDialog.show()
 
-//        MaterialAlertDialogBuilder(this@LoginActivity)
-//                .setMessage("Are you sure want to Exit?")
-//                .setPositiveButton("OK") { dialogInterface, _ ->
-//                    finishAffinity()
-//                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-//                }
-//                .setNegativeButton("CANCEL") { dialogInterface, _ ->
-//                 }
-//                .show()
-//                .setCanceledOnTouchOutside(false)
         }
 
 

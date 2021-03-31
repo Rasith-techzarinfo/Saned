@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.media.AudioAttributes
+import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.widget.RemoteViews
@@ -86,9 +87,9 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
             Log.e(TAG, "moduleType: $moduleType")
             Log.e(TAG, "responseUserID: $userID")
+            Log.e(TAG, "userID: " + prefHelper.getUserId())
             Log.e(TAG, "wkid: $wkid")
             Log.e(TAG, "userType: " + prefHelper.getUserType())
-            Log.e(TAG, "userType: " + prefHelper.getUserId())
 
             //NOTIFICATION LOGICS HERE
 
@@ -99,8 +100,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
                     //static formid, name for now
                     val intent = Intent(applicationContext, ViewDynamicWFActivity::class.java)
-                    intent.putExtra("formID", "" + "101")
-                    intent.putExtra("formName", "HAForm")
+                    intent.putExtra("formID", "101")
+                    intent.putExtra("formName", "Housing Advance")
                     intent.putExtra("wkid", "" + wkid)
                     showNotificationDatas(titleString, descriptionString, intent)
                 }
@@ -160,8 +161,9 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 //            PendingIntent.FLAG_CANCEL_CURRENT
 //        )
 
+        val intent1 = Intent(applicationContext, ViewDynamicWFActivity::class.java)
         val pendingIntent = PendingIntent.getBroadcast(
-                this, 0, intent,
+                this, 0, intent1,
                 PendingIntent.FLAG_ONE_SHOT
         )
 
