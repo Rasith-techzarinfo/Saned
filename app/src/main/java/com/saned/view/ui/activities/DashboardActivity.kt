@@ -48,7 +48,6 @@ import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.openActivity
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.activity_dashboard.home_layout
-import kotlinx.android.synthetic.main.activity_dashboard.search_layout
 import kotlinx.android.synthetic.main.activity_dashboard.toolbar
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_profile.*
@@ -100,9 +99,11 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         home_layout.setOnClickListener {
             drawer_layout.openDrawer(GravityCompat.START)
         }
-        //search
-        search_layout.setOnClickListener {
-
+        //notification
+        notification_layout.setOnClickListener {
+            ///go to local notification page
+            openActivity(NotificationActivity::class.java, this@DashboardActivity){}
+//            notificationCount.text = "5"
         }
 
         //navigation items drawer
@@ -115,6 +116,9 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         }
         profile_nav_mini.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
+            openActivity(ProfileActivity::class.java, this@DashboardActivity){}
+        }
+        profile_image.setOnClickListener {
             openActivity(ProfileActivity::class.java, this@DashboardActivity){}
         }
         my_employees_menu.setOnClickListener {

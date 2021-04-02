@@ -5,16 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/home_bg"
-    tools:context=".view.ui.activities.dynamicWF.HistoryDynamicWFActivity">
+    tools:context=".view.ui.activities.NotificationActivity">
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -32,14 +24,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Form Name"
+                android:text="Notifications"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="0dp"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textAllCaps="false"
                 android:textColor="@color/colorPrimaryDark"
-                android:id="@+id/toolbarTitle" />
+                android:id="@+id/toolbar_title" />
 
             <RelativeLayout
                 android:id="@+id/search_layout"
@@ -69,9 +61,13 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -79,7 +75,8 @@
         <RelativeLayout
             android:id="@+id/rootLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -88,10 +85,11 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true" />
 
+
         </RelativeLayout>
 
-
     </androidx.core.widget.NestedScrollView>
+
 
 
     <LinearLayout
@@ -107,45 +105,36 @@
     </LinearLayout>
 
 
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmerLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-        <LinearLayout
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:visibility="gone">
 
-            <include layout="@layout/block_details_loader" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <include layout="@layout/block_details_loader" />
+                <include layout="@layout/notification_loader" />
 
-            <include layout="@layout/block_details_loader" />
+                <include layout="@layout/notification_loader" />
 
-        </LinearLayout>
+                <include layout="@layout/notification_loader" />
 
-    </com.facebook.shimmer.ShimmerFrameLayout>
+                <include layout="@layout/notification_loader" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_WF_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        android:visibility="visible"
-        app:srcCompat="@drawable/ic_add"
-        app:backgroundTint="@color/colorPrimaryLite2"
-        app:borderWidth="0dp"
-        app:elevation="8dp"
-        app:maxImageSize="30dp" />
+                <include layout="@layout/notification_loader" />
 
+                <include layout="@layout/notification_loader" />
 
-        </RelativeLayout>
+            </LinearLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
 
 </RelativeLayout>

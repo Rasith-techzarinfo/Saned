@@ -72,26 +72,61 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:id="@+id/toolbar_title" />
 
+<!--                <RelativeLayout-->
+<!--                    android:id="@+id/search_layout"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:paddingStart="8dp"-->
+<!--                    android:paddingEnd="16dp">-->
+
+<!--                                        <ImageView-->
+<!--                                            android:id="@+id/search_imageview"-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:paddingEnd="8dp"-->
+<!--                                            android:paddingTop="8dp"-->
+<!--                                            android:paddingBottom="8dp"-->
+<!--                                            android:scaleType="centerCrop"-->
+<!--                                            app:tint="@color/colorPrimaryDark"-->
+<!--                                            android:src="@drawable/ic_baseline_search_24"-->
+<!--                                            tools:targetApi="m" />-->
+
+<!--                </RelativeLayout>-->
+
                 <RelativeLayout
-                    android:id="@+id/search_layout"
+                    android:id="@+id/notification_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
                     android:paddingStart="8dp"
                     android:paddingEnd="16dp">
 
-                                        <ImageView
-                                            android:id="@+id/search_imageview"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:paddingEnd="8dp"
-                                            android:paddingTop="8dp"
-                                            android:paddingBottom="8dp"
-                                            android:scaleType="centerCrop"
-                                            app:tint="@color/colorPrimaryDark"
-                                            android:src="@drawable/ic_baseline_search_24"
-                                            tools:targetApi="m" />
+                    <ImageView
+                        android:id="@+id/filter_dialog"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:src="@drawable/ic_notifications_24"
+                        tools:targetApi="m" />
+
+                    <TextView
+                        android:id="@+id/notificationCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/filter_dialog"
+                        android:text="2"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="14sp" />
 
                 </RelativeLayout>
 

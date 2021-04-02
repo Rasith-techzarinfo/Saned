@@ -1339,6 +1339,14 @@ class Utils {
             val intent = Intent(this, it)
             intent.putExtras(Bundle().apply(extras))
             startActivityForResult(activity, intent, reqCode, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle())
+        }
+
+
+        fun <T> Context.openActivityWithFlag(it: Class<T>, activity: Activity, flags: Int,  extras: Bundle.() -> Unit = {}) {
+            val intent = Intent(this, it)
+            intent.flags = flags
+            intent.putExtras(Bundle().apply(extras))
+            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle())
 //            activity.overridePendingTransition(R.anim.enter_right_to_left, R.anim.exit_left_to_right)
         }
 

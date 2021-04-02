@@ -183,7 +183,10 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
 
                     Utils.stopShimmerRL(shimmerLayout, rootLayout)
                     Log.e("error", "" + e.message)
-                    if (e is SANEDError) {
+//                    if(e.message == "Connection reset" || e.message == "Failed to connect to /40.123.199.239:3000"){
+//
+//                    } else
+                        if (e is SANEDError) {
                         Log.e("Err", "" + e.getErrorResponse())
                         if (e.getResponseCode() == 401) {
                             Utils.logoutFromApp(applicationContext)

@@ -180,6 +180,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun init() {
         //listeners
+        forgot_password.setOnClickListener {
+            openActivity(ForgotPasswordActivity::class.java, this){}
+        }
         login_button.setOnClickListener {
 
             user_layout.isErrorEnabled = false
