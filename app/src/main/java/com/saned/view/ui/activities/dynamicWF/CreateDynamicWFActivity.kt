@@ -230,6 +230,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
             }
         } else {
             Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
+//            Utils.checkNetworkDialog(this, this) {}
         }
 
 

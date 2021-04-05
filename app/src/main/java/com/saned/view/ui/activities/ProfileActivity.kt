@@ -64,7 +64,7 @@ class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityRe
             openActivityWithResult(EditProfileActivity::class.java, this, 101){}
         }
         //get values
-//        getMyProfileData()
+        getMyProfileData()
 
     }
 
@@ -144,7 +144,8 @@ class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityRe
                 }
             }
         } else {
-            Toast.makeText(this@ProfileActivity, "No Internet Available", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this@ProfileActivity, "No Internet Available", Toast.LENGTH_SHORT).show()
+            Utils.checkNetworkDialog(this, this) { getMyProfileData() }
         }
     }
 
@@ -165,7 +166,7 @@ class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityRe
 
 
     override fun onNetworkConnectionChanged(isConnected: Boolean) {
-        showNetworkMessage(isConnected)
+//        showNetworkMessage(isConnected)
     }
 
     private fun showNetworkMessage(isConnected: Boolean) {

@@ -68,6 +68,14 @@ data class NotifyData(
         var profile: String
 )
 
+data class EmployeeData(
+    val id: String,
+    val name: String,
+    val designation: String,
+    val email: String,
+    var number: String,
+    var profile: String
+)
 
 data class HAData(
         val noofmonths: String,

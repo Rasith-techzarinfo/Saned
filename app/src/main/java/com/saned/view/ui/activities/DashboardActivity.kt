@@ -123,6 +123,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         }
         my_employees_menu.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
+            openActivity(MyEmployeesActivity::class.java, this@DashboardActivity){}
         }
         services_actions_menu.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)

@@ -65,7 +65,7 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
         registerReceiver(ConnectivityReceiver(), IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
 
         //get profile data
-//        getMyProfileData()
+        getMyProfileData()
         passEditText.setText("" + prefHelper.getUserPassword())
 
         //btn listeners
@@ -240,7 +240,8 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
                 }
             }
         } else {
-            Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
+            Utils.checkNetworkDialog(this, this) { getMyProfileData() }
         }
     }
 
@@ -248,7 +249,7 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
 
 
     override fun onNetworkConnectionChanged(isConnected: Boolean) {
-        showNetworkMessage(isConnected)
+//        showNetworkMessage(isConnected)
     }
 
     private fun showNetworkMessage(isConnected: Boolean) {

@@ -19,18 +19,16 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.google.android.material.button.MaterialButton
 import com.saned.R
-import com.saned.view.service.ConnectivityReceiver
+import com.saned.view.utils.Utils
 import kotlinx.android.synthetic.main.activity_document_viewer.*
 import org.jetbrains.anko.backgroundColor
 
 
-class DocumentViewerActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityReceiverListener {
+class DocumentViewerActivity : AppCompatActivity() {
 
     var documentURL=""
     lateinit var progressDialog: Dialog
-    private var networkDialog : Dialog? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,9 +55,7 @@ class DocumentViewerActivity : AppCompatActivity(), ConnectivityReceiver.Connect
 
                     R.id.action_refersh -> {
                         //reload
-                        var documentURLdrive = "http://drive.google.com/viewerng/viewer?embedded=true&url=$documentURL"
-                        val gdocUrl1: String = "http://docs.google.com/gview?embedded=true&url=$documentURL"
-                        webView.loadUrl(documentURLdrive)
+                        loadWeb()
 
                         return@OnMenuItemClickListener true
                     }
@@ -135,10 +131,18 @@ class DocumentViewerActivity : AppCompatActivity(), ConnectivityReceiver.Connect
         }
 
 
-//        //load url
-//        var documentURLdrive = "http://drive.google.com/viewerng/viewer?embedded=true&url=$documentURL"
-//        val gdocUrl1: String = "http://docs.google.com/gview?embedded=true&url=$documentURL"
-//        webView.loadUrl(documentURLdrive)
+        //load url
+        if(Utils.isInternetAvailable(this)) {
+            loadWeb()
+        } else{
+            Utils.checkNetworkDialog(this, this) { loadWeb() }
+        }
+    }
+
+    fun loadWeb() {
+        var documentURLdrive = "http://drive.google.com/viewerng/viewer?embedded=true&url=$documentURL"
+        val gdocUrl1: String = "http://docs.google.com/gview?embedded=true&url=$documentURL"
+        webView.loadUrl(documentURLdrive)
     }
 
 
@@ -150,53 +154,6 @@ class DocumentViewerActivity : AppCompatActivity(), ConnectivityReceiver.Connect
             return false
         }
     }
-
-
-
-    override fun onNetworkConnectionChanged(isConnected: Boolean) {
-        showNetworkMessage(isConnected)
-    }
-
-    private fun showNetworkMessage(isConnected: Boolean) {
-//        Log.e("connectionChange", "" + isConnected)
-
-        if(!isConnected) {
-            networkDialog = Dialog(this)
-            networkDialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
-            networkDialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            networkDialog?.setContentView(R.layout.no_internet_layout)
-            networkDialog?.setCancelable(false)
-            val okayButton = networkDialog!!.findViewById(R.id.okayButton) as MaterialButton
-            okayButton.setOnClickListener {
-                if (isConnected) {
-                    networkDialog?.dismiss()
-                }
-            }
-            if(!isFinishing) {
-                networkDialog?.show()
-            }
-        } else {
-            networkDialog?.dismiss()
-            //get data here
-            //reload
-            var documentURLdrive = "http://drive.google.com/viewerng/viewer?embedded=true&url=$documentURL"
-            val gdocUrl1: String = "http://docs.google.com/gview?embedded=true&url=$documentURL"
-            webView.loadUrl(documentURLdrive)
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        ConnectivityReceiver.connectivityReceiverListener = this
-//        //for now, make result code
-//        updateProfileData()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        ConnectivityReceiver.connectivityReceiverListener = null
-    }
-
 
     private fun setToolBar() {
         setSupportActionBar(toolbar)

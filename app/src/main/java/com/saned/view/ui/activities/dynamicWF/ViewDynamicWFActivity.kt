@@ -246,7 +246,8 @@ class ViewDynamicWFActivity : AppCompatActivity(), ConnectivityReceiver.Connecti
                 }
             }
         } else {
-            Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
+            Utils.checkNetworkDialog(this, this) { getDataFromServer() }
         }
     }
 
@@ -376,7 +377,7 @@ class ViewDynamicWFActivity : AppCompatActivity(), ConnectivityReceiver.Connecti
         }
 
         //get data
-//        getDataFromServer()
+        getDataFromServer()
     }
 
     private fun sendDataToServer(status: String) {
@@ -451,15 +452,15 @@ class ViewDynamicWFActivity : AppCompatActivity(), ConnectivityReceiver.Connecti
             }
 
         } else {
-//            Snackbar.make(nested_scroll_view, "No Internet Available", Snackbar.LENGTH_LONG).show()
-            Toast.makeText(applicationContext, "No Internet Available", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(applicationContext, "No Internet Available", Toast.LENGTH_SHORT).show()
+            Utils.checkNetworkDialog(this, this) { getDataFromServer() }
         }
     }
 
 
 
     override fun onNetworkConnectionChanged(isConnected: Boolean) {
-        showNetworkMessage(isConnected)
+        //showNetworkMessage(isConnected)
     }
 
     private fun showNetworkMessage(isConnected: Boolean) {

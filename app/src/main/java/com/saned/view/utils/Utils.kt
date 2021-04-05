@@ -1357,8 +1357,7 @@ class Utils {
 //            activity.overridePendingTransition(R.anim.enter_right_to_left, R.anim.exit_left_to_right)
         }
 
-        fun checkNetworkDialog(context: Context, activity: Activity) {
-            if (!isInternetAvailable(context)) {
+        fun checkNetworkDialog(context: Context, activity: Activity, foo: () -> Unit) {
                 var networkDialog = Dialog(context)
                 networkDialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
                 networkDialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -1367,13 +1366,13 @@ class Utils {
                 val okayButton = networkDialog!!.findViewById(R.id.okayButton) as MaterialButton
                 okayButton.setOnClickListener {
                     if (isInternetAvailable(context)) {
+                        foo()
                         networkDialog?.dismiss()
                     }
                 }
                 if (!activity.isFinishing) {
                     networkDialog?.show()
                 }
-            }
         }
 
     }

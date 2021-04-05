@@ -41,7 +41,8 @@
         android:theme="@style/Theme.Saned"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup,android:theme">
-        <activity android:name=".view.ui.activities.ChangePasswordActivity"></activity>
+        <activity android:name=".view.ui.activities.MyEmployeesActivity"></activity>
+        <activity android:name=".view.ui.activities.ChangePasswordActivity" />
         <activity android:name=".view.ui.activities.NotificationActivity" />
         <activity android:name=".view.ui.activities.UpdatePasswordActivity" />
         <activity android:name=".view.ui.activities.OTPActivity" />
@@ -52,20 +53,14 @@
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </service>
-
-        <!-- The below code is for android OS version below N -->
+        </service> <!-- The below code is for android OS version below N -->
         <receiver
             android:name=".view.service.ConnectivityReceiver"
             android:enabled="true">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
-        </receiver>
-
-
-
-        <!-- activities -->
+        </receiver> <!-- activities -->
         <activity
             android:name=".view.ui.activities.SplashScreenActivity"
             android:screenOrientation="portrait"
