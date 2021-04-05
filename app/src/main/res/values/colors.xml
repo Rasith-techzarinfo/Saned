@@ -43,5 +43,7 @@
     <color name="cyan">#00BCD4</color>
     <color name="order_green">#94ECE7</color>
 
+    <color name="notify_unread_color">#E1DEF1</color>
+    <color name="notify_read_color">#ffffff</color>
 
 </resources>

@@ -2,8 +2,10 @@ package com.saned.view.ui.activities
 
 import android.app.Dialog
 import android.content.Intent
+import android.content.IntentFilter
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,11 +15,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.snackbar.Snackbar
 import com.saned.R
 import com.saned.sanedApplication
 import com.saned.sanedApplication.Companion.coroutineScope
+import com.saned.sanedApplication.Companion.prefHelper
 import com.saned.view.error.SANEDError
+import com.saned.view.service.ConnectivityReceiver
 import com.saned.view.utils.Constants
 import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.openActivity
@@ -36,10 +41,10 @@ import java.io.File
 import java.lang.Exception
 import java.util.HashMap
 
-class EditProfileActivity : AppCompatActivity() {
+class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityReceiverListener {
 
 
-
+    private var networkDialog : Dialog? = null
 
      var res: String = ""
 
@@ -56,11 +61,20 @@ class EditProfileActivity : AppCompatActivity() {
 
 
     private fun init() {
+        //network receiver
+        registerReceiver(ConnectivityReceiver(), IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
 
         //get profile data
-        getMyProfileData()
+//        getMyProfileData()
+        passEditText.setText("" + prefHelper.getUserPassword())
 
         //btn listeners
+        passLayout.setOnClickListener {
+            openActivity(ChangePasswordActivity::class.java, this){}
+        }
+        passLayout.setEndIconOnClickListener {
+            openActivity(ChangePasswordActivity::class.java, this){}
+        }
         submitButton.setOnClickListener {
             // validate all fields
             if (firstNameEditText.text.toString() == "") {
@@ -230,6 +244,49 @@ class EditProfileActivity : AppCompatActivity() {
         }
     }
 
+
+
+
+    override fun onNetworkConnectionChanged(isConnected: Boolean) {
+        showNetworkMessage(isConnected)
+    }
+
+    private fun showNetworkMessage(isConnected: Boolean) {
+//        Log.e("connectionChange", "" + isConnected)
+
+        if(!isConnected) {
+            networkDialog = Dialog(this)
+            networkDialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            networkDialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            networkDialog?.setContentView(R.layout.no_internet_layout)
+            networkDialog?.setCancelable(false)
+            val okayButton = networkDialog!!.findViewById(R.id.okayButton) as MaterialButton
+            okayButton.setOnClickListener {
+                if (isConnected) {
+                    networkDialog?.dismiss()
+                }
+            }
+            if(!isFinishing) {
+                networkDialog?.show()
+            }
+        } else {
+            networkDialog?.dismiss()
+            //get data here
+            getMyProfileData()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        ConnectivityReceiver.connectivityReceiverListener = this
+//        //for now, make result code
+//        updateProfileData()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ConnectivityReceiver.connectivityReceiverListener = null
+    }
 
     private fun setToolBar() {
         setSupportActionBar(toolbar)

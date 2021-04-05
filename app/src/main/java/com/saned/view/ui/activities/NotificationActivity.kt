@@ -1,5 +1,6 @@
 package com.saned.view.ui.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,12 +9,23 @@ import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.saned.R
+import com.saned.model.NotifyData
+import com.saned.sanedApplication.Companion.prefHelper
+import com.saned.view.ui.activities.dynamicWF.ViewDynamicWFActivity
+import com.saned.view.ui.adapter.notification.NotificationAdapter
 import com.saned.view.utils.Utils
+import com.saned.view.utils.Utils.Companion.openActivity
+import com.saned.view.utils.Utils.Companion.openActivityWithResult
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_notification.*
 
-class NotificationActivity : AppCompatActivity() {
+class NotificationActivity : AppCompatActivity(), NotificationAdapter.ListAdapterListener {
+
+
+    var notificationArrayList: ArrayList<NotifyData> = ArrayList()
+    lateinit var notificationAdapter: NotificationAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notification)
@@ -25,11 +37,11 @@ class NotificationActivity : AppCompatActivity() {
     private fun init() {
 
         swipeRefreshLayout.setOnRefreshListener {
-//            getValues()
+            getValues()
             swipeRefreshLayout.isRefreshing = false
         }
         //get data
-//        getValues()
+        getValues()
 
     }
 
@@ -40,6 +52,16 @@ class NotificationActivity : AppCompatActivity() {
 
         if (Utils.isInternetAvailable(this)) {
             Utils.startShimmerRL(shimmerLayout, rootLayout)
+
+            //add dummy values
+            notificationArrayList.add(NotifyData("3", "0", "Leave Request", "Your request has been accepted by Andy Rubin", "Just now", "1", "12", "Ishaque", "https://content.fortune.com/wp-content/uploads/2018/10/gettyimages-524263730-e1540503436210.jpg"))
+            notificationArrayList.add(NotifyData("2", "1", "Leave Request", "Your request has been rejected by Andy Rubin", "1 min ago", "1", "11", "Ishaque", "https://content.fortune.com/wp-content/uploads/2018/10/gettyimages-524263730-e1540503436210.jpg"))
+            notificationArrayList.add(NotifyData("1", "0", "Housing Advance", "Your request has been accepted by Ishaque", "2 min ago", "1", "10", "Ishaque", "https://content.fortune.com/wp-content/uploads/2018/10/gettyimages-524263730-e1540503436210.jpg"))
+
+
+
+            Utils.stopShimmerRL(shimmerLayout, rootLayout)
+            setupRecyclerView()
 
 
         } else {
@@ -53,13 +75,34 @@ class NotificationActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         recyclerView.layoutManager = LinearLayoutManager(applicationContext)
         recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-//        notificationListAdapter =
-//            NotificationListAdapter(notificationArrayList, this, this@NotificationActivity)
-//        recyclerView.adapter = notificationListAdapter
+        notificationAdapter =
+            NotificationAdapter(notificationArrayList, this, this@NotificationActivity)
+        recyclerView.adapter = notificationAdapter
 
     }
 
 
+    override fun onListItemClicked(dummyData: NotifyData, position: Int) {
+        Log.e("NotifyID", "" + dummyData.id)
+
+//        if (dummyData.readStatus == "0") {
+//            changeNotificationStatus(dummyData, position)
+//        }
+
+        if(prefHelper.getUserType() == "1" && prefHelper.getUserType() == "2") {
+            if (dummyData.type == "1") {
+
+                //static formid, name for now
+                openActivity(ViewDynamicWFActivity::class.java, this){
+                    putString("formID", "" + "101")
+                    putString("formName", "" + "Housing Advance")
+                    putString("wkid", "" + dummyData.wkid)
+                }
+            }
+        }
+
+
+    }
 
 
 

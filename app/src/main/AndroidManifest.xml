@@ -4,6 +4,7 @@
     package="com.saned">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" /> -->
     <uses-permission android:name="android.permission.CAMERA" />
@@ -40,7 +41,8 @@
         android:theme="@style/Theme.Saned"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup,android:theme">
-        <activity android:name=".view.ui.activities.NotificationActivity"></activity>
+        <activity android:name=".view.ui.activities.ChangePasswordActivity"></activity>
+        <activity android:name=".view.ui.activities.NotificationActivity" />
         <activity android:name=".view.ui.activities.UpdatePasswordActivity" />
         <activity android:name=".view.ui.activities.OTPActivity" />
         <activity android:name=".view.ui.activities.ForgotPasswordActivity" /> <!-- services -->
@@ -50,7 +52,20 @@
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </service> <!-- activities -->
+        </service>
+
+        <!-- The below code is for android OS version below N -->
+        <receiver
+            android:name=".view.service.ConnectivityReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+
+
+        <!-- activities -->
         <activity
             android:name=".view.ui.activities.SplashScreenActivity"
             android:screenOrientation="portrait"

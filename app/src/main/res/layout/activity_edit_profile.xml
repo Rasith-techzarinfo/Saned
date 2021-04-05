@@ -254,6 +254,58 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+
+
+
+            <!-- change password -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Change Password"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="true"
+                android:clickable="true"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/ic_baseline_chevron_right_24"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/passEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Change Password"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPassword"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/submitButton"
                 android:layout_width="match_parent"

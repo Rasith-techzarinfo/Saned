@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    app:cardCornerRadius="15dp"
+    app:cardBackgroundColor="@color/colorPrimaryLite3">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/no_internet"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            app:tint="@color/white_smoke"
+            android:src="@drawable/ic_wifi_off" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/no_internet"
+            android:layout_marginTop="0dp">
+
+            <TextView
+                android:id="@+id/internet_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Whoops!"
+                android:textStyle="bold"
+                android:textColor="@color/white_smoke"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_below="@+id/internet_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="There seems to be a problem with \n your network connection"
+                android:textStyle="bold"
+                android:textColor="@color/white_smoke"
+                android:textSize="16sp" />
+
+
+            <com.google.android.material.button.MaterialButton
+               android:layout_below="@+id/description"
+                android:id="@+id/okayButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
+                android:text="OK"
+                android:textColor="@color/white"
+                android:textAppearance="@style/TextAppearance.App.TextButton"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

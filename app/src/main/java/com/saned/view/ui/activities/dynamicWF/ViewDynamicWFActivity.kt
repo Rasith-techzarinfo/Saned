@@ -2,9 +2,11 @@ package com.saned.view.ui.activities.dynamicWF
 
 import android.app.Dialog
 import android.content.Intent
+import android.content.IntentFilter
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +16,7 @@ import android.widget.*
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.Glide
+import com.google.android.material.button.MaterialButton
 import com.saned.R
 import com.saned.model.*
 import com.saned.sanedApplication
@@ -21,6 +24,7 @@ import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.sanedApplication.Companion.prefHelper
 import com.saned.view.error.SANEDError
+import com.saned.view.service.ConnectivityReceiver
 import com.saned.view.ui.activities.DocumentViewerActivity
 import com.saned.view.ui.activities.SliderDemo
 import com.saned.view.utils.Constants
@@ -41,9 +45,9 @@ import org.jetbrains.anko.textColor
 import java.io.File
 import java.lang.Exception
 
-class ViewDynamicWFActivity : AppCompatActivity() {
+class ViewDynamicWFActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityReceiverListener {
 
-
+    private var networkDialog : Dialog? = null
     var formID: String = ""
     var formName: String = ""
     var wkid: String = ""
@@ -334,6 +338,8 @@ class ViewDynamicWFActivity : AppCompatActivity() {
 
 
     private fun init() {
+        //network receiver
+        registerReceiver(ConnectivityReceiver(), IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
         //get intent data
         formID = "" + intent.getStringExtra("formID")
         formName = "" + intent.getStringExtra("formName")
@@ -370,7 +376,7 @@ class ViewDynamicWFActivity : AppCompatActivity() {
         }
 
         //get data
-        getDataFromServer()
+//        getDataFromServer()
     }
 
     private fun sendDataToServer(status: String) {
@@ -448,6 +454,49 @@ class ViewDynamicWFActivity : AppCompatActivity() {
 //            Snackbar.make(nested_scroll_view, "No Internet Available", Snackbar.LENGTH_LONG).show()
             Toast.makeText(applicationContext, "No Internet Available", Toast.LENGTH_SHORT).show()
         }
+    }
+
+
+
+    override fun onNetworkConnectionChanged(isConnected: Boolean) {
+        showNetworkMessage(isConnected)
+    }
+
+    private fun showNetworkMessage(isConnected: Boolean) {
+//        Log.e("connectionChange", "" + isConnected)
+
+        if(!isConnected) {
+            networkDialog = Dialog(this)
+            networkDialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            networkDialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            networkDialog?.setContentView(R.layout.no_internet_layout)
+            networkDialog?.setCancelable(false)
+            val okayButton = networkDialog!!.findViewById(R.id.okayButton) as MaterialButton
+            okayButton.setOnClickListener {
+                if (isConnected) {
+                    networkDialog?.dismiss()
+                }
+            }
+            if(!isFinishing) {
+                networkDialog?.show()
+            }
+        } else {
+            networkDialog?.dismiss()
+            //get data here
+            getDataFromServer()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        ConnectivityReceiver.connectivityReceiverListener = this
+//        //for now, make result code
+//        updateProfileData()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ConnectivityReceiver.connectivityReceiverListener = null
     }
 
     private fun setToolBar() {

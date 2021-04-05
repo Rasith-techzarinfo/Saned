@@ -54,6 +54,21 @@ data class ServicesMenu(
     var id: String
 )
 
+
+data class NotifyData(
+        val id: String,
+        val readStatus: String,
+        val title: String,
+        val message: String,
+        var timeAgo: String,
+        var type: String,
+        var wkid: String,
+//        var wkname: String,
+        var name: String,
+        var profile: String
+)
+
+
 data class HAData(
         val noofmonths: String,
         val reason: String,

@@ -1,23 +1,31 @@
 package com.saned.view.ui.activities
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
+import android.content.IntentFilter
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.Window
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat.finishAfterTransition
 import com.bumptech.glide.Glide
+import com.google.android.material.button.MaterialButton
 import com.saned.R
 import com.saned.sanedApplication
 import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.sanedApplication.Companion.prefHelper
 import com.saned.view.error.SANEDError
+import com.saned.view.service.ConnectivityReceiver
 import com.saned.view.ui.activities.dynamicWF.HistoryDynamicWFActivity
 import com.saned.view.utils.Constants.Companion.BASE_URL
 import com.saned.view.utils.Utils
@@ -28,8 +36,10 @@ import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class ProfileActivity : AppCompatActivity() {
+class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityReceiverListener {
 
+
+    private var networkDialog : Dialog? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,13 +56,15 @@ class ProfileActivity : AppCompatActivity() {
 
 
     private fun init() {
+        //network receiver
+        registerReceiver(ConnectivityReceiver(), IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
 
         //edit profile
         profile_edit_icon.setOnClickListener {
             openActivityWithResult(EditProfileActivity::class.java, this, 101){}
         }
         //get values
-        getMyProfileData()
+//        getMyProfileData()
 
     }
 
@@ -147,6 +159,50 @@ class ProfileActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+
+
+
+    override fun onNetworkConnectionChanged(isConnected: Boolean) {
+        showNetworkMessage(isConnected)
+    }
+
+    private fun showNetworkMessage(isConnected: Boolean) {
+//        Log.e("connectionChange", "" + isConnected)
+
+        if(!isConnected) {
+            networkDialog = Dialog(this)
+            networkDialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            networkDialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            networkDialog?.setContentView(R.layout.no_internet_layout)
+            networkDialog?.setCancelable(false)
+            val okayButton = networkDialog!!.findViewById(R.id.okayButton) as MaterialButton
+            okayButton.setOnClickListener {
+                if (isConnected) {
+                    networkDialog?.dismiss()
+                }
+            }
+            if(!isFinishing) {
+                networkDialog?.show()
+            }
+        } else {
+            networkDialog?.dismiss()
+            //get data here
+            getMyProfileData()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        ConnectivityReceiver.connectivityReceiverListener = this
+//        //for now, make result code
+//        updateProfileData()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ConnectivityReceiver.connectivityReceiverListener = null
     }
 
     private fun setToolBar() {

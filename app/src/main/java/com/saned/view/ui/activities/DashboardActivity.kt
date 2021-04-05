@@ -5,9 +5,11 @@ import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -42,6 +44,7 @@ import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.sanedApplication.Companion.prefHelper
 import com.saned.view.error.SANEDError
+import com.saned.view.service.ConnectivityReceiver
 import com.saned.view.ui.interfaces.ResourceStore
 import com.saned.view.utils.Constants.Companion.BASE_URL
 import com.saned.view.utils.Utils
@@ -55,9 +58,9 @@ import kotlinx.android.synthetic.main.navigation_layout.*
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.backgroundColor
 
-class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ConnectivityReceiver.ConnectivityReceiverListener {
 
-
+    private var networkDialog : Dialog? = null
     private val permission_storage = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
     private val PERMISSION_REQUEST_CODE = 103
     private val permission_camera = arrayOf(Manifest.permission.CAMERA)
@@ -77,11 +80,6 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         init()
     }
 
-    override fun onResume() {
-        super.onResume()
-        //for now, make result code
-        updateProfileData()
-    }
 
 
 
@@ -94,6 +92,8 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
     private fun init() {
+        //network receiver
+        registerReceiver(ConnectivityReceiver(), IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
 
         //appbar listeners
         home_layout.setOnClickListener {
@@ -169,14 +169,14 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             mDialog.show()
         }
 
+        //dashboard
+        validatePermission()
+
         //api calls
         Log.e("bearer", "" + prefHelper.getBearerToken())
         Log.e("fcm", "" + prefHelper.getFCMToken())
-        submitFCMToServer()
-
-        //dashboard
-        validatePermission()
-        updateProfileData()
+//        submitFCMToServer()
+//        updateProfileData()
         setupDashboard()
     }
 
@@ -376,6 +376,50 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         return true
+    }
+
+
+
+    override fun onNetworkConnectionChanged(isConnected: Boolean) {
+        showNetworkMessage(isConnected)
+    }
+
+    private fun showNetworkMessage(isConnected: Boolean) {
+//        Log.e("connectionChange", "" + isConnected)
+
+        if(!isConnected) {
+            networkDialog = Dialog(this)
+            networkDialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            networkDialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            networkDialog?.setContentView(R.layout.no_internet_layout)
+            networkDialog?.setCancelable(false)
+            val okayButton = networkDialog!!.findViewById(R.id.okayButton) as MaterialButton
+            okayButton.setOnClickListener {
+                if (isConnected) {
+                    networkDialog?.dismiss()
+                }
+            }
+            if(!isFinishing) {
+                networkDialog?.show()
+            }
+        } else {
+            networkDialog?.dismiss()
+            //get data here
+            submitFCMToServer()
+            updateProfileData()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        ConnectivityReceiver.connectivityReceiverListener = this
+//        //for now, make result code
+//        updateProfileData()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ConnectivityReceiver.connectivityReceiverListener = null
     }
 
     private fun setToolBar() {
