@@ -43,7 +43,7 @@ class MyEmployeesActivity : AppCompatActivity(), MyEmployeesAdapter.ListAdapterL
 
 
     private fun getValues() {
-//        myEmployeesArrayList.clear()
+        myEmployeesArrayList.clear()
 
         if (Utils.isInternetAvailable(this)) {
             Utils.startShimmerRL(shimmerLayout, rootLayout)

@@ -48,7 +48,7 @@ class NotificationActivity : AppCompatActivity(), NotificationAdapter.ListAdapte
 
 
     private fun getValues() {
-//        notificationArrayList.clear()
+        notificationArrayList.clear()
 
         if (Utils.isInternetAvailable(this)) {
             Utils.startShimmerRL(shimmerLayout, rootLayout)

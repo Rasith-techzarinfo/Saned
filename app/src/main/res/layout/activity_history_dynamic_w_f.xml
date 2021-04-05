@@ -7,10 +7,6 @@
     android:background="@color/home_bg"
     tools:context=".view.ui.activities.dynamicWF.HistoryDynamicWFActivity">
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -69,9 +65,17 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefreshLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
-        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -95,7 +99,6 @@
 
 
     <LinearLayout
-        android:layout_below="@+id/toolbar"
         android:id="@+id/emptyView"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -128,6 +131,10 @@
 
     </com.facebook.shimmer.ShimmerFrameLayout>
 
+                </RelativeLayout>
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_WF_fab"
         android:layout_width="wrap_content"
@@ -146,6 +153,5 @@
 
         </RelativeLayout>
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </RelativeLayout>
