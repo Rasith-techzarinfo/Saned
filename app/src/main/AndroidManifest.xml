@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" /> -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<!--    <uses-permission android:name="android.permission. ACCESS_COARSE_LOCATION" />-->
 
     <uses-feature
         android:name="android.hardware.camera.any"
@@ -41,26 +43,26 @@
         android:theme="@style/Theme.Saned"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup,android:theme">
-        <activity android:name=".view.ui.activities.MyEmployeesActivity"></activity>
-        <activity android:name=".view.ui.activities.ChangePasswordActivity" />
-        <activity android:name=".view.ui.activities.NotificationActivity" />
-        <activity android:name=".view.ui.activities.UpdatePasswordActivity" />
-        <activity android:name=".view.ui.activities.OTPActivity" />
-        <activity android:name=".view.ui.activities.ForgotPasswordActivity" /> <!-- services -->
+
+        <!-- services -->
         <service
             android:name=".view.service.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </service> <!-- The below code is for android OS version below N -->
+        </service>
+
+        <!-- The below code is for android OS version below N -->
         <receiver
             android:name=".view.service.ConnectivityReceiver"
             android:enabled="true">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
-        </receiver> <!-- activities -->
+        </receiver>
+
+        <!-- activities -->
         <activity
             android:name=".view.ui.activities.SplashScreenActivity"
             android:screenOrientation="portrait"
@@ -109,6 +111,30 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".view.ui.activities.SliderDemo"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".view.ui.activities.attendence.AttendanceHistoryActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".view.ui.activities.attendence.AttendancePunchActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".view.ui.activities.MyEmployeesActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".view.ui.activities.ChangePasswordActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".view.ui.activities.NotificationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".view.ui.activities.UpdatePasswordActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".view.ui.activities.OTPActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".view.ui.activities.ForgotPasswordActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
     </application>

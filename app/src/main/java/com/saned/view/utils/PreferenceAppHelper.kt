@@ -21,6 +21,7 @@ class PreferenceAppHelper(context: Context) {
     val SOTRAGE_PERMISSION = "storage_permission"
     val CAMERA_PERMISSION = "camera_permission"
     val AUDIO_PERMISSION = "record_audio_permission"
+    val LOCATION_PERMISSION = "location_permission"
     val FCM_TOKEN = "fcm_token"
     val CURRENT_THEME = "current_theme"
     val CURRENT_PRIMARY_COLOR = "current_primary_color"
@@ -104,7 +105,14 @@ class PreferenceAppHelper(context: Context) {
     fun getAudioPermission(): String? {
         return mSharedPreferences!!.getString(AUDIO_PERMISSION, "0")
     }
+    fun setLocationPermission(status: String) {
+        setStringInPrefs(LOCATION_PERMISSION, status)
+    }
 
+    fun getLocationPermission(): String? {
+        return mSharedPreferences!!.getString(LOCATION_PERMISSION, "0")
+    }
+    
     fun setUserId(status: String) {
         setStringInPrefs(USER_ID, status)
     }

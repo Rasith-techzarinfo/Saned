@@ -46,6 +46,9 @@ class LoginActivity : AppCompatActivity() {
     private val permission_audio =
             arrayOf(Manifest.permission.RECORD_AUDIO)
     private val AUDIO_PERMISSION_REQUEST_CODE = 105
+    private val permission_location =
+        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
+    private val LOCATION_PERMISSION_REQUEST_CODE = 106
 
 //    Manager Leval 1:
 //    rightcursor33@gmail.com - 12345678
@@ -249,7 +252,17 @@ class LoginActivity : AppCompatActivity() {
         if(checkStoragePermission()){
             if(checkCameraPermission()){
                 if (checkAudioPermission()) {
-                    performLoginService()
+                    if (checkLocationPermission()) {
+                        performLoginService()
+
+                    } else {
+                        if (prefHelper.getLocationPermission() == "0") {
+                            requestLocationPermission()
+                        } else {
+                            showLocationPermissionDialog()
+                        }
+                    }
+
 
                 } else {
                     if (prefHelper.getAudioPermission() == "0") {
@@ -417,6 +430,29 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty()) {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    validatePermission()
+                } else if (Build.VERSION.SDK_INT >= 23 && !shouldShowRequestPermissionRationale(
+                        permissions[0]
+                    )
+                ) {
+
+                    Log.e("Never", "Go to Settings and Grant the permission to use this feature.")
+
+                    prefHelper.setLocationPermission("1")
+
+                    // User selected the Never Ask Again Option
+                } else {
+
+                    prefHelper.setLocationPermission("1")
+                    Log.e("Denied", "Permission Denied")
+                }
+            }
+        }
+
     }
 
 
@@ -458,6 +494,46 @@ class LoginActivity : AppCompatActivity() {
         dialog.setCanceledOnTouchOutside(false)
         dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)
                 .setTextColor(resources.getColor(R.color.colorPrimary))
+
+    }
+
+    private fun checkLocationPermission(): Boolean {
+        val result = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+        return result == PackageManager.PERMISSION_GRANTED
+    }
+
+
+    private fun requestLocationPermission() {
+        ActivityCompat.requestPermissions(
+            this@LoginActivity,
+            permission_location,
+            LOCATION_PERMISSION_REQUEST_CODE
+        )
+    }
+
+
+    fun showLocationPermissionDialog() {
+
+        val builder = androidx.appcompat.app.AlertDialog.Builder(this)
+        builder.setTitle("Alert")
+        builder.setMessage("We need to access your Location to use this Application. Kindly allow permission now")
+        builder.setPositiveButton("Click here", DialogInterface.OnClickListener { dialog, which ->
+            val intent = Intent()
+            intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+            val uri = Uri.fromParts("package", packageName, null)
+            intent.data = uri
+            startActivity(intent)
+            dialog.dismiss()
+        })
+        //builder.show();
+        val dialog = builder.create()
+        dialog.show() //Only after .show() was called
+        dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)
+            .setTextColor(resources.getColor(R.color.colorPrimary))
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)
+            .setTextColor(resources.getColor(R.color.colorPrimary))
 
     }
 

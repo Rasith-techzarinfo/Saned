@@ -2,7 +2,6 @@ package com.saned.view.ui.activities
 
 import android.Manifest
 import android.app.Dialog
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.IntentFilter
@@ -18,22 +17,16 @@ import android.os.Environment
 import android.provider.Settings
 import android.util.Log
 import android.view.MenuItem
-import android.view.View
 import android.view.Window
 import android.widget.ImageView
-import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.navigation.NavigationView
@@ -45,6 +38,7 @@ import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.sanedApplication.Companion.prefHelper
 import com.saned.view.error.SANEDError
 import com.saned.view.service.ConnectivityReceiver
+import com.saned.view.ui.activities.attendence.AttendancePunchActivity
 import com.saned.view.ui.interfaces.ResourceStore
 import com.saned.view.utils.Constants.Companion.BASE_URL
 import com.saned.view.utils.Utils
@@ -56,7 +50,6 @@ import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.navigation_layout.*
 import kotlinx.coroutines.launch
-import org.jetbrains.anko.backgroundColor
 
 class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ConnectivityReceiver.ConnectivityReceiverListener {
 
@@ -68,6 +61,9 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     private val permission_audio =
             arrayOf(Manifest.permission.RECORD_AUDIO)
     private val AUDIO_PERMISSION_REQUEST_CODE = 105
+    private val permission_location =
+        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
+    private val LOCATION_PERMISSION_REQUEST_CODE = 106
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -109,6 +105,10 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         //navigation items drawer
         closeDrawerIcon.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
+        }
+        my_attendence_menu.setOnClickListener {
+            drawer_layout.closeDrawer(GravityCompat.START)
+            openActivity(AttendancePunchActivity::class.java, this@DashboardActivity){}
         }
         nav_profile_image.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -476,7 +476,16 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         if(checkStoragePermission()){
             if(checkCameraPermission()){
                 if (checkAudioPermission()) {
-                    //okay
+                    if (checkLocationPermission()) {
+                        //okay
+
+                    } else {
+                        if (prefHelper.getLocationPermission() == "0") {
+                            requestLocationPermission()
+                        } else {
+                            showLocationPermissionDialog()
+                        }
+                    }
 
                 } else {
                     if (prefHelper.getAudioPermission() == "0") {
@@ -644,6 +653,31 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             }
         }
 
+
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty()) {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    validatePermission()
+                } else if (Build.VERSION.SDK_INT >= 23 && !shouldShowRequestPermissionRationale(
+                        permissions[0]
+                    )
+                ) {
+
+                    Log.e("Never", "Go to Settings and Grant the permission to use this feature.")
+
+                    prefHelper.setLocationPermission("1")
+
+                    // User selected the Never Ask Again Option
+                } else {
+
+                    prefHelper.setLocationPermission("1")
+                    Log.e("Denied", "Permission Denied")
+                }
+            }
+        }
+
+
     }
 
 
@@ -735,6 +769,47 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 .setTextColor(resources.getColor(R.color.colorPrimary))
         dialog.setCancelable(false)
         dialog.setCanceledOnTouchOutside(false)
+
+    }
+
+
+    private fun checkLocationPermission(): Boolean {
+        val result = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+        return result == PackageManager.PERMISSION_GRANTED
+    }
+
+
+    private fun requestLocationPermission() {
+        ActivityCompat.requestPermissions(
+            this,
+            permission_location,
+            LOCATION_PERMISSION_REQUEST_CODE
+        )
+    }
+
+
+    fun showLocationPermissionDialog() {
+
+        val builder = androidx.appcompat.app.AlertDialog.Builder(this)
+        builder.setTitle("Alert")
+        builder.setMessage("We need to access your Location to use this Application. Kindly allow permission now")
+        builder.setPositiveButton("Click here", DialogInterface.OnClickListener { dialog, which ->
+            val intent = Intent()
+            intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+            val uri = Uri.fromParts("package", packageName, null)
+            intent.data = uri
+            startActivity(intent)
+            dialog.dismiss()
+        })
+        //builder.show();
+        val dialog = builder.create()
+        dialog.show() //Only after .show() was called
+        dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)
+            .setTextColor(resources.getColor(R.color.colorPrimary))
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)
+            .setTextColor(resources.getColor(R.color.colorPrimary))
 
     }
 

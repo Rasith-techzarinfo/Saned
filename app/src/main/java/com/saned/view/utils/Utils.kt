@@ -1375,6 +1375,31 @@ class Utils {
                 }
         }
 
+        fun get24FormattedTime(): String {
+            var formattedString = ""
+            try {
+                val calendar = Calendar.getInstance()
+                val dateFormatter = SimpleDateFormat("HH:mm", Locale.getDefault())
+                formattedString = "" + dateFormatter.format(calendar.time)
+             } catch (e: java.lang.Exception){
+                e.stackTrace
+            }
+            return formattedString
+        }
+
+        fun getFormattedDate(): String {
+            var formattedString = ""
+            try {
+                val calendar = Calendar.getInstance()
+                val dateFormatter = SimpleDateFormat("EEEE, MMM d"  , Locale.getDefault())
+                formattedString = "" + dateFormatter.format(calendar.time)
+            } catch (e: java.lang.Exception){
+                e.stackTrace
+            }
+            return formattedString
+        }
+
+
     }
 }
 

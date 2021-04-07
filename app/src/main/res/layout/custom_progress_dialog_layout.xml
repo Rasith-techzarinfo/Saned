@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:indeterminate="true"
+        style="@style/Widget.App.CircularProgressIndicator"
         android:contentDescription="Please wait while we loading"
         />
 
