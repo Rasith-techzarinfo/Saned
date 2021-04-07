@@ -39,17 +39,17 @@
                     android:id="@+id/toolbar_title" />
 
                 <RelativeLayout
-                    android:id="@+id/search_layout"
+                    android:id="@+id/iconLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:paddingStart="8dp"
-                    android:paddingEnd="16dp">
+                    android:paddingEnd="8dp">
 
                     <ImageView
-                        android:id="@+id/search_imageview"
+                        android:id="@+id/iconImageview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingEnd="8dp"
@@ -57,7 +57,7 @@
                         android:paddingBottom="8dp"
                         android:scaleType="centerCrop"
                         app:tint="@color/colorPrimaryDark"
-                        android:src="@drawable/ic_baseline_search_24"
+                        android:src="@drawable/ic_calender_date"
                         tools:targetApi="m" />
 
                 </RelativeLayout>
@@ -139,6 +139,36 @@
                     android:text="TIME IN"
                     style="@style/Widget.App.Button"
                     android:textStyle="bold"/>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@drawable/rounded_circle_gradient"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_click_hand"
+                        app:tint="@color/white"
+                        />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:layout_marginTop="4dp"
+                        android:text="Time In"
+                        />
+
+
+                </LinearLayout>
 
 
 

@@ -32,6 +32,7 @@ import com.saned.R
 import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.get24FormattedTime
 import com.saned.view.utils.Utils.Companion.getFormattedDate
+import com.saned.view.utils.Utils.Companion.openActivity
 import kotlinx.android.synthetic.main.activity_attendance_punch.*
 import kotlinx.android.synthetic.main.activity_attendance_punch.swipeRefreshLayout
 import kotlinx.android.synthetic.main.activity_attendance_punch.toolbar
@@ -89,6 +90,9 @@ class AttendancePunchActivity : AppCompatActivity() {
         swipeRefreshLayout.setOnRefreshListener {
             getLastLocation()
             swipeRefreshLayout.isRefreshing = false
+        }
+        iconLayout.setOnClickListener {
+            openActivity(AttendanceHistoryActivity::class.java, this){}
         }
     }
 
