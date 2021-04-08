@@ -321,7 +321,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/grey"
                             android:textSize="14sp"
-                            android:text="Wokring Hrs"
+                            android:text="Working Hrs"
                             />
 
                     </LinearLayout>
