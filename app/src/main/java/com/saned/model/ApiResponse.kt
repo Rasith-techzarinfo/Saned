@@ -48,7 +48,7 @@ data class ResData(
 )
 
 
-//FIXME just for demo
+//FIXME dummy class  \\
 data class ServicesMenu(
     val title: String,
     var id: String
@@ -76,6 +76,16 @@ data class EmployeeData(
     var number: String,
     var profile: String
 )
+
+data class AttendenceData(
+        val id: String,
+        val date: String,
+        val timein: String,
+        val timeout: String,
+        var wokringHrs: String
+)
+
+//FIXME end dummmy class  \\
 
 data class HAData(
         val noofmonths: String,

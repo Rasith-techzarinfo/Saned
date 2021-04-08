@@ -7,10 +7,7 @@
 
     <gradient
         android:angle="45"
-        android:centerX="float"
-        android:centerY="float"
         android:endColor="#01f1fa"
-        android:gradientRadius="integer"
         android:startColor="#0189ff"
         android:type="linear" />
 

@@ -64,7 +64,7 @@
 
         <!-- activities -->
         <activity
-            android:name=".view.ui.activities.SplashScreenActivity"
+            android:name=".view.ui.activities.attendence.AttendancePunchActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -116,7 +116,7 @@
         <activity android:name=".view.ui.activities.attendence.AttendanceHistoryActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".view.ui.activities.attendence.AttendancePunchActivity"
+        <activity android:name=".view.ui.activities.SplashScreenActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".view.ui.activities.MyEmployeesActivity"
