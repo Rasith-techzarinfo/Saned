@@ -161,9 +161,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 //            PendingIntent.FLAG_CANCEL_CURRENT
 //        )
 
-        val intent1 = Intent(applicationContext, ViewDynamicWFActivity::class.java)
         val pendingIntent = PendingIntent.getBroadcast(
-                this, 0, intent1,
+                this, 0, intent,
                 PendingIntent.FLAG_ONE_SHOT
         )
 
