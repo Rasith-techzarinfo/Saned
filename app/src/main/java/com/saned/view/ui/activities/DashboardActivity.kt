@@ -46,8 +46,6 @@ import com.saned.view.utils.Utils.Companion.openActivity
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.activity_dashboard.home_layout
 import kotlinx.android.synthetic.main.activity_dashboard.toolbar
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.navigation_layout.*
 import kotlinx.coroutines.launch
 
@@ -134,9 +132,11 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         }
         my_pending_requests_menu.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
+            openActivity(PendingRequestsActivity::class.java, this@DashboardActivity){}
         }
         my_pending_requests_menu.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
+            openActivity(PendingRequestsActivity::class.java, this@DashboardActivity){}
         }
         settings_menu.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
