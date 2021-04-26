@@ -13,27 +13,44 @@ data class UserLoginData (
 )
 
 data class UserData (
+//
+//    val id : String,
+//    val uuid : String,
+//    val first_name : String,
+//    val last_name : String,
+//    val email : String,
+//    val user_name : String,
+//    val password : String,
+//    val phone : String,
+//    val company_id : String,
+//    val role_id : String,
+//    val previous_login : String,
+//    val parent : String,
+//    val is_active : String,
+//    val created_by : String,
+//    val updated_by : String,
+//    val createdAt : String,
+//    val updatedAt : String,
+//    val deletedAt : String,
+//    val roleId : String,
+//    val companyId : String
 
-    val id : String,
     val uuid : String,
-    val first_name : String,
-    val last_name : String,
-    val email : String,
-    val user_name : String,
-    val password : String,
-    val phone : String,
-    val company_id : String,
-    val role_id : String,
-    val previous_login : String,
-    val parent : String,
+    val t_idno : String,
+    val t_emno : String,
+    val t_nama : String,
+    val t_comp : String,
+    val t_pass : String,
+    val t_mail : String,
+    val t_role : String,
+    val t_page : String,
     val is_active : String,
+    val fcm_token : String,
     val created_by : String,
     val updated_by : String,
     val createdAt : String,
     val updatedAt : String,
-    val deletedAt : String,
-    val roleId : String,
-    val companyId : String
+    val deletedAt : String
 )
 
 data class LoginError(
@@ -45,6 +62,12 @@ data class ResData(
 
         val success: String,
         val message: String
+)
+
+data class ForgetPasswordData(
+        val success : String,
+        val message : String,
+        val data : UserData
 )
 
 

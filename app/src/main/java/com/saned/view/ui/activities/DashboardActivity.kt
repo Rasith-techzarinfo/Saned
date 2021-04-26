@@ -74,17 +74,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         init()
     }
 
-
-
-
-
-
-
-
-
-
-
-
+    
     private fun init() {
         //network receiver
         registerReceiver(ConnectivityReceiver(), IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
@@ -222,12 +212,12 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
                         //save to pref
-                        prefHelper.setUserName("" + "${result.user!!.first_name} ${result.user!!.last_name}")
-                        prefHelper.setUserEmail("" + result.user!!.email)
-                        prefHelper.setLastLogin("" + result.user!!.previous_login)
-                        prefHelper.setUserType("" + result.user!!.role_id)  //update n check role id freq
+                        prefHelper.setUserName("" + "${result.user!!.t_nama} ") //${result.user!!.last_name}
+                        prefHelper.setUserEmail("" + result.user!!.t_mail)
+                       // prefHelper.setLastLogin("" + result.user!!.previous_login)
+                        prefHelper.setUserType("" + result.user!!.t_role)  //update n check role id freq
                         //for now, approval matrix
-                        prefHelper.setManagerLevel( if(result.user.email == "rightcursor33@gmail.com") "1" else if(result.user.email == "immu@gmail.com") "2" else "") //"" not a manager
+                        prefHelper.setManagerLevel( if(result.user.t_mail == "rightcursor33@gmail.com") "1" else if(result.user.t_mail == "immu@gmail.com") "2" else "") //"" not a manager
 
                         setupNavigationDrawer()
                         setupDashboard()

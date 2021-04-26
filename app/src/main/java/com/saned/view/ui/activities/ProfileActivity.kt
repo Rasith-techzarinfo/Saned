@@ -82,17 +82,17 @@ class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityRe
                     if (result.success == "1") {
 
 
-                        userName.text = "" + "${result.user!!.first_name} ${result.user!!.last_name}"
-                        userEmail.text = "" + "${result.user!!.email}"
-                        userPhone.text = "" + "${result.user!!.phone}"
-                        profileName.text = "" + "${result.user!!.first_name} ${result.user!!.last_name}"
-                        profileDetails.text =  "Last Login: " + Utils.convertDbtoNormalDateTime1("" + result.user!!.previous_login)
+                        userName.text = "" + "${result.user!!.t_nama} "  //${result.user!!.last_name}
+                        userEmail.text = "" + "${result.user!!.t_mail}"
+                       // userPhone.text = "" + "${result.user!!.phone}"
+                        profileName.text = "" + "${result.user!!.t_nama} "  //${result.user!!.last_name}
+                       // profileDetails.text =  "Last Login: " + Utils.convertDbtoNormalDateTime1("" + result.user!!.previous_login)
 //                        profileDetails.text = "" + "${result.user!!.email}"
 
                         //save to pref
-                        prefHelper.setUserName("" + "${result.user!!.first_name} ${result.user!!.last_name}")
-                        prefHelper.setUserEmail("" + result.user!!.email)
-                        prefHelper.setLastLogin("" + result.user!!.previous_login)
+                        prefHelper.setUserName("" + "${result.user!!.t_nama} ") //${result.user!!.last_name}
+                        prefHelper.setUserEmail("" + result.user!!.t_mail)
+                       // prefHelper.setLastLogin("" + result.user!!.previous_login)
 
                         //listeners
                         userEmail.setOnClickListener {
@@ -129,7 +129,7 @@ class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityRe
                         if (e.getResponseCode() == 401) {
                             Utils.logoutFromApp(applicationContext)
                         } else if (e.getResponseCode() == 500) {
-                            Toast.makeText(applicationContext, "Server error", Toast.LENGTH_LONG)
+                            Toast.makeText(applicationContext, "Server error at profile", Toast.LENGTH_LONG)
                                     .show()
                         }
                     } else {

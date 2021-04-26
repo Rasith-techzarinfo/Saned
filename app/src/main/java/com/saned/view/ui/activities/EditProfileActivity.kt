@@ -83,17 +83,17 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
                 return@setOnClickListener
             }
 
-            if (lastNameEditText.text.toString() == "") {
-
-                Snackbar.make(rootLayout, "Enter the Lastname", Snackbar.LENGTH_LONG).show()
-                return@setOnClickListener
-            }
+//            if (lastNameEditText.text.toString() == "") {
+//
+//                Snackbar.make(rootLayout, "Enter the Lastname", Snackbar.LENGTH_LONG).show()
+//                return@setOnClickListener
+//            }
             
-            if (phoneEditText.text.toString() == "") {
-
-                Snackbar.make(rootLayout, "Enter the Phone", Snackbar.LENGTH_LONG).show()
-                return@setOnClickListener
-            }
+//            if (phoneEditText.text.toString() == "") {
+//
+//                Snackbar.make(rootLayout, "Enter the Phone", Snackbar.LENGTH_LONG).show()
+//                return@setOnClickListener
+//            }
             
             sendDataToServer()
         }
@@ -198,9 +198,9 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
                     if (result.success == "1") {
 
 
-                        firstNameEditText.setText("" + result.user!!.first_name)
-                        lastNameEditText.setText("" + result.user!!.last_name)
-                        phoneEditText.setText("" + result.user!!.phone)
+                        firstNameEditText.setText("" + result.user!!.t_nama)
+                       // lastNameEditText.setText("" + result.user!!.last_name)
+                       // phoneEditText.setText("" + result.user!!.phone)
 
                         // no profile for now
 //                        if (result.user!!.profile_pic != null) {

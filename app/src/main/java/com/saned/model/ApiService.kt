@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.saned.view.error.ErrorInterceptor
 import com.saned.view.utils.Constants
+import io.reactivex.Observable
 import kotlinx.coroutines.Deferred
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
@@ -41,6 +42,12 @@ interface ApiService {
             @FieldMap values: java.util.HashMap<String, String>
 
     ): Deferred<UserLoginData>
+
+    @POST("v1/api/user/reset-password")
+    @FormUrlEncoded
+    fun resetPassword(
+            @FieldMap values: java.util.HashMap<String, String>
+    ): Deferred<ForgetPasswordData>
 
     //user
     @GET("v1/api/workflow/housing-advance/list")

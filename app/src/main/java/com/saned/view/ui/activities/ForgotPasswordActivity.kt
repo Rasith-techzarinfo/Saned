@@ -67,38 +67,38 @@ class ForgotPasswordActivity : AppCompatActivity() {
             hashMap["email"] = "" + email_edit_text.text.toString()
 
             //for now
-            forgotSuccess()
+           // forgotSuccess()
 //
-//            coroutineScope.launch {
-//                try {
-//
-//                    val result = apiService.resetPassword(hashMap).await()
-//
-//                    Log.e("result", "" + result)
-//
-//                    if (result.success == "1") {
-//
-////                        Toast.makeText(this@ForgetPasswordActivity, "" + result.message, Toast.LENGTH_SHORT).show()
-//                        forgotSuccess()
-//                    } else {
-//
-//                        if (result.message=="We can't find a user with that e-mail address."){
-//                            Toast.makeText(this@ForgotPasswordActivity, "Email address not found", Toast.LENGTH_SHORT).show()
-//                        }else{
-//                            Toast.makeText(this@ForgotPasswordActivity, "Something went wrong", Toast.LENGTH_SHORT).show()
-//                        }
-//                    }
-//
-//                    progressDialog.dismiss()
-//
-//
-//                } catch (e: Exception) {
-//
-//                    progressDialog.dismiss()
-//                    Log.e("errorTryCar", "" + e.message)
-//
-//                }
-//            }
+            coroutineScope.launch {
+                try {
+
+                    val result = apiService.resetPassword(hashMap).await()
+
+                    Log.e("resultonforgot", "" + result)
+
+                    if (result.success == "1") {
+
+                        Toast.makeText(this@ForgotPasswordActivity, "otp send successfully" + result.message, Toast.LENGTH_SHORT).show()
+                        forgotSuccess()
+                    } else {
+
+                        if (result.message=="We can't find a user with that e-mail address."){
+                            Toast.makeText(this@ForgotPasswordActivity, "Email address not found", Toast.LENGTH_SHORT).show()
+                        }else{
+                            Toast.makeText(this@ForgotPasswordActivity, "Something went wrong", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    progressDialog.dismiss()
+
+
+                } catch (e: Exception) {
+
+                    progressDialog.dismiss()
+                    Log.e("errorTryCar", "" + e.message)
+
+                }
+            }
 
         } else {
             Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
