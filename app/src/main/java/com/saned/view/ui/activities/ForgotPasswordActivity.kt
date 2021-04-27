@@ -7,15 +7,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Window
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.saned.R
 import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
+import com.saned.sanedApplication.Companion.prefHelper
+import com.saned.view.error.SANEDError
 import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.openActivity
 import kotlinx.android.synthetic.main.activity_forgot_password.*
+import kotlinx.android.synthetic.main.activity_forgot_password.email_edit_text
 import kotlinx.android.synthetic.main.activity_forgot_password.user_layout
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.launch
 
 class ForgotPasswordActivity : AppCompatActivity() {
@@ -66,15 +71,15 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
             hashMap["email"] = "" + email_edit_text.text.toString()
 
+            Log.e("arjun","" +hashMap)
+
             //for now
            // forgotSuccess()
-//
             coroutineScope.launch {
                 try {
 
-                    val result = apiService.resetPassword(hashMap).await()
 
-                    Log.e("resultonforgot", "" + result)
+                    val result = apiService.RestPassword(hashMap).await()
 
                     if (result.success == "1") {
 
@@ -95,7 +100,26 @@ class ForgotPasswordActivity : AppCompatActivity() {
                 } catch (e: Exception) {
 
                     progressDialog.dismiss()
-                    Log.e("errorTryCar", "" + e.message)
+                    Log.e("errorTryCar", "" + e)
+
+
+                    progressDialog.dismiss()
+                    Log.e("error", "" + e.message)
+                    if (e is SANEDError) {
+                        Log.e("Err", "" + e.getErrorResponse())
+                        if (e.getResponseCode() == 401) {
+                            Utils.logoutFromApp(applicationContext)
+                        } else if (e.getResponseCode() == 500) {
+                            Toast.makeText(applicationContext, "Server error", Toast.LENGTH_LONG).show()
+                        }
+                    } else {
+                        Toast.makeText(
+                                applicationContext,
+                                "Something went wrong",
+                                Toast.LENGTH_SHORT
+                        )
+                                .show()
+                    }
 
                 }
             }

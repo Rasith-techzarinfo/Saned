@@ -101,9 +101,9 @@ class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityRe
                         userName.setOnClickListener {
                             userName.isSelected = true
                         }
-                        userPhone.setOnClickListener {
-                            userPhone.isSelected = true
-                        }
+//                        userPhone.setOnClickListener {
+//                            userPhone.isSelected = true
+//                        }
 
 
                         // no profile for now
@@ -129,7 +129,7 @@ class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityRe
                         if (e.getResponseCode() == 401) {
                             Utils.logoutFromApp(applicationContext)
                         } else if (e.getResponseCode() == 500) {
-                            Toast.makeText(applicationContext, "Server error at profile", Toast.LENGTH_LONG)
+                            Toast.makeText(applicationContext, "Server", Toast.LENGTH_LONG)
                                     .show()
                         }
                     } else {

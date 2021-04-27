@@ -170,7 +170,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="12dp"
-                android:text="Last Name*"
+                android:text="Email"
                 android:paddingStart="8dp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
@@ -196,7 +196,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:theme="@style/primaryEditTextTheme"
-                    android:hint="Last Name"
+                    android:hint="Email"
                     android:background="@drawable/text_bg"
                     android:imeOptions="actionNext"
                     android:inputType="text"
@@ -210,49 +210,49 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="12dp"
-                android:text="Phone*"
-                android:paddingStart="8dp"
-                android:textColor="@android:color/black"
-                android:textStyle="bold"
-                android:textSize="16sp" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="4dp"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                android:text="Phone*"-->
+<!--                android:paddingStart="8dp"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textSize="16sp" />-->
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/phone_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                app:errorTextColor="@color/white_smoke"
-                app:hintEnabled="false"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
-                app:errorTextAppearance="@style/error_appearance">
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/phone_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:focusable="false"-->
+<!--                android:focusableInTouchMode="false"-->
+<!--                app:errorTextColor="@color/white_smoke"-->
+<!--                app:hintEnabled="false"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"-->
+<!--                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"-->
+<!--                app:errorTextAppearance="@style/error_appearance">-->
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/phoneEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/primaryEditTextTheme"
-                    android:hint="Reason"
-                    android:background="@drawable/text_bg"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:maxLength="75"
-                    android:maxLines="1"
-                    android:paddingStart="8dp"
-                    android:textColorHint="@color/grey"
-                    tools:targetApi="lollipop" />
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/phoneEditText"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:theme="@style/primaryEditTextTheme"-->
+<!--                    android:hint="Reason"-->
+<!--                    android:background="@drawable/text_bg"-->
+<!--                    android:imeOptions="actionNext"-->
+<!--                    android:inputType="number"-->
+<!--                    android:maxLength="75"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:paddingStart="8dp"-->
+<!--                    android:textColorHint="@color/grey"-->
+<!--                    tools:targetApi="lollipop" />-->
 
 
-            </com.google.android.material.textfield.TextInputLayout>
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
 
 
 

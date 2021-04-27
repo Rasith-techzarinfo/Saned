@@ -45,9 +45,15 @@ interface ApiService {
 
     @POST("v1/api/user/reset-password")
     @FormUrlEncoded
-    fun resetPassword(
+    fun RestPassword(
             @FieldMap values: java.util.HashMap<String, String>
     ): Deferred<ForgetPasswordData>
+
+    @POST("v1/api/user/check-reset-token")
+    @FormUrlEncoded
+    fun checkOTP(
+            @FieldMap values: java.util.HashMap<String, String>
+    ): Deferred<UserLoginData>
 
     //user
     @GET("v1/api/workflow/housing-advance/list")

@@ -117,11 +117,12 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
             val hashMap: HashMap<String, String> = HashMap()
 
             hashMap["first_name"] = "" + firstNameEditText.text.toString()
-            hashMap["last_name"] = "" + lastNameEditText.text.toString()
-            hashMap["phone"] = "" + phoneEditText.text.toString()
+            hashMap["email"] = "" + lastNameEditText.text.toString()
+            //hashMap["last_name"] = "" + lastNameEditText.text.toString()
+           // hashMap["phone"] = "" + phoneEditText.text.toString()
 
 
-            sanedApplication.coroutineScope.launch {
+            coroutineScope.launch {
 
                 try {
 
@@ -199,6 +200,7 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
 
 
                         firstNameEditText.setText("" + result.user!!.t_nama)
+                        lastNameEditText.setText("" + result.user!!.t_mail)
                        // lastNameEditText.setText("" + result.user!!.last_name)
                        // phoneEditText.setText("" + result.user!!.phone)
 

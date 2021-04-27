@@ -68,40 +68,40 @@ class OTPActivity : AppCompatActivity() {
             hashMap["email"] = "" + emailString
 
             //for now
-            otpSuccess()
+           // otpSuccess()
 
-//            coroutineScope.launch {
-//                try {
-//
-//                    val result = apiService.checkOTP(hashMap).await()
-//
-//                    Log.e("result", "" + result)
-//
-//                    if (result.success == "1") {
-//
-//                        prefHelper.setBearerToken("" + result.token)
-//
-//                        otpSuccess()
-//                    } else {
-//
-//                        if (result.message=="Password reset token expired. Please try again"){
-//                            Toast.makeText(this@OTPActivity, "" + result.message, Toast.LENGTH_LONG).show()
-//                        }else{
-//                            Toast.makeText(this@OTPActivity, "Incorrect OTP", Toast.LENGTH_SHORT).show()
-//                        }
-//                    }
-//
-//                    progressDialog.dismiss()
-//
-//
-//                } catch (e: Exception) {
-//
-//                    progressDialog.dismiss()
-//                    Log.e("errorTryCar", "" + e.message)
-//                    Toast.makeText(this@OTPActivity, "Something Went Wrong", Toast.LENGTH_SHORT).show()
-//
-//                }
-//            }
+            coroutineScope.launch {
+                try {
+
+                    val result = apiService.checkOTP(hashMap).await()
+
+                    Log.e("result", "" + result)
+
+                    if (result.success == "1") {
+
+                        prefHelper.setBearerToken("" + result.token)
+
+                        otpSuccess()
+                    } else {
+
+                        if (result.message=="Password reset token expired. Please try again"){
+                            Toast.makeText(this@OTPActivity, "" + result.message, Toast.LENGTH_LONG).show()
+                        }else{
+                            Toast.makeText(this@OTPActivity, "Incorrect OTP", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    progressDialog.dismiss()
+
+
+                } catch (e: Exception) {
+
+                    progressDialog.dismiss()
+                    Log.e("errorTryCar", "" + e.message)
+                    Toast.makeText(this@OTPActivity, "Something Went Wrong", Toast.LENGTH_SHORT).show()
+
+                }
+            }
 
         } else {
             Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()

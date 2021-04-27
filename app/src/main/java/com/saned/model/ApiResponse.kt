@@ -13,7 +13,24 @@ data class UserLoginData (
 )
 
 data class UserData (
-//
+
+        val uuid : String,
+        val t_idno : String,
+        val t_emno : String,
+        val t_nama : String,
+        val t_comp : String,
+        val t_pass : String,
+        val t_mail : String,
+        val t_role : String,
+        val t_page : String,
+        val is_active : String,
+        val fcm_token : String,
+        val created_by : String,
+        val updated_by : String,
+        val createdAt : String,
+        val updatedAt : String,
+        val deletedAt : String
+
 //    val id : String,
 //    val uuid : String,
 //    val first_name : String,
@@ -34,23 +51,6 @@ data class UserData (
 //    val deletedAt : String,
 //    val roleId : String,
 //    val companyId : String
-
-    val uuid : String,
-    val t_idno : String,
-    val t_emno : String,
-    val t_nama : String,
-    val t_comp : String,
-    val t_pass : String,
-    val t_mail : String,
-    val t_role : String,
-    val t_page : String,
-    val is_active : String,
-    val fcm_token : String,
-    val created_by : String,
-    val updated_by : String,
-    val createdAt : String,
-    val updatedAt : String,
-    val deletedAt : String
 )
 
 data class LoginError(
@@ -63,13 +63,11 @@ data class ResData(
         val success: String,
         val message: String
 )
-
-data class ForgetPasswordData(
+data class ForgetPasswordData (
         val success : String,
         val message : String,
         val data : UserData
 )
-
 
 //FIXME dummy class  \\
 data class ServicesMenu(
