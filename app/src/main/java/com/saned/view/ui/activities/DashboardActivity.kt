@@ -175,7 +175,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         //set values
         profile_name.text = prefHelper.getUserName()
-        profile_detail.text = "Last Login: " + Utils.convertDbtoNormalDateTime1(prefHelper.getLastLogin().toString())  //getUserEmail
+        profile_detail.text = "Last Login: 6 min ago " + Utils.convertDbtoNormalDateTime1(prefHelper.getLastLogin().toString())  //getUserEmail
 
         //set images
         Glide.with(this)

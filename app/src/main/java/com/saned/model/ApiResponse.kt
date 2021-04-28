@@ -59,7 +59,6 @@ data class LoginError(
 )
 
 data class ResData(
-
         val success: String,
         val message: String
 )
