@@ -1,9 +1,80 @@
 <resources>
     <string name="app_name">Saned</string>
-
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string-array name="religion">
+        <item>Hindu</item>
+        <item>Christian</item>
+        <item>Muslim</item>
+    </string-array>
+    <string-array name="job">
+        <item>Android Developer</item>
+        <item>Web Developer</item>
+        <item>IOS Developer</item>
+    </string-array>
+    <string-array name="department">
+        <item>Developer</item>
+        <item>Tester</item>
+        <item>HR</item>
+    </string-array>
+    <string-array name="gosi">
+        <item>Success</item>
+        <item>Failed</item>
+        <item>Pending</item>
+    </string-array>
+    <string-array name="grade">
+        <item>A</item>
+        <item>A+</item>
+        <item>B</item>
+    </string-array>
 
     <array name="initial_slider_values">
         <item>0.0</item>
         <item>100.0</item>
     </array>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="biometric_prompt">BiometricPrompt In Kotlin</string>
+    <string name="biometric_use_instruction">This app is a demo of biometric authentication using BiometricPrompt API in android. This app support face recognition,
+        fingerprint authentication.</string>
+    <string name="biometric_change_instruction">App also detect a biometric change as well, when you change your biometric in device and relaunch this app, we detect this biometric change and display alert.</string>
+    <string name="sign_in_using_biometric">Sign in</string>
+    <string name="register_your_biometric">Enroll in biometric</string>
+    <string name="disable_your_biometric">Disable biometric</string>
+    <string name="success_message">Successfully login with your biometric</string>
+    <string name="logout">Logout</string>
+    <string name="harware_not_support">Hardware is not available</string>
+    <string name="phone_not_support_biometric">Your device does not have biometric support.</string>
+    <string name="not_now">Not now</string>
+    <string name="enable">Enable</string>
+    <string name="disable_bio_title">Disabled Biometric</string>
+    <string name="successfully_disable_bio">You have successfully disabled biometric. Please Enroll to sign in back.</string>
+    <string name="default_gallery_storage">Default Gallery Storage</string>
+    <string name="key_gallery_name">Key Gallery Name</string>
+    <string name="title_gallery_storage">Title Gallery Storage</string>
+    <string name="key_upload_over_wifi">Key Upload Over Wifi</string>
+    <string name="summary_upload_over_wifi">Summary Upload Over Wifi</string>
+    <string name="title_auto_upload">Title Auto Upload</string>
+    <string name="title_upload_quality">Title Upload Quality</string>
+    <string name="key_upload_quality">Key Upload Quality</string>
+    <string name="summary_upload_video_quality">Upload Video Quality</string>
+    <string name="pref_title_notifications">Pref</string>
+    <string name="notifications_new_message">New</string>
+    <string name="title_new_notification_sound">Title Sound</string>
+    <string name="url_faq">Url FAQ</string>
+    <string name="app_version">1</string>
+    <string name="title_version">1</string>
+    <string name="pref_header_about">About</string>
+    <string name="key_vibrate">Vibrate</string>
+    <string name="summary_vibrate">Summary</string>
+    <string name="title_vibrate">Title</string>
+    <string name="key_notifications_new_message_ringtone">New Message</string>
+    <string name="summary_choose_ringtone">Choose Ringtone</string>
+    <string name="pref_title_ringtone">Title</string>
+    <string name="pref_ringtone_silent">Silent</string>
+    <string name="title_activity_edit_profile">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

@@ -41,15 +41,15 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Accurals"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/air"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Accurals"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/air"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimaryDark"/>
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -107,21 +107,21 @@
                         />
 
                 </LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:weightSum="2"
-    android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Annual"
-                    android:textSize="16sp"
-                    android:layout_marginRight="30dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/grey"/>
+                    android:weightSum="2"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Annual"
+                        android:textSize="16sp"
+                        android:layout_marginRight="30dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/grey"/>
 
-</LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
@@ -213,161 +213,161 @@
                     android:layout_marginTop="12dp" />
 
 
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_weight="3.1"
-                   android:layout_gravity="center"
-                   android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3.1"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
 
-                   <RelativeLayout
-                       android:layout_margin="8dp"
-                       android:layout_width="0dp"
-                       android:layout_weight="1"
-                       android:gravity="center"
-                       android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_margin="8dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
 
-                       <RelativeLayout
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           >
-
-
-                   <com.google.android.material.progressindicator.CircularProgressIndicator
-                       android:id="@+id/earningPaySlipProgress"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       app:indicatorSize="75dp"
-                       app:trackThickness = "10dp"
-                       app:trackCornerRadius = "4dp"
-                       app:trackColor="@color/grey_lite"
-                       android:progress="0"
-                       android:max="100"
-                       />
-
-                       <TextView
-                           android:id="@+id/earningPaySlipTextView"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="30%"
-                           android:textSize="14sp"
-                           android:maxLines="1"
-                           android:ellipsize="end"
-                           android:layout_centerInParent="true"
-                           android:textStyle="bold"
-                           android:textColor="@color/logo_color2"/>
-
-                       </RelativeLayout>
-
-                   </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            >
 
 
-                   <TextView
-                       android:layout_width="0dp"
-                       android:layout_weight="0.05"
-                       android:layout_height="wrap_content"
-                       android:text="-"
-                       android:gravity="center"
-                       android:textSize="16sp"
-                       android:layout_gravity="center"
-                       android:textStyle="bold"
-                       android:textColor="@color/grey"/>
+                            <com.google.android.material.progressindicator.CircularProgressIndicator
+                                android:id="@+id/earningPaySlipProgress"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:indicatorSize="75dp"
+                                app:trackThickness = "10dp"
+                                app:trackCornerRadius = "4dp"
+                                app:trackColor="@color/grey_lite"
+                                android:progress="0"
+                                android:max="100"
+                                />
 
-                   <RelativeLayout
-                       android:layout_margin="8dp"
-                       android:layout_width="0dp"
-                       android:layout_weight="1"
-                       android:gravity="center"
-                       android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/earningPaySlipTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="30%"
+                                android:textSize="14sp"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:layout_centerInParent="true"
+                                android:textStyle="bold"
+                                android:textColor="@color/logo_color2"/>
 
-                   <RelativeLayout
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       >
+                        </RelativeLayout>
 
-                       <com.google.android.material.progressindicator.CircularProgressIndicator
-                           android:id="@+id/deductionPaySlipProgress"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           app:indicatorSize="75dp"
-                           android:gravity="center"
-                           app:trackThickness = "10dp"
-                           app:trackCornerRadius = "4dp"
-                           app:trackColor="@color/grey_lite"
-                           android:progress="0"
-                           android:max="100"
-                           />
-
-                       <TextView
-                           android:id="@+id/deductionPaySlipTextView"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="30%"
-                           android:textSize="14sp"
-                           android:maxLines="1"
-                           android:ellipsize="end"
-                           android:layout_centerInParent="true"
-                           android:textStyle="bold"
-                           android:textColor="#BA0744"/>
-
-                   </RelativeLayout>
-
-                   </RelativeLayout>
+                    </RelativeLayout>
 
 
-                   <TextView
-                       android:layout_width="0dp"
-                       android:layout_weight="0.05"
-                       android:layout_height="wrap_content"
-                       android:text="="
-                       android:textSize="16sp"
-                       android:gravity="center"
-                       android:layout_gravity="center"
-                       android:textStyle="bold"
-                       android:textColor="@color/grey"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="0.05"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:gravity="center"
+                        android:textSize="16sp"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="@color/grey"/>
 
-                   <RelativeLayout
-                       android:layout_margin="8dp"
-                       android:layout_width="0dp"
-                       android:gravity="center"
-                       android:layout_weight="1"
-                       android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_margin="8dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
 
-                   <RelativeLayout
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       >
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            >
 
-                       <com.google.android.material.progressindicator.CircularProgressIndicator
-                           android:id="@+id/salaryPaySlipProgress"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           app:indicatorSize="75dp"
-                           app:trackThickness = "10dp"
-                           app:trackCornerRadius = "4dp"
-                           android:gravity="center"
-                           app:trackColor="@color/grey_lite"
-                           android:progress="0"
-                           android:max="100"
-                           />
+                            <com.google.android.material.progressindicator.CircularProgressIndicator
+                                android:id="@+id/deductionPaySlipProgress"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:indicatorSize="75dp"
+                                android:gravity="center"
+                                app:trackThickness = "10dp"
+                                app:trackCornerRadius = "4dp"
+                                app:trackColor="@color/grey_lite"
+                                android:progress="0"
+                                android:max="100"
+                                />
 
-                       <TextView
-                           android:id="@+id/salaryPaySlipTextView"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="30%"
-                           android:textSize="14sp"
-                           android:maxLines="1"
-                           android:ellipsize="end"
-                           android:layout_centerInParent="true"
-                           android:textStyle="bold"
-                           android:textColor="@color/colorSecondaryDark"/>
+                            <TextView
+                                android:id="@+id/deductionPaySlipTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="30%"
+                                android:textSize="14sp"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:layout_centerInParent="true"
+                                android:textStyle="bold"
+                                android:textColor="#BA0744"/>
 
-                   </RelativeLayout>
+                        </RelativeLayout>
 
-                   </RelativeLayout>
+                    </RelativeLayout>
 
-                   </LinearLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="0.05"
+                        android:layout_height="wrap_content"
+                        android:text="="
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="@color/grey"/>
+
+                    <RelativeLayout
+                        android:layout_margin="8dp"
+                        android:layout_width="0dp"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <com.google.android.material.progressindicator.CircularProgressIndicator
+                                android:id="@+id/salaryPaySlipProgress"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:indicatorSize="75dp"
+                                app:trackThickness = "10dp"
+                                app:trackCornerRadius = "4dp"
+                                android:gravity="center"
+                                app:trackColor="@color/grey_lite"
+                                android:progress="0"
+                                android:max="100"
+                                />
+
+                            <TextView
+                                android:id="@+id/salaryPaySlipTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="30%"
+                                android:textSize="14sp"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:layout_centerInParent="true"
+                                android:textStyle="bold"
+                                android:textColor="@color/colorSecondaryDark"/>
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
 
 
 
@@ -377,37 +377,37 @@
                     android:layout_weight="3"
                     android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="Earnings"
-                        android:textSize="16sp"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        android:textColor="@color/heading"/>
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/earningAmtTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="15000"
-                        android:textSize="14sp"
-                        android:layout_marginTop="5dp"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        android:textColor="@color/heading"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Earnings"
+                            android:textSize="16sp"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/heading"/>
 
-               </LinearLayout>
+                        <TextView
+                            android:id="@+id/earningAmtTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="15000"
+                            android:textSize="14sp"
+                            android:layout_marginTop="5dp"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/heading"/>
+
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -483,7 +483,7 @@
                     android:layout_marginTop="12dp" />
 
 
-                 <com.google.android.material.button.MaterialButton
+                <com.google.android.material.button.MaterialButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Show All Records"
@@ -535,19 +535,19 @@
                     android:orientation="horizontal">
 
 
-<!--                    <TextView-->
-<!--                        android:layout_width="0dp"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:maxLines="1"-->
-<!--                        android:ellipsize="end"-->
-<!--                        android:gravity="end"-->
-<!--                        android:textAlignment="gravity"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        android:text="Aug 1 2020"-->
-<!--                        android:textColor="@color/grey"-->
-<!--                        android:textSize="12sp"-->
-<!--                        />-->
+                    <!--                    <TextView-->
+                    <!--                        android:layout_width="0dp"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_weight="1"-->
+                    <!--                        android:maxLines="1"-->
+                    <!--                        android:ellipsize="end"-->
+                    <!--                        android:gravity="end"-->
+                    <!--                        android:textAlignment="gravity"-->
+                    <!--                        android:layout_gravity="center"-->
+                    <!--                        android:text="Aug 1 2020"-->
+                    <!--                        android:textColor="@color/grey"-->
+                    <!--                        android:textSize="12sp"-->
+                    <!--                        />-->
 
 
                     <TextView
@@ -583,30 +583,30 @@
                         android:layout_height="wrap_content"
                         />
 
-<!--                    <com.google.android.material.slider.RangeSlider-->
-<!--                        android:id="@+id/absentRangeSlider"-->
-<!--                        android:layout_width="0dp"-->
-<!--                        android:layout_weight="3"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:valueFrom="0.0"-->
-<!--                        android:valueTo="100.0"-->
-<!--                        android:visibility="gone"-->
-<!--                        app:values="@array/initial_slider_values"  />-->
+                    <!--                    <com.google.android.material.slider.RangeSlider-->
+                    <!--                        android:id="@+id/absentRangeSlider"-->
+                    <!--                        android:layout_width="0dp"-->
+                    <!--                        android:layout_weight="3"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:valueFrom="0.0"-->
+                    <!--                        android:valueTo="100.0"-->
+                    <!--                        android:visibility="gone"-->
+                    <!--                        app:values="@array/initial_slider_values"  />-->
 
 
-<!--                    <TextView-->
-<!--                        android:layout_width="0dp"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:maxLines="1"-->
-<!--                        android:ellipsize="end"-->
-<!--                        android:gravity="start"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        android:textAlignment="gravity"-->
-<!--                        android:text="Aug 7 2020"-->
-<!--                        android:textColor="@color/grey"-->
-<!--                        android:textSize="12sp"-->
-<!--                        />-->
+                    <!--                    <TextView-->
+                    <!--                        android:layout_width="0dp"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_weight="1"-->
+                    <!--                        android:maxLines="1"-->
+                    <!--                        android:ellipsize="end"-->
+                    <!--                        android:gravity="start"-->
+                    <!--                        android:layout_gravity="center"-->
+                    <!--                        android:textAlignment="gravity"-->
+                    <!--                        android:text="Aug 7 2020"-->
+                    <!--                        android:textColor="@color/grey"-->
+                    <!--                        android:textSize="12sp"-->
+                    <!--                        />-->
 
                 </LinearLayout>
 
@@ -627,7 +627,7 @@
                     android:layout_marginTop="12dp" />
 
 
-                   <com.google.android.material.button.MaterialButton
+                <com.google.android.material.button.MaterialButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Show All Records"
@@ -748,7 +748,7 @@
                     android:layout_marginTop="12dp" />
 
 
-                   <com.google.android.material.button.MaterialButton
+                <com.google.android.material.button.MaterialButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Show All Records"
@@ -844,7 +844,7 @@
                     android:layout_marginTop="12dp" />
 
 
-                  <com.google.android.material.button.MaterialButton
+                <com.google.android.material.button.MaterialButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Show All Records"

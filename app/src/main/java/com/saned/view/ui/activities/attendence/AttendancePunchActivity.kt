@@ -1,8 +1,10 @@
 package com.saned.view.ui.activities.attendence
 
 import android.Manifest
+import android.R.attr.description
 import android.app.Activity
 import android.app.Dialog
+import android.app.KeyguardManager
 import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
@@ -21,7 +23,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.biometric.BiometricPrompt
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentActivity
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.common.api.PendingResult
 import com.google.android.gms.common.api.Status
@@ -37,17 +42,19 @@ import kotlinx.android.synthetic.main.activity_attendance_punch.*
 import kotlinx.android.synthetic.main.activity_attendance_punch.swipeRefreshLayout
 import kotlinx.android.synthetic.main.activity_attendance_punch.toolbar
 import kotlinx.android.synthetic.main.activity_my_employees.*
-import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.Executor
+import java.util.concurrent.Executors
 
 
 class AttendancePunchActivity : AppCompatActivity() {
-
+    private lateinit var executor: Executor
     lateinit var latLong : Location
     var inOffice = false
     var type = ""
     lateinit var clockHandler: Handler
     var stop: Boolean = false
+    lateinit var LocationText:TextView
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private var googleApiClient: GoogleApiClient? = null
     private val REQUESTLOCATION = 199
@@ -55,16 +62,17 @@ class AttendancePunchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_attendance_punch)
+        executor = ContextCompat.getMainExecutor(this)
+        LocationText=findViewById(R.id.locationTextView)
         setToolBar()
         init()
-    }
 
+    }
 
     private fun init() {
         //fetch location
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         getLastLocation()
-
         //set data
         currentTime.text = get24FormattedTime()
         currentDate.text = getFormattedDate()
@@ -73,13 +81,51 @@ class AttendancePunchActivity : AppCompatActivity() {
         //click listeners
         submitButton.setOnClickListener {
             if(!inOffice){
-                locationTextView.text = "Location: " + "You're not in office reach"
+                LocationText.text = "Location: " + "You're not in office reach"
                 Snackbar.make(parentLayout, "You're not in office reach", Snackbar.LENGTH_LONG).show()
                 submitButton.isEnabled = false
                 return@setOnClickListener
             }
 
             if(submitButton.text.toString() == "TIME IN"){
+                val executor = ContextCompat.getMainExecutor(this)
+                val biometricPrompt = BiometricPrompt(
+                    this,
+                    executor,
+                    object : BiometricPrompt.AuthenticationCallback() {
+
+                        override fun onAuthenticationError(
+                            errorCode: Int,
+                            errString: CharSequence
+                        ) {
+                            super.onAuthenticationError(errorCode, errString)
+                            if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
+                                // user clicked negative button
+                            } else {
+                                TODO("Called when an unrecoverable error has been encountered and the operation is complete.")
+                            }
+                        }
+
+                        override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                            super.onAuthenticationSucceeded(result)
+                            val ct = currentTime.text.toString()
+                            val ti = findViewById(R.id.timeIN) as TextView
+                            ti.setText(ct)
+                        }
+
+                        override fun onAuthenticationFailed() {
+                            super.onAuthenticationFailed()
+                            TODO("Called when a biometric is valid but not recognized.")
+                        }
+                    })
+
+                val promptInfo = BiometricPrompt.PromptInfo.Builder()
+                    .setTitle("Set the title to display.")
+                    .setSubtitle("Set the subtitle to display.")
+                    .setDescription("Set the description to display")
+                    .setNegativeButtonText("Negative Button")
+                    .build()
+                biometricPrompt.authenticate(promptInfo)
                 sendDataToServer()
             } else {
                 alertOutDialog()
@@ -101,7 +147,7 @@ class AttendancePunchActivity : AppCompatActivity() {
         clockHandler = Handler(mainLooper)
         clockHandler.postDelayed(object : Runnable {
             override fun run() {
-                if(!stop) {
+                if (!stop) {
                     currentTime.text = get24FormattedTime()
                     clockHandler.postDelayed(this, 1000)
                 }
@@ -125,6 +171,41 @@ class AttendancePunchActivity : AppCompatActivity() {
         messageTextView.text = "Are you sure want to Time Out?"
 
         okayButton.setOnClickListener {
+            val executor = ContextCompat.getMainExecutor(this)
+            val biometricPrompt = BiometricPrompt(
+                    this,
+                    executor,
+                    object : BiometricPrompt.AuthenticationCallback() {
+
+                    override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                        super.onAuthenticationError(errorCode, errString)
+                        if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
+
+                        } else {
+                            TODO("Called when an unrecoverable error has been encountered and the operation is complete.")
+                        }
+                    }
+
+                    override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                        super.onAuthenticationSucceeded(result)
+                        val ct = currentTime.text.toString()
+                        val to = findViewById(R.id.timeOUT) as TextView
+                        to.setText(ct)
+                    }
+
+                    override fun onAuthenticationFailed() {
+                        super.onAuthenticationFailed()
+                        TODO("Called when a biometric is valid but not recognized.")
+                    }
+                })
+
+            val promptInfo = BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Set the title to display.")
+                .setSubtitle("Set the subtitle to display.")
+                .setDescription("Set the description to display")
+                .setNegativeButtonText("Negative Button")
+                .build()
+            biometricPrompt.authenticate(promptInfo)
             sendDataToServer()
             mDialog.dismiss()
         }
@@ -190,7 +271,6 @@ class AttendancePunchActivity : AppCompatActivity() {
             Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
         }
     }
-
     override fun onPause() {
         super.onPause()
         stop = true
@@ -210,28 +290,27 @@ class AttendancePunchActivity : AppCompatActivity() {
             clockHandler.removeCallbacksAndMessages(null)
         }
     }
-
     private fun checkLocationEnabled() {
         googleApiClient = GoogleApiClient.Builder(this)
-            .addApi(LocationServices.API)
-            .addConnectionCallbacks(object : GoogleApiClient.ConnectionCallbacks {
-                override fun onConnected(bundle: Bundle?) {}
-                override fun onConnectionSuspended(i: Int) {
-                    googleApiClient?.connect()
-                }
-            })
-            .addOnConnectionFailedListener {
-            }.build()
+                .addApi(LocationServices.API)
+                .addConnectionCallbacks(object : GoogleApiClient.ConnectionCallbacks {
+                    override fun onConnected(bundle: Bundle?) {}
+                    override fun onConnectionSuspended(i: Int) {
+                        googleApiClient?.connect()
+                    }
+                })
+                .addOnConnectionFailedListener {
+                }.build()
         googleApiClient?.connect()
         val locationRequest = LocationRequest.create()
         locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
         locationRequest.interval = 30 * 1000.toLong()
         locationRequest.fastestInterval = 5 * 1000.toLong()
         val builder = LocationSettingsRequest.Builder()
-            .addLocationRequest(locationRequest)
+                .addLocationRequest(locationRequest)
         builder.setAlwaysShow(true)
         val result: PendingResult<LocationSettingsResult> =
-            LocationServices.SettingsApi.checkLocationSettings(googleApiClient, builder.build())
+                LocationServices.SettingsApi.checkLocationSettings(googleApiClient, builder.build())
         result.setResultCallback { result ->
             val status: Status = result.status
             when (status.statusCode) {
@@ -253,35 +332,39 @@ class AttendancePunchActivity : AppCompatActivity() {
         //if the gps or the network provider is enabled then it will return true otherwise it will return false
         var locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
-            LocationManager.NETWORK_PROVIDER)
+            LocationManager.NETWORK_PROVIDER
+        )
     }
 
     private fun getLastLocation(){
 //        if(CheckPermission()){
-            if(isLocationEnabled()){
-                if (ActivityCompat.checkSelfPermission(
-                        this,
-                        Manifest.permission.ACCESS_FINE_LOCATION
-                    ) != PackageManager.PERMISSION_GRANTED
-                ) {
-                    return
-                }
-                fusedLocationProviderClient.lastLocation.addOnCompleteListener { task->
-                    var location: Location? = task.result
-                    if(location == null){
-                        NewLocationData()
-                    }else{
-                        latLong = location
-                        Log.e("Location","" + "${latLong.latitude} ${latLong.longitude}")
-                        locationTextView.text = "Location: " + getLocationAddress(latLong.latitude, latLong.longitude)
-                        getDataFromService()
-                    }
-                }
-            }else{
-                Toast.makeText(this,"Please Turn on Your device Location", Toast.LENGTH_SHORT).show()
-               // RequestPermission()
-                checkLocationEnabled()
+        if(isLocationEnabled()){
+            if (ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                return
             }
+            fusedLocationProviderClient.lastLocation.addOnCompleteListener { task->
+                var location: Location? = task.result
+                if(location == null){
+                    NewLocationData()
+                }else{
+                    latLong = location
+                    Log.e("Location", "" + "${latLong.latitude} ${latLong.longitude}")
+                    locationTextView.text = "Location: " + getLocationAddress(
+                        latLong.latitude,
+                        latLong.longitude
+                    )
+                    getDataFromService()
+                }
+            }
+        }else{
+            Toast.makeText(this, "Please Turn on Your device Location", Toast.LENGTH_SHORT).show()
+            // RequestPermission()
+            checkLocationEnabled()
+        }
 //        }else{
 //            RequestPermission()
 //        }
@@ -311,18 +394,21 @@ class AttendancePunchActivity : AppCompatActivity() {
         override fun onLocationResult(locationResult: LocationResult) {
             var lastLocation: Location = locationResult.lastLocation
             latLong = lastLocation
-            Log.e("Location","" + "${latLong.latitude} ${latLong.longitude}")
-            locationTextView.text = "Location: " + getLocationAddress(latLong.latitude, latLong.longitude)
+            Log.e("Location", "" + "${latLong.latitude} ${latLong.longitude}")
+            locationTextView.text = "Location: " + getLocationAddress(
+                latLong.latitude,
+                latLong.longitude
+            )
             getDataFromService()
         }
     }
 
-    private fun getLocationAddress(lat: Double,long: Double) : String {
+    private fun getLocationAddress(lat: Double, long: Double) : String {
         var cityName:String = ""
         var countryName = ""
         var street = ""
         var geoCoder = Geocoder(this, Locale.getDefault())
-        var address = geoCoder.getFromLocation(lat,long,1)
+        var address = geoCoder.getFromLocation(lat, long, 1)
         Log.e("Location", "" + address)
         cityName = address[0].locality
         countryName = address[0].countryName
@@ -331,6 +417,7 @@ class AttendancePunchActivity : AppCompatActivity() {
 
         return street
     }
+
 
     override fun onActivityResult(
         requestCode: Int,
@@ -341,12 +428,12 @@ class AttendancePunchActivity : AppCompatActivity() {
         when (requestCode) {
             REQUESTLOCATION -> when (resultCode) {
                 Activity.RESULT_OK -> {
-                    Log.e("abc","OK")
-                    getLastLocation()
+                    Log.e("abc", "OK")
+
                 }
                 Activity.RESULT_CANCELED -> {
-                    Log.e("abc","CANCEL")
-                    checkLocationEnabled()
+                    Log.e("abc", "CANCEL")
+
                 }
             }
         }
@@ -372,4 +459,9 @@ class AttendancePunchActivity : AppCompatActivity() {
 
         finishAfterTransition()
     }
+
+
+
 }
+
+

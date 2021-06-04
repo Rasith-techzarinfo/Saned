@@ -4,18 +4,19 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.saned.R
 import com.saned.model.EmployeeData
 import com.saned.view.ui.activities.MyEmployeesActivity
-import com.saned.view.ui.activities.NotificationActivity
 import kotlinx.android.synthetic.main.empty_placeholder_item.view.*
 import kotlinx.android.synthetic.main.employee_list_item.view.*
 
 
-class MyEmployeesAdapter(private val dataList: List<EmployeeData>, val context: Context,
-                          val activity: MyEmployeesActivity
+class MyEmployeesAdapter(private val dataList: ArrayList<EmployeeData>, val context: Context,
+                         val activity: MyEmployeesActivity
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var itemFlag: Int = 0
@@ -29,7 +30,7 @@ class MyEmployeesAdapter(private val dataList: List<EmployeeData>, val context: 
                         .inflate(R.layout.empty_placeholder_item, parent, false)
                 )
         }else {
-            view = ViewHolder(
+            view = ItemViewHolder(
                 LayoutInflater.from(context)
                     .inflate(R.layout.employee_list_item, parent, false)
             )
@@ -44,7 +45,7 @@ class MyEmployeesAdapter(private val dataList: List<EmployeeData>, val context: 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if(itemFlag != 0){
-            val viewHolder: ViewHolder = (holder as ViewHolder)
+            val viewHolder: ItemViewHolder = (holder as ItemViewHolder)
             viewHolder.nameItem!!.text = dataList.get(position).name
             viewHolder.designationItem!!.text = dataList.get(position).designation
             viewHolder.emailItem!!.text = dataList.get(position).email
@@ -57,16 +58,12 @@ class MyEmployeesAdapter(private val dataList: List<EmployeeData>, val context: 
 
 
         }else if(itemFlag == 0) {
-            val emptyViewHolder: EmptyHolder = (holder as EmptyHolder)
-
-//            emptyViewHolder.emptyImage.setImageResource(R.drawable.ic_notification)
-            emptyViewHolder.emptyText.text = "No Data Found"
 
         }
 
     }
 
-    internal inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+    internal inner class ItemViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
         val nameItem = itemView.name
         val designationItem = itemView.designation

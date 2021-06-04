@@ -11,6 +11,46 @@ data class UserLoginData (
     val user : UserData?,
     val errors: LoginError?
 )
+data class UserEditProfileData(
+        val emp_code : String,
+        val f_name : String,
+        val a_name : String,
+        val dept : String,
+        val jbtl : String,
+        val join : String,
+        val dob : String,
+        val ccty : String,
+        val email : String,
+        val phon : String,
+        val iban : String,
+        val mngr : String,
+        val basic : String,
+        val hous : String,
+        val ldate : String,
+        val gend : String,
+        val grade : String,
+        val idno : String,
+        val relg : String,
+        val days : String,
+        val gosi : String,
+        val cash : String,
+        val fnme : String,
+        val lnme : String,
+        val mnme : String,
+        val prof : String,
+        val ovrt : String,
+        val idex : String,
+        val pspt : String,
+        val psptex : String,
+        val cnttyp : String,
+        val emrcnt : String,
+        val gosino : String,
+        val cntrex : String,
+        val subdep : String,
+        val proj : String,
+        val id : String,
+
+)
 
 data class UserData (
 

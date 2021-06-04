@@ -1,6 +1,5 @@
 package com.saned.view.ui.activities
 
-import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
 import android.content.IntentFilter
@@ -12,24 +11,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.Window
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
-import androidx.core.app.ActivityCompat.finishAfterTransition
-import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.saned.R
-import com.saned.sanedApplication
 import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.sanedApplication.Companion.prefHelper
 import com.saned.view.error.SANEDError
 import com.saned.view.service.ConnectivityReceiver
-import com.saned.view.ui.activities.dynamicWF.HistoryDynamicWFActivity
-import com.saned.view.utils.Constants.Companion.BASE_URL
 import com.saned.view.utils.Utils
-import com.saned.view.utils.Utils.Companion.openActivity
 import com.saned.view.utils.Utils.Companion.openActivityWithResult
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_profile.*

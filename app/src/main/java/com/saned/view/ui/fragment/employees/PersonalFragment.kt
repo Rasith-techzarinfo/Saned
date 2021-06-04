@@ -1,38 +1,37 @@
-package com.saned.view.ui.fragment.dashboard
+package com.saned.view.ui.fragment.employees
 
 import android.animation.ObjectAnimator
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import com.saned.R
-import com.saned.databinding.FragmentMyDashboardBinding
-import kotlinx.android.synthetic.main.fragment_my_dashboard.*
-import java.util.ArrayList
+import com.saned.databinding.FragmentPersonalBinding
+import com.saned.view.ui.fragment.dashboard.MyDashboardFragment
 
-class MyDashboardFragment : Fragment() {
 
-  lateinit var binding : FragmentMyDashboardBinding
+class PersonalFragment : Fragment() {
+
+    lateinit var binding: FragmentPersonalBinding
 
     //add dummy ui for now
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
-        binding  = FragmentMyDashboardBinding.inflate(inflater, container, false)
+        binding = FragmentPersonalBinding.inflate(inflater, container, false)
         init()
 
         return binding.root
     }
 
 
-
     private fun init() {
 
         //set dummy values to view
-        binding.apply{
+        binding.apply {
 //            accuralsPercentProgress.progress = 80
             ObjectAnimator.ofInt(accuralsPercentProgress, "progress", 3).start()
             accuralPercentTextView.text = "3"
@@ -53,30 +52,9 @@ class MyDashboardFragment : Fragment() {
         }
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     companion object {
-        fun create(): MyDashboardFragment {
-            return MyDashboardFragment()
+        fun create(): PersonalFragment {
+            return PersonalFragment()
         }
     }
 }

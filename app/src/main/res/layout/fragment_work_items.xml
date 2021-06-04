@@ -128,7 +128,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Show All Records"
-                                    android:textColor="@color/colorPrimaryLite3"
+                                    android:textColor="@color/green"
                                     android:textAppearance="@style/TextAppearance.App.TextButton"
                                     style="@style/Widget.MaterialComponents.Button.TextButton"
                                     android:textStyle="bold"/>
@@ -224,7 +224,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Show All Records"
-                                    android:textColor="@color/colorPrimaryLite3"
+                                    android:textColor="@color/green"
                                     android:textAppearance="@style/TextAppearance.App.TextButton"
                                     style="@style/Widget.MaterialComponents.Button.TextButton"
                                     android:textStyle="bold"/>

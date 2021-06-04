@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.ui.activities.DashboardActivity">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusableInTouchMode="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="4dp"
+                    android:background="#00053F6E"
+                    android:theme="@style/ThemeOverlay.MyApp.ActionBarWhite"
+                    tools:targetApi="lollipop">
+
+                    <RelativeLayout
+                        android:id="@+id/home_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="16dp"
+                        android:visibility="visible">
+
+                        <ImageView
+                            android:id="@+id/home_menu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingEnd="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            app:tint="@color/white"
+                            android:src="@drawable/ic_baseline_arrow_back_24"
+                            tools:targetApi="m" />
+
+                    </RelativeLayout>
+
+
+
+                    <!--                <RelativeLayout-->
+                    <!--                    android:id="@+id/search_layout"-->
+                    <!--                    android:layout_width="wrap_content"-->
+                    <!--                    android:layout_height="wrap_content"-->
+                    <!--                    android:layout_alignParentEnd="true"-->
+                    <!--                    android:layout_centerVertical="true"-->
+                    <!--                    android:paddingStart="8dp"-->
+                    <!--                    android:paddingEnd="16dp">-->
+
+                    <!--                                        <ImageView-->
+                    <!--                                            android:id="@+id/search_imageview"-->
+                    <!--                                            android:layout_width="wrap_content"-->
+                    <!--                                            android:layout_height="wrap_content"-->
+                    <!--                                            android:paddingEnd="8dp"-->
+                    <!--                                            android:paddingTop="8dp"-->
+                    <!--                                            android:paddingBottom="8dp"-->
+                    <!--                                            android:scaleType="centerCrop"-->
+                    <!--                                            app:tint="@color/colorPrimaryDark"-->
+                    <!--                                            android:src="@drawable/ic_baseline_search_24"-->
+                    <!--                                            tools:targetApi="m" />-->
+
+                    <!--                </RelativeLayout>-->
+
+
+                </RelativeLayout>
+
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/toolbar">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:id="@+id/headerLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:visibility="visible"
+                                android:background="@mipmap/radial"
+                                android:orientation="vertical">
+
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/profile_image"
+                                    android:layout_width="120dp"
+                                    android:layout_height="120dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginBottom="30dp"
+                                    android:layout_marginTop="50dp"
+                                    android:elevation="8dp"
+                                    android:src="@drawable/ic_user"
+                                    app:civ_border_color="@color/white_smoke"
+                                    app:civ_border_width="0dp"
+                                    tools:targetApi="lollipop" />
+
+
+                                <TextView
+                                    android:id="@+id/profile_name"
+                                    android:text="Mohamed Ahamed"
+                                    android:textStyle="bold"
+                                    android:layout_gravity="center"
+                                    android:textColor="@color/white_smoke"
+                                    android:textSize="20sp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+
+                                <TextView
+                                    android:id="@+id/profile_detail"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:text="mohamedahamed@gmail.com"
+                                    android:layout_gravity="center"
+                                    android:textColor="@color/white_smoke"
+                                    android:textSize="16sp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                                <com.google.android.material.tabs.TabLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/tablayout"
+                                    android:background="@drawable/tab"
+                                    app:tabIndicatorHeight="5dp"
+                                    app:tabIconTint="@color/white"
+                                    app:tabIndicatorColor="@color/green"
+                                    app:tabSelectedTextColor="@color/white"
+                                    app:tabTextColor="#C5C8CD" />
+
+                            </LinearLayout>
+
+
+
+                        </LinearLayout>
+
+                        <androidx.viewpager2.widget.ViewPager2
+                            android:id="@+id/viewPager"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            />
+
+
+
+                    </LinearLayout>
+
+                </androidx.core.widget.NestedScrollView>
+
+            </RelativeLayout>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
+    <!--Floating action button for add alarm-->
+    <!--Make sure that you are constraining this
+        button to the parent button-->
+
+
+</RelativeLayout>

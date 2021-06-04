@@ -20,18 +20,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:elevation="4dp"
-            android:background="@color/grey_lite"
-            android:theme="@style/ThemeOverlay.MyApp.ActionBarWhite"
-            tools:targetApi="lollipop" >
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                android:background="#00053F6E"
+                android:theme="@style/ThemeOverlay.MyApp.ActionBarWhite"
+                tools:targetApi="lollipop">
 
                 <RelativeLayout
                     android:id="@+id/home_layout"
@@ -53,24 +49,13 @@
                         android:paddingEnd="8dp"
                         android:paddingTop="8dp"
                         android:paddingBottom="8dp"
-                        app:tint="@color/colorPrimaryDark"
+                        app:tint="@color/white"
                         android:src="@drawable/ic_menu"
                         tools:targetApi="m" />
 
                 </RelativeLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Dashboard"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="0dp"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_centerInParent="true"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:id="@+id/toolbar_title" />
+
 
 <!--                <RelativeLayout-->
 <!--                    android:id="@+id/search_layout"-->
@@ -125,14 +110,13 @@
                         android:text="2"
                         android:maxLines="1"
                         android:ellipsize="end"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/white"
                         android:textSize="14sp" />
 
                 </RelativeLayout>
 
             </RelativeLayout>
 
-        </androidx.appcompat.widget.Toolbar>
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
@@ -155,7 +139,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="visible"
-                    android:background="@color/colorPrimary"
+                    android:background="@mipmap/radial"
                     android:orientation="vertical">
 
 
@@ -165,7 +149,7 @@
                         android:layout_height="120dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="30dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="50dp"
                         android:elevation="8dp"
                         android:src="@drawable/ic_user"
                         app:civ_border_color="@color/white_smoke"
@@ -175,7 +159,7 @@
 
                     <TextView
                         android:id="@+id/profile_name"
-                        android:text="John Doe"
+                        android:text="Mohamed Ahamed"
                         android:textStyle="bold"
                         android:layout_gravity="center"
                         android:textColor="@color/white_smoke"
@@ -187,30 +171,26 @@
                         android:id="@+id/profile_detail"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="20dp"
-                        android:text="jhon@gmail.com"
+                        android:text="mohamedahamed@gmail.com"
                         android:layout_gravity="center"
                         android:textColor="@color/white_smoke"
                         android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
-
+                    <com.google.android.material.tabs.TabLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tablayout"
+                        android:background="@drawable/tab"
+                        app:tabIndicatorHeight="5dp"
+                        app:tabIconTint="@color/white"
+                        app:tabIndicatorColor="@color/green"
+                        app:tabSelectedTextColor="@color/white"
+                        app:tabTextColor="#C5C8CD" />
 
                 </LinearLayout>
 
 
-                <com.google.android.material.tabs.TabLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tablayout"
-                    android:background="@color/grey_lite"
-                    app:tabIndicatorHeight="3dp"
-                    app:tabIndicatorColor="@color/colorPrimary"
-                    app:tabMode="fixed"
-                    app:tabGravity="fill"
-                    app:tabInlineLabel="true"
-                    app:tabBackground="@drawable/tad_selector"
-                    app:tabSelectedTextColor="@color/colorPrimaryLite1"
-                    app:tabTextColor="@color/colorPrimary" />
 
             </LinearLayout>
 
@@ -249,6 +229,24 @@
 
     </androidx.drawerlayout.widget.DrawerLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/green"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_baseline_touch_app_24"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!--Floating action button for add alarm-->
+    <!--Make sure that you are constraining this
+        button to the parent button-->
 
 
 </RelativeLayout>

@@ -87,11 +87,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 >
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/employee_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textCursorDrawable="@null"
+                    app:iconifiedByDefault="false"
+                    app:queryBackground="@null"
+                    android:maxLines="1"
+                    android:layout_margin="10dp"
+                    android:padding="5dp"
+                    android:textIsSelectable="false"
+                    android:textColorHint="@color/grey"
+                    android:background="@drawable/text_bg"
+                    app:queryHint="Search Employees"
+                    android:drawableLeft="@drawable/ic_search_24"/>
 
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
+                    android:layout_below="@+id/employee_search"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true" />
 

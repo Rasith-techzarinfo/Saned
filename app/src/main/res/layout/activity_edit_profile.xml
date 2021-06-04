@@ -71,6 +71,16 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Personal Details"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:layout_marginTop="@dimen/dp10"
+                android:textStyle="bold"
+                android:background="#fff"/>
 
             <RelativeLayout
                 android:id="@+id/profile_image_layout"
@@ -163,14 +173,12 @@
 
 
             </com.google.android.material.textfield.TextInputLayout>
-
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="12dp"
-                android:text="Email"
+                android:text="Last Name*"
                 android:paddingStart="8dp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
@@ -196,6 +204,243 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:theme="@style/primaryEditTextTheme"
+                    android:hint="Last Name"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Middle Name*"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/middleNameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/middleNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Middle Name"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Arabic Name*"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/arabicNameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/arabicNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Arabic Name"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="DOB*"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dobLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/dobEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="DOB"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Nationality*"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nationalityLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nationalityEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Nationality"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Gender*"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+
+            <Spinner
+                android:id="@+id/genderEditText"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Email"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
                     android:hint="Email"
                     android:background="@drawable/text_bg"
                     android:imeOptions="actionNext"
@@ -209,6 +454,111 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Phone no"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/phoneLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phoneEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Phone"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Religion"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+
+
+            <Spinner
+                android:id="@+id/religionEditText"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Emergency contact"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emergencyLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emergencyEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Emergency contact"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 <!--            <TextView-->
 <!--                android:layout_width="wrap_content"-->
@@ -305,6 +655,1080 @@
 
 
             </com.google.android.material.textfield.TextInputLayout>
+  <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Company Details"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:layout_marginTop="@dimen/dp10"
+                android:textStyle="bold"
+                android:background="#fff"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Employee Code*"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/empcodeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/empcodeEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Employee Code"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Full Name*"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fullNameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fullNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Full Name"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Date of Joining*"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dojLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/dojEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Date of Joining"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Job Title*"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+
+                <Spinner
+                    android:id="@+id/jobTitleEditText"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Department*"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+
+            <Spinner
+                android:id="@+id/departmentEditText"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Basic Salary"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/basicLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/basicEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Basic Salary"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Housing Allowance"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/housingLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/housingEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Housing Allowance"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Manager ID"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/managerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/managerEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Manager ID"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="IBAN no"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ibanLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ibanEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="IBAN No"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="4dp"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                android:text="Phone*"-->
+<!--                android:paddingStart="8dp"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textSize="16sp" />-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/phone_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:focusable="false"-->
+<!--                android:focusableInTouchMode="false"-->
+<!--                app:errorTextColor="@color/white_smoke"-->
+<!--                app:hintEnabled="false"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"-->
+<!--                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"-->
+<!--                app:errorTextAppearance="@style/error_appearance">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/phoneEditText"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:theme="@style/primaryEditTextTheme"-->
+<!--                    android:hint="Reason"-->
+<!--                    android:background="@drawable/text_bg"-->
+<!--                    android:imeOptions="actionNext"-->
+<!--                    android:inputType="number"-->
+<!--                    android:maxLength="75"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:paddingStart="8dp"-->
+<!--                    android:textColorHint="@color/grey"-->
+<!--                    tools:targetApi="lollipop" />-->
+
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+
+
+
+            <!-- change password -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="ID no"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/idLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/idEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="ID Number"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Last Date"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/lastdateLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/lastdateEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Last Date"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Vacation Days"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/vacationLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/vacationEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Vacation Days"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Gosi Status"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+
+
+            <Spinner
+                android:id="@+id/gosiEditText"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Cash Status"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/cashLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/cashEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Cash Status"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Grade"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+
+
+            <Spinner
+                android:id="@+id/gradeEditText"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Profession"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/professionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/professionEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Profession"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Overtime Status"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/overLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/overEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Overtime Status"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="ID Expiry"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/idexpiryLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/idexpiryEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="ID Expiry"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Passport No"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passportLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/passportEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Passport No"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Passpory Expiry"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passexpiryLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/passexpiryEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Passport Expiry"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Contract Type"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/contarctLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/contractEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Contract Type"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Gosi Number"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/gosinumLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/gosinumEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Gosi Number"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Contract Expiry"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/contarctexpLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/contractexpEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Contract Expiry"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Sub Department"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/subDeptLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/subDeptEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Sub Department"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="Project"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/projectLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/projectEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="Project"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="ID"
+                android:paddingStart="8dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/idempLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:errorTextColor="@color/white_smoke"
+                app:hintEnabled="false"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:errorTextAppearance="@style/error_appearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/idempEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/primaryEditTextTheme"
+                    android:hint="ID"
+                    android:background="@drawable/text_bg"
+                    android:imeOptions="actionNext"
+                    android:maxLength="75"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:textColorHint="@color/grey"
+                    tools:targetApi="lollipop" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/submitButton"
@@ -314,6 +1738,7 @@
                 android:layout_marginTop="36dp"
                 android:layout_marginEnd="84dp"
                 android:text="Submit"
+                android:layout_marginBottom="50dp"
                 style="@style/Widget.App.Button"
                 android:textStyle="bold"/>
 

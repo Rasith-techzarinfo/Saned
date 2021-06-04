@@ -228,7 +228,7 @@
                                 android:layout_weight="1"
                                 android:maxLines="1"
                                 android:ellipsize="end"
-                                android:text="Username"
+                                android:text="Mohamed Ahamed"
                                 android:textSize="16sp"
                                 />
 
@@ -259,9 +259,9 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Email"
+                                android:text="mohamedahamed@gmail.com"
                                 android:layout_weight="1"
                                 android:maxLines="1"
                                 android:ellipsize="end"

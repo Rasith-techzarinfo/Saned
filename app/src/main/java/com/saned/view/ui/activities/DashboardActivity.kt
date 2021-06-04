@@ -11,7 +11,6 @@ import android.graphics.drawable.ColorDrawable
 import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
@@ -21,11 +20,13 @@ import android.view.Window
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
@@ -44,10 +45,12 @@ import com.saned.view.utils.Constants.Companion.BASE_URL
 import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.openActivity
 import kotlinx.android.synthetic.main.activity_dashboard.*
-import kotlinx.android.synthetic.main.activity_dashboard.home_layout
-import kotlinx.android.synthetic.main.activity_dashboard.toolbar
 import kotlinx.android.synthetic.main.navigation_layout.*
 import kotlinx.coroutines.launch
+import java.util.*
+import kotlin.collections.HashMap
+import kotlin.collections.set
+
 
 class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ConnectivityReceiver.ConnectivityReceiverListener {
 
@@ -63,21 +66,20 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
     private val LOCATION_PERMISSION_REQUEST_CODE = 106
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
-
-        setToolBar()
-        setupNavigationDrawer()
         setupTabLayout()
+        setupNavigationDrawer()
         init()
     }
 
-    
     private fun init() {
         //network receiver
-        registerReceiver(ConnectivityReceiver(), IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
+        registerReceiver(
+            ConnectivityReceiver(),
+            IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+        )
 
         //appbar listeners
         home_layout.setOnClickListener {
@@ -129,10 +131,10 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             openActivity(PendingRequestsActivity::class.java, this@DashboardActivity){}
         }
         settings_menu.setOnClickListener {
-            drawer_layout.closeDrawer(GravityCompat.START)
+            openActivity(SettingsActivity::class.java, this@DashboardActivity){}
         }
         about_app_menu.setOnClickListener {
-            drawer_layout.closeDrawer(GravityCompat.START)
+            openActivity(About::class.java, this@DashboardActivity){}
         }
         logout_menu.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -140,7 +142,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
 
             mDialog.window!!.setBackgroundDrawable(
-                    ColorDrawable(Color.TRANSPARENT)
+                ColorDrawable(Color.TRANSPARENT)
             )
             mDialog.setContentView(R.layout.logout_dialog)
             mDialog.setCancelable(false)
@@ -175,7 +177,9 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         //set values
         profile_name.text = prefHelper.getUserName()
-        profile_detail.text = "Last Login: 6 min ago " + Utils.convertDbtoNormalDateTime1(prefHelper.getLastLogin().toString())  //getUserEmail
+        profile_detail.text = "Last Login: 6 min ago " + Utils.convertDbtoNormalDateTime1(
+            prefHelper.getLastLogin().toString()
+        )  //getUserEmail
 
         //set images
         Glide.with(this)
@@ -217,7 +221,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                        // prefHelper.setLastLogin("" + result.user!!.previous_login)
                         prefHelper.setUserType("" + result.user!!.t_role)  //update n check role id freq
                         //for now, approval matrix
-                        prefHelper.setManagerLevel( if(result.user.t_mail == "rightcursor33@gmail.com") "1" else if(result.user.t_mail == "immu@gmail.com") "2" else "") //"" not a manager
+                        prefHelper.setManagerLevel(if (result.user.t_mail == "rightcursor33@gmail.com") "1" else if (result.user.t_mail == "immu@gmail.com") "2" else "") //"" not a manager
 
                         setupNavigationDrawer()
                         setupDashboard()
@@ -232,7 +236,11 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
                     } else {
-                        Toast.makeText(this@DashboardActivity, "" + result.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@DashboardActivity,
+                            "" + result.message,
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
 
 //                    Utils.stopShimmerRL(shimmerLayout, rootLayout)
@@ -250,9 +258,9 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                         }
                     } else {
                         Toast.makeText(
-                                applicationContext,
-                                "Something went wrong",
-                                Toast.LENGTH_SHORT
+                            applicationContext,
+                            "Something went wrong",
+                            Toast.LENGTH_SHORT
                         )
                                 .show()
                     }
@@ -294,10 +302,18 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                         if (e.getResponseCode() == 401) {
                             Utils.logoutFromApp(this@DashboardActivity)
                         } else if (e.getResponseCode() == 500) {
-                            Toast.makeText(this@DashboardActivity, "Server error", Toast.LENGTH_LONG).show()
+                            Toast.makeText(
+                                this@DashboardActivity,
+                                "Server error",
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                     } else {
-                        Toast.makeText(this@DashboardActivity, "Something went wrong", Toast.LENGTH_SHORT)
+                        Toast.makeText(
+                            this@DashboardActivity,
+                            "Something went wrong",
+                            Toast.LENGTH_SHORT
+                        )
                                 .show()
                     }
                 }
@@ -309,39 +325,6 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     }
 
 
-    private fun setupTabLayout() {
-
-        viewPager.adapter = object : FragmentStateAdapter(this) {
-
-            override fun createFragment(position: Int): Fragment {
-                return ResourceStore.pagerFragments[position]
-            }
-
-            override fun getItemCount(): Int {
-                return ResourceStore.tabList.size
-            }
-        }
-
-        TabLayoutMediator(tablayout, viewPager) { tab, position ->
-            tab.text = ResourceStore.tabList[position]
-        }.attach()
-
-        tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-               // Toast.makeText(this@DashboardActivity, "Tab ${tab?.text} selected", Toast.LENGTH_SHORT).show()
-                viewPager.currentItem = tab.position
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab) {
-//                Toast.makeText(this@MainActivity, "Tab ${tab?.text} unselected", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab) {
-//                Toast.makeText(this@MainActivity, "Tab ${tab?.text} reselected", Toast.LENGTH_SHORT).show()
-            }
-        })
-
-    }
 
 
     private fun setupNavigationDrawer() {
@@ -353,7 +336,9 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         var emailTextView = drawer_layout.findViewById<TextView>(R.id.nav_userdetail)
 
         nameTextView.text = prefHelper.getUserName().toString()
-        emailTextView.text = "Last Login: " + Utils.convertDbtoNormalDateTime1(prefHelper.getLastLogin().toString())  //getUserEmail
+        emailTextView.text = "Last Login: " + Utils.convertDbtoNormalDateTime1(
+            prefHelper.getLastLogin().toString()
+        )  //getUserEmail
         //set images
         Glide.with(this)
                 .load(profileUrl)
@@ -413,14 +398,6 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         ConnectivityReceiver.connectivityReceiverListener = null
     }
 
-    private fun setToolBar() {
-        setSupportActionBar(toolbar)
-        val actionBar: ActionBar? = supportActionBar
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(false)
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24)
-        }
-    }
 
     override fun onSupportNavigateUp(): Boolean {
 
@@ -460,6 +437,41 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
     }
+    private fun setupTabLayout() {
+
+        viewPager.adapter = object : FragmentStateAdapter(this) {
+
+            override fun createFragment(position: Int): Fragment {
+                return ResourceStore.pagerFragments[position]
+            }
+
+            override fun getItemCount(): Int {
+                return ResourceStore.tabList.size
+            }
+        }
+
+        TabLayoutMediator(tablayout, viewPager) { tab, position ->
+            tab.text = ResourceStore.tabList[position]
+            tab.setIcon(R.drawable.ic_baseline_bar_chart_24)
+        }.attach()
+
+        tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                // Toast.makeText(this@DashboardActivity, "Tab ${tab?.text} selected", Toast.LENGTH_SHORT).show()
+                viewPager.currentItem = tab.position
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab) {
+//                Toast.makeText(this@MainActivity, "Tab ${tab?.text} unselected", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab) {
+//                Toast.makeText(this@MainActivity, "Tab ${tab?.text} reselected", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+    }
+
 
     private fun validatePermission() {
 
@@ -513,8 +525,8 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     //permission functions
     private fun checkStoragePermission(): Boolean {
         val result = ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            this,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
         )
         return result == PackageManager.PERMISSION_GRANTED
     }
@@ -529,11 +541,13 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 val builder = androidx.appcompat.app.AlertDialog.Builder(this)
                 builder.setIcon(R.drawable.saned_logo).setTitle("Alert")
                 builder.setMessage("We need to access your storage to use this Application. Kindly allow permission now")
-                builder.setPositiveButton("Click here", DialogInterface.OnClickListener { dialog, which ->
-                    val intent = Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
-                    startActivity(intent)
-                    dialog.dismiss()
-                })
+                builder.setPositiveButton(
+                    "Click here",
+                    DialogInterface.OnClickListener { dialog, which ->
+                        val intent = Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+                        startActivity(intent)
+                        dialog.dismiss()
+                    })
                 //builder.show();
                 val dialog = builder.create()
                 dialog.show() //Only after .show() was called
@@ -555,25 +569,25 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
     private fun requestStoragePermission() {
         ActivityCompat.requestPermissions(
-                this,
-                permission_storage,
-                PERMISSION_REQUEST_CODE
+            this,
+            permission_storage,
+            PERMISSION_REQUEST_CODE
         )
     }
 
 
     private fun requestCameraPermission() {
         ActivityCompat.requestPermissions(
-                this,
-                permission_camera,
-                CAMERA_PERMISSION_REQUEST_CODE
+            this,
+            permission_camera,
+            CAMERA_PERMISSION_REQUEST_CODE
         )
     }
 
     override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<out String>,
-            grantResults: IntArray
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
     ) {
         if (requestCode == PERMISSION_REQUEST_CODE) {
             if (grantResults.isNotEmpty()) {
@@ -581,8 +595,8 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
                     validatePermission()
                 } else if (Build.VERSION.SDK_INT >= 23 && !shouldShowRequestPermissionRationale(
-                                permissions[0]
-                        )) {
+                        permissions[0]
+                    )) {
 
                     Log.e("Never", "Go to Settings and Grant the permission to use this feature.")
 
@@ -603,8 +617,8 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
                     validatePermission()
                 } else if (Build.VERSION.SDK_INT >= 23 && !shouldShowRequestPermissionRationale(
-                                permissions[0]
-                        ))
+                        permissions[0]
+                    ))
                 {
 
                     Log.e("Never", "Go to Settings and Grant the permission to use this feature.")
@@ -626,8 +640,8 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
                     validatePermission()
                 } else if (Build.VERSION.SDK_INT >= 23 && !shouldShowRequestPermissionRationale(
-                                permissions[0]
-                        )
+                        permissions[0]
+                    )
                 ) {
 
                     Log.e("Never", "Go to Settings and Grant the permission to use this feature.")
@@ -680,9 +694,9 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
     private fun requestAudioPermission() {
         ActivityCompat.requestPermissions(
-                this,
-                permission_audio,
-                AUDIO_PERMISSION_REQUEST_CODE
+            this,
+            permission_audio,
+            AUDIO_PERMISSION_REQUEST_CODE
         )
     }
 
@@ -764,7 +778,10 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
     private fun checkLocationPermission(): Boolean {
-        val result = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+        val result = ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        )
         return result == PackageManager.PERMISSION_GRANTED
     }
 
@@ -802,5 +819,30 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             .setTextColor(resources.getColor(R.color.colorPrimary))
 
     }
+    private class ViewPagerAdapter(fm: FragmentManager, behavior: Int) : FragmentPagerAdapter(
+        fm,
+        behavior
+    ) {
+        private val fragments: MutableList<Fragment> = ArrayList()
+        private val fragmentTitle: MutableList<String> = ArrayList()
+        fun addFragment(fragment: Fragment, title: String) {
+            fragments.add(fragment)
+            fragmentTitle.add(title)
+        }
 
+        override fun getItem(position: Int): Fragment {
+            return fragments[position]
+        }
+
+        override fun getCount(): Int {
+            return fragments.size
+        }
+
+        override fun getPageTitle(position: Int): CharSequence? {
+            return fragmentTitle[position]
+        }
+    }
 }
+
+
+
