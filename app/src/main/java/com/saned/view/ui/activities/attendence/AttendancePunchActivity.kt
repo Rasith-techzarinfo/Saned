@@ -404,18 +404,12 @@ class AttendancePunchActivity : AppCompatActivity() {
     }
 
     private fun getLocationAddress(lat: Double, long: Double) : String {
-        var cityName:String = ""
-        var countryName = ""
-        var street = ""
-        var geoCoder = Geocoder(this, Locale.getDefault())
+        var geoCoder = Geocoder(this)
         var address = geoCoder.getFromLocation(lat, long, 1)
-        Log.e("Location", "" + address)
-        cityName = address[0].locality
-        countryName = address[0].countryName
-        street = address[0].getAddressLine(0)
+
 //        Log.e("Location","Your City: " + cityName + " your Country " + countryName + " your street: " + street)
 
-        return street
+        return address[0].getAddressLine(0)
     }
 
 

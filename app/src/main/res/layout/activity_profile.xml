@@ -74,298 +74,756 @@
                 android:layout_height="match_parent"
                 >
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
                 <LinearLayout
-                    android:id="@+id/headerLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorPrimary"
-                    android:orientation="horizontal">
-
-
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/headerLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="25dp"
-                        android:layout_marginBottom="25dp"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:weightSum="5"
-                        >
+                        android:background="@color/colorPrimary"
+                        android:orientation="horizontal">
 
 
                         <LinearLayout
-                            android:layout_weight="4"
-                            android:layout_width="0dp"
-                            android:layout_height="62dp"
-                            android:orientation="horizontal">
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginBottom="25dp"
+                            android:orientation="horizontal"
+                            android:weightSum="5">
 
 
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:id="@+id/profileImage"
-                                android:layout_width="62dp"
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="62dp"
-                                android:src="@drawable/ic_user"
-                                app:civ_border_width="0dp"
-                                app:civ_border_color="#fff"/>
-
-                        <LinearLayout
-                            android:layout_gravity="center"
-                            android:orientation="vertical"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:id="@+id/profileName"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text=""
-                                android:textColor="@color/white"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:maxLines="1"
-                                android:ellipsize="end"
-                                />
-
-                            <TextView
-                                android:id="@+id/profileDetails"
-                                android:layout_marginTop="5dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text=""
-                                android:textColor="@color/white"
-                                android:textSize="12sp"
-                                android:maxLines="1"
-                                android:ellipsize="end"
-                                />
-
-                        </LinearLayout>
-
-                        </LinearLayout>
+                                android:layout_weight="4"
+                                android:orientation="horizontal">
 
 
-                        <LinearLayout
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:gravity="center"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/profileImage"
+                                    android:layout_width="62dp"
+                                    android:layout_height="62dp"
+                                    android:src="@drawable/ic_user"
+                                    app:civ_border_color="#fff"
+                                    app:civ_border_width="0dp" />
 
-                    <FrameLayout
-                        android:id="@+id/profile_edit_icon"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_gravity="center"
-                        android:elevation="8dp"
-                        android:background="@drawable/round_shape"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:visibility="visible"
-                        android:foreground="?android:attr/selectableItemBackground"
-                        android:padding="4dp">
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:orientation="vertical">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_edit_black_24"
-                            app:tint="@color/colorPrimaryDark" />
-                    </FrameLayout>
+                                    <TextView
+                                        android:id="@+id/profileName"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text=""
+                                        android:textColor="@color/white"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/profileDetails"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text=""
+                                        android:textColor="@color/white"
+                                        android:textSize="12sp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <FrameLayout
+                                    android:id="@+id/profile_edit_icon"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/round_shape"
+                                    android:clickable="true"
+                                    android:elevation="8dp"
+                                    android:focusable="true"
+                                    android:foreground="?android:attr/selectableItemBackground"
+                                    android:padding="4dp"
+                                    android:visibility="visible">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/ic_edit_black_24"
+                                        app:tint="@color/colorPrimaryDark" />
+                                </FrameLayout>
+
+                            </LinearLayout>
 
                         </LinearLayout>
 
                     </LinearLayout>
 
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Basic Information"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    >
-
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="Personal Details"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:orientation="vertical">
+
+
+                                <EditText
+                                    android:id="@+id/firstNameEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="First Name"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+
+                                <EditText
+                                    android:id="@+id/lastNameEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Last Name"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/middleNameEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Middle Name"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/arabicNameEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Arabic Name"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/dobEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="DOB"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/nationalityEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Nationality"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/genderEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Gender"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/emailEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Email"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/phoneEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Phone no"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/religionEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Religion"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/emergencyEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Emergency Contact"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+
+                            </LinearLayout>
+
+
+                            <!--                        <LinearLayout-->
+                            <!--                            android:layout_width="match_parent"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:layout_marginTop="12dp"-->
+                            <!--                            android:weightSum="2"-->
+                            <!--                            android:layout_marginBottom="8dp"-->
+                            <!--                            android:orientation="horizontal">-->
+
+                            <!--                            <TextView-->
+                            <!--                                android:layout_width="0dp"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:text="Phone"-->
+                            <!--                                android:layout_weight="1"-->
+                            <!--                                android:maxLines="1"-->
+                            <!--                                android:ellipsize="end"-->
+                            <!--                                android:textSize="16sp"-->
+                            <!--                                />-->
+
+                            <!--                            <TextView-->
+                            <!--                                android:id="@+id/userPhone"-->
+                            <!--                                android:layout_width="0dp"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:text=""-->
+                            <!--                                android:ellipsize="marquee"-->
+                            <!--                                android:scrollHorizontally="true"-->
+                            <!--                                android:focusable="true"-->
+                            <!--                                android:focusableInTouchMode="true"-->
+                            <!--                                android:singleLine="true"-->
+                            <!--                                android:marqueeRepeatLimit="1"-->
+                            <!--                                android:textSize="16sp"-->
+                            <!--                                android:layout_weight="1"-->
+                            <!--                                android:textColor="@color/black"/>-->
+
+                            <!--                        </LinearLayout>-->
+
+                            <!--                        <LinearLayout-->
+                            <!--                            android:layout_width="match_parent"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:layout_marginTop="12dp"-->
+                            <!--                            android:layout_marginBottom="8dp"-->
+                            <!--                            android:weightSum="2"-->
+                            <!--                            android:orientation="horizontal">-->
+
+
+                            <!--                            <TextView-->
+                            <!--                                android:layout_width="0dp"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:text="Last Login"-->
+                            <!--                                android:layout_weight="1"-->
+                            <!--                                android:maxLines="1"-->
+                            <!--                                android:ellipsize="end"-->
+                            <!--                                android:textSize="16sp"-->
+                            <!--                                />-->
+
+
+                            <!--                            <TextView-->
+                            <!--                                android:id="@+id/lastUserLogin"-->
+                            <!--                                android:layout_width="0dp"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:text="June 26,2000"-->
+                            <!--                                android:ellipsize="marquee"-->
+                            <!--                                android:scrollHorizontally="true"-->
+                            <!--                                android:focusable="true"-->
+                            <!--                                android:focusableInTouchMode="true"-->
+                            <!--                                android:singleLine="true"-->
+                            <!--                                android:marqueeRepeatLimit="1"-->
+                            <!--                                android:textSize="16sp"-->
+                            <!--                                android:layout_weight="1"-->
+                            <!--                                android:textColor="@color/black"/>-->
+
+
+                            <!--                        </LinearLayout>-->
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:orientation="vertical"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="8dp">
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="Company Details"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white">
+
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:weightSum="2"
-                            android:orientation="horizontal">
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="0dp"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:maxLines="1"
-                                android:ellipsize="end"
-                                android:text="Mohamed Ahamed"
-                                android:textSize="16sp"
-                                />
+                                android:layout_marginTop="12dp"
+                                android:orientation="vertical">
 
-                            <TextView
-                                android:id="@+id/userName"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text=""
-                                android:layout_weight="1"
-                                android:ellipsize="marquee"
-                                android:scrollHorizontally="true"
-                                android:focusable="true"
-                                android:focusableInTouchMode="true"
-                                android:singleLine="true"
-                                android:marqueeRepeatLimit="1"
-                                android:textColor="@color/black"
-                                android:textSize="16sp"
-                                />
+
+                                <EditText
+                                    android:id="@+id/empcodeEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Employee Code"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+
+                                <EditText
+                                    android:id="@+id/fullNameEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Full Name"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/dojEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Date of Joining"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/jobTitleEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Job Title"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/departmentEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Department"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/basicEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Basic Salary"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/housingEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Housing Allowance"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/managerEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Manager ID"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/ibanEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="IBAN no"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/idEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="ID no"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/lastdateEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Last Date"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/vacationEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Vacation Days"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/gosiEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Gosi Status"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/cashEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Cash Status"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/gradeEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Grade"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/professionEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Profession"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/overEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Overtime Status"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/idexpiryEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="ID Expiry"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/passEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Passport No"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/passexpiryEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Passport Expiry"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/contractEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Contact Type"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/gosinumEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Gosi Number"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/contractexpEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Contract Expiry"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/subDeptEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Sub Department"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/projectEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="Project"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                                <EditText
+                                    android:id="@+id/idnumEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="ID"
+                                    android:singleLine="true"
+                                    android:layout_marginBottom="30dp"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+
+
+                            <!--                        <LinearLayout-->
+                            <!--                            android:layout_width="match_parent"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:layout_marginTop="12dp"-->
+                            <!--                            android:weightSum="2"-->
+                            <!--                            android:layout_marginBottom="8dp"-->
+                            <!--                            android:orientation="horizontal">-->
+
+                            <!--                            <TextView-->
+                            <!--                                android:layout_width="0dp"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:text="Phone"-->
+                            <!--                                android:layout_weight="1"-->
+                            <!--                                android:maxLines="1"-->
+                            <!--                                android:ellipsize="end"-->
+                            <!--                                android:textSize="16sp"-->
+                            <!--                                />-->
+
+                            <!--                            <TextView-->
+                            <!--                                android:id="@+id/userPhone"-->
+                            <!--                                android:layout_width="0dp"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:text=""-->
+                            <!--                                android:ellipsize="marquee"-->
+                            <!--                                android:scrollHorizontally="true"-->
+                            <!--                                android:focusable="true"-->
+                            <!--                                android:focusableInTouchMode="true"-->
+                            <!--                                android:singleLine="true"-->
+                            <!--                                android:marqueeRepeatLimit="1"-->
+                            <!--                                android:textSize="16sp"-->
+                            <!--                                android:layout_weight="1"-->
+                            <!--                                android:textColor="@color/black"/>-->
+
+                            <!--                        </LinearLayout>-->
+
+                            <!--                        <LinearLayout-->
+                            <!--                            android:layout_width="match_parent"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:layout_marginTop="12dp"-->
+                            <!--                            android:layout_marginBottom="8dp"-->
+                            <!--                            android:weightSum="2"-->
+                            <!--                            android:orientation="horizontal">-->
+
+
+                            <!--                            <TextView-->
+                            <!--                                android:layout_width="0dp"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:text="Last Login"-->
+                            <!--                                android:layout_weight="1"-->
+                            <!--                                android:maxLines="1"-->
+                            <!--                                android:ellipsize="end"-->
+                            <!--                                android:textSize="16sp"-->
+                            <!--                                />-->
+
+
+                            <!--                            <TextView-->
+                            <!--                                android:id="@+id/lastUserLogin"-->
+                            <!--                                android:layout_width="0dp"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:text="June 26,2000"-->
+                            <!--                                android:ellipsize="marquee"-->
+                            <!--                                android:scrollHorizontally="true"-->
+                            <!--                                android:focusable="true"-->
+                            <!--                                android:focusableInTouchMode="true"-->
+                            <!--                                android:singleLine="true"-->
+                            <!--                                android:marqueeRepeatLimit="1"-->
+                            <!--                                android:textSize="16sp"-->
+                            <!--                                android:layout_weight="1"-->
+                            <!--                                android:textColor="@color/black"/>-->
+
+
+                            <!--                        </LinearLayout>-->
 
 
                         </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:weightSum="2"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="mohamedahamed@gmail.com"
-                                android:layout_weight="1"
-                                android:maxLines="1"
-                                android:ellipsize="end"
-                                android:textSize="16sp"
-                                />
-
-                            <TextView
-                                android:id="@+id/userEmail"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text=""
-                                android:ellipsize="marquee"
-                                android:scrollHorizontally="true"
-                                android:focusable="true"
-                                android:focusableInTouchMode="true"
-                                android:singleLine="true"
-                                android:marqueeRepeatLimit="1"
-                                android:layout_weight="1"
-                                android:textSize="16sp"
-                                android:textColor="@color/black"/>
-
-                        </LinearLayout>
-
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginTop="12dp"-->
-<!--                            android:weightSum="2"-->
-<!--                            android:layout_marginBottom="8dp"-->
-<!--                            android:orientation="horizontal">-->
-
-<!--                            <TextView-->
-<!--                                android:layout_width="0dp"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:text="Phone"-->
-<!--                                android:layout_weight="1"-->
-<!--                                android:maxLines="1"-->
-<!--                                android:ellipsize="end"-->
-<!--                                android:textSize="16sp"-->
-<!--                                />-->
-
-<!--                            <TextView-->
-<!--                                android:id="@+id/userPhone"-->
-<!--                                android:layout_width="0dp"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:text=""-->
-<!--                                android:ellipsize="marquee"-->
-<!--                                android:scrollHorizontally="true"-->
-<!--                                android:focusable="true"-->
-<!--                                android:focusableInTouchMode="true"-->
-<!--                                android:singleLine="true"-->
-<!--                                android:marqueeRepeatLimit="1"-->
-<!--                                android:textSize="16sp"-->
-<!--                                android:layout_weight="1"-->
-<!--                                android:textColor="@color/black"/>-->
-
-<!--                        </LinearLayout>-->
-
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginTop="12dp"-->
-<!--                            android:layout_marginBottom="8dp"-->
-<!--                            android:weightSum="2"-->
-<!--                            android:orientation="horizontal">-->
-
-
-<!--                            <TextView-->
-<!--                                android:layout_width="0dp"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:text="Last Login"-->
-<!--                                android:layout_weight="1"-->
-<!--                                android:maxLines="1"-->
-<!--                                android:ellipsize="end"-->
-<!--                                android:textSize="16sp"-->
-<!--                                />-->
-
-
-<!--                            <TextView-->
-<!--                                android:id="@+id/lastUserLogin"-->
-<!--                                android:layout_width="0dp"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:text="June 26,2000"-->
-<!--                                android:ellipsize="marquee"-->
-<!--                                android:scrollHorizontally="true"-->
-<!--                                android:focusable="true"-->
-<!--                                android:focusableInTouchMode="true"-->
-<!--                                android:singleLine="true"-->
-<!--                                android:marqueeRepeatLimit="1"-->
-<!--                                android:textSize="16sp"-->
-<!--                                android:layout_weight="1"-->
-<!--                                android:textColor="@color/black"/>-->
-
-
-<!--                        </LinearLayout>-->
-
 
                     </LinearLayout>
 
+
                 </LinearLayout>
-
-
-            </LinearLayout>
-
 
 
             </RelativeLayout>
