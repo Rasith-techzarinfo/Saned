@@ -54,22 +54,46 @@ data class UserEditProfileData(
 
 data class UserData (
 
-        val uuid : String,
-        val t_idno : String,
-        val t_emno : String,
-        val t_nama : String,
-        val t_comp : String,
-        val t_pass : String,
-        val t_mail : String,
-        val t_role : String,
-        val t_page : String,
-        val is_active : String,
-        val fcm_token : String,
-        val created_by : String,
-        val updated_by : String,
-        val createdAt : String,
-        val updatedAt : String,
-        val deletedAt : String
+    val uuid : String,
+    val t_idno : String,
+    val t_emno : String,
+    val t_nama : String,
+    val t_lnme : String,
+    val t_comp : String,
+    val t_pass : String,
+    val t_mail : String,
+    val t_role : String,
+    val t_page : String,
+    val is_active : String,
+    val fcm_token : String,
+    val remember_token : String,
+    val remember_token_at : String,
+    val profile_pic : String,
+    val created_by : String,
+    val updated_by : String,
+    val createdAt : String,
+    val updatedAt : String,
+    val deletedAt : String,
+    val company : Company,
+    val role_name : String
+
+
+//        val uuid : String,
+//        val t_idno : String,
+//        val t_emno : String,
+//        val t_nama : String,
+//        val t_comp : String,
+//        val t_pass : String,
+//        val t_mail : String,
+//        val t_role : String,
+//        val t_page : String,
+//        val is_active : String,
+//        val fcm_token : String,
+//        val created_by : String,
+//        val updated_by : String,
+//        val createdAt : String,
+//        val updatedAt : String,
+//        val deletedAt : String
 
 //    val id : String,
 //    val uuid : String,
@@ -91,6 +115,37 @@ data class UserData (
 //    val deletedAt : String,
 //    val roleId : String,
 //    val companyId : String
+
+)
+
+
+
+data class Company (
+
+    val id : String,
+    val nama : String,
+    val namc : String,
+    val ccty : String,
+    val name : String,
+    val vath : String,
+    val vatn : String,
+    val logo : String,
+    val tybu : String,
+    val scbu : String,
+    val pdat : String,
+    val tbr1 : String,
+    val tbn1 : String,
+    val tdp1 : String,
+    val cops : String,
+    val scp1 : String,
+    val prli : String,
+    val cwar : String,
+    val clot : String,
+    val cloc : String,
+    val status : String,
+    val createdAt : String,
+    val updatedAt : String,
+    val deletedAt : String
 )
 
 data class LoginError(
