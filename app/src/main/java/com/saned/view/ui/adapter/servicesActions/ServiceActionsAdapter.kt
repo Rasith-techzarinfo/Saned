@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.saned.model.ServicesMenu
 import com.saned.R
+import com.saned.model.Data
+import com.saned.model.ServList
 import com.saned.view.ui.activities.ServicesActionsActivity
 import kotlinx.android.synthetic.main.empty_placeholder_item.view.*
 import kotlinx.android.synthetic.main.services_actions_menu_item.view.*
 
 
-class ServiceActionsAdapter(private val dataList: List<ServicesMenu>, val context: Context,
+class ServiceActionsAdapter(private val dataList: List<ServList>, val context: Context,
                             val activity: ServicesActionsActivity
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -46,7 +48,7 @@ class ServiceActionsAdapter(private val dataList: List<ServicesMenu>, val contex
 
 
 
-            viewHolder.itemTitle!!.text = dataList[position].title
+            viewHolder.itemTitle!!.text = dataList[position].module_name
 
         }else if(itemFlag == 0) {
             val emptyViewHolder: EmptyHolder = (holder as EmptyHolder)
@@ -75,7 +77,7 @@ class ServiceActionsAdapter(private val dataList: List<ServicesMenu>, val contex
     }
 
     interface ListAdapterListener{
-        fun onListItemClicked(dummyData: ServicesMenu, position: Int)
+        fun onListItemClicked(dummyData: ServList, position: Int)
     }
 
 

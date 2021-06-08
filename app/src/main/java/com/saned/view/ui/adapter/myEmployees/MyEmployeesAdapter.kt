@@ -9,13 +9,13 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.saned.R
-import com.saned.model.EmployeeData
+import com.saned.model.Empdata
 import com.saned.view.ui.activities.MyEmployeesActivity
 import kotlinx.android.synthetic.main.empty_placeholder_item.view.*
 import kotlinx.android.synthetic.main.employee_list_item.view.*
 
 
-class MyEmployeesAdapter(private val dataList: ArrayList<EmployeeData>, val context: Context,
+class MyEmployeesAdapter(private val dataList: List<Empdata>, val context: Context,
                          val activity: MyEmployeesActivity
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -46,12 +46,12 @@ class MyEmployeesAdapter(private val dataList: ArrayList<EmployeeData>, val cont
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if(itemFlag != 0){
             val viewHolder: ItemViewHolder = (holder as ItemViewHolder)
-            viewHolder.nameItem!!.text = dataList.get(position).name
-            viewHolder.designationItem!!.text = dataList.get(position).designation
-            viewHolder.emailItem!!.text = dataList.get(position).email
+            viewHolder.nameItem!!.text = "" + dataList[position].t_nama
+            viewHolder.designationItem!!.text = dataList.get(position).t_role
+            viewHolder.emailItem!!.text = dataList.get(position).t_mail
 
             Glide.with(activity)
-                .load(dataList[position].profile)
+                .load(dataList[position].profile_pic)
                 .placeholder(R.drawable.ic_user)
                 .error(R.drawable.ic_user)
                 .into(viewHolder.notificationProfile)
@@ -83,7 +83,7 @@ class MyEmployeesAdapter(private val dataList: ArrayList<EmployeeData>, val cont
     }
 
     interface ListAdapterListener{
-        fun onListItemClicked(dummyData: EmployeeData, position: Int)
+        fun onListItemClicked(dummyData: Empdata, position: Int)
     }
 
 

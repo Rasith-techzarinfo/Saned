@@ -102,8 +102,8 @@ class LoginActivity : AppCompatActivity() {
 
                     if (result.success == "1") {
 
-                        var userType = "" + result.user!!.t_role
-                        if(userType == "2" || userType == "3" ) {
+                        var userType = "" + result.user!!.role_name
+                        if(userType == "HR Admin" || userType == "HR Manager" || userType == "Company User" ) {
 
                             prefHelper.setBearerToken("" + result.token)
                             prefHelper.setUserId("" + result.user!!.t_idno)
@@ -112,10 +112,10 @@ class LoginActivity : AppCompatActivity() {
                             prefHelper.setUserName("" + "${result.user!!.t_nama} ") //${result.user!!.last_name}
                             prefHelper.setUserEmail("" + email_edit_text.text.toString())
                             // prefHelper.setLastLogin("" + result.user!!.previous_login)
-//                        prefHelper.setUserProfile("" + result.data?.get(0)!!.profile_pic)
+                            prefHelper.setUserProfile("" + result.user!!.profile_pic)
                             prefHelper.setIsLogin("1")
                             //for now, approval matrix
-                            prefHelper.setManagerLevel( if(result.user.t_mail == "rightcursor33@gmail.com") "1" else if(result.user.t_mail == "immu@gmail.com") "2" else "") //"" not a manager
+                            prefHelper.setManagerLevel( if(result.user.t_mail == "mm1@osaned.com") "HR Admin" else if(result.user.t_mail == "mm3@osaned.com") "HR Manager" else "") //"" not a manager
 
                             Toast.makeText(this@LoginActivity, "Login Success", Toast.LENGTH_SHORT).show()
                             loginSuccess()

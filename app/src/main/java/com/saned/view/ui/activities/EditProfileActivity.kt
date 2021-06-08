@@ -51,9 +51,9 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
         spinner()
         setToolBar()
         init()
-        val dob=findViewById(R.id.dobEditText) as TextInputEditText
-        val doj=findViewById(R.id.dojEditText) as TextInputEditText
-        val ld=findViewById(R.id.lastdateEditText) as TextInputEditText
+        var dob=findViewById(R.id.dobEditText) as TextInputEditText
+        var doj=findViewById(R.id.dojEditText) as TextInputEditText
+        var ld=findViewById(R.id.lastdateEditText) as TextInputEditText
         dob.setOnClickListener {
             val c = Calendar.getInstance()
             val year = c.get(Calendar.YEAR)
@@ -63,7 +63,7 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
             val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
 
                 // Display Selected date in textbox
-                dobEditText.setText("" + dayOfMonth + "/" + monthOfYear + "/" + year)
+                dob.setText("" + dayOfMonth + "/" + monthOfYear + "/" + year)
 
             }, year, month, day)
 
@@ -79,7 +79,7 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
             val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
 
                 // Display Selected date in textbox
-                dojEditText.setText("" + dayOfMonth + "/" + monthOfYear + "/" + year)
+                doj.setText("" + dayOfMonth + "/" + monthOfYear + "/" + year)
 
             }, year, month, day)
 
@@ -95,7 +95,7 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
             val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
 
                 // Display Selected date in textbox
-                lastdateEditText.setText("" + dayOfMonth + "/" + monthOfYear + "/" + year)
+                ld.setText("" + dayOfMonth + "/" + monthOfYear + "/" + year)
 
             }, year, month, day)
 
@@ -116,7 +116,7 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
 
         //get profile data
         getMyProfileData()
-        passEditText.setText("" + prefHelper.getUserPassword())
+       // arjunpassEditText.setText("" + prefHelper.getUserPassword())
 
         //btn listeners
         passLayout.setOnClickListener {
@@ -127,11 +127,11 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
         }
         submitButton.setOnClickListener {
             // validate all fields
-            if (firstNameEditText.text.toString() == "") {
-
-                Toast.makeText(this, "Enter the Firstname", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+//           arjun if (firstNameEditText.text.toString() == "") {
+//
+//                Toast.makeText(this, "Enter the Firstname", Toast.LENGTH_SHORT).show()
+//                return@setOnClickListener
+//            }
 
 //            if (lastNameEditText.text.toString() == "") {
 //
@@ -165,15 +165,15 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
 
 
             val hashMap: HashMap<String, String> = HashMap()
-
-            hashMap["fnme"] = "" + firstNameEditText.text.toString()
-            hashMap["lnme"] = "" + lastNameEditText.text.toString()
-            hashMap["mnme"] = "" + middleNameEditText.text.toString()
-            hashMap["email"] = "" + lastNameEditText.text.toString()
-            hashMap["dob"] = "" + dobEditText.text.toString()
-            hashMap["a_name"] = "" + arabicNameEditText.text.toString()
-            hashMap["ccty"] = "" + nationalityEditText.text.toString()
-            hashMap["phon"] = "" + phoneEditText.text.toString()
+//
+//          arjun  hashMap["fnme"] = "" + firstNameEditText.text.toString()
+//            hashMap["lnme"] = "" + lastNameEditText.text.toString()
+//            hashMap["mnme"] = "" + middleNameEditText.text.toString()
+//            hashMap["email"] = "" + lastNameEditText.text.toString()
+//            hashMap["dob"] = "" + dobEditText.text.toString()
+//            hashMap["a_name"] = "" + arabicNameEditText.text.toString()
+//            hashMap["ccty"] = "" + nationalityEditText.text.toString()
+//            hashMap["phon"] = "" + phoneEditText.text.toString()
             //hashMap["last_name"] = "" + lastNameEditText.text.toString()
            // hashMap["phone"] = "" + phoneEditText.text.toString()
 
@@ -255,8 +255,8 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
                     if (result.success == "1") {
 
 
-                        firstNameEditText.setText("" + result.user!!.t_nama)
-                        lastNameEditText.setText("" + result.user!!.t_mail)
+//                      arjn  firstNameEditText.setText("" + result.user!!.t_nama)
+//                        lastNameEditText.setText("" + result.user!!.t_mail)
                        // lastNameEditText.setText("" + result.user!!.last_name)
                        // phoneEditText.setText("" + result.user!!.phone)
 

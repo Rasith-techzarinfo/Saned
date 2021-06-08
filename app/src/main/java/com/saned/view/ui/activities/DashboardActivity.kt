@@ -221,7 +221,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                        // prefHelper.setLastLogin("" + result.user!!.previous_login)
                         prefHelper.setUserType("" + result.user!!.t_role)  //update n check role id freq
                         //for now, approval matrix
-                        prefHelper.setManagerLevel(if (result.user.t_mail == "rightcursor33@gmail.com") "1" else if (result.user.t_mail == "immu@gmail.com") "2" else "") //"" not a manager
+                        prefHelper.setManagerLevel(if (result.user.t_mail == "rightcursor33@gmail.com") "HR Admin" else if (result.user.t_mail == "immu@gmail.com") "2" else "") //"" not a manager
 
                         setupNavigationDrawer()
                         setupDashboard()

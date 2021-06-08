@@ -8,10 +8,9 @@ import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.saned.R
-import com.saned.model.HAData
-import com.saned.model.HAData1
-import com.saned.model.HousingWFData
+import com.saned.model.Data
 import com.saned.sanedApplication
+import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.view.error.SANEDError
 import com.saned.view.ui.adapter.pendingRequests.PendingRequestsAdapter
@@ -28,7 +27,7 @@ import kotlinx.coroutines.launch
 class PendingRequestsActivity : AppCompatActivity() {
 
 
-    var myPendingsArrayList: ArrayList<HAData> = ArrayList()
+    var myPendingsArrayList: ArrayList<Data> = ArrayList()
     lateinit var myPendingAdapter: PendingRequestsAdapter
 
     var currentPage: Int = 1
@@ -56,8 +55,7 @@ class PendingRequestsActivity : AppCompatActivity() {
         getPendingRequestFromServer()
     }
 
-    private fun getPendingRequestFromServer()
-    {
+    private fun getPendingRequestFromServer() {
         myPendingsArrayList.clear()
         currentPage = 1
 
@@ -69,97 +67,99 @@ class PendingRequestsActivity : AppCompatActivity() {
 
                 try{
 
-                    val result = if(sanedApplication.prefHelper.getUserType() == "3") sanedApplication.apiService.getHousingWFListUser().await() else if (sanedApplication.prefHelper.getManagerLevel() == "1") sanedApplication.apiService.getHousingWFListManager1().await() else sanedApplication.apiService.getHousingWFListManager2().await()
+                    val result = apiService.getPendingHistory().await()
+
                     Log.e("result", "" + result)
 
                     if(result.success == "1"){
 
-                        var firstArrayList: ArrayList<HousingWFData> = ArrayList()
-                        var secondArrayList: ArrayList<HAData1> = ArrayList()
+//                        var firstArrayList: ArrayList<HousingWFData> = ArrayList()
+//                        var secondArrayList: ArrayList<HAData1> = ArrayList()
 
                         for (item in result.data!!) {
 
-                            val v1 = HousingWFData(
-                                "" + item.id,
+                            val v1 = Data(
                                 "" + item.wkid,
-                                "" + item.sern,
-                                "" + item.labl,
-                                "" + item.data,
                                 "" + item.form_name,
-                                "" + item.email
+                                "" + item.pending_since,
+                                "" + item.pending_with,
+                                "" + item.added_by,
+                                "" + item.added_at,
+                                "" + item.status,
+                                    "" + item.last_action_date
                             )
-                            firstArrayList.add(v1)
+                            myPendingsArrayList.add(v1)
 
-                            var v2 = HAData1((firstArrayList.size - 1), "" + item.wkid)
-                            secondArrayList.add(v2)
+//                            var v2 = HAData1((firstArrayList.size - 1), "" + item.wkid)
+//                            secondArrayList.add(v2)
                         }
 
-                        val hashMap: HashMap<String, MutableList<Int>> = HashMap()
+//                        val hashMap: HashMap<String, MutableList<Int>> = HashMap()
 
 
-                        for (i in 0 until secondArrayList.size) {
-                            if (hashMap[secondArrayList[i].wkid] != null) {
-                                var indexList = hashMap[secondArrayList.get(i).wkid]
-                                indexList!!.add(i)
-                                hashMap[secondArrayList.get(i).wkid] = indexList!!
-                            } else {
-                                var indexList: MutableList<Int> = ArrayList()
-                                indexList.add(i)
-                                hashMap[secondArrayList.get(i).wkid] = indexList
-                            }
-                        }
-                        Log.e("HashMap", "" + hashMap.toString())
+//                        for (i in 0 until secondArrayList.size) {
+//                            if (hashMap[secondArrayList[i].wkid] != null) {
+//                                var indexList = hashMap[secondArrayList.get(i).wkid]
+//                                indexList!!.add(i)
+//                                hashMap[secondArrayList.get(i).wkid] = indexList!!
+//                            } else {
+//                                var indexList: MutableList<Int> = ArrayList()
+//                                indexList.add(i)
+//                                hashMap[secondArrayList.get(i).wkid] = indexList
+//                            }
+//                        }
+//                        Log.e("HashMap", "" + hashMap.toString())
 
-                        for (item in hashMap){
-
-                            var indexList: MutableList<Int> = ArrayList()
-                            indexList = item.value
-                            Log.e("HashMap Item", "" + item.key + " " +  indexList)
-
-                            var month = ""
-                            var reason = ""
-                            var userID = ""
-                            var document = ""
-                            var wkid = ""
-                            for (item in indexList){
-                                var t1 = firstArrayList[item]
-//                                if(t1.sern == "1" ){ //month no
-//                                  month = t1.data
+//                        for (item in hashMap){
+//
+//                            var indexList: MutableList<Int> = ArrayList()
+//                            indexList = item.value
+//                            Log.e("HashMap Item", "" + item.key + " " +  indexList)
+//
+//                            var month = ""
+//                            var reason = ""
+//                            var userID = ""
+//                            var document = ""
+//                            var wkid = ""
+//                            for (item in indexList){
+//                                var t1 = firstArrayList[item]
+////                                if(t1.sern == "1" ){ //month no
+////                                  month = t1.data
+////                                }
+////                                if(t1.sern == "2"){ //reason
+////                                    reason = t1.data
+////                                }
+////                                if(t1.sern == "3"){ //user id
+////                                    userID = t1.data
+////                                }
+////                                if(t1.sern == "4"){ //document
+////                                    document = t1.data
+////                                }
+//                                if(t1.labl.equals("Month No",true)){ //month no
+//                                    month = t1.data
 //                                }
-//                                if(t1.sern == "2"){ //reason
+//                                if(t1.labl.equals("Reason",true)){ //reason
 //                                    reason = t1.data
 //                                }
-//                                if(t1.sern == "3"){ //user id
+//                                if(t1.labl.equals("User Id",true)){ //user id
 //                                    userID = t1.data
 //                                }
-//                                if(t1.sern == "4"){ //document
+//                                if(t1.labl.equals("Document",true)){ //document
 //                                    document = t1.data
 //                                }
-                                if(t1.labl.equals("Month No",true)){ //month no
-                                    month = t1.data
-                                }
-                                if(t1.labl.equals("Reason",true)){ //reason
-                                    reason = t1.data
-                                }
-                                if(t1.labl.equals("User Id",true)){ //user id
-                                    userID = t1.data
-                                }
-                                if(t1.labl.equals("Document",true)){ //document
-                                    document = t1.data
-                                }
-                                wkid = t1.wkid
-
-                            }
-                            val v2 = HAData(
-                                "" + month,
-                                "" + reason,
-                                "" + userID,
-                                "" + document,
-                                "" + wkid
-                            )
-                            myPendingsArrayList.add(v2)
-                            Log.e("WF", "" + v2)
-                        }
+//                                wkid = t1.wkid
+//
+//                            }
+//                            val v2 = HAData(
+//                                "" + month,
+//                                "" + reason,
+//                                "" + userID,
+//                                "" + document,
+//                                "" + wkid
+//                            )
+//                            myPendingsArrayList.add(v2)
+//                            Log.e("WF", "" + v2)
+//                        }
 
 
 
@@ -203,6 +203,8 @@ class PendingRequestsActivity : AppCompatActivity() {
         }
 
     }
+
+
     private fun getValues() {
         myPendingsArrayList.clear()
         currentPage = 1
@@ -212,10 +214,10 @@ class PendingRequestsActivity : AppCompatActivity() {
             Utils.startShimmerRL(shimmerLayout, rootLayout)
 
             //add dummy values
-            myPendingsArrayList.add(HAData("3", "vacation", "123",  "ishaque@gmail.com",  "987654"))
-            myPendingsArrayList.add(HAData("6", "housing alter", "124",  "ishaqu@gmail.com",  "9876543"))
-            myPendingsArrayList.add(HAData("12", "leave", "125",  "ishaq@gmail.com",  "98765432"))
-            myPendingsArrayList.add(HAData("3", "coffee", "126",  "isha@gmail.com",  "987654321"))
+//            myPendingsArrayList.add(HAData("3", "vacation", "123",  "ishaque@gmail.com",  "987654"))
+//            myPendingsArrayList.add(HAData("6", "housing alter", "124",  "ishaqu@gmail.com",  "9876543"))
+//            myPendingsArrayList.add(HAData("12", "leave", "125",  "ishaq@gmail.com",  "98765432"))
+//            myPendingsArrayList.add(HAData("3", "coffee", "126",  "isha@gmail.com",  "987654321"))
 
 
             Utils.stopShimmerRL(shimmerLayout, rootLayout)
@@ -227,7 +229,8 @@ class PendingRequestsActivity : AppCompatActivity() {
         }
     }
 
-    fun onListItemClicked(dummyData:HAData, position: Int) {
+    fun onListItemClicked(dummyData:Data, position: Int) {
+
 
     }
 

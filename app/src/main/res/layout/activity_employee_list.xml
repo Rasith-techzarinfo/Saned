@@ -124,21 +124,21 @@
 
 
                                 <TextView
-                                    android:id="@+id/profile_name"
-                                    android:text="Mohamed Ahamed"
+                                    android:id="@+id/employeelist_name"
                                     android:textStyle="bold"
                                     android:layout_gravity="center"
                                     android:textColor="@color/white_smoke"
                                     android:textSize="20sp"
+                                    android:text=""
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"/>
 
                                 <TextView
-                                    android:id="@+id/profile_detail"
+                                    android:id="@+id/employeelist_mail"
                                     android:layout_marginTop="5dp"
                                     android:layout_marginBottom="20dp"
-                                    android:text="mohamedahamed@gmail.com"
                                     android:layout_gravity="center"
+                                    android:text=""
                                     android:textColor="@color/white_smoke"
                                     android:textSize="16sp"
                                     android:layout_width="wrap_content"

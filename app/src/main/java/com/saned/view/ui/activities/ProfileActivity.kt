@@ -73,25 +73,25 @@ class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityRe
                     if (result.success == "1") {
 
 
-                        userName.text = "" + "${result.user!!.t_nama} "  //${result.user!!.last_name}
-                        userEmail.text = "" + "${result.user!!.t_mail}"
-                       // userPhone.text = "" + "${result.user!!.phone}"
-                        profileName.text = "" + "${result.user!!.t_nama} "  //${result.user!!.last_name}
-                       // profileDetails.text =  "Last Login: " + Utils.convertDbtoNormalDateTime1("" + result.user!!.previous_login)
-//                        profileDetails.text = "" + "${result.user!!.email}"
-
-                        //save to pref
-                        prefHelper.setUserName("" + "${result.user!!.t_nama} ") //${result.user!!.last_name}
-                        prefHelper.setUserEmail("" + result.user!!.t_mail)
-                       // prefHelper.setLastLogin("" + result.user!!.previous_login)
-
-                        //listeners
-                        userEmail.setOnClickListener {
-                            userEmail.isSelected = true
-                        }
-                        userName.setOnClickListener {
-                            userName.isSelected = true
-                        }
+//                        userName.text = "" + "${result.user!!.t_nama} "  //${result.user!!.last_name}
+//                        userEmail.text = "" + "${result.user!!.t_mail}"
+//                       // userPhone.text = "" + "${result.user!!.phone}"
+//                        profileName.text = "" + "${result.user!!.t_nama} "  //${result.user!!.last_name}
+//                       // profileDetails.text =  "Last Login: " + Utils.convertDbtoNormalDateTime1("" + result.user!!.previous_login)
+////                        profileDetails.text = "" + "${result.user!!.email}"
+//
+//                        //save to pref
+//                        prefHelper.setUserName("" + "${result.user!!.t_nama} ") //${result.user!!.last_name}
+//                        prefHelper.setUserEmail("" + result.user!!.t_mail)
+//                       // prefHelper.setLastLogin("" + result.user!!.previous_login)
+//
+//                        //listeners
+//                        userEmail.setOnClickListener {
+//                            userEmail.isSelected = true
+//                        }
+//                        userName.setOnClickListener {
+//                            userName.isSelected = true
+//                        }
 //                        userPhone.setOnClickListener {
 //                            userPhone.isSelected = true
 //                        }

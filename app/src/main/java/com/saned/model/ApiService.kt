@@ -55,6 +55,27 @@ interface ApiService {
             @FieldMap values: java.util.HashMap<String, String>
     ): Deferred<UserLoginData>
 
+
+    @GET("v1/api/user/employee-list")
+    fun getEmployeeList(
+
+    ): Deferred<MyEmployeeList>
+
+
+    @GET("v1/api/workflow/histroy")
+    fun getPendingHistory(
+
+    ): Deferred<Pendinghistory>
+
+
+    @GET("v1/api/workflow/menu-list")
+    fun getServicesList(
+
+    ): Deferred<ServicesList>
+
+
+    ////////////////////////////
+
     //user
     @GET("v1/api/workflow/housing-advance/list")
     fun getHousingWFListUser(

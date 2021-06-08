@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.saned.view.ui.activities.PendingRequestsActivity
 import com.saned.R
-import com.saned.model.HAData
+import com.saned.model.Data
 import kotlinx.android.synthetic.main.dynamic_wf_list_item.view.*
 import kotlinx.android.synthetic.main.empty_placeholder_item.view.*
 
-class PendingRequestsAdapter(private val dataList: List<HAData>, val context: Context,
-val activity: PendingRequestsActivity
+class PendingRequestsAdapter(private val dataList: List<Data>, val context: Context,
+                             val activity: PendingRequestsActivity
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var itemFlag: Int = 0
@@ -45,8 +45,8 @@ val activity: PendingRequestsActivity
         if(itemFlag != 0){
             val viewHolder: PendingRequestsAdapter.ViewHolder = (holder as PendingRequestsAdapter.ViewHolder)
 
-            viewHolder.itemVal1!!.text = "" + dataList[position].noofmonths
-            viewHolder.itemVal2!!.text = "" + dataList[position].reason
+            viewHolder.itemVal1!!.text = "" + dataList[position].form_name
+            viewHolder.itemVal2!!.text = "" + dataList[position].status
 
         }else if(itemFlag == 0) {
             val emptyViewHolder: PendingRequestsAdapter.EmptyHolder = (holder as PendingRequestsAdapter.EmptyHolder)
@@ -75,6 +75,6 @@ val activity: PendingRequestsActivity
     }
 
     interface ListAdapterListener{
-        fun onListItemClicked(dummyData: HAData, position: Int)
+        fun onListItemClicked(dummyData: Data, position: Int)
     }
 }

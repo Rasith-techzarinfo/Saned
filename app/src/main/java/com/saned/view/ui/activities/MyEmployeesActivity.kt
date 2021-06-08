@@ -4,7 +4,9 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -14,23 +16,45 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.saned.R
-import com.saned.model.EmployeeData
+import com.saned.model.*
+import com.saned.sanedApplication
+import com.saned.sanedApplication.Companion.apiService
+import com.saned.sanedApplication.Companion.coroutineScope
+import com.saned.sanedApplication.Companion.prefHelper
+import com.saned.view.error.SANEDError
+import com.saned.view.ui.activities.dynamicWF.ViewDynamicWFActivity
 import com.saned.view.ui.adapter.myEmployees.MyEmployeesAdapter
 import com.saned.view.utils.Utils
+import com.saned.view.utils.Utils.Companion.openActivityWithResult
+import kotlinx.android.synthetic.main.activity_history_dynamic_w_f.*
 import kotlinx.android.synthetic.main.activity_my_employees.*
+import kotlinx.android.synthetic.main.activity_my_employees.recyclerView
+import kotlinx.android.synthetic.main.activity_my_employees.rootLayout
+import kotlinx.android.synthetic.main.activity_my_employees.shimmerLayout
+import kotlinx.android.synthetic.main.activity_my_employees.swipeRefreshLayout
 import kotlinx.android.synthetic.main.activity_my_employees.toolbar
+import kotlinx.android.synthetic.main.activity_services_actions.*
 import kotlinx.android.synthetic.main.employee_list_item.*
 import kotlinx.android.synthetic.main.services_actions_menu_item.view.*
+import kotlinx.coroutines.launch
+import java.lang.Exception
 import java.util.*
 import kotlin.collections.ArrayList
 
 class MyEmployeesActivity : AppCompatActivity(), MyEmployeesAdapter.ListAdapterListener {
 
 
-    var myEmployeesArrayList: ArrayList<EmployeeData> = ArrayList()
+    var myEmployeesArrayList: ArrayList<Empdata> = ArrayList()
     lateinit var myEmployeesAdapter: MyEmployeesAdapter
     lateinit var searchView: SearchView
     var keyword: String = ""
+    var currentPage: Int = 1
+
+    var totalPages: String = ""
+
+
+    var t_mail: String = ""
+    var t_nama: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,38 +94,152 @@ class MyEmployeesActivity : AppCompatActivity(), MyEmployeesAdapter.ListAdapterL
     private fun init() {
 
         swipeRefreshLayout.setOnRefreshListener {
-            getValues()
+           // getValues()
+            getServicesListFromServer()
             swipeRefreshLayout.isRefreshing = false
         }
         //get data
-        getValues()
+        //getValues()
+        getServicesListFromServer()
 
     }
 
 
 
-    private fun getValues() {
+//    private fun getValues() {
+//        myEmployeesArrayList.clear()
+//
+//        if (Utils.isInternetAvailable(this)) {
+//            Utils.startShimmerRL(shimmerLayout, rootLayout)
+//
+//            //add dummy values
+//            myEmployeesArrayList.add(EmployeeData("3", "Ishaque", "Project Manager",  "ishaque@gmail.com",  "9876543210", "https://content.fortune.com/wp-content/uploads/2018/10/gettyimages-524263730-e1540503436210.jpg"))
+//            myEmployeesArrayList.add(EmployeeData("2", "Test", "User",  "test@gmail.com",  "9876543210", "https://content.fortune.com/wp-content/uploads/2018/10/gettyimages-524263730-e1540503436210.jpg"))
+//            myEmployeesArrayList.add(EmployeeData("1", "Robert Downey JR", "Admin",  "robert@gmail.com",  "9876543210", "https://content.fortune.com/wp-content/uploads/2018/10/gettyimages-524263730-e1540503436210.jpg"))
+//
+//
+//
+//            Utils.stopShimmerRL(shimmerLayout, rootLayout)
+//            setupRecyclerView()
+//
+//
+//        } else {
+//            Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
+//        }
+//    }
+
+
+
+    private fun getServicesListFromServer(){
         myEmployeesArrayList.clear()
+        currentPage = 1
 
         if (Utils.isInternetAvailable(this)) {
+
+            //shimmer
             Utils.startShimmerRL(shimmerLayout, rootLayout)
 
-            //add dummy values
-            myEmployeesArrayList.add(EmployeeData("3", "Ishaque", "Project Manager",  "ishaque@gmail.com",  "9876543210", "https://content.fortune.com/wp-content/uploads/2018/10/gettyimages-524263730-e1540503436210.jpg"))
-            myEmployeesArrayList.add(EmployeeData("2", "Test", "User",  "test@gmail.com",  "9876543210", "https://content.fortune.com/wp-content/uploads/2018/10/gettyimages-524263730-e1540503436210.jpg"))
-            myEmployeesArrayList.add(EmployeeData("1", "Robert Downey JR", "Admin",  "robert@gmail.com",  "9876543210", "https://content.fortune.com/wp-content/uploads/2018/10/gettyimages-524263730-e1540503436210.jpg"))
+            coroutineScope.launch {
+
+                try {
+
+
+                    val result = apiService.getEmployeeList().await()
+
+                    Log.e("result", "" + result)
+
+                    if(result.success == "1"){
+
+                       // var myEmployeesArrayList: ArrayList<Empdata> = ArrayList()
+                      //  var secondArrayList: ArrayList<HAData1> = ArrayList()
+
+                        for (item in result.data!!) {
+
+                            val v1 = Empdata(
+                                "" + item.t_idno,
+                                "" + item.uuid,
+                                "" + item.t_mail,
+                                "" + item.t_nama,
+                                "" + item.t_pass,
+                                "" + item.t_lnme,
+                                "" + item.t_comp,
+                                "" + item.t_role,
+                                "" + item.t_page,
+                                "" + item.t_emno,
+                                "" + item.is_active,
+                                "" + item.created_by,
+                                "" + item.updated_by,
+                                "" + item.profile_pic,
+                                "" + item.created_at,
+                                "" + item.updated_at,
+                                "" + item.deleted_at,
+                                "" + item.fcm_token,
+                                "" + item.remember_token,
+                                "" + item.remember_token_at,
+                                "" + item.emp_id,
+                                "" + item.f_name,
+                                "" + item.a_name,
+                                "" + item.jbtl
+
+
+                            )
+                            myEmployeesArrayList.add(v1)
+
+                          //  var v2 = HAData1((firstArrayList.size - 1), "" + item.wkid)
+                         //   secondArrayList.add(v2)
+                        }
 
 
 
-            Utils.stopShimmerRL(shimmerLayout, rootLayout)
-            setupRecyclerView()
+//                        totalPages = result.data!!.last_page.toString()
+//                        Log.e("result", "" + result.data!!.current_page)
+
+                    }else {
+
+                        Toast.makeText(this@MyEmployeesActivity, "" + result.message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
 
 
+
+                    //load static data for now
+//                    dynamicWFArrayList.add(HAData("30", "This is so coolllll.", "101"))
+
+
+
+
+                    Utils.stopShimmerRL(shimmerLayout, rootLayout)
+
+
+                    setupRecyclerView()
+
+                }catch (e: Exception){
+
+                    Utils.stopShimmerRL(shimmerLayout, rootLayout)
+                    Log.e("error", "" + e.message)
+//                    if(e.message == "Connection reset" || e.message == "Failed to connect to /40.123.199.239:3000"){
+//
+//                    } else
+                    if (e is SANEDError) {
+                        Log.e("Err", "" + e.getErrorResponse())
+                        if (e.getResponseCode() == 401) {
+                            Utils.logoutFromApp(applicationContext)
+                        } else if (e.getResponseCode() == 500) {
+                            Toast.makeText(applicationContext, "Server error", Toast.LENGTH_LONG).show()
+                        }
+                    } else {
+                        Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+
+            }
         } else {
-            Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
+            // Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
+            Utils.checkNetworkDialog(this, this) { getServicesListFromServer() }
         }
-    }
 
+    }
 
 
 
@@ -165,9 +303,15 @@ class MyEmployeesActivity : AppCompatActivity(), MyEmployeesAdapter.ListAdapterL
     }
 
 
-    override fun onListItemClicked(dummyData: EmployeeData, position: Int) {
-        val intent=Intent(applicationContext,EmployeeList::class.java)
-        startActivity(intent)
+    override fun onListItemClicked(dummyData: Empdata, position: Int) {
+
+        openActivityWithResult(EmployeeList::class.java, this, 101){
+            putString("t_mail", "" + dummyData.t_mail)
+            putString("t_nama", "" + dummyData.t_nama)
+           // putString("wkid", "" + dummyData.id)
+        }
+//        val intent=Intent(applicationContext,EmployeeList::class.java)
+//        startActivity(intent)
     }
 
 
@@ -188,9 +332,5 @@ class MyEmployeesActivity : AppCompatActivity(), MyEmployeesAdapter.ListAdapterL
         return true
     }
 
-    override fun onBackPressed() {
 
-        val intent=Intent(applicationContext, DashboardActivity::class.java)
-        startActivity(intent)
-    }
 }

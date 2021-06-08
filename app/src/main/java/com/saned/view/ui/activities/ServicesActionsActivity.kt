@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.saned.model.ServicesMenu
 import com.saned.R
+import com.saned.model.Data
+import com.saned.model.ServList
+import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.view.error.SANEDError
 import com.saned.view.ui.activities.dynamicWF.HistoryDynamicWFActivity
@@ -28,7 +31,7 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
 
     lateinit var serviceActionsAdapter : ServiceActionsAdapter
 
-    var servicesArrayList: ArrayList<ServicesMenu> = ArrayList()
+    var servicesArrayList: ArrayList<ServList> = ArrayList()
 
     var currentPage: Int = 1
     var totalPages: String = ""
@@ -57,44 +60,45 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
 
                 try {
 
-//                    val result = netwoApplication.apiService.getTicketFAQList(currentPage).await()
-//                    Log.e("result", "" + result)
-//
-//                    if(result.success == "1"){
-//
-//                        for(item in result.data!!.data!!){
-////                            Log.e("current page info",""+item.question)
-//
-//                            val c1 = TicketCategory(
-//                                "" + item.category!!.id,
-//                                "" + item.category!!.name
-//                            )
-//
-//                            val v1 = ServicesMenu(
-//                                ""+ item.id,
-//                                c1,
-//                                ""+item.question,
-//                                ""+item.answer,
-//                                ""+item.user_id,
-//                                ""+item.active,
-//                                ""+item.created_at,
-//                                ""+item.updated_at
-//                            )
-//                            servicesArrayList.add(v1)
-//                        }
+                    val result = apiService.getServicesList().await()
+
+                    Log.e("result", "" + result)
+
+                    if(result.success == "1"){
+
+                        for(item in result.data!!){
+//                            Log.e("current page info",""+item.question)
+
+                            val v1 = ServList(
+                                "" + item.id,
+                                "" + item.module_name,
+                                "" + item.slug,
+                                "" + item.icon,
+                                "" + item.package_id,
+                                "" + item.addon_id,
+                                "" + item.parent,
+                                    "" + item.menu_order,
+                                    "" + item.user_privillage,
+                                    "" + item.dynamic,
+                                    "" + item.createdAt,
+                                    "" + item.updatedAt,
+                                    "" + item.deletedAt
+                            )
+                            servicesArrayList.add(v1)
+                        }
 //                        totalPages = result.data!!.last_page.toString()
 //                        Log.e("result", "" + result.data!!.current_page)
-//
-//                    }else {
-//
-//                        Toast.makeText(this@ServicesActionsActivity, "" + result.message, Toast.LENGTH_SHORT)
-//                            .show()
-//                    }
-//
+
+                    }else {
+
+                        Toast.makeText(this@ServicesActionsActivity, "" + result.message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
+
 
 
                      //load static data for now
-                     servicesArrayList.add(ServicesMenu("Housing Advance", "101"))
+                   //  servicesArrayList.add(ServicesMenu("Housing Advance", "101"))
 //                     servicesArrayList.add(ServicesMenu("Leave Request", "101"))
         
         
@@ -257,12 +261,12 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
 
 
 
-    override fun onListItemClicked(dummyData: ServicesMenu, position: Int) {
+    override fun onListItemClicked(dummyData: ServList, position: Int) {
 
         //send form data to new activity
         openActivity(HistoryDynamicWFActivity::class.java, this@ServicesActionsActivity){
-            putString("formID", "" + dummyData.id)
-            putString("formName", "" + dummyData.title)
+//            putString("formID", "" + dummyData.id)
+//            putString("formName", "" + dummyData.title)
         }
     }
 
