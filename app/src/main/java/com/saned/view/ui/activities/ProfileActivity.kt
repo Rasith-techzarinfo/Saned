@@ -20,12 +20,15 @@ import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.sanedApplication.Companion.prefHelper
 import com.saned.view.error.SANEDError
 import com.saned.view.service.ConnectivityReceiver
+import com.saned.view.utils.Constants
 import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.openActivityWithResult
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.activity_spinner_list.view.*
 import kotlinx.coroutines.launch
 import java.lang.Exception
+import java.util.HashMap
 
 class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityReceiverListener {
 
@@ -69,46 +72,6 @@ class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityRe
                 try {
                     val result = apiService.getProfileData().await()
                     Log.e("result", "" + result)
-
-                    if (result.success == "1") {
-
-
-                        userName.text = "" + "${result.user!!.t_nama} "  //${result.user!!.last_name}
-                        userEmail.text = "" + "${result.user!!.t_mail}"
-                       // userPhone.text = "" + "${result.user!!.phone}"
-                        profileName.text = "" + "${result.user!!.t_nama} "  //${result.user!!.last_name}
-                       // profileDetails.text =  "Last Login: " + Utils.convertDbtoNormalDateTime1("" + result.user!!.previous_login)
-//                        profileDetails.text = "" + "${result.user!!.email}"
-
-                        //save to pref
-                        prefHelper.setUserName("" + "${result.user!!.t_nama} ") //${result.user!!.last_name}
-                        prefHelper.setUserEmail("" + result.user!!.t_mail)
-                       // prefHelper.setLastLogin("" + result.user!!.previous_login)
-
-                        //listeners
-                        userEmail.setOnClickListener {
-                            userEmail.isSelected = true
-                        }
-                        userName.setOnClickListener {
-                            userName.isSelected = true
-                        }
-//                        userPhone.setOnClickListener {
-//                            userPhone.isSelected = true
-//                        }
-
-
-                        // no profile for now
-//                        if (result.user!!.profile_pic != null) {
-//
-//                            Glide.with(this@ProfileActivity).load(BASE_URL + result.user.profile_pic).placeholder(
-//                                    R.drawable.ic_user
-//                            ).into(profileImage)
-//                        }
-
-
-                    } else {
-                        Toast.makeText(this@ProfileActivity, "" + result.message, Toast.LENGTH_SHORT).show()
-                    }
 
                     Utils.stopShimmerRL(shimmerLayout, rootLayout)
 
