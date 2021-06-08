@@ -38,6 +38,7 @@ class PendingRequestsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pending_requests)
+        getValues()
         setToolBar()
         init()
 

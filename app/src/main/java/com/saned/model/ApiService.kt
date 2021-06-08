@@ -34,7 +34,7 @@ interface ApiService {
     @GET("v1/api/user/profile")
     fun getProfileData(
 
-    ): Deferred<UserLoginData>
+    ): Deferred<UserEditProfileData>
 
     @POST( "v1/api/user/profile/update")
     @FormUrlEncoded
