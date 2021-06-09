@@ -217,126 +217,82 @@
                                 android:orientation="vertical">
 
 
-                                <EditText
+                                <TextView
                                     android:id="@+id/firstNameEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:focusable="false"
-                                    android:focusableInTouchMode="false"
                                     android:hint="First Name : A"
-                                    android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
 
-                                <EditText
+                                <TextView
                                     android:id="@+id/lastNameEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:focusable="false"
-                                    android:focusableInTouchMode="false"
                                     android:hint="Last Name : Ahamed"
-                                    android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
+                                <TextView
                                     android:id="@+id/middleNameEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:focusable="false"
-                                    android:focusableInTouchMode="false"
                                     android:hint="Middle Name : Mohamed"
-                                    android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
+                                <TextView
                                     android:id="@+id/arabicNameEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:focusable="false"
-                                    android:focusableInTouchMode="false"
                                     android:hint="Arabic Name : محمد أحمد"
-                                    android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
+                                <TextView
                                     android:id="@+id/dobEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:focusable="false"
-                                    android:focusableInTouchMode="false"
                                     android:hint="DOB : 25/06/1988"
-                                    android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
+                                <TextView
                                     android:id="@+id/nationalityEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:focusable="false"
-                                    android:focusableInTouchMode="false"
                                     android:hint="Nationality : Indian"
-                                    android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
+                                <TextView
                                     android:id="@+id/genderEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:focusable="false"
-                                    android:focusableInTouchMode="false"
                                     android:hint="Gender : Male"
-                                    android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
+                                <TextView
                                     android:id="@+id/emailEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:focusable="false"
-                                    android:focusableInTouchMode="false"
                                     android:hint="Email : mohamedahamed88@gmail.com"
-                                    android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
+                                <TextView
                                     android:id="@+id/phoneEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:focusable="false"
-                                    android:focusableInTouchMode="false"
                                     android:hint="Phone no : 9755645909"
-                                    android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
+                                <TextView
                                     android:id="@+id/religionEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:focusable="false"
-                                    android:focusableInTouchMode="false"
                                     android:hint="Religion : Muslim"
-                                    android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
+                                <TextView
                                     android:id="@+id/emergencyEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:focusable="false"
-                                    android:focusableInTouchMode="false"
                                     android:hint="Emergency Contact : 9467238117"
-                                    android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
 
@@ -453,8 +409,8 @@
                                 android:orientation="vertical">
 
 
-                                <EditText
-                                    android:id="@+id/empcodeEditText"
+                                <TextView
+                                    android:id="@+id/empcodeEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -465,7 +421,7 @@
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
 
-                                <EditText
+                                <TextView
                                     android:id="@+id/fullNameEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -476,7 +432,7 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
+                                <TextView
                                     android:id="@+id/dojEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -487,8 +443,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/jobTitleEditText"
+                                <TextView
+                                    android:id="@+id/jobTitleEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -498,8 +454,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/departmentEditText"
+                                <TextView
+                                    android:id="@+id/departmentEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -509,8 +465,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/basicEditText"
+                                <TextView
+                                    android:id="@+id/basicEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -520,8 +476,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/housingEditText"
+                                <TextView
+                                    android:id="@+id/housingEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -531,8 +487,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/managerEditText"
+                                <TextView
+                                    android:id="@+id/managerEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -542,8 +498,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/ibanEditText"
+                                <TextView
+                                    android:id="@+id/ibanEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -553,8 +509,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/idEditText"
+                                <TextView
+                                    android:id="@+id/idEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -564,7 +520,7 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
+                                <TextView
                                     android:id="@+id/lastdateEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -575,8 +531,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/vacationEditText"
+                                <TextView
+                                    android:id="@+id/vacationEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -586,8 +542,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/gosiEditText"
+                                <TextView
+                                    android:id="@+id/gosiEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -597,8 +553,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/cashEditText"
+                                <TextView
+                                    android:id="@+id/cashEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -608,8 +564,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/gradeEditText"
+                                <TextView
+                                    android:id="@+id/gradeEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -619,8 +575,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/professionEditText"
+                                <TextView
+                                    android:id="@+id/professionEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -630,8 +586,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/overEditText"
+                                <TextView
+                                    android:id="@+id/overEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -641,8 +597,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/idexpiryEditText"
+                                <TextView
+                                    android:id="@+id/idexpiryEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -652,7 +608,7 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
+                                <TextView
                                     android:id="@+id/passEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -663,8 +619,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/passexpiryEditText"
+                                <TextView
+                                    android:id="@+id/passexpiryEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -674,8 +630,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/contractEditText"
+                                <TextView
+                                    android:id="@+id/contractEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -685,8 +641,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/gosinumEditText"
+                                <TextView
+                                    android:id="@+id/gosinumEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -696,8 +652,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/contractexpEditText"
+                                <TextView
+                                    android:id="@+id/contractexpEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -707,8 +663,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/subDeptEditText"
+                                <TextView
+                                    android:id="@+id/subDeptEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -718,8 +674,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/projectEditText"
+                                <TextView
+                                    android:id="@+id/projectEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -729,8 +685,8 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-                                <EditText
-                                    android:id="@+id/idnumEditText"
+                                <TextView
+                                    android:id="@+id/idnumEditText2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"

@@ -9,7 +9,7 @@ data class UserLoginData (
     val message : String,
     val token : String,
     val user : UserData?,
-    val errors: LoginError?
+    val errors: LoginError?,
 )
 
 data class ProfileData (
@@ -82,7 +82,12 @@ data class Profile (
     val grade_name : String,
     val location_name : String
 )
+data class ProfileList (
 
+        val success : String,
+        val message : String,
+        val data : UserEditProfileData?
+)
 data class UserEditProfileData(
         val emp_code : String,
         val f_name : String,

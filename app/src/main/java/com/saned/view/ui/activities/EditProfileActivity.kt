@@ -44,6 +44,8 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
     private var networkDialog : Dialog? = null
 
      var res: String = ""
+    var spinnerSelectedInt: Int = 0
+    var spinnerInt: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -188,7 +190,107 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
 
 
                     if (result.success == "1") {
+                        firstNameEditText.setText(""+result.data!!.fnme).toString()
+                        lastNameEditText.setText(""+result.data!!.lnme).toString()
+                        middleNameEditText.setText(""+result.data!!.mnme).toString()
+                        arabicNameEditText.setText(""+result.data!!.a_name).toString()
+                        dobEditText.setText(""+result.data!!.dob).toString()
+                        nationalityEditText.setText(""+result.data!!.ccty).toString()
+                        when (result.data!!.gend) {
+                            "Male" -> spinnerSelectedInt = 1
+                            "Female" -> spinnerSelectedInt = 2
+                            else -> {
+                                spinnerSelectedInt = 0
+                            }
 
+                        }
+
+                        spinnerInt = spinnerSelectedInt
+                        genderEditText.setSelection(spinnerSelectedInt).toString()
+                        emailEditText.setText(""+result.data!!.email).toString()
+                        phoneEditText.setText(""+result.data!!.phon).toString()
+                        when (result.data!!.relg) {
+                            "Hindu" -> spinnerSelectedInt = 1
+                            "Christian" -> spinnerSelectedInt = 2
+                            "Muslim" -> spinnerSelectedInt = 3
+                            else -> {
+                                spinnerSelectedInt = 0
+                            }
+
+                        }
+
+                        spinnerInt = spinnerSelectedInt
+                        religionEditText.setSelection(spinnerSelectedInt).toString()
+                        emergencyEditText.setText(""+result.data!!.emrcnt).toString()
+                        empcodeEditText.setText(""+result.data!!.emp_code).toString()
+                        fullNameEditText.setText(""+result.data!!.f_name).toString()
+                        dojEditText.setText(""+result.data!!.join).toString()
+                        when (result.data!!.jbtl) {
+                            "Android Developer" -> spinnerSelectedInt = 1
+                            "ios Developer" -> spinnerSelectedInt = 2
+                            "Web Developer" -> spinnerSelectedInt = 3
+                            else -> {
+                                spinnerSelectedInt = 0
+                            }
+
+                        }
+
+                        spinnerInt = spinnerSelectedInt
+                        jobTitleEditText.setSelection(spinnerSelectedInt).toString()
+                        when (result.data!!.jbtl) {
+                            "Developer" -> spinnerSelectedInt = 1
+                            "Tester" -> spinnerSelectedInt = 2
+                            "HR" -> spinnerSelectedInt = 3
+                            else -> {
+                                spinnerSelectedInt = 0
+                            }
+
+                        }
+
+                        spinnerInt = spinnerSelectedInt
+                        departmentEditText.setSelection(spinnerSelectedInt).toString()
+                        basicEditText.setText(""+result.data!!.basic).toString()
+                        housingEditText.setText(""+result.data!!.hous).toString()
+                        managerEditText.setText(""+result.data!!.id).toString()
+                        ibanEditText.setText(""+result.data!!.iban).toString()
+                        lastdateEditText.setText(""+result.data!!.ldate).toString()
+                        vacationEditText.setText(""+result.data!!.days).toString()
+                        when (result.data!!.gosi) {
+                            "Success" -> spinnerSelectedInt = 1
+                            "Failed" -> spinnerSelectedInt = 2
+                            "Pending" -> spinnerSelectedInt = 3
+                            else -> {
+                                spinnerSelectedInt = 0
+                            }
+
+                        }
+
+                        spinnerInt = spinnerSelectedInt
+                        gosiEditText.setSelection(spinnerSelectedInt).toString()
+                        cashEditText.setText(""+result.data!!.cash).toString()
+                        when (result.data!!.grade) {
+                            "A" -> spinnerSelectedInt = 1
+                            "A+" -> spinnerSelectedInt = 2
+                            "B" -> spinnerSelectedInt = 3
+                            else -> {
+                                spinnerSelectedInt = 0
+                            }
+
+                        }
+
+                        spinnerInt = spinnerSelectedInt
+                        gradeEditText.setSelection(spinnerSelectedInt).toString()
+                        professionEditText.setText(""+result.data!!.prof).toString()
+                        overEditText.setText(""+result.data!!.ovrt).toString()
+                        idexpiryEditText.setText(""+result.data!!.idex).toString()
+                        passEditText.setText(""+result.data!!.pspt).toString()
+                        passexpiryEditText.setText(""+result.data!!.psptex).toString()
+                        contractEditText.setText(""+result.data!!.cnttyp).toString()
+                        gosinumEditText.setText(""+result.data!!.gosino).toString()
+                        contractexpEditText.setText(""+result.data!!.cntrex).toString()
+                        subDeptEditText.setText(""+result.data!!.subdep).toString()
+                        projectEditText.setText(""+result.data!!.proj).toString()
+                        idempEditText.setText(""+result.data!!.idno).toString()
                         //navigateback
                         res = "true"
                         onBackPressed()

@@ -34,14 +34,14 @@ interface ApiService {
     @GET("v1/api/user/profile")
     fun getProfileData(
 
-    ): Deferred<UserEditProfileData>
+    ): Deferred<ProfileList>
 
     @POST( "v1/api/user/profile/update")
     @FormUrlEncoded
     fun editProfile(
             @FieldMap values: java.util.HashMap<String, String>
 
-    ): Deferred<UserLoginData>
+    ): Deferred<ProfileList>
 
     @POST("v1/api/user/reset-password")
     @FormUrlEncoded
