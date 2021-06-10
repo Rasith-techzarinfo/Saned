@@ -16,6 +16,7 @@ import android.os.Environment
 import android.provider.Settings
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import android.view.Window
 import android.widget.ImageView
 import android.widget.TextView
@@ -191,11 +192,12 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         //handle permissions
         Log.e("user", "" + prefHelper.getUserType() + " " + prefHelper.getManagerLevel())
-        if(prefHelper.getUserType() == "2"){
+        if(prefHelper.getUserType() == "HR Admin"){
             //manager
 
-        } else if(prefHelper.getUserType() == "3") {
+        } else if(prefHelper.getUserType() == "Company User") {
             //user
+            my_employees_menu.visibility = View.GONE
 
         }
     }
@@ -216,12 +218,13 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
                         //save to pref
-                        prefHelper.setUserName("" + "${result.data!!.f_name} ") //${result.user!!.last_name}
-                        prefHelper.setUserEmail("" + result.data!!.email)
-                       // prefHelper.setLastLogin("" + result.user!!.previous_login)
-                        prefHelper.setUserType("" + result.data!!.dept)  //update n check role id freq
-                        //for now, approval matrix
-                        prefHelper.setManagerLevel(if (result.data.email == "rightcursor33@gmail.com") "HR Admin" else if (result.data.email == "immu@gmail.com") "2" else "") //"" not a manager
+
+                        //                        prefHelper.setUserName("" + "${result.user!!.t_nama} ") //${result.user!!.last_name}
+//                        prefHelper.setUserEmail("" + result.user!!.t_mail)
+//                       // prefHelper.setLastLogin("" + result.user!!.previous_login)
+//                        prefHelper.setUserType("" + result.user!!.t_role)  //update n check role id freq
+//                        //for now, approval matrix
+//                        prefHelper.setManagerLevel(if (result.user.t_mail == "rightcursor33@gmail.com") "HR Admin" else if (result.user.t_mail == "immu@gmail.com") "2" else "") //"" not a manager
 
                         setupNavigationDrawer()
                         setupDashboard()

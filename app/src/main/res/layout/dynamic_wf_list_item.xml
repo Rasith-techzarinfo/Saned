@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="No of months"
+                android:text="Form Name"
                 android:textColor="@color/heading"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="Reason"
+                android:text="Status"
                 android:textColor="@color/heading"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
@@ -98,6 +98,7 @@
 
 
         </LinearLayout>
+
 
 
 

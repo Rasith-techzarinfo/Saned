@@ -15,6 +15,7 @@ import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.view.error.SANEDError
 import com.saned.view.ui.adapter.pendingRequests.PendingRequestsAdapter
 import com.saned.view.utils.Utils
+import com.saned.view.utils.Utils.Companion.openActivityWithResult
 import kotlinx.android.synthetic.main.activity_history_dynamic_w_f.*
 import kotlinx.android.synthetic.main.activity_my_employees.*
 import kotlinx.android.synthetic.main.activity_my_employees.recyclerView
@@ -31,9 +32,9 @@ class PendingRequestsActivity : AppCompatActivity() {
     lateinit var myPendingAdapter: PendingRequestsAdapter
 
     var currentPage: Int = 1
-    var totalPages: String = ""
-    var formID: String = ""
-    var formName: String = ""
+
+    var wkid: String = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -231,6 +232,12 @@ class PendingRequestsActivity : AppCompatActivity() {
     }
 
     fun onListItemClicked(dummyData:Data, position: Int) {
+
+        openActivityWithResult(PendingDetailActivity::class.java, this, 101){
+//            putString("t_mail", "" + dummyData.t_mail)
+//            putString("t_nama", "" + dummyData.t_nama)
+             putString("wkid", "" + dummyData.wkid)
+        }
 
 
     }

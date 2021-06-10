@@ -1,6 +1,5 @@
 package com.saned.view.ui.activities
 
-import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.content.IntentFilter
@@ -12,25 +11,33 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.Window
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.textfield.TextInputEditText
 import com.saned.R
-import com.saned.sanedApplication
+import com.saned.model.Empdata
+import com.saned.model.Profile
 import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.sanedApplication.Companion.prefHelper
 import com.saned.view.error.SANEDError
 import com.saned.view.service.ConnectivityReceiver
+import com.saned.view.ui.adapter.myEmployees.MyEmployeesAdapter
+import com.saned.view.ui.adapter.pendingRequests.PendingRequestsAdapter
+import com.saned.view.ui.adapter.profileView.ProfileviewAdapter
 import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.openActivityWithResult
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_my_employees.*
 import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.activity_profile.recyclerView
+import kotlinx.android.synthetic.main.activity_profile.rootLayout
+import kotlinx.android.synthetic.main.activity_profile.shimmerLayout
+import kotlinx.android.synthetic.main.activity_profile.toolbar
+import kotlinx.android.synthetic.main.profile_view_layout.*
 import kotlinx.coroutines.launch
-import org.w3c.dom.Text
 import java.lang.Exception
 
 class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityReceiverListener {
@@ -38,6 +45,8 @@ class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityRe
 
     private var networkDialog : Dialog? = null
 
+    var myProfileArrayList: ArrayList<Profile> = ArrayList()
+    lateinit var myProfileAdapter: ProfileviewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,102 +66,263 @@ class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityRe
         registerReceiver(ConnectivityReceiver(), IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
 
         //edit profile
-        profile_edit_icon.setOnClickListener {
-            openActivityWithResult(EditProfileActivity::class.java, this, 101){}
-        }
+//        profile_edit_icon.setOnClickListener {
+//            openActivityWithResult(EditProfileActivity::class.java, this, 101){}
+//        }
         //get values
-        getMyProfileData()
+       // getMyProfileData()
+
+
+        //get data
+        //  getValues()
+        getServicesListFromServer()
 
     }
 
-    private fun getMyProfileData() {
+//    private fun getMyProfileData() {
+//        if (Utils.isInternetAvailable(this)) {
+//
+//            Utils.startShimmerRL(shimmerLayout, rootLayout)
+//            emptyView.visibility = View.GONE
+//
+//            coroutineScope.launch {
+//                try {
+//                    val result = apiService.getProfileData().await()
+//                    Log.e("result", "" + result)
+//
+//                    if (result.success == "1") {
+//
+//
+//                        firstNameEditText2.text = "" + "${result.user!!.fnme} "  //${result.user!!.last_name}
+//                        userEmail.text = "" + "${result.user!!.t_mail}"
+//                       // userPhone.text = "" + "${result.user!!.phone}"
+//                        profileName.text = "" + "${result.user!!.t_nama} "  //${result.user!!.last_name}
+//                       // profileDetails.text =  "Last Login: " + Utils.convertDbtoNormalDateTime1("" + result.user!!.previous_login)
+////                        profileDetails.text = "" + "${result.user!!.email}"
+//
+//                        //save to pref
+//                        prefHelper.setUserName("" + "${result.user!!.} ") //${result.user!!.last_name}
+//                        prefHelper.setUserEmail("" + result.user!!.t_mail)
+//                       // prefHelper.setLastLogin("" + result.user!!.previous_login)
+//
+//                        //listeners
+//                        userEmail.setOnClickListener {
+//                            userEmail.isSelected = true
+//                        }
+//                        userName.setOnClickListener {
+//                            userName.isSelected = true
+//                        }
+////                        userPhone.setOnClickListener {
+////                            userPhone.isSelected = true
+////                        }
+//
+//
+//                        // no profile for now
+////                        if (result.user!!.profile_pic != null) {
+////
+////                            Glide.with(this@ProfileActivity).load(BASE_URL + result.user.profile_pic).placeholder(
+////                                    R.drawable.ic_user
+////                            ).into(profileImage)
+////                        }
+//
+//
+//                    } else {
+//                        Toast.makeText(this@ProfileActivity, "" + result.message, Toast.LENGTH_SHORT).show()
+//                    }
+//
+//                    Utils.stopShimmerRL(shimmerLayout, rootLayout)
+//
+//                } catch (e: Exception) {
+//                    Utils.stopShimmerRL(shimmerLayout, rootLayout)
+//                    Log.e("error", "" + e.message)
+//                    if (e is SANEDError) {
+//                        Log.e("Err", "" + e.getErrorResponse())
+//                        if (e.getResponseCode() == 401) {
+//                            Utils.logoutFromApp(applicationContext)
+//                        } else if (e.getResponseCode() == 500) {
+//                            Toast.makeText(applicationContext, "Server", Toast.LENGTH_LONG)
+//                                    .show()
+//                        }
+//                    } else {
+//                        Toast.makeText(
+//                                applicationContext,
+//                                "Something went wrong",
+//                                Toast.LENGTH_SHORT
+//                        )
+//                                .show()
+//                    }
+//
+//                }
+//            }
+//        } else {
+////            Toast.makeText(this@ProfileActivity, "No Internet Available", Toast.LENGTH_SHORT).show()
+//            Utils.checkNetworkDialog(this, this) { getMyProfileData() }
+//        }
+//    }
+
+
+    private fun getServicesListFromServer(){
+
+        myProfileArrayList.clear()
+                //currentPage = 1
+
         if (Utils.isInternetAvailable(this)) {
 
+            //shimmer
             Utils.startShimmerRL(shimmerLayout, rootLayout)
 
             coroutineScope.launch {
+
                 try {
+
+
                     val result = apiService.getProfileData().await()
+
                     Log.e("result", "" + result)
-                    if (result.success == "1") {
+
+                    if(result.success == "1"){
+
+                        // var myEmployeesArrayList: ArrayList<Empdata> = ArrayList()
+                        //  var secondArrayList: ArrayList<HAData1> = ArrayList()
+
+                        for (item in result.user!!) {
+
+                            val v1 = Profile(
+                                    "" + item.sno,
+                                    "" + item.id,
+                                    "" + item.emp_code,
+                                    "" + item.f_name,
+                                    "" + item.a_name,
+                                    "" + item.dept,
+                                    "" + item.jbtl,
+                                    "" + item.stat,
+                                    "" + item.join,
+                                    "" + item.dob,
+                                    "" + item.ccty,
+                                    "" + item.email,
+                                    "" + item.password,
+                                    "" + item.phon,
+                                    "" + item.mart,
+                                    "" + item.bank,
+                                    "" + item.city,
+                                    "" + item.loca,
+                                    "" + item.iban,
+                                    "" + item.mngr,
+                                    "" + item.basic,
+                                    "" + item.hous,
+                                    "" + item.tran,
+                                    "" + item.bnka,
+                                    "" + item.cont,
+                                    "" + item.medc,
+                                    "" + item.ldate,
+                                    "" + item.gend,
+                                    "" + item.grade,
+                                    "" + item.idno,
+                                    "" + item.relg,
+                                    "" + item.vacb,
+                                    "" + item.days,
+                                    "" + item.gosi,
+                                    "" + item.cash,
+                                    "" + item.refcntd,
+                                    "" + item.refcntu,
+                                    "" + item.fnme,
+                                    "" + item.lnme,
+                                    "" + item.mnme,
+                                    "" + item.prof,
+                                    "" + item.ovrt,
+                                    "" + item.idex,
+                                    "" + item.pspt,
+                                    "" + item.psptex,
+                                    "" + item.cnttyp,
+                                    "" + item.emrcnt,
+                                    "" + item.gosino,
+                                    "" + item.cntrex,
+                                    "" + item.subdep,
+                                    "" + item.proj,
+                                    "" + item.created_at,
+                                    "" + item.updated_at,
+                                    "" + item.deleted_at,
+                                    "" + item.medical_class,
+                                    "" + item.department_name,
+                                    "" + item.sub_name,
+                                    "" + item.job_title,
+                                    "" + item.grade_name,
+                                    "" + item.location_name
 
 
-                        // userPhone.text = "" + "${result.user!!.phone}" //${result.user!!.last_name}
-                        // profileDetails.text =  "Last Login: " + Utils.convertDbtoNormalDateTime1("" + result.user!!.previous_login)
-//                        profileDetails.text = "" + "${result.user!!.email}"
 
 
-                        firstNameEditText2.text=result.data!!.fnme
-                        lastNameEditText2.text=result.data!!.lnme
-                        middleNameEditText2.text=result.data!!.mnme
-                        arabicNameEditText2.text=result.data!!.a_name
-                        dobEditText2.text=result.data!!.dob
-                        nationalityEditText2.text=result.data!!.ccty
-                        genderEditText2.text=result.data!!.gend
-                        emailEditText2.text=result.data!!.email
-                        phoneEditText2.text=result.data!!.phon
-                        religionEditText2.text=result.data!!.relg
-                        emergencyEditText2.text=result.data!!.emrcnt
-                        empcodeEditText2.text=result.data!!.emp_code
-                        fullNameEditText2.text=result.data!!.f_name
-                        dojEditText2.text=result.data!!.join
-                        jobTitleEditText2.text=result.data!!.jbtl
-                        departmentEditText2.text=result.data!!.dept
-                        basicEditText2.text=result.data!!.basic
-                        housingEditText2.text=result.data!!.hous
-                        managerEditText2.text=result.data!!.mngr
-                        ibanEditText2.text=result.data!!.iban
-                        idEditText2.text=result.data!!.idno
-                        lastdateEditText2.text=result.data!!.ldate
-                        vacationEditText2.text=result.data!!.days
-                        gosiEditText2.text=result.data!!.gosi
-                        cashEditText2.text=result.data!!.cash
-                        gradeEditText2.text=result.data!!.grade
-                        professionEditText2.text=result.data!!.prof
-                        overEditText2.text=result.data!!.ovrt
-                        idexpiryEditText2.text=result.data!!.idex
-                        passEditText2.text=result.data!!.pspt
-                        passexpiryEditText2.text=result.data!!.psptex
-                        contractEditText2.text=result.data!!.cnttyp
-                        gosinumEditText2.text=result.data!!.gosino
-                        contractexpEditText2.text=result.data!!.cntrex
-                        subDeptEditText2.text=result.data!!.subdep
-                        projectEditText2.text=result.data!!.proj
-                        idnumEditText2.text=result.data!!.id
+                            )
+                            myProfileArrayList.add(v1)
+
+                            //firstNameEditText2.text = "" + "${result.user!!.fnme}
+                            //  var v2 = HAData1((firstArrayList.size - 1), "" + item.wkid)
+                            //   secondArrayList.add(v2)
+                        }
 
 
-                    } else {
-                        Toast.makeText(this@ProfileActivity, "" + result.message, Toast.LENGTH_SHORT).show()
+
+//                        totalPages = result.data!!.last_page.toString()
+//                        Log.e("result", "" + result.data!!.current_page)
+
+                    }else {
+
+                        Toast.makeText(this@ProfileActivity, "" + result.message, Toast.LENGTH_SHORT)
+                                .show()
                     }
+
+
+
+                    //load static data for now
+//                    dynamicWFArrayList.add(HAData("30", "This is so coolllll.", "101"))
+
+
+
+
                     Utils.stopShimmerRL(shimmerLayout, rootLayout)
 
-                } catch (e: Exception) {
+
+                    setupRecyclerView()
+
+                }catch (e: Exception){
+
                     Utils.stopShimmerRL(shimmerLayout, rootLayout)
                     Log.e("error", "" + e.message)
+//                    if(e.message == "Connection reset" || e.message == "Failed to connect to /40.123.199.239:3000"){
+//
+//                    } else
                     if (e is SANEDError) {
                         Log.e("Err", "" + e.getErrorResponse())
                         if (e.getResponseCode() == 401) {
                             Utils.logoutFromApp(applicationContext)
                         } else if (e.getResponseCode() == 500) {
-                            Toast.makeText(applicationContext, "Server", Toast.LENGTH_LONG)
-                                    .show()
+                            Toast.makeText(applicationContext, "Server error", Toast.LENGTH_LONG).show()
                         }
                     } else {
-                        Toast.makeText(
-                                applicationContext,
-                                "Something went wrong",
-                                Toast.LENGTH_SHORT
-                        )
+                        Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_SHORT)
                                 .show()
                     }
-
                 }
+
             }
         } else {
-//            Toast.makeText(this@ProfileActivity, "No Internet Available", Toast.LENGTH_SHORT).show()
-            Utils.checkNetworkDialog(this, this) { getMyProfileData() }
+            // Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
+            Utils.checkNetworkDialog(this, this) { getServicesListFromServer() }
         }
+
     }
+
+
+    private fun setupRecyclerView() {
+        recyclerView.layoutManager = LinearLayoutManager(applicationContext)
+        recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        myProfileAdapter =
+                ProfileviewAdapter(myProfileArrayList, this, this@ProfileActivity)
+        recyclerView.adapter = myProfileAdapter
+    }
+
+
+
 
     //getting value from onbackpressed
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -161,7 +331,8 @@ class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityRe
             if (resultCode == RESULT_OK) {
                 var temp1 = data!!.getStringExtra("isUpdated")
                 if(temp1 == "true") {
-                    getMyProfileData()
+                   // getMyProfileData()
+                    getServicesListFromServer()
                 }
             }
         }
@@ -195,7 +366,8 @@ class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityRe
         } else {
             networkDialog?.dismiss()
             //get data here
-            getMyProfileData()
+           // getMyProfileData()
+            getServicesListFromServer()
         }
     }
 

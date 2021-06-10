@@ -34,7 +34,7 @@ interface ApiService {
     @GET("v1/api/user/profile")
     fun getProfileData(
 
-    ): Deferred<ProfileList>
+    ): Deferred<ProfileData>
 
     @POST( "v1/api/user/profile/update")
     @FormUrlEncoded
@@ -68,6 +68,14 @@ interface ApiService {
     ): Deferred<Pendinghistory>
 
 
+    @GET("v1/api/workflow/details/{id}")
+    fun getPendingHistoryDetail(
+            @Path("id") id: String,
+
+            ): Deferred<PendinghistoryDetail>
+
+
+
     @GET("v1/api/workflow/menu-list")
     fun getServicesList(
 
@@ -75,6 +83,14 @@ interface ApiService {
 
 
     ////////////////////////////
+
+
+
+
+
+
+
+
 
     //user
     @GET("v1/api/workflow/housing-advance/list")

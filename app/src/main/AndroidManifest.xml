@@ -159,6 +159,10 @@
             android:name=".view.ui.activities.PendingRequestsActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".view.ui.activities.PendingDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
