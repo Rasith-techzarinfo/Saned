@@ -94,35 +94,6 @@
                         </LinearLayout>
 
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <FrameLayout
-                                android:id="@+id/profile_edit_icon"
-                                android:layout_width="35dp"
-                                android:layout_height="35dp"
-                                android:layout_gravity="center"
-                                android:background="@drawable/round_shape"
-                                android:clickable="true"
-                                android:elevation="8dp"
-                                android:focusable="true"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                android:padding="4dp"
-                                android:visibility="visible">
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:src="@drawable/ic_edit_black_24"
-                                    app:tint="@color/colorPrimaryDark" />
-                            </FrameLayout>
-
-                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -158,9 +129,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:orientation="vertical">
+                            android:orientation="horizontal">
 
-
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="First Name :"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/firstNameEditText2"
                                 android:layout_width="match_parent"
@@ -168,12 +144,35 @@
                                 android:hint="First Name : A"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Last Name :"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/lastNameEditText2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Last Name : Ahamed"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Middle Name :"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                             <TextView
@@ -183,11 +182,35 @@
                                 android:hint="Middle Name : Mohamed"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Arabic Name :"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/arabicNameEditText2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Arabic Name : محمد أحمد"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="DOB :"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                             <TextView
@@ -197,11 +220,35 @@
                                 android:hint="DOB : 25/06/1988"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Nationality :"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/nationalityEditText2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Nationality : Indian"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Gender :"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                             <TextView
@@ -211,11 +258,35 @@
                                 android:hint="Gender : Male"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Email :"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/emailEditText2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Email : mohamedahamed88@gmail.com"
+                                android:hint="mohamedahamed88@gmail.com"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Phone :"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                             <TextView
@@ -225,6 +296,18 @@
                                 android:hint="Phone no : 9755645909"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Religion :"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/religionEditText2"
                                 android:layout_width="match_parent"
@@ -232,15 +315,30 @@
                                 android:hint="Religion : Muslim"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Emergency Contact :"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/emergencyEditText2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Emergency Contact : 9467238117"
+                                android:text="9467238117"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
-
                         </LinearLayout>
+
+
+
+
 
 
                         <!--                        <LinearLayout-->
@@ -350,9 +448,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:orientation="vertical">
-
-
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Employee Code : "
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/empcodeEditText2"
                                 android:layout_width="match_parent"
@@ -365,282 +467,364 @@
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
 
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Full Name : "
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/fullNameEditText2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
                                 android:hint="Full Name : Mohamed Ahamed A"
-                                android:singleLine="true"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
                             <TextView
-                                android:id="@+id/dojEditText2"
-                                android:layout_width="match_parent"
+                                android:layout_width="175dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
-                                android:hint="Date of Joining : 19/04/2021"
-                                android:singleLine="true"
+                                android:text="Job Title : "
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/jobTitleEditText2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
                                 android:hint="Job Title : Senior Developer"
-                                android:singleLine="true"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Department : "
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/departmentEditText2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
                                 android:hint="Department : Android"
-                                android:singleLine="true"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Basic Salary : "
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/basicEditText2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
                                 android:hint="Basic Salary : 19,000/-"
-                                android:singleLine="true"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Housing Allowance : "
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/housingEditText2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
                                 android:hint="Housing Allowance : 2000/-"
-                                android:singleLine="true"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
                             <TextView
-                                android:id="@+id/managerEditText2"
-                                android:layout_width="match_parent"
+                                android:layout_width="175dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
-                                android:hint="Manager ID : 235699"
-                                android:singleLine="true"
-                                android:textColor="@color/black"
-                                android:textSize="16sp" />
-                            <TextView
-                                android:id="@+id/ibanEditText2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
-                                android:hint="IBAN no : 1277"
-                                android:singleLine="true"
+                                android:text="ID no : "
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/idEditText2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
                                 android:hint="ID no : saned5632"
-                                android:singleLine="true"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Last Date : "
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/lastdateEditText2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
                                 android:hint="Last Date : 14/07/2021"
-                                android:singleLine="true"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
                             <TextView
-                                android:id="@+id/vacationEditText2"
-                                android:layout_width="match_parent"
+                                android:layout_width="175dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
-                                android:hint="Vacation Days : 3 days"
-                                android:singleLine="true"
-                                android:textColor="@color/black"
-                                android:textSize="16sp" />
-                            <TextView
-                                android:id="@+id/gosiEditText2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
-                                android:hint="Gosi Status : completed"
-                                android:singleLine="true"
-                                android:textColor="@color/black"
-                                android:textSize="16sp" />
-                            <TextView
-                                android:id="@+id/cashEditText2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
-                                android:hint="Cash Status : Approved"
-                                android:singleLine="true"
+                                android:text="Grade : "
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/gradeEditText2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
                                 android:hint="Grade : A"
-                                android:singleLine="true"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
                             <TextView
-                                android:id="@+id/professionEditText2"
-                                android:layout_width="match_parent"
+                                android:layout_width="175dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
-                                android:hint="Profession : Developer"
-                                android:singleLine="true"
-                                android:textColor="@color/black"
-                                android:textSize="16sp" />
-                            <TextView
-                                android:id="@+id/overEditText2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
-                                android:hint="Overtime Status : completed"
-                                android:singleLine="true"
+                                android:text="ID Expiry : "
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/idexpiryEditText2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
                                 android:hint="ID Expiry : 29/05/2023"
-                                android:singleLine="true"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Passport no : "
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/passEditText2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
                                 android:hint="Passport No : MBB1267349"
-                                android:singleLine="true"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Passport Expiry : "
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/passexpiryEditText2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
                                 android:hint="Passport Expiry : 06/09/2031"
-                                android:singleLine="true"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
                             <TextView
-                                android:id="@+id/contractEditText2"
-                                android:layout_width="match_parent"
+                                android:layout_width="175dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
-                                android:hint="Contract Type : 3 years"
-                                android:singleLine="true"
-                                android:textColor="@color/black"
-                                android:textSize="16sp" />
-                            <TextView
-                                android:id="@+id/gosinumEditText2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
-                                android:hint="Gosi Number : 333"
-                                android:singleLine="true"
-                                android:textColor="@color/black"
-                                android:textSize="16sp" />
-                            <TextView
-                                android:id="@+id/contractexpEditText2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
-                                android:hint="Contract Expiry : 08/10/2024"
-                                android:singleLine="true"
+                                android:text="Sub Department : "
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/subDeptEditText2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
                                 android:hint="Sub Department : Leader"
-                                android:singleLine="true"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
                             <TextView
-                                android:id="@+id/projectEditText2"
-                                android:layout_width="match_parent"
+                                android:layout_width="175dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
-                                android:hint="Project : saned"
-                                android:singleLine="true"
+                                android:text="ID : "
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                             <TextView
                                 android:id="@+id/idnumEditText2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
                                 android:hint="ID : SAN619"
-                                android:singleLine="true"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Maritial Status : "
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                            <TextView
+                                android:id="@+id/maritialEditText2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="City : "
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                            <TextView
+                                android:id="@+id/cityEditText2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Location : "
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                            <TextView
+                                android:id="@+id/locationEditText2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Transport Allowance : "
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                            <TextView
+                                android:id="@+id/transportEditText2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Contract Status : "
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                            <TextView
+                                android:id="@+id/contractstsEditText2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="175dp"
+                                android:layout_height="wrap_content"
+                                android:text="Medical Class : "
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                            <TextView
+                                android:id="@+id/medicalEditText2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginBottom="30dp"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
+
                         </LinearLayout>
 
 

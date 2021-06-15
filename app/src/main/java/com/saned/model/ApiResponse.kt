@@ -29,7 +29,6 @@ data class Profile (
     val dept : String,
     val jbtl : String,
     val stat : String,
-    val join : String,
     val dob : String,
     val ccty : String,
     val email : String,
@@ -39,8 +38,6 @@ data class Profile (
     val bank : String,
     val city : String,
     val loca : String,
-    val iban : String,
-    val mngr : String,
     val basic : String,
     val hous : String,
     val tran : String,
@@ -53,25 +50,17 @@ data class Profile (
     val idno : String,
     val relg : String,
     val vacb : String,
-    val days : String,
-    val gosi : String,
     val cash : String,
     val refcntd : String,
     val refcntu : String,
     val fnme : String,
     val lnme : String,
     val mnme : String,
-    val prof : String,
-    val ovrt : String,
     val idex : String,
     val pspt : String,
     val psptex : String,
-    val cnttyp : String,
     val emrcnt : String,
-    val gosino : String,
-    val cntrex : String,
     val subdep : String,
-    val proj : String,
     val created_at : String,
     val updated_at : String,
     val deleted_at : String,
@@ -94,13 +83,10 @@ data class UserEditProfileData(
         val a_name : String,
         val dept : String,
         val jbtl : String,
-        val join : String,
         val dob : String,
         val ccty : String,
         val email : String,
         val phon : String,
-        val iban : String,
-        val mngr : String,
         val basic : String,
         val hous : String,
         val ldate : String,
@@ -108,24 +94,23 @@ data class UserEditProfileData(
         val grade : String,
         val idno : String,
         val relg : String,
-        val days : String,
-        val gosi : String,
         val cash : String,
         val fnme : String,
         val lnme : String,
         val mnme : String,
-        val prof : String,
-        val ovrt : String,
         val idex : String,
         val pspt : String,
         val psptex : String,
-        val cnttyp : String,
         val emrcnt : String,
-        val gosino : String,
-        val cntrex : String,
         val subdep : String,
-        val proj : String,
         val id : String,
+        val mart : String,
+        val city : String,
+        val loca : String,
+        val tran : String,
+        val cont : String,
+        val medc : String
+
 
 )
 
@@ -512,6 +497,14 @@ data class AttendenceData(
 )
 
 //FIXME end dummmy class  \\
+data class DynamicData(
+        val success: String,
+        val message: String,
+        val data: List<Dynamic>?
+)
+data class Dynamic(
+    val id: String
+)
 
 data class HAData(
         val noofmonths: String,

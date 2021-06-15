@@ -29,6 +29,11 @@
         <item>A+</item>
         <item>B</item>
     </string-array>
+    <string-array name="maritial">
+        <item>Married</item>
+        <item>Unmarried</item>
+        <item>Widowed</item>
+    </string-array>
 
     <array name="initial_slider_values">
         <item>0.0</item>

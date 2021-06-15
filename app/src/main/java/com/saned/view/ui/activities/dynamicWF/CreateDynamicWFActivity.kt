@@ -188,7 +188,6 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
 
                     if (result.success == "1") {
-
                         //on success
                         res = "true"
                         onBackPressed()

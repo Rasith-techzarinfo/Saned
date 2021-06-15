@@ -1,7 +1,6 @@
 package com.saned.view.ui.activities
 
 import android.app.DatePickerDialog
-import android.app.DatePickerDialog.OnDateSetListener
 import android.app.Dialog
 import android.content.Intent
 import android.content.IntentFilter
@@ -20,7 +19,6 @@ import com.google.android.material.textfield.TextInputEditText
 import com.saned.R
 import com.saned.sanedApplication
 import com.saned.sanedApplication.Companion.coroutineScope
-import com.saned.sanedApplication.Companion.prefHelper
 import com.saned.view.error.SANEDError
 import com.saned.view.service.ConnectivityReceiver
 import com.saned.view.utils.Utils
@@ -33,9 +31,9 @@ import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.activity_profile.toolbar
 import kotlinx.android.synthetic.main.activity_spinner_list.view.*
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
+import okhttp3.MediaType
+import okhttp3.RequestBody
 import java.util.*
-import javax.xml.datatype.DatatypeConstants.MONTHS
 
 
 class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityReceiverListener {
@@ -54,7 +52,6 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
         setToolBar()
         init()
         var dob=findViewById(R.id.dobEditText) as TextInputEditText
-        var doj=findViewById(R.id.dojEditText) as TextInputEditText
         var ld=findViewById(R.id.lastdateEditText) as TextInputEditText
         dob.setOnClickListener {
             val c = Calendar.getInstance()
@@ -66,22 +63,6 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
 
                 // Display Selected date in textbox
                 dob.setText("" + dayOfMonth + "/" + monthOfYear + "/" + year)
-
-            }, year, month, day)
-
-            dpd.show()
-
-        }
-        doj.setOnClickListener {
-            val c = Calendar.getInstance()
-            val year = c.get(Calendar.YEAR)
-            val month = c.get(Calendar.MONTH)
-            val day = c.get(Calendar.DAY_OF_MONTH)
-
-            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-
-                // Display Selected date in textbox
-                doj.setText("" + dayOfMonth + "/" + monthOfYear + "/" + year)
 
             }, year, month, day)
 
@@ -164,27 +145,158 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
             progressDialog.setCancelable(false)
             progressDialog.setCanceledOnTouchOutside(false)
             progressDialog.show()
-
-
-            val hashMap: HashMap<String, String> = HashMap()
-//
-//          arjun  hashMap["fnme"] = "" + firstNameEditText.text.toString()
-//            hashMap["lnme"] = "" + lastNameEditText.text.toString()
-//            hashMap["mnme"] = "" + middleNameEditText.text.toString()
-//            hashMap["email"] = "" + lastNameEditText.text.toString()
-//            hashMap["dob"] = "" + dobEditText.text.toString()
-//            hashMap["a_name"] = "" + arabicNameEditText.text.toString()
-//            hashMap["ccty"] = "" + nationalityEditText.text.toString()
-//            hashMap["phon"] = "" + phoneEditText.text.toString()
-            //hashMap["last_name"] = "" + lastNameEditText.text.toString()
-           // hashMap["phone"] = "" + phoneEditText.text.toString()
-
-
+            val userfirstNameBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    firstNameEditText.text.toString()
+                )
+            val userlastNameBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    lastNameEditText.text.toString()
+                )
+            val usermiddleNameBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    middleNameEditText.text.toString()
+                )
+            val userarabicNameBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    arabicNameEditText.text.toString()
+                )
+            val userdobNameBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    dobEditText.text.toString()
+                )
+            val genderBody: RequestBody =
+                RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt.toString())
+            val religionBody: RequestBody =
+                RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt.toString())
+            val jobtitleBody: RequestBody =
+                RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt.toString())
+            val deptBody: RequestBody =
+                RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt.toString())
+            val gosiBody: RequestBody =
+                RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt.toString())
+            val gradeBody: RequestBody =
+                RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt.toString())
+            val maritialBody: RequestBody =
+                RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt.toString())
+            val usernationalityNameBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    nationalityEditText.text.toString()
+                )
+            val useremailBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    emailEditText.text.toString()
+                )
+            val userphoneBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    phoneEditText.text.toString()
+                )
+            val useremergencyBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    emergencyEditText.text.toString()
+                )
+            val userempcodeBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    empcodeEditText.text.toString()
+                )
+            val userfullNameBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    fullNameEditText.text.toString()
+                )
+            val userbasicBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    basicEditText.text.toString()
+                )
+            val userhouseBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    housingEditText.text.toString()
+                )
+            val userlastBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    lastdateEditText.text.toString()
+                )
+            val useridnoBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    idEditText.text.toString()
+                )
+            val useridexpiryBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    idexpiryEditText.text.toString()
+                )
+            val userpassportBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    passEditText.text.toString()
+                )
+            val userpassportexpBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    passexpiryEditText.text.toString()
+                )
+            val usersubdepartBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    subDeptEditText.text.toString()
+                )
+            val useridBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    idempEditText.text.toString()
+                )
+            val usercityBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    cityEditText.text.toString()
+                )
+            val userlocationBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    locationEditText.text.toString()
+                )
+            val usertransportBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    transportEditText.text.toString()
+                )
+            val usercontractBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    contractstsEditText.text.toString()
+                )
+            val usermedicalBody: RequestBody =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    medicalEditText.text.toString()
+                )
             coroutineScope.launch {
 
                 try {
 
-                    var result = sanedApplication.apiService.editProfile(hashMap).await()
+                    var result = sanedApplication.apiService.editProfile(
+                    userfirstNameBody,userlastNameBody,usermiddleNameBody,userarabicNameBody,userdobNameBody,genderBody,
+                        userphoneBody,useremailBody,religionBody,usernationalityNameBody,useremergencyBody,userempcodeBody,
+                        userfullNameBody,userlastBody,userbasicBody,userhouseBody,useridBody,useridexpiryBody,useridnoBody,
+                        usersubdepartBody,deptBody,gosiBody,gradeBody,userpassportBody,userpassportexpBody,
+                        jobtitleBody,maritialBody,usercityBody,userlocationBody,usertransportBody,
+                        usercontractBody,usermedicalBody
+
+                    ).await()
 
                     Log.e("result", "" + result)
 
@@ -224,7 +336,6 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
                         emergencyEditText.setText(""+result.data!!.emrcnt).toString()
                         empcodeEditText.setText(""+result.data!!.emp_code).toString()
                         fullNameEditText.setText(""+result.data!!.f_name).toString()
-                        dojEditText.setText(""+result.data!!.join).toString()
                         when (result.data!!.jbtl) {
                             "Android Developer" -> spinnerSelectedInt = 1
                             "ios Developer" -> spinnerSelectedInt = 2
@@ -237,7 +348,7 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
 
                         spinnerInt = spinnerSelectedInt
                         jobTitleEditText.setSelection(spinnerSelectedInt).toString()
-                        when (result.data!!.jbtl) {
+                        when (result.data!!.dept) {
                             "Developer" -> spinnerSelectedInt = 1
                             "Tester" -> spinnerSelectedInt = 2
                             "HR" -> spinnerSelectedInt = 3
@@ -251,23 +362,7 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
                         departmentEditText.setSelection(spinnerSelectedInt).toString()
                         basicEditText.setText(""+result.data!!.basic).toString()
                         housingEditText.setText(""+result.data!!.hous).toString()
-                        managerEditText.setText(""+result.data!!.id).toString()
-                        ibanEditText.setText(""+result.data!!.iban).toString()
                         lastdateEditText.setText(""+result.data!!.ldate).toString()
-                        vacationEditText.setText(""+result.data!!.days).toString()
-                        when (result.data!!.gosi) {
-                            "Success" -> spinnerSelectedInt = 1
-                            "Failed" -> spinnerSelectedInt = 2
-                            "Pending" -> spinnerSelectedInt = 3
-                            else -> {
-                                spinnerSelectedInt = 0
-                            }
-
-                        }
-
-                        spinnerInt = spinnerSelectedInt
-                        gosiEditText.setSelection(spinnerSelectedInt).toString()
-                        cashEditText.setText(""+result.data!!.cash).toString()
                         when (result.data!!.grade) {
                             "A" -> spinnerSelectedInt = 1
                             "A+" -> spinnerSelectedInt = 2
@@ -280,17 +375,24 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
 
                         spinnerInt = spinnerSelectedInt
                         gradeEditText.setSelection(spinnerSelectedInt).toString()
-                        professionEditText.setText(""+result.data!!.prof).toString()
-                        overEditText.setText(""+result.data!!.ovrt).toString()
                         idexpiryEditText.setText(""+result.data!!.idex).toString()
                         passEditText.setText(""+result.data!!.pspt).toString()
                         passexpiryEditText.setText(""+result.data!!.psptex).toString()
-                        contractEditText.setText(""+result.data!!.cnttyp).toString()
-                        gosinumEditText.setText(""+result.data!!.gosino).toString()
-                        contractexpEditText.setText(""+result.data!!.cntrex).toString()
                         subDeptEditText.setText(""+result.data!!.subdep).toString()
-                        projectEditText.setText(""+result.data!!.proj).toString()
                         idempEditText.setText(""+result.data!!.idno).toString()
+                        phoneEditText.setText(""+result.data!!.phon).toString()
+                        when (result.data!!.mart) {
+                            "Married" -> spinnerSelectedInt = 1
+                            "Unmarried" -> spinnerSelectedInt = 2
+                            "Widowed" -> spinnerSelectedInt = 3
+                            else -> {
+                                spinnerSelectedInt = 0
+                            }
+
+                        }
+
+                        spinnerInt = spinnerSelectedInt
+                        maritialEditText.setSelection(spinnerSelectedInt).toString()
                         //navigateback
                         res = "true"
                         onBackPressed()
@@ -483,14 +585,15 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
         val department = resources.getStringArray(R.array.department)
         val gosi = resources.getStringArray(R.array.gosi)
         val grade = resources.getStringArray(R.array.grade)
+        val maritial = resources.getStringArray(R.array.maritial)
 
         // access the spinner
         val spinner = findViewById<Spinner>(R.id.genderEditText)
         val spinner2 = findViewById<Spinner>(R.id.religionEditText)
         val spinner3 = findViewById<Spinner>(R.id.jobTitleEditText)
         val spinner4 = findViewById<Spinner>(R.id.departmentEditText)
-        val spinner5 = findViewById<Spinner>(R.id.gosiEditText)
         val spinner6 = findViewById<Spinner>(R.id.gradeEditText)
+        val spinner7 = findViewById<Spinner>(R.id.maritialEditText)
         if (spinner != null) {
             val adapter = ArrayAdapter(this,
                     android.R.layout.simple_spinner_item, gender)
@@ -559,12 +662,12 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
                 }
             }
         }
-        if (spinner5 != null) {
+        if (spinner6 != null) {
             val adapter = ArrayAdapter(this,
-                    android.R.layout.simple_spinner_item, gosi)
-            spinner5.adapter = adapter
+                    android.R.layout.simple_spinner_item, grade)
+            spinner6.adapter = adapter
 
-            spinner5.onItemSelectedListener = object :
+            spinner6.onItemSelectedListener = object :
                     AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>,
                                             view: View, position: Int, id: Long) {
@@ -576,13 +679,13 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
                 }
             }
         }
-        if (spinner6 != null) {
+        if (spinner7 != null) {
             val adapter = ArrayAdapter(this,
-                    android.R.layout.simple_spinner_item, grade)
-            spinner6.adapter = adapter
+                android.R.layout.simple_spinner_item, maritial)
+            spinner7.adapter = adapter
 
-            spinner6.onItemSelectedListener = object :
-                    AdapterView.OnItemSelectedListener {
+            spinner7.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>,
                                             view: View, position: Int, id: Long) {
 

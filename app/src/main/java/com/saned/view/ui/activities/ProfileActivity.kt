@@ -11,6 +11,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.Window
+import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -36,6 +38,7 @@ import kotlinx.android.synthetic.main.activity_profile.recyclerView
 import kotlinx.android.synthetic.main.activity_profile.rootLayout
 import kotlinx.android.synthetic.main.activity_profile.shimmerLayout
 import kotlinx.android.synthetic.main.activity_profile.toolbar
+import kotlinx.android.synthetic.main.activity_profile_view.*
 import kotlinx.android.synthetic.main.profile_view_layout.*
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -47,7 +50,6 @@ class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityRe
 
     var myProfileArrayList: ArrayList<Profile> = ArrayList()
     lateinit var myProfileAdapter: ProfileviewAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
@@ -66,9 +68,10 @@ class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityRe
         registerReceiver(ConnectivityReceiver(), IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
 
         //edit profile
-//        profile_edit_icon.setOnClickListener {
-//            openActivityWithResult(EditProfileActivity::class.java, this, 101){}
-//        }
+       // edit.setOnClickListener {
+         //   val intent=Intent(applicationContext, EditProfileActivity::class.java)
+          //  startActivity(intent)
+        //}
         //get values
        // getMyProfileData()
 
@@ -196,7 +199,6 @@ class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityRe
                                     "" + item.dept,
                                     "" + item.jbtl,
                                     "" + item.stat,
-                                    "" + item.join,
                                     "" + item.dob,
                                     "" + item.ccty,
                                     "" + item.email,
@@ -206,8 +208,6 @@ class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityRe
                                     "" + item.bank,
                                     "" + item.city,
                                     "" + item.loca,
-                                    "" + item.iban,
-                                    "" + item.mngr,
                                     "" + item.basic,
                                     "" + item.hous,
                                     "" + item.tran,
@@ -220,25 +220,17 @@ class ProfileActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityRe
                                     "" + item.idno,
                                     "" + item.relg,
                                     "" + item.vacb,
-                                    "" + item.days,
-                                    "" + item.gosi,
                                     "" + item.cash,
                                     "" + item.refcntd,
                                     "" + item.refcntu,
                                     "" + item.fnme,
                                     "" + item.lnme,
                                     "" + item.mnme,
-                                    "" + item.prof,
-                                    "" + item.ovrt,
                                     "" + item.idex,
                                     "" + item.pspt,
                                     "" + item.psptex,
-                                    "" + item.cnttyp,
                                     "" + item.emrcnt,
-                                    "" + item.gosino,
-                                    "" + item.cntrex,
                                     "" + item.subdep,
-                                    "" + item.proj,
                                     "" + item.created_at,
                                     "" + item.updated_at,
                                     "" + item.deleted_at,

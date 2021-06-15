@@ -11,9 +11,9 @@ import com.saned.model.Empdata
 import com.saned.model.Profile
 import com.saned.view.ui.activities.MyEmployeesActivity
 import com.saned.view.ui.activities.ProfileActivity
+import kotlinx.android.synthetic.main.activity_profile_view.view.*
 import kotlinx.android.synthetic.main.employee_list_item.view.*
 import kotlinx.android.synthetic.main.empty_placeholder_item.view.*
-import kotlinx.android.synthetic.main.profile_view_layout.view.*
 
 
 class ProfileviewAdapter(private val dataList: List<Profile>, val context: Context,
@@ -33,7 +33,7 @@ class ProfileviewAdapter(private val dataList: List<Profile>, val context: Conte
         }else {
             view = ItemViewHolder(
                     LayoutInflater.from(context)
-                            .inflate(R.layout.profile_view_layout, parent, false)
+                            .inflate(R.layout.activity_profile_view, parent, false)
             )
         }
         return view
@@ -61,29 +61,23 @@ class ProfileviewAdapter(private val dataList: List<Profile>, val context: Conte
             viewHolder.religion!!.text = "" + dataList[position].relg
             viewHolder.empcode!!.text = "" + dataList[position].emp_code
             viewHolder.fullname!!.text = "" + dataList[position].f_name
-            viewHolder.datejoin!!.text = "" + dataList[position].join
+            viewHolder.mart!!.text = "" + dataList[position].mart
             viewHolder.jobtitle!!.text = "" + dataList[position].job_title
             viewHolder.deprtment!!.text = "" + dataList[position].dept
             viewHolder.bsicsalry!!.text = "" + dataList[position].basic
             viewHolder.houseallow!!.text = "" + dataList[position].hous
-            viewHolder.managerid!!.text = "" + dataList[position].mngr
-            viewHolder.iban!!.text = "" + dataList[position].iban
+            viewHolder.city!!.text = "" + dataList[position].city
+            viewHolder.loca!!.text = "" + dataList[position].loca
             viewHolder.idn!!.text = "" + dataList[position].id
             viewHolder.lastdate!!.text = "" + dataList[position].ldate
-            viewHolder.vacationdate!!.text = "" + dataList[position].vacb
-            viewHolder.gosidte!!.text = "" + dataList[position].gosi
+            viewHolder.tran!!.text = "" + dataList[position].tran
             viewHolder.grade!!.text = "" + dataList[position].grade
-            viewHolder.cashdate!!.text = "" + dataList[position].cash
-            viewHolder.profession!!.text = "" + dataList[position].prof
-            viewHolder.overtime!!.text = "" + dataList[position].ovrt
+            viewHolder.cont!!.text = "" + dataList[position].cont
+            viewHolder.medc!!.text = "" + dataList[position].medc
             viewHolder.idexpry!!.text = "" + dataList[position].idex
             viewHolder.pssno!!.text = "" + dataList[position].pspt
             viewHolder.passexpry!!.text = "" + dataList[position].psptex
-            viewHolder.contrcttype!!.text = "" + dataList[position].cont
-            viewHolder.gosinumber!!.text = "" + dataList[position].gosino
-            viewHolder.contrctexpry!!.text = "" + dataList[position].cntrex
             viewHolder.subdepartment!!.text = "" + dataList[position].subdep
-            viewHolder.projetct!!.text = "" + dataList[position].proj
             viewHolder.idnum!!.text = "" + dataList[position].idno
 
 
@@ -118,30 +112,24 @@ class ProfileviewAdapter(private val dataList: List<Profile>, val context: Conte
         val religion = itemView.religionEditText2
         val empcode = itemView.empcodeEditText2
         val fullname = itemView.fullNameEditText2
-        val datejoin = itemView.dojEditText2
         val jobtitle = itemView.jobTitleEditText2
         val deprtment = itemView.departmentEditText2
         val bsicsalry = itemView.basicEditText2
         val houseallow = itemView.housingEditText2
-        val managerid = itemView.managerEditText2
-        val iban = itemView.ibanEditText2
         val idn = itemView.idEditText2
         val lastdate = itemView.lastdateEditText2
-        val vacationdate = itemView.vacationEditText2
-        val gosidte = itemView.gosiEditText2
         val grade = itemView.gradeEditText2
-        val cashdate = itemView.cashEditText2
-        val profession = itemView.professionEditText2
-        val overtime = itemView.overEditText2
         val idexpry = itemView.idexpiryEditText2
         val pssno = itemView.passEditText2
         val passexpry = itemView.passexpiryEditText2
-        val contrcttype = itemView.contractEditText2
-        val gosinumber = itemView.gosinumEditText2
-        val contrctexpry = itemView.contractexpEditText2
         val subdepartment = itemView.subDeptEditText2
-        val projetct = itemView.projectEditText2
         val idnum = itemView.idnumEditText2
+        val mart = itemView.maritialEditText2
+        val city = itemView.cityEditText2
+        val loca = itemView.locationEditText2
+        val tran = itemView.transportEditText2
+        val cont = itemView.contractstsEditText2
+        val medc = itemView.medicalEditText2
 
 
 
