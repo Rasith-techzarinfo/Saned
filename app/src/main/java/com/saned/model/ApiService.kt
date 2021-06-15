@@ -75,11 +75,48 @@ interface ApiService {
             ): Deferred<PendinghistoryDetail>
 
 
+    @GET("v1/api/workflow/histroy/{id}")
+    fun getPendingServicesDetail(
+            @Path("id") id: String,
+
+            ): Deferred<ServiceListDetail>
+
+
 
     @GET("v1/api/workflow/menu-list")
     fun getServicesList(
 
     ): Deferred<ServicesList>
+
+
+    @GET("v1/api/dashboard/get-tiles/{id}")
+    fun getDashboardDetail(
+            @Path("id") id: String,
+
+    ): Deferred<Dashboard>
+
+
+    @GET("v1/api/attendance/get-location/{id}")
+    fun getEmpLocation(
+            @Path("id") id: String,
+
+            ): Deferred<GetempLocation>
+
+
+
+    @POST("v1/api/attendance/store")
+    @FormUrlEncoded
+    fun attendancePunch(
+            @FieldMap values: HashMap<String, String>
+    ): Deferred<AttendanceStore>
+
+
+    @POST("v1/api/attendance/history")
+    @FormUrlEncoded
+    fun attendanceSearch(
+            @FieldMap values: HashMap<String, String>
+    ): Deferred<AttendanceHistory>
+
 
 
     ////////////////////////////

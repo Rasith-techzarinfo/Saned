@@ -107,6 +107,7 @@ class LoginActivity : AppCompatActivity() {
 
                             prefHelper.setBearerToken("" + result.token)
                             prefHelper.setUserId("" + result.user!!.t_idno)
+                            prefHelper.setEmpNo("" + result.user!!.t_emno)
                             prefHelper.setUserPassword("" + password_edit_text.text.toString())
                             prefHelper.setUserType("" + userType)      //role_id 2 - manager, 3 - user
                             prefHelper.setUserName("" + "${result.user!!.t_nama} ") //${result.user!!.last_name}

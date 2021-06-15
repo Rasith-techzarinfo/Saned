@@ -36,6 +36,7 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
     var currentPage: Int = 1
     var totalPages: String = ""
 
+    var module_name: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -267,6 +268,7 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
         openActivity(HistoryDynamicWFActivity::class.java, this@ServicesActionsActivity){
 //            putString("formID", "" + dummyData.id)
 //            putString("formName", "" + dummyData.title)
+            putString("module_name", "" + dummyData.module_name)
         }
     }
 

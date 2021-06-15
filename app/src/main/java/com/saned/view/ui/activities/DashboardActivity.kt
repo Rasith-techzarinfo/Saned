@@ -198,6 +198,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         } else if(prefHelper.getUserType() == "Company User") {
             //user
             my_employees_menu.visibility = View.GONE
+            services_actions_menu.visibility = View.GONE
 
         }
     }

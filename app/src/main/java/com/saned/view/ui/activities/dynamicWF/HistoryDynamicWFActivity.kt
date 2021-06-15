@@ -9,9 +9,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.saned.R
-import com.saned.model.HAData
-import com.saned.model.HAData1
-import com.saned.model.HousingWFData
+import com.saned.model.*
 import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.sanedApplication.Companion.prefHelper
@@ -21,6 +19,13 @@ import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.openActivity
 import com.saned.view.utils.Utils.Companion.openActivityWithResult
 import kotlinx.android.synthetic.main.activity_history_dynamic_w_f.*
+import kotlinx.android.synthetic.main.activity_history_dynamic_w_f.emptyView
+import kotlinx.android.synthetic.main.activity_history_dynamic_w_f.recyclerView
+import kotlinx.android.synthetic.main.activity_history_dynamic_w_f.rootLayout
+import kotlinx.android.synthetic.main.activity_history_dynamic_w_f.shimmerLayout
+import kotlinx.android.synthetic.main.activity_history_dynamic_w_f.swipeRefreshLayout
+import kotlinx.android.synthetic.main.activity_history_dynamic_w_f.toolbar
+import kotlinx.android.synthetic.main.activity_my_employees.*
 import kotlinx.coroutines.launch
 
 class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.ListAdapterListener {
@@ -28,12 +33,14 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
 
     lateinit var dynamicWFHistoryAdapter : DynamicWFHistoryAdapter
 
-    var dynamicWFArrayList: ArrayList<HAData> = ArrayList()
+    var dynamicWFArrayList: ArrayList<ServDetail> = ArrayList()
 
     var currentPage: Int = 1
     var totalPages: String = ""
     var formID: String = ""
     var formName: String = ""
+
+    var module_name: String = ""
 
 
     //dynamic form using fields
@@ -46,114 +53,142 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
     }
 
 
+    private fun init() {
+        //get intent data
+//        formID = "" + intent.getStringExtra("formID")
+//        formName = "" + intent.getStringExtra("formName")
+//        Log.e("itt", "" + formID)
 
-    //clears and adds first 10 results
-    private fun getServicesListFromServer(){
+        module_name = "" + intent.getStringExtra("module_name")
+
+        toolbarTitle.text = module_name + " History"
+
+        //user permission, hide for manager
+        add_WF_fab.visibility = if(prefHelper.getUserType() == "HR Admin") View.GONE else View.VISIBLE
+
+        //fab
+        add_WF_fab.setOnClickListener {
+            //send form data to new activity
+            openActivityWithResult(CreateDynamicWFActivity::class.java, this, 101){
+                putString("formID", "" + formID)
+                putString("formName", "" + formName)
+            }
+        }
+        //swipe
+        swipeRefreshLayout.setOnRefreshListener {
+            getPendingDetailFromServer()
+            swipeRefreshLayout.isRefreshing = false
+        }
+        getPendingDetailFromServer()
+
+    }
+
+    private fun getPendingDetailFromServer() {
         dynamicWFArrayList.clear()
         currentPage = 1
 
         if (Utils.isInternetAvailable(this)) {
 
-            //shimmer
             Utils.startShimmerRL(shimmerLayout, rootLayout)
-            emptyView.visibility = View.GONE
 
             coroutineScope.launch {
 
-                try {
+                try{
 
-                    val result = if(prefHelper.getUserType() == "3") apiService.getHousingWFListUser().await() else if (prefHelper.getManagerLevel() == "1") apiService.getHousingWFListManager1().await() else apiService.getHousingWFListManager2().await()
+                    val result = apiService.getPendingServicesDetail(module_name).await()
 
                     Log.e("result", "" + result)
 
                     if(result.success == "1"){
 
-                        var firstArrayList: ArrayList<HousingWFData> = ArrayList()
-                        var secondArrayList: ArrayList<HAData1> = ArrayList()
+//                        var firstArrayList: ArrayList<HousingWFData> = ArrayList()
+//                        var secondArrayList: ArrayList<HAData1> = ArrayList()
 
                         for (item in result.data!!) {
 
-                            val v1 = HousingWFData(
+                            val v1 = ServDetail(
                                     "" + item.id,
                                     "" + item.wkid,
                                     "" + item.sern,
                                     "" + item.labl,
                                     "" + item.data,
                                     "" + item.form_name,
-                                    "" + item.email
+                                    "" + item.email,
+                                    "" + item.added_by,
+                                    "" + item.added_at
                             )
-                            firstArrayList.add(v1)
+                            dynamicWFArrayList.add(v1)
 
-                            var v2 = HAData1((firstArrayList.size - 1), "" + item.wkid)
-                            secondArrayList.add(v2)
+//                            var v2 = HAData1((firstArrayList.size - 1), "" + item.wkid)
+//                            secondArrayList.add(v2)
                         }
 
-                        val hashMap: HashMap<String, MutableList<Int>> = HashMap()
+//                        val hashMap: HashMap<String, MutableList<Int>> = HashMap()
 
 
-                        for (i in 0 until secondArrayList.size) {
-                            if (hashMap[secondArrayList[i].wkid] != null) {
-                                var indexList = hashMap[secondArrayList.get(i).wkid]
-                                indexList!!.add(i)
-                                hashMap[secondArrayList.get(i).wkid] = indexList!!
-                            } else {
-                                var indexList: MutableList<Int> = ArrayList()
-                                indexList.add(i)
-                                hashMap[secondArrayList.get(i).wkid] = indexList
-                            }
-                        }
-                        Log.e("HashMap", "" + hashMap.toString())
+//                        for (i in 0 until secondArrayList.size) {
+//                            if (hashMap[secondArrayList[i].wkid] != null) {
+//                                var indexList = hashMap[secondArrayList.get(i).wkid]
+//                                indexList!!.add(i)
+//                                hashMap[secondArrayList.get(i).wkid] = indexList!!
+//                            } else {
+//                                var indexList: MutableList<Int> = ArrayList()
+//                                indexList.add(i)
+//                                hashMap[secondArrayList.get(i).wkid] = indexList
+//                            }
+//                        }
+//                        Log.e("HashMap", "" + hashMap.toString())
 
-                        for (item in hashMap){
-
-                            var indexList: MutableList<Int> = ArrayList()
-                            indexList = item.value
-                            Log.e("HashMap Item", "" + item.key + " " +  indexList)
-
-                            var month = ""
-                            var reason = ""
-                            var userID = ""
-                            var document = ""
-                            var wkid = ""
-                            for (item in indexList){
-                                var t1 = firstArrayList[item]
-//                                if(t1.sern == "1" ){ //month no
-//                                  month = t1.data
+//                        for (item in hashMap){
+//
+//                            var indexList: MutableList<Int> = ArrayList()
+//                            indexList = item.value
+//                            Log.e("HashMap Item", "" + item.key + " " +  indexList)
+//
+//                            var month = ""
+//                            var reason = ""
+//                            var userID = ""
+//                            var document = ""
+//                            var wkid = ""
+//                            for (item in indexList){
+//                                var t1 = firstArrayList[item]
+////                                if(t1.sern == "1" ){ //month no
+////                                  month = t1.data
+////                                }
+////                                if(t1.sern == "2"){ //reason
+////                                    reason = t1.data
+////                                }
+////                                if(t1.sern == "3"){ //user id
+////                                    userID = t1.data
+////                                }
+////                                if(t1.sern == "4"){ //document
+////                                    document = t1.data
+////                                }
+//                                if(t1.labl.equals("Month No",true)){ //month no
+//                                    month = t1.data
 //                                }
-//                                if(t1.sern == "2"){ //reason
+//                                if(t1.labl.equals("Reason",true)){ //reason
 //                                    reason = t1.data
 //                                }
-//                                if(t1.sern == "3"){ //user id
+//                                if(t1.labl.equals("User Id",true)){ //user id
 //                                    userID = t1.data
 //                                }
-//                                if(t1.sern == "4"){ //document
+//                                if(t1.labl.equals("Document",true)){ //document
 //                                    document = t1.data
 //                                }
-                                if(t1.labl.equals("Month No",true)){ //month no
-                                    month = t1.data
-                                }
-                                if(t1.labl.equals("Reason",true)){ //reason
-                                    reason = t1.data
-                                }
-                                if(t1.labl.equals("User Id",true)){ //user id
-                                    userID = t1.data
-                                }
-                                if(t1.labl.equals("Document",true)){ //document
-                                    document = t1.data
-                                }
-                                wkid = t1.wkid
-
-                            }
-                            val v2 = HAData(
-                                    "" + month,
-                                    "" + reason,
-                                    "" + userID,
-                                    "" + document,
-                                    "" + wkid
-                                    )
-                                    dynamicWFArrayList.add(v2)
-                                    Log.e("WF", "" + v2)
-                        }
+//                                wkid = t1.wkid
+//
+//                            }
+//                            val v2 = HAData(
+//                                "" + month,
+//                                "" + reason,
+//                                "" + userID,
+//                                "" + document,
+//                                "" + wkid
+//                            )
+//                            myPendingsArrayList.add(v2)
+//                            Log.e("WF", "" + v2)
+//                        }
 
 
 
@@ -163,21 +198,14 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
                     }else {
 
                         Toast.makeText(this@HistoryDynamicWFActivity, "" + result.message, Toast.LENGTH_SHORT)
-                            .show()
+                                .show()
                     }
-
-
-
-                    //load static data for now
-//                    dynamicWFArrayList.add(HAData("30", "This is so coolllll.", "101"))
-
-
-
 
                     Utils.stopShimmerRL(shimmerLayout, rootLayout)
 
 
                     setupRecyclerView()
+
 
                 }catch (e: Exception){
 
@@ -186,7 +214,7 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
 //                    if(e.message == "Connection reset" || e.message == "Failed to connect to /40.123.199.239:3000"){
 //
 //                    } else
-                        if (e is SANEDError) {
+                    if (e is SANEDError) {
                         Log.e("Err", "" + e.getErrorResponse())
                         if (e.getResponseCode() == 401) {
                             Utils.logoutFromApp(applicationContext)
@@ -195,17 +223,203 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
                         }
                     } else {
                         Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_SHORT)
-                            .show()
+                                .show()
                     }
+
                 }
 
             }
-        } else {
-           // Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
-            Utils.checkNetworkDialog(this, this) { getServicesListFromServer() }
         }
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //clears and adds first 10 results
+//    private fun getServicesListFromServer(){
+//        dynamicWFArrayList.clear()
+//        currentPage = 1
+//
+//        if (Utils.isInternetAvailable(this)) {
+//
+//            //shimmer
+//            Utils.startShimmerRL(shimmerLayout, rootLayout)
+//            emptyView.visibility = View.GONE
+//
+//            coroutineScope.launch {
+//
+//                try {
+//
+//                    val result = if(prefHelper.getUserType() == "3") apiService.getHousingWFListUser().await() else if (prefHelper.getManagerLevel() == "1") apiService.getHousingWFListManager1().await() else apiService.getHousingWFListManager2().await()
+//
+//                    Log.e("result", "" + result)
+//
+//                    if(result.success == "1"){
+//
+//                        var firstArrayList: ArrayList<HousingWFData> = ArrayList()
+//                        var secondArrayList: ArrayList<HAData1> = ArrayList()
+//
+//                        for (item in result.data!!) {
+//
+//                            val v1 = HousingWFData(
+//                                    "" + item.id,
+//                                    "" + item.wkid,
+//                                    "" + item.sern,
+//                                    "" + item.labl,
+//                                    "" + item.data,
+//                                    "" + item.form_name,
+//                                    "" + item.email
+//                            )
+//                            firstArrayList.add(v1)
+//
+//                            var v2 = HAData1((firstArrayList.size - 1), "" + item.wkid)
+//                            secondArrayList.add(v2)
+//                        }
+//
+//                        val hashMap: HashMap<String, MutableList<Int>> = HashMap()
+//
+//
+//                        for (i in 0 until secondArrayList.size) {
+//                            if (hashMap[secondArrayList[i].wkid] != null) {
+//                                var indexList = hashMap[secondArrayList.get(i).wkid]
+//                                indexList!!.add(i)
+//                                hashMap[secondArrayList.get(i).wkid] = indexList!!
+//                            } else {
+//                                var indexList: MutableList<Int> = ArrayList()
+//                                indexList.add(i)
+//                                hashMap[secondArrayList.get(i).wkid] = indexList
+//                            }
+//                        }
+//                        Log.e("HashMap", "" + hashMap.toString())
+//
+//                        for (item in hashMap){
+//
+//                            var indexList: MutableList<Int> = ArrayList()
+//                            indexList = item.value
+//                            Log.e("HashMap Item", "" + item.key + " " +  indexList)
+//
+//                            var month = ""
+//                            var reason = ""
+//                            var userID = ""
+//                            var document = ""
+//                            var wkid = ""
+//                            for (item in indexList){
+//                                var t1 = firstArrayList[item]
+////                                if(t1.sern == "1" ){ //month no
+////                                  month = t1.data
+////                                }
+////                                if(t1.sern == "2"){ //reason
+////                                    reason = t1.data
+////                                }
+////                                if(t1.sern == "3"){ //user id
+////                                    userID = t1.data
+////                                }
+////                                if(t1.sern == "4"){ //document
+////                                    document = t1.data
+////                                }
+//                                if(t1.labl.equals("Month No",true)){ //month no
+//                                    month = t1.data
+//                                }
+//                                if(t1.labl.equals("Reason",true)){ //reason
+//                                    reason = t1.data
+//                                }
+//                                if(t1.labl.equals("User Id",true)){ //user id
+//                                    userID = t1.data
+//                                }
+//                                if(t1.labl.equals("Document",true)){ //document
+//                                    document = t1.data
+//                                }
+//                                wkid = t1.wkid
+//
+//                            }
+//                            val v2 = HAData(
+//                                    "" + month,
+//                                    "" + reason,
+//                                    "" + userID,
+//                                    "" + document,
+//                                    "" + wkid
+//                                    )
+//                                    dynamicWFArrayList.add(v2)
+//                                    Log.e("WF", "" + v2)
+//                        }
+//
+//
+//
+////                        totalPages = result.data!!.last_page.toString()
+////                        Log.e("result", "" + result.data!!.current_page)
+//
+//                    }else {
+//
+//                        Toast.makeText(this@HistoryDynamicWFActivity, "" + result.message, Toast.LENGTH_SHORT)
+//                            .show()
+//                    }
+//
+//
+//
+//                    //load static data for now
+////                    dynamicWFArrayList.add(HAData("30", "This is so coolllll.", "101"))
+//
+//
+//
+//
+//                    Utils.stopShimmerRL(shimmerLayout, rootLayout)
+//
+//
+//                    setupRecyclerView()
+//
+//                }catch (e: Exception){
+//
+//                    Utils.stopShimmerRL(shimmerLayout, rootLayout)
+//                    Log.e("error", "" + e.message)
+////                    if(e.message == "Connection reset" || e.message == "Failed to connect to /40.123.199.239:3000"){
+////
+////                    } else
+//                        if (e is SANEDError) {
+//                        Log.e("Err", "" + e.getErrorResponse())
+//                        if (e.getResponseCode() == 401) {
+//                            Utils.logoutFromApp(applicationContext)
+//                        } else if (e.getResponseCode() == 500) {
+//                            Toast.makeText(applicationContext, "Server error", Toast.LENGTH_LONG).show()
+//                        }
+//                    } else {
+//                        Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_SHORT)
+//                            .show()
+//                    }
+//                }
+//
+//            }
+//        } else {
+//           // Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
+//            Utils.checkNetworkDialog(this, this) { getServicesListFromServer() }
+//        }
+//
+//    }
 
 
 //    private fun loadMoreData(){
@@ -337,7 +551,7 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
 
 
 
-    override fun onListItemClicked(dummyData: HAData, position: Int) {
+    override fun onListItemClicked(dummyData: ServDetail, position: Int) {
         //send form data to new activity
         openActivityWithResult(ViewDynamicWFActivity::class.java, this, 101){
             putString("formID", "" + formID)
@@ -354,39 +568,12 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
                 var temp1 = data!!.getStringExtra("isUpdated")
                 var temp2 = data!!.getStringExtra("isAdded")
                 if(temp1 == "true" || temp2 == "true") {
-                    getServicesListFromServer()
+                    getPendingDetailFromServer()
                 }
             }
         }
     }
 
-
-    private fun init() {
-        //get intent data
-        formID = "" + intent.getStringExtra("formID")
-        formName = "" + intent.getStringExtra("formName")
-        Log.e("itt", "" + formID)
-        toolbarTitle.text = formName + " History"
-
-        //user permission, hide for manager
-        add_WF_fab.visibility = if(prefHelper.getUserType() == "2") View.GONE else View.VISIBLE
-
-        //fab
-        add_WF_fab.setOnClickListener {
-            //send form data to new activity
-            openActivityWithResult(CreateDynamicWFActivity::class.java, this, 101){
-                putString("formID", "" + formID)
-                putString("formName", "" + formName)
-            }
-        }
-        //swipe
-        swipeRefreshLayout.setOnRefreshListener {
-            getServicesListFromServer()
-            swipeRefreshLayout.isRefreshing = false
-        }
-        getServicesListFromServer()
-
-    }
 
     private fun setToolBar() {
         setSupportActionBar(toolbar)

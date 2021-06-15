@@ -1379,7 +1379,7 @@ class Utils {
             var formattedString = ""
             try {
                 val calendar = Calendar.getInstance()
-                val dateFormatter = SimpleDateFormat("HH:mm", Locale.getDefault())
+                val dateFormatter = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
                 formattedString = "" + dateFormatter.format(calendar.time)
              } catch (e: java.lang.Exception){
                 e.stackTrace
@@ -1391,7 +1391,7 @@ class Utils {
             var formattedString = ""
             try {
                 val calendar = Calendar.getInstance()
-                val dateFormatter = SimpleDateFormat("EEEE, MMM d"  , Locale.getDefault())
+                val dateFormatter = SimpleDateFormat("dd/MM/yyyy"  , Locale.getDefault())
                 formattedString = "" + dateFormatter.format(calendar.time)
             } catch (e: java.lang.Exception){
                 e.stackTrace
@@ -1399,7 +1399,7 @@ class Utils {
             return formattedString
         }
 
-
+//"EEEE, MMM d"
     }
 }
 

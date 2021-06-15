@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.saned.model.HAData
 import com.saned.R
+import com.saned.model.ServDetail
 import com.saned.view.ui.activities.dynamicWF.HistoryDynamicWFActivity
 import kotlinx.android.synthetic.main.empty_placeholder_item.view.*
 import kotlinx.android.synthetic.main.dynamic_wf_list_item.view.*
 
 
-class DynamicWFHistoryAdapter(private val dataList: List<HAData>, val context: Context,
+class DynamicWFHistoryAdapter(private val dataList: List<ServDetail>, val context: Context,
                               val activity: HistoryDynamicWFActivity
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -46,8 +47,8 @@ class DynamicWFHistoryAdapter(private val dataList: List<HAData>, val context: C
 
 
 
-            viewHolder.itemVal1!!.text = "" + dataList[position].noofmonths
-            viewHolder.itemVal2!!.text = "" + dataList[position].reason
+            viewHolder.itemVal1!!.text = "" + dataList[position].labl
+            viewHolder.itemVal2!!.text = "" + dataList[position].data
 
         }else if(itemFlag == 0) {
             val emptyViewHolder: EmptyHolder = (holder as EmptyHolder)
@@ -77,7 +78,7 @@ class DynamicWFHistoryAdapter(private val dataList: List<HAData>, val context: C
     }
 
     interface ListAdapterListener{
-        fun onListItemClicked(dummyData: HAData, position: Int)
+        fun onListItemClicked(dummyData: ServDetail, position: Int)
     }
 
 

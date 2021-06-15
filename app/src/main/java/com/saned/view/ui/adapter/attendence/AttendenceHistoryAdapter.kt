@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.saned.R
+import com.saned.model.AttenHistoryDetail
 import com.saned.model.AttendenceData
 import com.saned.view.ui.activities.MyEmployeesActivity
 import com.saned.view.ui.activities.NotificationActivity
@@ -15,8 +16,8 @@ import kotlinx.android.synthetic.main.attendence_history_item.view.*
 import kotlinx.android.synthetic.main.empty_placeholder_item.view.*
 
 
-class AttendenceHistoryAdapter(private val dataList: List<AttendenceData>, val context: Context,
-                         val activity: AttendanceHistoryActivity
+class AttendenceHistoryAdapter(private val dataList: List<AttenHistoryDetail>, val context: Context,
+                               val activity: AttendanceHistoryActivity
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var itemFlag: Int = 0
@@ -47,9 +48,9 @@ class AttendenceHistoryAdapter(private val dataList: List<AttendenceData>, val c
         if(itemFlag != 0){
             val viewHolder: ViewHolder = (holder as ViewHolder)
             viewHolder.dateItem!!.text = dataList.get(position).date
-            viewHolder.timeInItem!!.text = dataList.get(position).timein
-            viewHolder.timeOutItem!!.text = dataList.get(position).timeout
-            viewHolder.workingHrsItem!!.text = dataList.get(position).wokringHrs
+            viewHolder.timeInItem!!.text = dataList.get(position).in_time
+            viewHolder.timeOutItem!!.text = dataList.get(position).out_time
+            viewHolder.workingHrsItem!!.text = dataList.get(position).working_hours
 
 
         }else if(itemFlag == 0) {
@@ -82,7 +83,7 @@ class AttendenceHistoryAdapter(private val dataList: List<AttendenceData>, val c
     }
 
     interface ListAdapterListener{
-        fun onListItemClicked(dummyData: AttendenceData, position: Int)
+        fun onListItemClicked(dummyData: AttenHistoryDetail, position: Int)
     }
 
 

@@ -49,11 +49,11 @@ class PendingDetailActivity : AppCompatActivity() {
 
         wkid = "" + intent.getStringExtra("wkid")
 
-        swipeRefreshLayout.setOnRefreshListener {
-            //getValues()
-            getDataFromServer()
-            swipeRefreshLayout.isRefreshing = false
-        }
+//        swipeRefreshLayout.setOnRefreshListener {
+//            //getValues()
+//            getDataFromServer()
+//            swipeRefreshLayout.isRefreshing = false
+//        }
         //get data
         //  getValues()
         getDataFromServer()

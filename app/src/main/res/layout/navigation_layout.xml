@@ -321,7 +321,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:text="My Pending Requests"
+                    android:text="My Requests"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="16sp" />
 

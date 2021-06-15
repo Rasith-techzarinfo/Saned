@@ -11,6 +11,7 @@ class PreferenceAppHelper(context: Context) {
     val USER_ID = "user_id"
     val USER_TYPE = "user_type"
     val IS_LOGIN = "islogin"
+    val EMP_NO = "t_emno"
     val LAST_LOGIN = "last_login"
     val IS_FIRST_TIME = "isfirsttime"
     val USER_PASSWORD = "password"
@@ -115,6 +116,14 @@ class PreferenceAppHelper(context: Context) {
     
     fun setUserId(status: String) {
         setStringInPrefs(USER_ID, status)
+    }
+
+    fun setEmpNo(status: String) {
+        setStringInPrefs(EMP_NO, status)
+    }
+
+    fun getEmpNo(): String? {
+        return mSharedPreferences!!.getString(EMP_NO, "")
     }
 
     fun getUserType(): String? {

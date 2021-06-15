@@ -381,15 +381,90 @@ data class ServList (
         val deletedAt : String
 )
 
+data class ServiceListDetail (
+
+        val success : String,
+        val message : String,
+        val data : List<ServDetail>,
+        val status : String
+)
+
+data class ServDetail (
+
+        val id : String,
+        val wkid : String,
+        val sern : String,
+        val labl : String,
+        val data : String,
+        val form_name : String,
+        val email : String,
+        val added_by : String,
+        val added_at : String
+)
+
+data class Dashboard (
+
+        val success : String,
+        val message : String,
+        val data : List<DashboardDetail>
+)
+
+data class DashboardDetail (
+
+        val emp_code : String,
+        val basic : String,
+        val net : String,
+        val earnings : String,
+        val deduction : String,
+        val period : String
+)
 
 
+data class GetempLocation (
+
+        val success : String,
+        val message : String,
+        val location : String,
+        val radius : String
+)
 
 
+data class AttendanceStore(
+
+        val success : String,
+        val message : String,
+        val data : List<StoreData>
+)
 
 
+data class StoreData (
 
+        val id : String,
+        val location : String,
+        val in_time : String,
+        val out_time : String,
+        val emp_id : String,
+        val date : String,
+        val working_hours : String
+)
 
+data class AttendanceHistory (
 
+        val success : String,
+        val message : String,
+        val data : List<AttenHistoryDetail>
+)
+
+data class AttenHistoryDetail (
+
+        val id : String,
+        val location : String,
+        val in_time : String,
+        val out_time : String,
+        val emp_id : String,
+        val date : String,
+        val working_hours : String
+)
 
 
 data class LoginError(
