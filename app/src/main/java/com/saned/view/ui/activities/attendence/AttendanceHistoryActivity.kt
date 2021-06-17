@@ -27,13 +27,18 @@ import com.saned.sanedApplication
 import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.view.error.SANEDError
+import com.saned.view.ui.activities.dynamicWF.CreateDynamicWFActivity
 import com.saned.view.ui.adapter.attendence.AttendenceHistoryAdapter
 import com.saned.view.utils.Utils
+import com.saned.view.utils.Utils.Companion.openActivityWithResult
 import kotlinx.android.synthetic.main.activity_attendance_history.*
+import kotlinx.android.synthetic.main.activity_attendance_history.recyclerView
 import kotlinx.android.synthetic.main.activity_attendance_history.rootLayout
+import kotlinx.android.synthetic.main.activity_attendance_history.shimmerLayout
 import kotlinx.android.synthetic.main.activity_attendance_history.swipeRefreshLayout
 import kotlinx.android.synthetic.main.activity_attendance_history.toolbar
 import kotlinx.android.synthetic.main.activity_attendance_punch.*
+import kotlinx.android.synthetic.main.activity_history_dynamic_w_f.*
 import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.collections.ArrayList
@@ -68,6 +73,13 @@ class AttendanceHistoryActivity : AppCompatActivity(), AttendenceHistoryAdapter.
         //get data
         //getValues()
       //  getvaluefromserver(from_date,to_date)
+
+        add_date_fab.setOnClickListener {
+            //send form data to new activity
+            showReportDateDialog()
+            }
+
+
     }
 
     private fun showReportDateDialog() {

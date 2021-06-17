@@ -1,6 +1,7 @@
 package com.saned.view.ui.activities.dynamicWF
 
 import android.app.Activity
+import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
@@ -22,6 +23,7 @@ import com.bumptech.glide.Glide
 import com.fxn.pix.Options
 import com.fxn.pix.Pix
 import com.saned.R
+import com.saned.model.DynamicFormList
 import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.sanedApplication.Companion.prefHelper
@@ -31,12 +33,19 @@ import com.saned.view.utils.URIPathHelper
 import com.saned.view.utils.Utils
 import droidninja.filepicker.FilePickerBuilder
 import droidninja.filepicker.FilePickerConst
+import kotlinx.android.synthetic.main.activity_attendance_punch.*
 import kotlinx.android.synthetic.main.activity_create_dynamic_w_f.*
+import kotlinx.android.synthetic.main.activity_create_dynamic_w_f.rootLayout
+import kotlinx.android.synthetic.main.activity_create_dynamic_w_f.submitButton
+import kotlinx.android.synthetic.main.activity_create_dynamic_w_f.toolbar
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 
 class CreateDynamicWFActivity : AppCompatActivity() {
@@ -46,10 +55,18 @@ class CreateDynamicWFActivity : AppCompatActivity() {
     var formName: String = ""
     var res: String = ""
 
+    var module_name: String = ""
+
     var monthsSpinnerSelected = ""
+    var LeaveSpinnerSelected = ""
+
     var hashMap: HashMap<String, Int> = HashMap<String, Int>()
     val list: MutableList<String> = ArrayList()
     var listImages = ArrayList<String>()
+
+    var dyamicArrayList: ArrayList<DynamicFormList> = ArrayList()
+
+
     private var docPaths: ArrayList<Uri> = ArrayList()
     private val REQUEST_CODE_CHOOSE = 104
     val PICKPHOTO_RESULT_CODE = 1105
@@ -70,10 +87,14 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
     private fun init() {
         //get intent data
-        formID = "" + intent.getStringExtra("formID")
-        formName = "" + intent.getStringExtra("formName")
-        Log.e("itt", "" + formID)
-        toolbarTitle.text = "New " + formName
+//        formID = "" + intent.getStringExtra("formID")
+//        formName = "" + intent.getStringExtra("formName")
+        getDataFromService()
+
+        module_name = "" + intent.getStringExtra("module_name")
+        Log.e("arjun", "" + module_name)
+
+        toolbarTitle.text = "New " + module_name
 
         //listeners
         attach_layout.setOnClickListener {
@@ -91,8 +112,42 @@ class CreateDynamicWFActivity : AppCompatActivity() {
             }
         }
 
+        startEditText.setOnClickListener {
+            val c = Calendar.getInstance()
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+
+            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+
+                // Display Selected date in textbox
+                startEditText.setText("" + dayOfMonth + "-" + monthOfYear + "-" + year)
+
+            }, year, month, day)
+
+            dpd.show()
+        }
+
+        endEditText.setOnClickListener {
+
+            val c = Calendar.getInstance()
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+
+            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+
+                // Display Selected date in textbox
+                startEditText.setText("" + dayOfMonth + "-" + monthOfYear + "-" + year)
+
+            }, year, month, day)
+
+            dpd.show()
+        }
+
         //spinner
         addToSpinner()
+        addleaveToSpinner()
         //btn listener
         submitButton.setOnClickListener{
 
@@ -103,9 +158,21 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            if (reasonEditText.text.toString() == "") {
+            if (LeaveSpinner.selectedItemPosition == 0) {
 
-                Toast.makeText(this, "Enter the Reason", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Select Leave type", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (startEditText.text.toString() == "") {
+
+                Toast.makeText(this, "Enter the start Date", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (endEditText.text.toString() == "") {
+
+                Toast.makeText(this, "Enter the start date", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -113,6 +180,119 @@ class CreateDynamicWFActivity : AppCompatActivity() {
             sendDataToServer()
         }
 
+    }
+    private fun getDataFromService() {
+        if (Utils.isInternetAvailable(this)) {
+
+            //custom progress dialog
+            val progressDialog = Dialog(this)
+            progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            progressDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            progressDialog.setContentView(R.layout.custom_progress_dialog_layout)
+            progressDialog.setCancelable(false)
+            progressDialog.setCanceledOnTouchOutside(false)
+            progressDialog.show()
+
+
+            coroutineScope.launch {
+                try {
+
+                    val result = apiService.getDynamicForm(module_name).await()
+
+                    Log.e("result", "" + result)
+
+                    if (result.success == "1") {
+
+                       // var viewType = "" + result.data!!
+                      //  Log.e("arjun", "this is " +result.data!!)
+
+                        for(item in result.data!!) {
+//                            Log.e("current page info",""+item.question)
+
+
+                            val v1 = DynamicFormList(
+                                    "" + item.id,
+                                    "" + item.workflow_id,
+                                    "" + item.type,
+                                    "" + item.name,
+                                    "" + item.sern,
+                                    "" + item.modu,
+                                    "" + item.list
+                            )
+                            var typeget = "" + item.name
+
+                            Log.e("arjun", "this is nme " + " " + item.name)
+                            Log.e("arjun", "this is type " + " " + item.type)
+
+                            if (typeget == "Leave Type"){
+
+                            }
+
+
+
+
+
+                            dyamicArrayList.add(v1)
+
+                        }
+
+
+//                        if (result.location == "Riyadh"){
+//
+//                            submitButton.isEnabled = true
+//                        } else
+//                        {
+//                            submitButton.isEnabled = false
+//                        }
+
+                    } else {
+
+                        Toast.makeText(this@CreateDynamicWFActivity, "" + result.message, Toast.LENGTH_SHORT)
+                                .show()
+                    }
+
+                    progressDialog.dismiss()
+
+
+                } catch (e: Exception) {
+
+                    progressDialog.dismiss()
+                    Log.e("error", "" + e.message)
+                    if (e is SANEDError) {
+                        Log.e("Err", "" + e.getErrorResponse())
+                        if (e.getResponseCode() == 401) {
+                            Utils.logoutFromApp(applicationContext)
+                        } else if (e.getResponseCode() == 500) {
+                            Toast.makeText(applicationContext, "Server error", Toast.LENGTH_LONG).show()
+                        }
+                    } else {
+                        Toast.makeText(
+                                applicationContext,
+                                "Something went wrong",
+                                Toast.LENGTH_SHORT
+                        )
+                                .show()
+                    }
+                }
+            }
+
+
+
+
+//            inOffice = true
+//            if(inOffice){
+//                //check if in office range, then enable btn
+//                submitButton.isEnabled = true
+//            } else {
+//                submitButton.isEnabled = false
+//            }
+
+            // progressDialog.dismiss()
+
+
+        } else {
+            Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun sendDataToServer() {
@@ -296,7 +476,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
             }
         }
 
-        subscriberAdapter.setDropDownViewResource(R.layout.spinner_sample_one)
+        subscriberAdapter.setDropDownViewResource(R.layout.spinner_item_layout)
         monthsSpinner.adapter = subscriberAdapter
 
         //spinner 1
@@ -329,6 +509,107 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                 }
 
                 }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Another interface callback
+            }
+
+        }
+    }
+
+    private fun addleaveToSpinner() {
+        //spinner 1  //static for now
+        list.add("Select Leave Type")
+        list.add("vacation")
+        list.add("Normal")
+        list.add("Un Normal")
+//        Log.e("List", list.toString())
+
+        val subscriberAdapter = object : ArrayAdapter<Any>(
+            this, R.layout.spinner_sample_one,
+            list as List<Any>
+        ) {
+            override fun getDropDownView(
+                position: Int,
+                convertView: View?,
+                parent: ViewGroup
+            ): View {
+                return super.getDropDownView(position, convertView, parent).also { view ->
+                    if (position == LeaveSpinner.selectedItemPosition) {
+                        // view.setBackgroundColor(resources.getColor(R.color.color_light))
+//                        view.findViewById<TextView>(android.R.id.text1)
+//                            .setTextColor(Color.parseColor(primaryHexColor))
+                        if (position != 0) {
+                            view.findViewById<TextView>(android.R.id.text1)
+                                .setCompoundDrawablesWithIntrinsicBounds(
+                                    0,
+                                    0,
+                                    R.drawable.ic_tick_24dp,
+                                    0
+                                )
+
+                        } else {
+                            view.findViewById<TextView>(android.R.id.text1)
+                                .setCompoundDrawablesWithIntrinsicBounds(
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                )
+                        }
+                    } else {
+
+                        view.findViewById<TextView>(android.R.id.text1)
+                            .setTextColor(
+                                resources.getColor(
+                                    android.R.color.black
+                                )
+                            )
+                        view.findViewById<TextView>(android.R.id.text1)
+                            .setCompoundDrawablesWithIntrinsicBounds(
+                                0,
+                                0,
+                                0,
+                                0
+                            )
+                    }
+                }
+            }
+        }
+
+        subscriberAdapter.setDropDownViewResource(R.layout.spinner_sample_one)
+        LeaveSpinner.adapter = subscriberAdapter
+
+        //spinner 1
+        LeaveSpinner.setOnTouchListener(View.OnTouchListener { v, event ->
+            Utils.hideKeyBoard(LeaveSpinner, this)
+            false
+        })
+
+        // Set an on item selected listener for spinner object
+        LeaveSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long
+            ) {
+                Log.e("Res", parent.getItemAtPosition(position).toString())
+
+                //check list
+                if(parent.getItemAtPosition(position).toString() == "Select No of months"){
+                    LeaveSpinnerSelected = "Select No of months"
+                } else {
+                    for (item in list){
+                        if(parent.getItemAtPosition(position).toString() == item) {
+                            Log.e("ResSelected", item)
+                            LeaveSpinnerSelected = item
+                            Log.e("ResSelected", LeaveSpinnerSelected.toString())
+                        }
+                    }
+                }
+
+            }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
                 // Another interface callback

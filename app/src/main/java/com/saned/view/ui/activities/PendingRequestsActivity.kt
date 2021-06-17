@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.activity_my_employees.rootLayout
 import kotlinx.android.synthetic.main.activity_my_employees.shimmerLayout
 import kotlinx.android.synthetic.main.activity_my_employees.swipeRefreshLayout
 import kotlinx.android.synthetic.main.activity_my_employees.toolbar
+import kotlinx.android.synthetic.main.activity_pending_requests.*
 import kotlinx.coroutines.launch
 
 class PendingRequestsActivity : AppCompatActivity() {
@@ -39,7 +40,7 @@ class PendingRequestsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pending_requests)
-        getValues()
+        //getValues()
         setToolBar()
         init()
 
@@ -55,6 +56,13 @@ class PendingRequestsActivity : AppCompatActivity() {
         //get data
       //  getValues()
         getPendingRequestFromServer()
+
+        add_WF_fab.setOnClickListener {
+            openActivityWithResult(ServicesActionsActivity::class.java, this, 101){
+                //putString("formID", "" + formID)
+                //putString("formName", "" + formName)
+            }
+        }
     }
 
     private fun getPendingRequestFromServer() {
@@ -87,8 +95,12 @@ class PendingRequestsActivity : AppCompatActivity() {
                                 "" + item.pending_with,
                                 "" + item.added_by,
                                 "" + item.added_at,
+                                "" + item.profile,
+                                    "" + item.job_title,
+                                "" + item.last_action_date,
                                 "" + item.status,
-                                    "" + item.last_action_date
+                                "" + item.reason
+
                             )
                             myPendingsArrayList.add(v1)
 
@@ -233,11 +245,11 @@ class PendingRequestsActivity : AppCompatActivity() {
 
     fun onListItemClicked(dummyData:Data, position: Int) {
 
-        openActivityWithResult(PendingDetailActivity::class.java, this, 101){
-//            putString("t_mail", "" + dummyData.t_mail)
-//            putString("t_nama", "" + dummyData.t_nama)
-             putString("wkid", "" + dummyData.wkid)
-        }
+//        openActivityWithResult(PendingDetailActivity::class.java, this, 101){
+////            putString("t_mail", "" + dummyData.t_mail)
+////            putString("t_nama", "" + dummyData.t_nama)
+//             putString("wkid", "" + dummyData.wkid)
+//        }
 
 
     }

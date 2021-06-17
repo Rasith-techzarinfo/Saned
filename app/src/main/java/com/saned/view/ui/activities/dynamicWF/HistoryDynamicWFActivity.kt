@@ -64,16 +64,16 @@ class HistoryDynamicWFActivity : AppCompatActivity(), DynamicWFHistoryAdapter.Li
         toolbarTitle.text = module_name + " History"
 
         //user permission, hide for manager
-        add_WF_fab.visibility = if(prefHelper.getUserType() == "HR Admin") View.GONE else View.VISIBLE
+       // add_WF_fab.visibility = if(prefHelper.getUserType() == "HR Admin") View.GONE else View.VISIBLE
 
         //fab
-        add_WF_fab.setOnClickListener {
-            //send form data to new activity
-            openActivityWithResult(CreateDynamicWFActivity::class.java, this, 101){
-                putString("formID", "" + formID)
-                putString("formName", "" + formName)
-            }
-        }
+//        add_WF_fab.setOnClickListener {
+//            //send form data to new activity
+//            openActivityWithResult(CreateDynamicWFActivity::class.java, this, 101){
+//                putString("formID", "" + formID)
+//                putString("formName", "" + formName)
+//            }
+//        }
         //swipe
         swipeRefreshLayout.setOnRefreshListener {
             getPendingDetailFromServer()

@@ -118,7 +118,8 @@ class AttendancePunchActivity : AppCompatActivity() {
                             if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
                                 // user clicked negative button
                             } else {
-                                TODO("Called when an unrecoverable error has been encountered and the operation is complete.")
+
+
                             }
                         }
 
@@ -132,7 +133,13 @@ class AttendancePunchActivity : AppCompatActivity() {
 
                         override fun onAuthenticationFailed() {
                             super.onAuthenticationFailed()
-                            TODO("Called when a biometric is valid but not recognized.")
+
+                            Toast.makeText(
+                                    this@AttendancePunchActivity,
+                                    "Can't authorized",
+                                    Toast.LENGTH_SHORT
+                            ).show()
+
                         }
                     })
 
@@ -198,7 +205,7 @@ class AttendancePunchActivity : AppCompatActivity() {
                         if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
 
                         } else {
-                            TODO("Called when an unrecoverable error has been encountered and the operation is complete.")
+
                         }
                     }
 
@@ -212,7 +219,14 @@ class AttendancePunchActivity : AppCompatActivity() {
 
                     override fun onAuthenticationFailed() {
                         super.onAuthenticationFailed()
-                        TODO("Called when a biometric is valid but not recognized.")
+
+                        Toast.makeText(
+                                this@AttendancePunchActivity,
+                                "Can't authorized",
+                                Toast.LENGTH_SHORT
+                        ).show()
+
+
                     }
                 })
 
@@ -650,13 +664,11 @@ class AttendancePunchActivity : AppCompatActivity() {
                 }
             }
         }else{
-            Toast.makeText(this, "Please Turn on Your device Location", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Please Turn on Your device Location or refresh", Toast.LENGTH_SHORT).show()
             // RequestPermission()
             checkLocationEnabled()
         }
-//        }else{
-//            RequestPermission()
-//        }
+//
     }
 
     private fun NewLocationData(){
@@ -713,10 +725,12 @@ class AttendancePunchActivity : AppCompatActivity() {
                 Activity.RESULT_OK -> {
                     Log.e("abc", "OK")
 
+                    getLastLocation()
                 }
                 Activity.RESULT_CANCELED -> {
                     Log.e("abc", "CANCEL")
 
+                    getLastLocation()
                 }
             }
         }

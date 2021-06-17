@@ -220,14 +220,26 @@ data class Pendinghistory (
 
 data class Data (
 
+//        val wkid : String,
+//        val form_name : String,
+//        val pending_since : String,
+//        val pending_with : String,
+//        val added_by : String,
+//        val added_at : String,
+//        val status : String,
+//        val last_action_date : String
+
         val wkid : String,
         val form_name : String,
         val pending_since : String,
         val pending_with : String,
         val added_by : String,
         val added_at : String,
+        val profile : String,
+        val job_title : String,
+        val last_action_date : String,
         val status : String,
-        val last_action_date : String
+        val reason : String
 )
 
 
@@ -449,6 +461,24 @@ data class AttenHistoryDetail (
         val emp_id : String,
         val date : String,
         val working_hours : String
+)
+
+data class DynamicForm  (
+
+    val success : String,
+    val message : String,
+    val data : List<DynamicFormList>
+)
+
+data class DynamicFormList (
+
+    val id : String,
+    val workflow_id : String,
+    val type : String,
+    val name : String,
+    val sern : String,
+    val modu : String,
+    val list : String
 )
 
 

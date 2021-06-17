@@ -24,13 +24,9 @@ import com.saned.view.error.SANEDError
 import com.saned.view.service.ConnectivityReceiver
 import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.openActivity
-import kotlinx.android.synthetic.main.activity_create_dynamic_w_f.*
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_edit_profile.submitButton
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.activity_profile.toolbar
-import kotlinx.android.synthetic.main.activity_spinner_list.view.*
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
 import okhttp3.RequestBody

@@ -15,6 +15,7 @@ import com.saned.model.ServList
 import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.view.error.SANEDError
+import com.saned.view.ui.activities.dynamicWF.CreateDynamicWFActivity
 import com.saned.view.ui.activities.dynamicWF.HistoryDynamicWFActivity
 import com.saned.view.ui.adapter.servicesActions.ServiceActionsAdapter
 import com.saned.view.utils.Utils
@@ -265,7 +266,7 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
     override fun onListItemClicked(dummyData: ServList, position: Int) {
 
         //send form data to new activity
-        openActivity(HistoryDynamicWFActivity::class.java, this@ServicesActionsActivity){
+        openActivity(CreateDynamicWFActivity::class.java, this@ServicesActionsActivity){
 //            putString("formID", "" + dummyData.id)
 //            putString("formName", "" + dummyData.title)
             putString("module_name", "" + dummyData.module_name)

@@ -9,8 +9,13 @@ import android.view.ViewGroup
 import com.saned.R
 import com.saned.databinding.FragmentMyDashboardBinding
 import com.saned.databinding.FragmentWorkItemsBinding
+import com.saned.model.Data
+import com.saned.view.ui.adapter.pendingRequests.PendingRequestsAdapter
 
 class WorkItemsFragment : Fragment() {
+
+    lateinit var myPendingAdapter: PendingRequestsAdapter
+    var myPendingsArrayList: ArrayList<Data> = ArrayList()
 
     lateinit var binding : FragmentWorkItemsBinding
 

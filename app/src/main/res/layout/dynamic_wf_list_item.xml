@@ -19,6 +19,7 @@
         android:orientation="vertical"
         >
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="Form Name"
+                android:text="Designation :"
                 android:textColor="@color/heading"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
@@ -68,13 +69,53 @@
             android:weightSum="2">
 
             <TextView
+                android:id="@+id/label33"
+                android:layout_width="0dp"
+                android:layout_weight="0.9"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Added by :"
+                android:textColor="@color/heading"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                />
+
+            <TextView
+                android:id="@+id/labelVal33"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="3"
+                android:textColor="@color/grey"
+                android:textSize="14sp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:weightSum="2">
+
+            <TextView
                 android:id="@+id/label2"
                 android:layout_width="0dp"
                 android:layout_weight="0.9"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="Status"
+                android:text="Status :"
                 android:textColor="@color/heading"
                 android:textSize="16sp"
                 android:textStyle="bold"/>

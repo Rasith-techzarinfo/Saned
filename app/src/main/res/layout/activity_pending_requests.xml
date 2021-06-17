@@ -28,7 +28,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="My Pending Requests"
+                    android:text="My Requests"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="0dp"
                     android:textSize="18sp"
@@ -136,6 +136,23 @@
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_WF_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/ic_add"
+            app:backgroundTint="@color/colorPrimaryLite2"
+            app:borderWidth="0dp"
+            app:elevation="8dp"
+            app:maxImageSize="30dp" />
+
     </RelativeLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
