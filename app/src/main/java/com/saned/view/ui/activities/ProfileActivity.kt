@@ -39,7 +39,6 @@ import kotlinx.android.synthetic.main.activity_profile.rootLayout
 import kotlinx.android.synthetic.main.activity_profile.shimmerLayout
 import kotlinx.android.synthetic.main.activity_profile.toolbar
 import kotlinx.android.synthetic.main.activity_profile_view.*
-import kotlinx.android.synthetic.main.profile_view_layout.*
 import kotlinx.coroutines.launch
 import java.lang.Exception
 

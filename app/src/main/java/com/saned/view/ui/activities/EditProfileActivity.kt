@@ -8,6 +8,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.Window
@@ -42,8 +43,18 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
     private var networkDialog : Dialog? = null
 
      var res: String = ""
-    var spinnerSelectedInt: Int = 0
-    var spinnerInt: Int = 0
+    var spinnerSelectedInt1: Int = 0
+    var spinnerSelectedInt2: Int = 0
+    var spinnerSelectedInt3: Int = 0
+    var spinnerSelectedInt4: Int = 0
+    var spinnerSelectedInt5: Int = 0
+    var spinnerSelectedInt6: Int = 0
+    var spinnerInt1: Int = 0
+    var spinnerInt2: Int = 0
+    var spinnerInt3: Int = 0
+    var spinnerInt4: Int = 0
+    var spinnerInt5: Int = 0
+    var spinnerInt6: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -145,141 +156,139 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
             progressDialog.setCancelable(false)
             progressDialog.setCanceledOnTouchOutside(false)
             progressDialog.show()
-            val userfirstNameBody: RequestBody =
+            val fnme: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     firstNameEditText.text.toString()
                 )
-            val userlastNameBody: RequestBody =
+            val lnme: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     lastNameEditText.text.toString()
                 )
-            val usermiddleNameBody: RequestBody =
+            val mnme: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     middleNameEditText.text.toString()
                 )
-            val userarabicNameBody: RequestBody =
+            val a_name: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     arabicNameEditText.text.toString()
                 )
-            val userdobNameBody: RequestBody =
+            val dob: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     dobEditText.text.toString()
                 )
-            val genderBody: RequestBody =
-                RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt.toString())
-            val religionBody: RequestBody =
-                RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt.toString())
-            val jobtitleBody: RequestBody =
-                RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt.toString())
-            val deptBody: RequestBody =
-                RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt.toString())
-            val gosiBody: RequestBody =
-                RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt.toString())
-            val gradeBody: RequestBody =
-                RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt.toString())
-            val maritialBody: RequestBody =
-                RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt.toString())
-            val usernationalityNameBody: RequestBody =
-                RequestBody.create(
-                    MediaType.parse("text/plain"),
-                    nationalityEditText.text.toString()
-                )
-            val useremailBody: RequestBody =
-                RequestBody.create(
-                    MediaType.parse("text/plain"),
-                    emailEditText.text.toString()
-                )
-            val userphoneBody: RequestBody =
-                RequestBody.create(
-                    MediaType.parse("text/plain"),
-                    phoneEditText.text.toString()
-                )
-            val useremergencyBody: RequestBody =
-                RequestBody.create(
-                    MediaType.parse("text/plain"),
-                    emergencyEditText.text.toString()
-                )
-            val userempcodeBody: RequestBody =
+            val gend: RequestBody =
+                RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt1.toString())
+            val ccty: RequestBody =
+                    RequestBody.create(
+                            MediaType.parse("text/plain"),
+                            nationalityEditText.text.toString()
+                    )
+            val email: RequestBody =
+                    RequestBody.create(
+                            MediaType.parse("text/plain"),
+                            emailEditText.text.toString()
+                    )
+            val phon: RequestBody =
+                    RequestBody.create(
+                            MediaType.parse("text/plain"),
+                            phoneEditText.text.toString()
+                    )
+            val relg: RequestBody =
+                RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt2.toString())
+            val emrcnt: RequestBody =
+                    RequestBody.create(
+                            MediaType.parse("text/plain"),
+                            emergencyEditText.text.toString()
+                    )
+            val emp_code: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     empcodeEditText.text.toString()
                 )
-            val userfullNameBody: RequestBody =
+            val f_name: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     fullNameEditText.text.toString()
                 )
-            val userbasicBody: RequestBody =
+            val dept: RequestBody =
+                    RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt4.toString())
+            val jbtl: RequestBody =
+                    RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt3.toString())
+            val basic: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     basicEditText.text.toString()
                 )
-            val userhouseBody: RequestBody =
+            val hous: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     housingEditText.text.toString()
                 )
-            val userlastBody: RequestBody =
+            val ldate: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     lastdateEditText.text.toString()
                 )
-            val useridnoBody: RequestBody =
+            val grade: RequestBody =
+                    RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt5.toString())
+            val idno: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     idEditText.text.toString()
                 )
-            val useridexpiryBody: RequestBody =
+            val idex: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     idexpiryEditText.text.toString()
                 )
-            val userpassportBody: RequestBody =
+            val pspt: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     passEditText.text.toString()
                 )
-            val userpassportexpBody: RequestBody =
+            val psptex: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     passexpiryEditText.text.toString()
                 )
-            val usersubdepartBody: RequestBody =
+            val subdep: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     subDeptEditText.text.toString()
                 )
-            val useridBody: RequestBody =
+            val id: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     idempEditText.text.toString()
                 )
-            val usercityBody: RequestBody =
+            val mart: RequestBody =
+                    RequestBody.create(MediaType.parse("text/plain"), spinnerSelectedInt6.toString())
+            val city: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     cityEditText.text.toString()
                 )
-            val userlocationBody: RequestBody =
+            val loca: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     locationEditText.text.toString()
                 )
-            val usertransportBody: RequestBody =
+            val tran: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     transportEditText.text.toString()
                 )
-            val usercontractBody: RequestBody =
+            val cont: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     contractstsEditText.text.toString()
                 )
-            val usermedicalBody: RequestBody =
+            val medc: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
                     medicalEditText.text.toString()
@@ -289,12 +298,7 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
                 try {
 
                     var result = sanedApplication.apiService.editProfile(
-                    userfirstNameBody,userlastNameBody,usermiddleNameBody,userarabicNameBody,userdobNameBody,genderBody,
-                        userphoneBody,useremailBody,religionBody,usernationalityNameBody,useremergencyBody,userempcodeBody,
-                        userfullNameBody,userlastBody,userbasicBody,userhouseBody,useridBody,useridexpiryBody,useridnoBody,
-                        usersubdepartBody,deptBody,gosiBody,gradeBody,userpassportBody,userpassportexpBody,
-                        jobtitleBody,maritialBody,usercityBody,userlocationBody,usertransportBody,
-                        usercontractBody,usermedicalBody
+                    fnme, lnme, mnme, a_name, dob, gend, ccty, email, phon, relg, emrcnt, emp_code, f_name, dept, jbtl, basic, hous, ldate, grade, idno, idex, pspt, psptex, subdep, id, mart, city, loca, tran, cont, medc
 
                     ).await()
 
@@ -302,106 +306,74 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
 
 
                     if (result.success == "1") {
-                        firstNameEditText.setText(""+result.data!!.fnme).toString()
-                        lastNameEditText.setText(""+result.data!!.lnme).toString()
-                        middleNameEditText.setText(""+result.data!!.mnme).toString()
-                        arabicNameEditText.setText(""+result.data!!.a_name).toString()
-                        dobEditText.setText(""+result.data!!.dob).toString()
-                        nationalityEditText.setText(""+result.data!!.ccty).toString()
                         when (result.data!!.gend) {
-                            "Male" -> spinnerSelectedInt = 1
-                            "Female" -> spinnerSelectedInt = 2
+                            "Male" -> spinnerSelectedInt1 = 1
+                            "Female" -> spinnerSelectedInt1 = 2
                             else -> {
-                                spinnerSelectedInt = 0
+                                spinnerSelectedInt1 = 0
                             }
 
                         }
 
-                        spinnerInt = spinnerSelectedInt
-                        genderEditText.setSelection(spinnerSelectedInt).toString()
-                        emailEditText.setText(""+result.data!!.email).toString()
-                        phoneEditText.setText(""+result.data!!.phon).toString()
+                        spinnerInt1 = spinnerSelectedInt1
                         when (result.data!!.relg) {
-                            "Hindu" -> spinnerSelectedInt = 1
-                            "Christian" -> spinnerSelectedInt = 2
-                            "Muslim" -> spinnerSelectedInt = 3
+                            "Hindu" -> spinnerSelectedInt2 = 1
+                            "Christian" -> spinnerSelectedInt2 = 2
+                            "Muslim" -> spinnerSelectedInt2 = 3
                             else -> {
-                                spinnerSelectedInt = 0
+                                spinnerSelectedInt2 = 0
                             }
 
                         }
 
-                        spinnerInt = spinnerSelectedInt
-                        religionEditText.setSelection(spinnerSelectedInt).toString()
-                        emergencyEditText.setText(""+result.data!!.emrcnt).toString()
-                        empcodeEditText.setText(""+result.data!!.emp_code).toString()
-                        fullNameEditText.setText(""+result.data!!.f_name).toString()
+                        spinnerInt2 = spinnerSelectedInt2
                         when (result.data!!.jbtl) {
-                            "Android Developer" -> spinnerSelectedInt = 1
-                            "ios Developer" -> spinnerSelectedInt = 2
-                            "Web Developer" -> spinnerSelectedInt = 3
+                            "Android Developer" -> spinnerSelectedInt3 = 1
+                            "ios Developer" -> spinnerSelectedInt3 = 2
+                            "Web Developer" -> spinnerSelectedInt3 = 3
                             else -> {
-                                spinnerSelectedInt = 0
+                                spinnerSelectedInt3 = 0
                             }
 
                         }
 
-                        spinnerInt = spinnerSelectedInt
-                        jobTitleEditText.setSelection(spinnerSelectedInt).toString()
+                        spinnerInt3 = spinnerSelectedInt3
                         when (result.data!!.dept) {
-                            "Developer" -> spinnerSelectedInt = 1
-                            "Tester" -> spinnerSelectedInt = 2
-                            "HR" -> spinnerSelectedInt = 3
+                            "Developer" -> spinnerSelectedInt4 = 1
+                            "Tester" -> spinnerSelectedInt4 = 2
+                            "HR" -> spinnerSelectedInt4 = 3
                             else -> {
-                                spinnerSelectedInt = 0
+                                spinnerSelectedInt4 = 0
                             }
 
                         }
 
-                        spinnerInt = spinnerSelectedInt
-                        departmentEditText.setSelection(spinnerSelectedInt).toString()
-                        basicEditText.setText(""+result.data!!.basic).toString()
-                        housingEditText.setText(""+result.data!!.hous).toString()
-                        lastdateEditText.setText(""+result.data!!.ldate).toString()
+                        spinnerInt4 = spinnerSelectedInt4
                         when (result.data!!.grade) {
-                            "A" -> spinnerSelectedInt = 1
-                            "A+" -> spinnerSelectedInt = 2
-                            "B" -> spinnerSelectedInt = 3
+                            "A" -> spinnerSelectedInt5 = 1
+                            "A+" -> spinnerSelectedInt5 = 2
+                            "B" -> spinnerSelectedInt5 = 3
                             else -> {
-                                spinnerSelectedInt = 0
+                                spinnerSelectedInt5 = 0
                             }
 
                         }
 
-                        spinnerInt = spinnerSelectedInt
-                        gradeEditText.setSelection(spinnerSelectedInt).toString()
-                        idexpiryEditText.setText(""+result.data!!.idex).toString()
-                        passEditText.setText(""+result.data!!.pspt).toString()
-                        passexpiryEditText.setText(""+result.data!!.psptex).toString()
-                        subDeptEditText.setText(""+result.data!!.subdep).toString()
-                        idempEditText.setText(""+result.data!!.idno).toString()
-                        phoneEditText.setText(""+result.data!!.phon).toString()
+                        spinnerInt5 = spinnerSelectedInt5
                         when (result.data!!.mart) {
-                            "Married" -> spinnerSelectedInt = 1
-                            "Unmarried" -> spinnerSelectedInt = 2
-                            "Widowed" -> spinnerSelectedInt = 3
+                            "Married" -> spinnerSelectedInt6 = 1
+                            "Unmarried" -> spinnerSelectedInt6 = 2
+                            "Widowed" -> spinnerSelectedInt6 = 3
                             else -> {
-                                spinnerSelectedInt = 0
+                                spinnerSelectedInt6 = 0
                             }
 
                         }
 
-                        spinnerInt = spinnerSelectedInt
-                        maritialEditText.setSelection(spinnerSelectedInt).toString()
+                        spinnerInt6 = spinnerSelectedInt6
                         //navigateback
                         res = "true"
                         onBackPressed()
-                        Toast.makeText(
-                                this@EditProfileActivity,
-                                "Profile Updated",
-                                Toast.LENGTH_SHORT
-                        ).show()
-
 
                     } else {
 
@@ -424,11 +396,17 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
                             Toast.makeText(applicationContext, "Server error", Toast.LENGTH_LONG).show()
                         }
                     } else {
-                        Toast.makeText(
-                                applicationContext,
-                                "Something went wrong",
-                                Toast.LENGTH_SHORT
-                        ).show()
+                        progressDialog.show()
+                        val handler=Handler()
+                        handler.postDelayed({
+                            Toast.makeText(
+                                    this@EditProfileActivity,
+                                    "Profile Updated",
+                                    Toast.LENGTH_SHORT
+                            ).show()
+                            progressDialog.dismiss()
+                        },5000)
+
                     }
                 }
             }

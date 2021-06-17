@@ -6,69 +6,18 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="About"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:textColor="#000"
-        android:textSize="20dp"
-        android:layout_gravity="center"/>
     <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:src="@drawable/saned_logo"
-        android:layout_gravity="center"/>
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_back_black_24dp"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginLeft="@dimen/dp10"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Saned"
-        android:textColor="#000"
-        android:textSize="20dp"
-        android:textStyle="bold" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Saned is a one of the trending Application."
-        android:layout_gravity="center"
-        android:textAlignment="center"
-        android:layout_marginTop="40dp"
-        android:textColor="#000"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:text="Developer Contact"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:textStyle="italic"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:layout_marginTop="10dp"
-        android:text="Name : A.Mohamed Rasith"
-        android:layout_gravity="center"
-        android:textStyle="bold"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:layout_marginTop="10dp"
-        android:text="Mobile : 8608952178"
-        android:layout_gravity="center"
-        android:textStyle="bold"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:layout_marginTop="10dp"
-        android:text="Email : mohammedrasith99@gmail.com"
-        android:layout_gravity="center"
-        android:textStyle="bold"/>
-
+   <WebView
+       android:id="@+id/wv"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_marginTop="20dp"
+       android:layout_marginBottom="20dp"/>
 </LinearLayout>

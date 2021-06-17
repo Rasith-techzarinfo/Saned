@@ -142,7 +142,9 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             openActivity(SettingsActivity::class.java, this@DashboardActivity){}
         }
         about_app_menu.setOnClickListener {
-            openActivity(About::class.java, this@DashboardActivity){}
+            val url="https://dev.osaned.com/why-saned"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(intent)
         }
         logout_menu.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
