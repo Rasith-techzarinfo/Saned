@@ -3,7 +3,6 @@ package com.saned.view.ui.activities
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.PorterDuff
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Build
@@ -18,11 +17,9 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import com.saned.R
 import com.saned.view.utils.Utils
 import kotlinx.android.synthetic.main.activity_document_viewer.*
-import org.jetbrains.anko.backgroundColor
 
 
 class DocumentViewerActivity : AppCompatActivity() {

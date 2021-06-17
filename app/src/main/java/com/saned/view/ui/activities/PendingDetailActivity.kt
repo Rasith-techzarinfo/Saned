@@ -1,6 +1,5 @@
 package com.saned.view.ui.activities
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,23 +10,19 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.saned.R
 import com.saned.model.PendingDetail
-import com.saned.sanedApplication
 import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.view.error.SANEDError
 import com.saned.view.ui.adapter.pendingDetail.PendingDetailAdapter
-import com.saned.view.ui.adapter.pendingRequests.PendingRequestsAdapter
 import com.saned.view.utils.Utils
 import kotlinx.android.synthetic.main.activity_my_employees.*
 import kotlinx.android.synthetic.main.activity_my_employees.emptyView
 import kotlinx.android.synthetic.main.activity_my_employees.recyclerView
 import kotlinx.android.synthetic.main.activity_my_employees.rootLayout
 import kotlinx.android.synthetic.main.activity_my_employees.shimmerLayout
-import kotlinx.android.synthetic.main.activity_my_employees.swipeRefreshLayout
 import kotlinx.android.synthetic.main.activity_pending_detail.*
 import kotlinx.android.synthetic.main.activity_view_dynamic_w_f.*
 import kotlinx.coroutines.launch
-import org.jetbrains.anko.textColor
 import java.lang.Exception
 
 class PendingDetailActivity : AppCompatActivity() {

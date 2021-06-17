@@ -1,30 +1,21 @@
 package com.saned.view.ui.activities
 
 import android.app.Dialog
-import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Window
-import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.snackbar.Snackbar
 import com.saned.R
-import com.saned.sanedApplication.Companion.apiService
-import com.saned.sanedApplication.Companion.coroutineScope
-import com.saned.view.error.SANEDError
 import com.saned.view.service.ConnectivityReceiver
 import com.saned.view.utils.Utils
-import com.saned.view.utils.Utils.Companion.isInternetAvailable
 import com.saned.view.utils.Utils.Companion.isValidPassword
 import kotlinx.android.synthetic.main.activity_change_password.*
-import kotlinx.coroutines.launch
 
 class ChangePasswordActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityReceiverListener {
 

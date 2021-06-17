@@ -8,7 +8,6 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.Window
@@ -369,6 +368,11 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
                         spinnerInt6 = spinnerSelectedInt6
                         //navigateback
                         res = "true"
+                        Toast.makeText(
+                                applicationContext,
+                                "Profile Updated",
+                                Toast.LENGTH_SHORT
+                        ).show()
                         onBackPressed()
 
                     } else {
@@ -392,16 +396,11 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
                             Toast.makeText(applicationContext, "Server error", Toast.LENGTH_LONG).show()
                         }
                     } else {
-                        progressDialog.show()
-                        val handler=Handler()
-                        handler.postDelayed({
-                            Toast.makeText(
-                                    this@EditProfileActivity,
-                                    "Profile Updated",
-                                    Toast.LENGTH_SHORT
-                            ).show()
-                            progressDialog.dismiss()
-                        },5000)
+                                Toast.makeText(
+                                        applicationContext,
+                                        "Something went wrong",
+                                        Toast.LENGTH_SHORT
+                                ).show()
 
                     }
                 }

@@ -1,10 +1,8 @@
 package com.saned.view.ui.activities.attendence
 
 import android.Manifest
-import android.R.attr.description
 import android.app.Activity
 import android.app.Dialog
-import android.app.KeyguardManager
 import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
@@ -26,20 +24,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentActivity
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.common.api.PendingResult
 import com.google.android.gms.common.api.Status
 import com.google.android.gms.location.*
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.snackbar.Snackbar
 import com.saned.R
-import com.saned.sanedApplication
 import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.sanedApplication.Companion.prefHelper
 import com.saned.view.error.SANEDError
-import com.saned.view.utils.Constants
 import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.get24FormattedTime
 import com.saned.view.utils.Utils.Companion.getFormattedDate
@@ -50,11 +44,8 @@ import kotlinx.android.synthetic.main.activity_attendance_punch.toolbar
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_my_employees.*
 import kotlinx.coroutines.launch
-import okhttp3.MediaType
-import okhttp3.RequestBody
 import java.util.*
 import java.util.concurrent.Executor
-import java.util.concurrent.Executors
 
 
 class AttendancePunchActivity : AppCompatActivity() {

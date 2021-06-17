@@ -13,7 +13,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
-import android.os.Handler
 import android.provider.Settings
 import android.util.Log
 import android.view.MenuItem
@@ -49,7 +48,6 @@ import com.saned.view.utils.Utils.Companion.openActivity
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.navigation_layout.*
 import kotlinx.coroutines.launch
-import org.jetbrains.anko.progressDialog
 import java.util.*
 import kotlin.collections.HashMap
 import kotlin.collections.set

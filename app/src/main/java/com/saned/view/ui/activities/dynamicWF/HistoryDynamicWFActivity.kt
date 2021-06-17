@@ -12,11 +12,9 @@ import com.saned.R
 import com.saned.model.*
 import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
-import com.saned.sanedApplication.Companion.prefHelper
 import com.saned.view.error.SANEDError
 import com.saned.view.ui.adapter.dynamicWF.DynamicWFHistoryAdapter
 import com.saned.view.utils.Utils
-import com.saned.view.utils.Utils.Companion.openActivity
 import com.saned.view.utils.Utils.Companion.openActivityWithResult
 import kotlinx.android.synthetic.main.activity_history_dynamic_w_f.*
 import kotlinx.android.synthetic.main.activity_history_dynamic_w_f.emptyView

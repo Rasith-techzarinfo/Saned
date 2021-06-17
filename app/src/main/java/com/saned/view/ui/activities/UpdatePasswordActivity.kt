@@ -6,17 +6,12 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Window
 import android.widget.Toast
 import com.saned.R
-import com.saned.sanedApplication.Companion.apiService
-import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.view.utils.Utils
-import com.saned.view.utils.Utils.Companion.openActivity
 import com.saned.view.utils.Utils.Companion.openActivityWithFlag
 import kotlinx.android.synthetic.main.activity_update_password.*
-import kotlinx.coroutines.launch
 
 class UpdatePasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
