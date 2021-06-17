@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/grey_lite">
@@ -29,8 +29,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:orientation="vertical">
-
                 <RelativeLayout
+                    android:id="@+id/rl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
@@ -42,17 +42,16 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Accurals"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/air"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Accurals"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/air"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimaryDark"/>
                     <ImageView
-                        android:id="@+id/accuralsexpand"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_baseline_arrow_drop_down_24"
@@ -60,81 +59,80 @@
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"/>
                 </RelativeLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@color/grey_lite"
-                    android:layout_marginTop="12dp" />
-
-
-
-
                 <LinearLayout
-                    android:id="@+id/accuralslayout1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:weightSum="2"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:id="@+id/accuralPercentTextView"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.3"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:text="3"
-                        android:textStyle="bold"
-                        android:textColor="@color/heading"
-                        android:textSize="16sp"
-                        />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_weight="0.1"
-                        android:layout_height="0dp"/>
-
-                    <com.google.android.material.progressindicator.LinearProgressIndicator
-                        android:id="@+id/accuralsPercentProgress"
-                        android:layout_width="0dp"
-                        android:layout_weight="1.6"
-                        android:layout_gravity="center"
-                        app:trackThickness = "10dp"
-                        app:trackCornerRadius = "4dp"
-                        app:trackColor="@color/grey_lite"
-                        android:progress="0"
-                        android:max="4"
-                        android:layout_height="wrap_content"
-                        />
-
-                </LinearLayout>
-
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:weightSum="2"
-    android:orientation="horizontal">
-                <TextView
+                    android:id="@+id/ll1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Annual"
-                    android:textSize="16sp"
-                    android:layout_marginRight="30dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/grey"/>
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/grey_lite"
+                        android:layout_marginTop="12dp" />
 
-</LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:weightSum="2"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/accuralPercentTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.3"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:text="3"
+                            android:textStyle="bold"
+                            android:textColor="@color/heading"
+                            android:textSize="16sp"
+                            />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_weight="0.1"
+                            android:layout_height="0dp"/>
+
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/accuralsPercentProgress"
+                            android:layout_width="0dp"
+                            android:layout_weight="1.6"
+                            android:layout_gravity="center"
+                            app:trackThickness = "10dp"
+                            app:trackCornerRadius = "4dp"
+                            app:trackColor="@color/grey_lite"
+                            android:progress="0"
+                            android:max="4"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Annual"
+                            android:textSize="16sp"
+                            android:layout_marginRight="30dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/grey"/>
+
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
-
-
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -151,7 +149,7 @@
                 android:layout_margin="8dp"
                 android:orientation="vertical">
                 <RelativeLayout
-                    android:id="@+id/paysliplayout"
+                    android:id="@+id/rl2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
@@ -182,472 +180,497 @@
                 </RelativeLayout>
 
 
-
-
                 <LinearLayout
+                    android:id="@+id/ll2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:weightSum="2"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1.5"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:text="Obelican Investment Group"
-                        android:textColor="@color/grey"
-                        android:textSize="14sp"
-                        />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:gravity="end"
-                        android:text="Mar 1 2020"
-                        android:textColor="@color/grey"
-                        android:textSize="14sp"
-                        />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/grey_lite"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="12dp" />
-
-
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_weight="3.1"
-                   android:layout_gravity="center"
-                   android:orientation="horizontal">
-
-                   <RelativeLayout
-                       android:layout_margin="8dp"
-                       android:layout_width="0dp"
-                       android:layout_weight="1"
-                       android:gravity="center"
-                       android:layout_height="wrap_content">
-
-                       <RelativeLayout
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           >
-
-
-                   <com.google.android.material.progressindicator.CircularProgressIndicator
-                       android:id="@+id/earningPaySlipProgress"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       app:indicatorSize="75dp"
-                       app:trackThickness = "10dp"
-                       app:trackCornerRadius = "4dp"
-                       app:trackColor="@color/grey_lite"
-                       android:progress="0"
-                       android:max="100"
-                       />
-
-                       <TextView
-                           android:id="@+id/earningPaySlipTextView"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="30%"
-                           android:textSize="14sp"
-                           android:maxLines="1"
-                           android:ellipsize="end"
-                           android:layout_centerInParent="true"
-                           android:textStyle="bold"
-                           android:textColor="@color/logo_color2"/>
-
-                       </RelativeLayout>
-
-                   </RelativeLayout>
-
-
-                   <TextView
-                       android:layout_width="0dp"
-                       android:layout_weight="0.05"
-                       android:layout_height="wrap_content"
-                       android:text="-"
-                       android:gravity="center"
-                       android:textSize="16sp"
-                       android:layout_gravity="center"
-                       android:textStyle="bold"
-                       android:textColor="@color/grey"/>
-
-                   <RelativeLayout
-                       android:layout_margin="8dp"
-                       android:layout_width="0dp"
-                       android:layout_weight="1"
-                       android:gravity="center"
-                       android:layout_height="wrap_content">
-
-                   <RelativeLayout
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       >
-
-                       <com.google.android.material.progressindicator.CircularProgressIndicator
-                           android:id="@+id/deductionPaySlipProgress"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           app:indicatorSize="75dp"
-                           android:gravity="center"
-                           app:trackThickness = "10dp"
-                           app:trackCornerRadius = "4dp"
-                           app:trackColor="@color/grey_lite"
-                           android:progress="0"
-                           android:max="100"
-                           />
-
-                       <TextView
-                           android:id="@+id/deductionPaySlipTextView"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="30%"
-                           android:textSize="14sp"
-                           android:maxLines="1"
-                           android:ellipsize="end"
-                           android:layout_centerInParent="true"
-                           android:textStyle="bold"
-                           android:textColor="#BA0744"/>
-
-                   </RelativeLayout>
-
-                   </RelativeLayout>
-
-
-                   <TextView
-                       android:layout_width="0dp"
-                       android:layout_weight="0.05"
-                       android:layout_height="wrap_content"
-                       android:text="="
-                       android:textSize="16sp"
-                       android:gravity="center"
-                       android:layout_gravity="center"
-                       android:textStyle="bold"
-                       android:textColor="@color/grey"/>
-
-                   <RelativeLayout
-                       android:layout_margin="8dp"
-                       android:layout_width="0dp"
-                       android:gravity="center"
-                       android:layout_weight="1"
-                       android:layout_height="wrap_content">
-
-                   <RelativeLayout
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       >
-
-                       <com.google.android.material.progressindicator.CircularProgressIndicator
-                           android:id="@+id/salaryPaySlipProgress"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           app:indicatorSize="75dp"
-                           app:trackThickness = "10dp"
-                           app:trackCornerRadius = "4dp"
-                           android:gravity="center"
-                           app:trackColor="@color/grey_lite"
-                           android:progress="0"
-                           android:max="100"
-                           />
-
-                       <TextView
-                           android:id="@+id/salaryPaySlipTextView"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="30%"
-                           android:textSize="14sp"
-                           android:maxLines="1"
-                           android:ellipsize="end"
-                           android:layout_centerInParent="true"
-                           android:textStyle="bold"
-                           android:textColor="@color/colorSecondaryDark"/>
-
-                   </RelativeLayout>
-
-                   </RelativeLayout>
-
-                   </LinearLayout>
-
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Earnings"
-                        android:textSize="16sp"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        android:textColor="@color/heading"/>
-
-                    <TextView
-                        android:id="@+id/earningAmtTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="15000"
-                        android:textSize="14sp"
-                        android:layout_marginTop="5dp"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        android:textColor="@color/heading"/>
-
-               </LinearLayout>
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_marginTop="4dp"
+                        android:weightSum="2"
+                        android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="Deductions"
-                            android:textSize="16sp"
+                            android:layout_weight="1.5"
                             android:maxLines="1"
                             android:ellipsize="end"
-                            android:layout_gravity="center"
-                            android:textStyle="bold"
-                            android:textColor="@color/heading"/>
-
-                        <TextView
-                            android:id="@+id/deductionAmtTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="3000"
+                            android:text="Obelican Investment Group"
+                            android:textColor="@color/grey"
                             android:textSize="14sp"
-                            android:layout_marginTop="5dp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
                             android:maxLines="1"
                             android:ellipsize="end"
-                            android:layout_gravity="center"
-                            android:textStyle="bold"
-                            android:textColor="@color/heading"/>
+                            android:gravity="end"
+                            android:text="Mar 1 2020"
+                            android:textColor="@color/grey"
+                            android:textSize="14sp"
+                            />
 
                     </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Net Salary"
-                            android:textSize="16sp"
-                            android:maxLines="1"
-                            android:ellipsize="end"
-                            android:layout_gravity="center"
-                            android:textStyle="bold"
-                            android:textColor="@color/heading"/>
-
-                        <TextView
-                            android:id="@+id/salaryAmtTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="12000"
-                            android:textSize="14sp"
-                            android:layout_marginTop="5dp"
-                            android:maxLines="1"
-                            android:ellipsize="end"
-                            android:layout_gravity="center"
-                            android:textStyle="bold"
-                            android:textColor="@color/heading"/>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/grey_lite"
-                    android:layout_marginTop="12dp" />
-
-
-                 <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Show All Records"
-                    android:textColor="@color/green"
-                    android:textAppearance="@style/TextAppearance.App.TextButton"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:textStyle="bold"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/white"
-            >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Absense History"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/grey_lite"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="12dp" />
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:orientation="horizontal">
-
-
-<!--                    <TextView-->
-<!--                        android:layout_width="0dp"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:maxLines="1"-->
-<!--                        android:ellipsize="end"-->
-<!--                        android:gravity="end"-->
-<!--                        android:textAlignment="gravity"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        android:text="Aug 1 2020"-->
-<!--                        android:textColor="@color/grey"-->
-<!--                        android:textSize="12sp"-->
-<!--                        />-->
-
-
-                    <TextView
-                        android:id="@+id/absentPercentTextView"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.3"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:text="50%"
-                        android:textStyle="bold"
-                        android:textColor="@color/heading"
-                        android:textSize="16sp"
-                        />
 
 
                     <View
-                        android:layout_width="0dp"
-                        android:layout_weight="0.1"
-                        android:layout_height="0dp"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey_lite"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="12dp" />
 
-                    <com.google.android.material.progressindicator.LinearProgressIndicator
-                        android:id="@+id/absentPercentProgress"
-                        android:layout_width="0dp"
-                        android:layout_weight="1.6"
-                        android:layout_gravity="center"
-                        app:trackThickness = "10dp"
-                        app:trackCornerRadius = "4dp"
-                        app:trackColor="@color/grey_lite"
-                        android:progress="0"
-                        android:visibility="visible"
-                        android:max="100"
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        />
+                        android:layout_weight="3.1"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
 
-<!--                    <com.google.android.material.slider.RangeSlider-->
-<!--                        android:id="@+id/absentRangeSlider"-->
-<!--                        android:layout_width="0dp"-->
-<!--                        android:layout_weight="3"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:valueFrom="0.0"-->
-<!--                        android:valueTo="100.0"-->
-<!--                        android:visibility="gone"-->
-<!--                        app:values="@array/initial_slider_values"  />-->
+                        <RelativeLayout
+                            android:layout_margin="8dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                >
 
 
-<!--                    <TextView-->
-<!--                        android:layout_width="0dp"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:maxLines="1"-->
-<!--                        android:ellipsize="end"-->
-<!--                        android:gravity="start"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        android:textAlignment="gravity"-->
-<!--                        android:text="Aug 7 2020"-->
-<!--                        android:textColor="@color/grey"-->
-<!--                        android:textSize="12sp"-->
-<!--                        />-->
+                                <com.google.android.material.progressindicator.CircularProgressIndicator
+                                    android:id="@+id/earningPaySlipProgress"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:indicatorSize="75dp"
+                                    app:trackThickness = "10dp"
+                                    app:trackCornerRadius = "4dp"
+                                    app:trackColor="@color/grey_lite"
+                                    android:progress="0"
+                                    android:max="100"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/earningPaySlipTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="30%"
+                                    android:textSize="14sp"
+                                    android:maxLines="1"
+                                    android:ellipsize="end"
+                                    android:layout_centerInParent="true"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/logo_color2"/>
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="0.05"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/grey"/>
+
+                        <RelativeLayout
+                            android:layout_margin="8dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                >
+
+                                <com.google.android.material.progressindicator.CircularProgressIndicator
+                                    android:id="@+id/deductionPaySlipProgress"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:indicatorSize="75dp"
+                                    android:gravity="center"
+                                    app:trackThickness = "10dp"
+                                    app:trackCornerRadius = "4dp"
+                                    app:trackColor="@color/grey_lite"
+                                    android:progress="0"
+                                    android:max="100"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/deductionPaySlipTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="30%"
+                                    android:textSize="14sp"
+                                    android:maxLines="1"
+                                    android:ellipsize="end"
+                                    android:layout_centerInParent="true"
+                                    android:textStyle="bold"
+                                    android:textColor="#BA0744"/>
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="0.05"
+                            android:layout_height="wrap_content"
+                            android:text="="
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/grey"/>
+
+                        <RelativeLayout
+                            android:layout_margin="8dp"
+                            android:layout_width="0dp"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                >
+
+                                <com.google.android.material.progressindicator.CircularProgressIndicator
+                                    android:id="@+id/salaryPaySlipProgress"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:indicatorSize="75dp"
+                                    app:trackThickness = "10dp"
+                                    app:trackCornerRadius = "4dp"
+                                    android:gravity="center"
+                                    app:trackColor="@color/grey_lite"
+                                    android:progress="0"
+                                    android:max="100"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/salaryPaySlipTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="30%"
+                                    android:textSize="14sp"
+                                    android:maxLines="1"
+                                    android:ellipsize="end"
+                                    android:layout_centerInParent="true"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorSecondaryDark"/>
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Earnings"
+                                android:textSize="16sp"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:layout_gravity="center"
+                                android:textStyle="bold"
+                                android:textColor="@color/heading"/>
+
+                            <TextView
+                                android:id="@+id/earningAmtTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="15000"
+                                android:textSize="14sp"
+                                android:layout_marginTop="5dp"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:layout_gravity="center"
+                                android:textStyle="bold"
+                                android:textColor="@color/heading"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Deductions"
+                                android:textSize="16sp"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:layout_gravity="center"
+                                android:textStyle="bold"
+                                android:textColor="@color/heading"/>
+
+                            <TextView
+                                android:id="@+id/deductionAmtTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="3000"
+                                android:textSize="14sp"
+                                android:layout_marginTop="5dp"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:layout_gravity="center"
+                                android:textStyle="bold"
+                                android:textColor="@color/heading"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Net Salary"
+                                android:textSize="16sp"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:layout_gravity="center"
+                                android:textStyle="bold"
+                                android:textColor="@color/heading"/>
+
+                            <TextView
+                                android:id="@+id/salaryAmtTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="12000"
+                                android:textSize="14sp"
+                                android:layout_marginTop="5dp"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:layout_gravity="center"
+                                android:textStyle="bold"
+                                android:textColor="@color/heading"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey_lite"
+                        android:layout_marginTop="12dp" />
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Show All Records"
+                        android:textColor="@color/green"
+                        android:textAppearance="@style/TextAppearance.App.TextButton"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:textStyle="bold"/>
 
                 </LinearLayout>
-
-                <TextView
-                    android:id="@+id/annaulLeaveTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Annual Leave (6 Days)"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/grey"/>
-
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/grey_lite"
-                    android:layout_marginTop="12dp" />
-
-
-                   <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Show All Records"
-                    android:textColor="@color/green"
-                    android:textAppearance="@style/TextAppearance.App.TextButton"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:textStyle="bold"/>
-
             </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/white"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:id="@+id/rl3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Absense History"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimaryDark"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_arrow_drop_down_24"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="5dp"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+                <LinearLayout
+                    android:id="@+id/ll3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey_lite"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="12dp" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal">
+
+
+                        <!--                    <TextView-->
+                        <!--                        android:layout_width="0dp"-->
+                        <!--                        android:layout_height="wrap_content"-->
+                        <!--                        android:layout_weight="1"-->
+                        <!--                        android:maxLines="1"-->
+                        <!--                        android:ellipsize="end"-->
+                        <!--                        android:gravity="end"-->
+                        <!--                        android:textAlignment="gravity"-->
+                        <!--                        android:layout_gravity="center"-->
+                        <!--                        android:text="Aug 1 2020"-->
+                        <!--                        android:textColor="@color/grey"-->
+                        <!--                        android:textSize="12sp"-->
+                        <!--                        />-->
+
+
+                        <TextView
+                            android:id="@+id/absentPercentTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.3"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:text="50%"
+                            android:textStyle="bold"
+                            android:textColor="@color/heading"
+                            android:textSize="16sp"
+                            />
+
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_weight="0.1"
+                            android:layout_height="0dp"/>
+
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/absentPercentProgress"
+                            android:layout_width="0dp"
+                            android:layout_weight="1.6"
+                            android:layout_gravity="center"
+                            app:trackThickness = "10dp"
+                            app:trackCornerRadius = "4dp"
+                            app:trackColor="@color/grey_lite"
+                            android:progress="0"
+                            android:visibility="visible"
+                            android:max="100"
+                            android:layout_height="wrap_content"
+                            />
+
+                        <!--                    <com.google.android.material.slider.RangeSlider-->
+                        <!--                        android:id="@+id/absentRangeSlider"-->
+                        <!--                        android:layout_width="0dp"-->
+                        <!--                        android:layout_weight="3"-->
+                        <!--                        android:layout_height="wrap_content"-->
+                        <!--                        android:valueFrom="0.0"-->
+                        <!--                        android:valueTo="100.0"-->
+                        <!--                        android:visibility="gone"-->
+                        <!--                        app:values="@array/initial_slider_values"  />-->
+
+
+                        <!--                    <TextView-->
+                        <!--                        android:layout_width="0dp"-->
+                        <!--                        android:layout_height="wrap_content"-->
+                        <!--                        android:layout_weight="1"-->
+                        <!--                        android:maxLines="1"-->
+                        <!--                        android:ellipsize="end"-->
+                        <!--                        android:gravity="start"-->
+                        <!--                        android:layout_gravity="center"-->
+                        <!--                        android:textAlignment="gravity"-->
+                        <!--                        android:text="Aug 7 2020"-->
+                        <!--                        android:textColor="@color/grey"-->
+                        <!--                        android:textSize="12sp"-->
+                        <!--                        />-->
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/annaulLeaveTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Annual Leave (6 Days)"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/grey"/>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey_lite"
+                        android:layout_marginTop="12dp" />
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Show All Records"
+                        android:textColor="@color/green"
+                        android:textAppearance="@style/TextAppearance.App.TextButton"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </LinearLayout>
+
 
         </LinearLayout>
 
@@ -665,109 +688,126 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Training History"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"/>
-
-
-                <View
+                <RelativeLayout
+                    android:id="@+id/rl4"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/grey_lite"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="12dp" />
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:weightSum="2"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content">
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.5"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:text="Project Management Course"
-                        android:textColor="@color/heading"
+                        android:text="Training History"
+                        android:textSize="18sp"
                         android:textStyle="bold"
-                        android:textSize="14sp"
-                        />
-
-                    <TextView
-                        android:layout_width="0dp"
+                        android:textColor="@color/colorPrimaryDark"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:gravity="end"
-                        android:textAlignment="gravity"
-                        android:text="Aug 1 2020"
-                        android:textColor="@color/grey"
-                        android:textSize="12sp"
-                        />
-
-                </LinearLayout>
-
+                        android:src="@drawable/ic_baseline_arrow_drop_down_24"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="5dp"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
                 <LinearLayout
+                    android:id="@+id/ll4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:weightSum="2"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
-                    <TextView
-                        android:layout_width="0dp"
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey_lite"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="12dp" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.5"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:text="Course in SQL"
-                        android:textColor="@color/heading"
-                        android:textStyle="bold"
-                        android:textSize="14sp"
-                        />
+                        android:layout_marginTop="4dp"
+                        android:weightSum="2"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="0dp"
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:text="Project Management Course"
+                            android:textColor="@color/heading"
+                            android:textStyle="bold"
+                            android:textSize="14sp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:gravity="end"
+                            android:textAlignment="gravity"
+                            android:text="Aug 1 2020"
+                            android:textColor="@color/grey"
+                            android:textSize="12sp"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:gravity="end"
-                        android:textAlignment="gravity"
-                        android:text="May 1 2020"
-                        android:textColor="@color/grey"
-                        android:textSize="12sp"
-                        />
+                        android:layout_marginTop="4dp"
+                        android:weightSum="2"
+                        android:orientation="horizontal">
 
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:text="Course in SQL"
+                            android:textColor="@color/heading"
+                            android:textStyle="bold"
+                            android:textSize="14sp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:gravity="end"
+                            android:textAlignment="gravity"
+                            android:text="May 1 2020"
+                            android:textColor="@color/grey"
+                            android:textSize="12sp"
+                            />
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey_lite"
+                        android:layout_marginTop="12dp" />
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Show All Records"
+                        android:textColor="@color/colorPrimaryLite3"
+                        android:textAppearance="@style/TextAppearance.App.TextButton"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:textStyle="bold"/>
                 </LinearLayout>
-
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/grey_lite"
-                    android:layout_marginTop="12dp" />
-
-
-                   <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Show All Records"
-                    android:textColor="@color/colorPrimaryLite3"
-                    android:textAppearance="@style/TextAppearance.App.TextButton"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:textStyle="bold"/>
-
             </LinearLayout>
 
         </LinearLayout>
@@ -787,83 +827,100 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Basic Salary History"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"/>
-
-                <View
+                <RelativeLayout
+                    android:id="@+id/rl5"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/grey_lite"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="12dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Basic Salary"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"/>
-
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:weightSum="2"
-                    android:orientation="horizontal">
-
+                    android:layout_height="wrap_content">
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.5"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:text="10,000 (+ 7%)"
-                        android:textColor="@color/heading"
+                        android:text="Basic Salary History"
+                        android:textSize="18sp"
                         android:textStyle="bold"
-                        android:textSize="14sp"
-                        />
+                        android:textColor="@color/colorPrimaryDark"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_arrow_drop_down_24"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="5dp"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+                <LinearLayout
+                    android:id="@+id/ll5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey_lite"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="12dp" />
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:gravity="end"
-                        android:textAlignment="gravity"
-                        android:text="Aug 1 2020"
-                        android:textColor="@color/grey"
-                        android:textSize="12sp"
-                        />
+                        android:text="Basic Salary"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimaryDark"/>
 
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:weightSum="2"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:text="10,000 (+ 7%)"
+                            android:textColor="@color/heading"
+                            android:textStyle="bold"
+                            android:textSize="14sp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:gravity="end"
+                            android:textAlignment="gravity"
+                            android:text="Aug 1 2020"
+                            android:textColor="@color/grey"
+                            android:textSize="12sp"
+                            />
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey_lite"
+                        android:layout_marginTop="12dp" />
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Show All Records"
+                        android:textColor="@color/colorPrimaryLite3"
+                        android:textAppearance="@style/TextAppearance.App.TextButton"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:textStyle="bold"/>
                 </LinearLayout>
-
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/grey_lite"
-                    android:layout_marginTop="12dp" />
-
-
-                  <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Show All Records"
-                    android:textColor="@color/colorPrimaryLite3"
-                    android:textAppearance="@style/TextAppearance.App.TextButton"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:textStyle="bold"/>
-
             </LinearLayout>
 
         </LinearLayout>

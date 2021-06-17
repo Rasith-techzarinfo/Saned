@@ -47,11 +47,11 @@ class TeamFragment : Fragment() {
 
 
     private fun init() {
-        getServicesListFromServer()
+
 
         //set dummy values to view
         binding.apply {
-
+            getServicesListFromServer()
 
         }
 
@@ -62,7 +62,6 @@ class TeamFragment : Fragment() {
 
         myEmployeesArrayList.clear()
 
-        Utils.startShimmerRL(shimmerLayout, rootLayout)
 
 
             coroutineScope.launch {
@@ -127,8 +126,6 @@ class TeamFragment : Fragment() {
 //                        Toast.makeText(this@MyEmployeesActivity, "" + result.message, Toast.LENGTH_SHORT)
 //                                .show()
                     }
-
-                    Utils.stopShimmerRL(shimmerLayout, rootLayout)
 
 
                     //load static data for now
