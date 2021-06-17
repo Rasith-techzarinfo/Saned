@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/grey_lite">
@@ -30,6 +30,7 @@
                 android:layout_margin="8dp"
                 android:orientation="vertical">
                 <RelativeLayout
+                    android:id="@+id/rl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
@@ -58,6 +59,12 @@
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"/>
                 </RelativeLayout>
+                <LinearLayout
+                    android:id="@+id/ll1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -122,6 +129,7 @@
                     android:textColor="@color/grey"/>
 
 </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
@@ -141,6 +149,7 @@
                 android:layout_margin="8dp"
                 android:orientation="vertical">
                 <RelativeLayout
+                    android:id="@+id/rl2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
@@ -171,7 +180,12 @@
                 </RelativeLayout>
 
 
-
+                <LinearLayout
+                    android:id="@+id/ll2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -204,6 +218,7 @@
                         />
 
                 </LinearLayout>
+
 
                 <View
                     android:layout_width="match_parent"
@@ -493,6 +508,7 @@
                     android:textStyle="bold"/>
 
             </LinearLayout>
+        </LinearLayout>
 
         </LinearLayout>
 
@@ -511,6 +527,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:orientation="vertical">
+                <RelativeLayout
+                    android:id="@+id/rl3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -519,7 +539,20 @@
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/colorPrimaryDark"/>
-
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_arrow_drop_down_24"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="5dp"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+                <LinearLayout
+                    android:id="@+id/ll3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -635,8 +668,9 @@
                     android:textAppearance="@style/TextAppearance.App.TextButton"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:textStyle="bold"/>
-
+                </LinearLayout>
             </LinearLayout>
+
 
         </LinearLayout>
 
@@ -654,6 +688,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:orientation="vertical">
+                <RelativeLayout
+                    android:id="@+id/rl4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -662,7 +700,20 @@
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/colorPrimaryDark"/>
-
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_arrow_drop_down_24"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="5dp"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+                <LinearLayout
+                    android:id="@+id/ll4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                 <View
                     android:layout_width="match_parent"
@@ -756,7 +807,7 @@
                     android:textAppearance="@style/TextAppearance.App.TextButton"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:textStyle="bold"/>
-
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
@@ -776,7 +827,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:orientation="vertical">
-
+<RelativeLayout
+    android:id="@+id/rl5"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -784,7 +838,21 @@
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/colorPrimaryDark"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_drop_down_24"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="5dp"
+        android:layout_centerVertical="true"/>
 
+</RelativeLayout>
+                <LinearLayout
+                    android:id="@+id/ll5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -852,7 +920,7 @@
                     android:textAppearance="@style/TextAppearance.App.TextButton"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:textStyle="bold"/>
-
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>

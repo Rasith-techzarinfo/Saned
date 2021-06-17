@@ -7,13 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Window
-import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
 import com.saned.R
 import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
-import com.saned.sanedApplication.Companion.prefHelper
 import com.saned.view.error.SANEDError
 import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.openActivity

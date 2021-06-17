@@ -1,14 +1,8 @@
 package com.saned.view.ui.activities
 
-import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.SearchView
@@ -17,12 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.saned.R
 import com.saned.model.*
-import com.saned.sanedApplication
 import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
-import com.saned.sanedApplication.Companion.prefHelper
 import com.saned.view.error.SANEDError
-import com.saned.view.ui.activities.dynamicWF.ViewDynamicWFActivity
 import com.saned.view.ui.adapter.myEmployees.MyEmployeesAdapter
 import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.openActivityWithResult

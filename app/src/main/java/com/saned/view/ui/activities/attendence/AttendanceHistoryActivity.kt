@@ -2,15 +2,10 @@ package com.saned.view.ui.activities.attendence
 
 import android.app.Activity
 import android.app.DatePickerDialog
-import android.app.DatePickerDialog.OnDateSetListener
-import android.app.Dialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.Window
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -22,15 +17,11 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.saned.R
 import com.saned.model.AttenHistoryDetail
-import com.saned.model.AttendenceData
-import com.saned.sanedApplication
 import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.view.error.SANEDError
-import com.saned.view.ui.activities.dynamicWF.CreateDynamicWFActivity
 import com.saned.view.ui.adapter.attendence.AttendenceHistoryAdapter
 import com.saned.view.utils.Utils
-import com.saned.view.utils.Utils.Companion.openActivityWithResult
 import kotlinx.android.synthetic.main.activity_attendance_history.*
 import kotlinx.android.synthetic.main.activity_attendance_history.recyclerView
 import kotlinx.android.synthetic.main.activity_attendance_history.rootLayout

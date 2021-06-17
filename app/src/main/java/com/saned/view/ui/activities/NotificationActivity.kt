@@ -1,6 +1,5 @@
 package com.saned.view.ui.activities
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +14,6 @@ import com.saned.view.ui.activities.dynamicWF.ViewDynamicWFActivity
 import com.saned.view.ui.adapter.notification.NotificationAdapter
 import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.openActivity
-import com.saned.view.utils.Utils.Companion.openActivityWithResult
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_notification.*

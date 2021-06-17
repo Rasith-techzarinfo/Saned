@@ -3,7 +3,6 @@ package com.saned.view.ui.activities.dynamicWF
 import android.app.Dialog
 import android.content.Intent
 import android.content.IntentFilter
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.ConnectivityManager
@@ -14,7 +13,6 @@ import android.view.View
 import android.view.Window
 import android.widget.*
 import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.saned.R
@@ -40,9 +38,7 @@ import kotlinx.android.synthetic.main.activity_view_dynamic_w_f.shimmerLayout
 import kotlinx.android.synthetic.main.activity_view_dynamic_w_f.toolbar
 import kotlinx.android.synthetic.main.activity_view_dynamic_w_f.toolbarTitle
 import kotlinx.coroutines.launch
-import org.intellij.lang.annotations.RegExp
 import org.jetbrains.anko.textColor
-import java.io.File
 import java.lang.Exception
 
 class ViewDynamicWFActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityReceiverListener {

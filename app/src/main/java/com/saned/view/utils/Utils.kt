@@ -15,7 +15,6 @@ import android.graphics.PorterDuff
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
-import android.net.Network
 import android.net.NetworkInfo
 import android.net.Uri
 import android.os.Build
@@ -31,7 +30,6 @@ import android.view.Window
 import android.view.inputmethod.InputMethodManager
 import android.widget.RelativeLayout
 import androidx.annotation.ColorRes
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat.startActivityForResult
@@ -54,7 +52,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.collections.HashMap
-import kotlin.coroutines.coroutineContext
 import kotlin.math.roundToInt
 
 
