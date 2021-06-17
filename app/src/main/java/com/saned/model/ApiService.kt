@@ -38,52 +38,38 @@ interface ApiService {
     @POST( "v1/api/user/profile/update")
     @Multipart
     fun editProfile(
-        @Part file: RequestBody,
-        @Part("fnme") fnme: RequestBody,
-        @Part("lnme") lnme: RequestBody,
-        @Part("mnme") mnme: RequestBody,
-        @Part("a_name") a_name: RequestBody,
-        @Part("dob") dob: RequestBody,
-        @Part("gend") gend: RequestBody,
-        @Part("ccty") ccty: RequestBody,
-        @Part("email") email: RequestBody,
-        @Part("phon") phon: RequestBody,
-        @Part("relg") relg: RequestBody,
-        @Part("emrcnt") emrcnt: RequestBody,
-        @Part("emp_code") emp_code: RequestBody,
-        @Part("f_name") f_name: RequestBody,
-        @Part("dept") dept: RequestBody,
-        @Part("jbtl") jbtl: RequestBody,
-        @Part("join") join: RequestBody,
-        @Part("iban") iban: RequestBody,
-        @Part("mngr") mngr: RequestBody,
-        @Part("basic") basic: RequestBody,
-        @Part("hous") hous: RequestBody,
-        @Part("ldate") ldate: RequestBody,
-        @Part("grade") grade: RequestBody,
-        @Part("idno") idno: RequestBody,
-        @Part("days") days: RequestBody,
-        @Part("gosi") gosi: RequestBody,
-        @Part("cash") cash: RequestBody,
-        @Part("prof") prof: RequestBody,
-        @Part("ovrt") ovrt: RequestBody,
-        @Part("idex") idex: RequestBody,
-        @Part("pspt") pspt: RequestBody,
-        @Part("psptex") psptex: RequestBody,
-        @Part("cnttyp") cnttyp: RequestBody,
-        @Part("gosino") gosino: RequestBody,
-        @Part("cntrex") cntrex: RequestBody,
-        @Part("subdep") subdep: RequestBody,
-        @Part("proj") proj: RequestBody,
-        @Part("id") id: RequestBody,
-        @Part("mart") mart: RequestBody,
-        @Part("city") city: RequestBody,
-        @Part("loca") loca: RequestBody,
-        @Part("tran") tran: RequestBody,
-        @Part("cont") cont: RequestBody,
-        @Part("medc") medc: RequestBody
+            @Part file: RequestBody,
+            @Part("fnme") fnme: RequestBody,
+            @Part("lnme") lnme: RequestBody,
+            @Part("mnme") mnme: RequestBody,
+            @Part("a_name") a_name: RequestBody,
+            @Part("dob") dob: RequestBody,
+            @Part("gend") gend: RequestBody,
+            @Part("ccty") ccty: RequestBody,
+            @Part("email") email: RequestBody,
+            @Part("phon") phon: RequestBody,
+            @Part("relg") relg: RequestBody,
+            @Part("emrcnt") emrcnt: RequestBody,
+            @Part("emp_code") emp_code: RequestBody,
+            @Part("f_name") f_name: RequestBody,
+            @Part("dept") dept: RequestBody,
+            @Part("jbtl") jbtl: RequestBody,
+            @Part("join") join: RequestBody,
+            @Part("iban") iban: RequestBody,
+            @Part("mngr") mngr: RequestBody,
+            @Part("basic") basic: RequestBody,
+            @Part("hous") hous: RequestBody,
+            @Part("ldate") ldate: RequestBody,
+            @Part("grade") grade: RequestBody,
+            @Part("idno") idno: RequestBody,
+            @Part("days") days: RequestBody,
+            @Part("gosi") gosi: RequestBody,
+            @Part("cash") cash: RequestBody,
+            @Part("prof") prof: RequestBody,
+            @Part("ovrt") ovrt: RequestBody,
+            @Part("idex") idex: RequestBody
 
-        ): Deferred<ProfileList>
+    ): Deferred<ProfileList>
 
     @POST("v1/api/user/reset-password")
     @FormUrlEncoded
@@ -226,44 +212,6 @@ interface ApiService {
             @FieldMap values: java.util.HashMap<String, String>
 
     ): Deferred<UserLoginData>
-
-
-
-
-    abstract fun editProfile(
-            userfirstNameBody: RequestBody,
-            userlastNameBody: RequestBody,
-            usermiddleNameBody: RequestBody,
-            userarabicNameBody: RequestBody,
-            userdobNameBody: RequestBody,
-            genderBody: RequestBody,
-            userphoneBody: RequestBody,
-            useremailBody: RequestBody,
-            religionBody: RequestBody,
-            usernationalityNameBody: RequestBody,
-            useremergencyBody: RequestBody,
-            userempcodeBody: RequestBody,
-            userfullNameBody: RequestBody,
-            userlastBody: RequestBody,
-            userbasicBody: RequestBody,
-            userhouseBody: RequestBody,
-            useridBody: RequestBody,
-            useridexpiryBody: RequestBody,
-            useridnoBody: RequestBody,
-            usersubdepartBody: RequestBody,
-            deptBody: RequestBody,
-            gosiBody: RequestBody,
-            gradeBody: RequestBody,
-            userpassportBody: RequestBody,
-            userpassportexpBody: RequestBody,
-            jobtitleBody: RequestBody,
-            maritialBody: RequestBody,
-            usercityBody: RequestBody,
-            userlocationBody: RequestBody,
-            usertransportBody: RequestBody,
-            usercontractBody: RequestBody,
-            usermedicalBody: RequestBody
-    ): Deferred<ProfileList>
 
 
     companion object {

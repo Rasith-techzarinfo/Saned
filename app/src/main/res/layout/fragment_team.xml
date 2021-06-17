@@ -3,164 +3,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="8dp"
     tools:context=".view.ui.fragment.employees.TeamFragment">
-    <ScrollView
+
+
+    <RelativeLayout
+        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <RelativeLayout
+                android:id="@+id/rootLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/employee_search"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true" />
+
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
 
         <LinearLayout
-            android:id="@+id/rootLayout"
+            android:id="@+id/emptyView"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:visibility="gone">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="300dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="#fff">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:id="@+id/log"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/saned_logo"
-                        android:layout_marginLeft="@dimen/dp10"
-                        android:layout_centerVertical="true"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="italic"
-                        android:text="Ishaq Ahamed"
-                        android:layout_toRightOf="@+id/log"
-                        android:layout_marginLeft="20dp"
-                        android:textColor="#000"
-                        android:textSize="15dp"
-                        android:layout_centerVertical="true"/>
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/sp1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/dp10"/>
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="300dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="#fff">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:id="@+id/log1"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/saned_logo"
-                        android:layout_marginLeft="@dimen/dp10"
-                        android:layout_centerVertical="true"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="italic"
-                        android:text="Mohamed Rasith"
-                        android:layout_toRightOf="@+id/log1"
-                        android:layout_marginLeft="20dp"
-                        android:textColor="#000"
-                        android:textSize="15dp"
-                        android:layout_centerVertical="true"/>
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/sp2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/dp10"/>
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="300dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="#fff">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:id="@+id/log2"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/saned_logo"
-                        android:layout_marginLeft="@dimen/dp10"
-                        android:layout_centerVertical="true"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="italic"
-                        android:text="Sudharsan"
-                        android:layout_toRightOf="@+id/log2"
-                        android:layout_marginLeft="20dp"
-                        android:textColor="#000"
-                        android:textSize="15dp"
-                        android:layout_centerVertical="true"/>
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/sp3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/dp10"/>
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="300dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="#fff">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:id="@+id/log3"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/saned_logo"
-                        android:layout_marginLeft="@dimen/dp10"
-                        android:layout_centerVertical="true"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="italic"
-                        android:text="Archunan"
-                        android:layout_toRightOf="@+id/log3"
-                        android:layout_marginLeft="20dp"
-                        android:textColor="#000"
-                        android:textSize="15dp"
-                        android:layout_centerVertical="true"/>
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/sp4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/dp10"/>
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
+            <include layout="@layout/empty_placeholder_item"/>
 
         </LinearLayout>
 
-    </ScrollView>
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/employee_loader" />
+
+                <include layout="@layout/employee_loader" />
+
+                <include layout="@layout/employee_loader" />
+
+            </LinearLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+    </RelativeLayout>
 
 
 </FrameLayout>

@@ -29,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:orientation="vertical">
+
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -51,6 +52,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/colorPrimaryDark"/>
                     <ImageView
+                        android:id="@+id/accuralsexpand"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_baseline_arrow_drop_down_24"
@@ -58,6 +60,7 @@
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"/>
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -69,11 +72,13 @@
 
 
                 <LinearLayout
+                    android:id="@+id/accuralslayout1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:weightSum="2"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/accuralPercentTextView"
@@ -107,6 +112,8 @@
                         />
 
                 </LinearLayout>
+
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -126,6 +133,9 @@
 
         </LinearLayout>
 
+
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -141,6 +151,7 @@
                 android:layout_margin="8dp"
                 android:orientation="vertical">
                 <RelativeLayout
+                    android:id="@+id/paysliplayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView

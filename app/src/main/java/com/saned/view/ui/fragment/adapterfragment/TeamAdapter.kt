@@ -1,24 +1,17 @@
-package com.saned.view.ui.adapter.myEmployees
+package com.saned.view.ui.fragment.adapterfragment
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.saned.R
 import com.saned.model.Empdata
-import com.saned.view.ui.activities.MyEmployeesActivity
-import kotlinx.android.synthetic.main.empty_placeholder_item.view.*
 import kotlinx.android.synthetic.main.employee_list_item.view.*
+import kotlinx.android.synthetic.main.empty_placeholder_item.view.*
 
-
-class MyEmployeesAdapter(private val dataList: List<Empdata>, val context: Context,
-                         val activity: MyEmployeesActivity
-): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class TeamAdapter(private val dataList: List<Empdata>, private val context: Context): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var itemFlag: Int = 0
     var expandable:Boolean=false
@@ -27,14 +20,14 @@ class MyEmployeesAdapter(private val dataList: List<Empdata>, val context: Conte
         val view: RecyclerView.ViewHolder
         if (itemFlag == 0){
             view =
-                EmptyHolder(
-                    LayoutInflater.from(context)
-                        .inflate(R.layout.empty_placeholder_item, parent, false)
-                )
+                    EmptyHolder(
+                            LayoutInflater.from(context)
+                                    .inflate(R.layout.empty_placeholder_item, parent, false)
+                    )
         }else {
             view = ItemViewHolder(
-                LayoutInflater.from(context)
-                    .inflate(R.layout.employee_list_item, parent, false)
+                    LayoutInflater.from(context)
+                            .inflate(R.layout.employee_list_item, parent, false)
             )
         }
         return view
@@ -85,11 +78,11 @@ class MyEmployeesAdapter(private val dataList: List<Empdata>, val context: Conte
 
             }
 
-            Glide.with(activity)
-                .load(dataList[position].profile_pic)
-                .placeholder(R.drawable.ic_user)
-                .error(R.drawable.ic_user)
-                .into(viewHolder.notificationProfile)
+            Glide.with(context)
+                    .load(dataList[position].profile_pic)
+                    .placeholder(R.drawable.ic_user)
+                    .error(R.drawable.ic_user)
+                    .into(viewHolder.notificationProfile)
 
 
         }else if(itemFlag == 0) {
@@ -107,10 +100,11 @@ class MyEmployeesAdapter(private val dataList: List<Empdata>, val context: Conte
 
 
         val expandViewdown = itemView.expand_items
-        val expandViewup = itemView.expand_items_two
 
         val expandperson = itemView.expand_items2
         val expandteam = itemView.expand_items3
+
+        val expandViewup = itemView.expand_items_two
 
         val expandDash = itemView.expand_items4
 
@@ -121,7 +115,7 @@ class MyEmployeesAdapter(private val dataList: List<Empdata>, val context: Conte
 
         init {
             itemView.setOnClickListener {
-                activity.onListItemClicked(dataList[adapterPosition],adapterPosition)
+               // activity.onListItemClicked(dataList[adapterPosition],adapterPosition)
             }
         }
     }
@@ -134,7 +128,4 @@ class MyEmployeesAdapter(private val dataList: List<Empdata>, val context: Conte
     interface ListAdapterListener{
         fun onListItemClicked(dummyData: Empdata, position: Int)
     }
-
-
-
 }

@@ -294,7 +294,7 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
                 try {
 
                     var result = sanedApplication.apiService.editProfile(
-                    fnme, lnme, mnme, a_name, dob, gend, ccty, email, phon, relg, emrcnt, emp_code, f_name, dept, jbtl, basic, hous, ldate, grade, idno, idex, pspt, psptex, subdep, id, mart, city, loca, tran, cont, medc
+                    fnme, lnme, mnme, a_name, dob, gend, ccty, email, phon, relg, emrcnt, emp_code, f_name, dept, jbtl, basic, hous, ldate, grade, idno, idex, pspt, psptex, subdep, id, mart, city, loca, tran, cont
 
                     ).await()
 

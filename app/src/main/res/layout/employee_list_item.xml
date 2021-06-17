@@ -5,10 +5,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/notify_card"
-    android:clickable="true"
-    android:focusable="true"
     android:foreground="?attr/selectableItemBackground"
     android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/bg_layout"
@@ -37,7 +39,7 @@
         <TextView
             android:id="@+id/name"
             android:layout_toEndOf="@+id/profile_image"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -52,7 +54,7 @@
 
         <TextView
             android:id="@+id/designation"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/profile_image"
             android:layout_below="@+id/name"
@@ -79,6 +81,85 @@
             android:layout_marginTop="2dp"
             android:text="adam@test.com"
             android:textColor="@color/grey"/>
+
+        <ImageView
+            android:id="@+id/expand_items"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="8dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="8dp"
+            android:elevation="8dp"
+            android:visibility="visible"
+            android:src="@drawable/ic_baseline_arrow_drop_down_24"
+            tools:targetApi="lollipop" />
+
+        <ImageView
+            android:id="@+id/expand_items_two"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="8dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="8dp"
+            android:elevation="8dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_baseline_arrow_drop_up_24"
+            tools:targetApi="lollipop" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_below="@id/bg_layout"
+        android:id="@+id/expand_view_layout"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/expand_items2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:elevation="8dp"
+            android:src="@drawable/ic_baseline_person_24"
+            tools:targetApi="lollipop" />
+
+        <ImageView
+            android:id="@+id/expand_items3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:elevation="8dp"
+            android:src="@drawable/ic_baseline_people_24"
+            tools:targetApi="lollipop" />
+
+        <ImageView
+            android:id="@+id/expand_items4"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:elevation="8dp"
+            android:src="@drawable/ic_baseline_bar_chart_24"
+            tools:targetApi="lollipop"
+            app:tint="#2DE92B" />
+
+        <ImageView
+            android:id="@+id/expand_items5"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:elevation="8dp"
+            android:src="@drawable/ic_baseline_person_search_24"
+            tools:targetApi="lollipop" />
+    </LinearLayout>
 
     </RelativeLayout>
 
