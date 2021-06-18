@@ -1,5 +1,6 @@
 package com.saned.view.ui.fragment.adapterfragment
 
+import android.app.ProgressDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ class TeamAdapter(private val dataList: List<Empdata>, private val context: Cont
 
     private var itemFlag: Int = 0
     var expandable:Boolean=false
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view: RecyclerView.ViewHolder

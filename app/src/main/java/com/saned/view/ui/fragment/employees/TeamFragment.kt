@@ -1,10 +1,15 @@
 package com.saned.view.ui.fragment.employees
 
 import android.R
+import android.app.ProgressDialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -29,6 +34,7 @@ class TeamFragment : Fragment() {
 
     var myEmployeesArrayList: ArrayList<Empdata> = ArrayList()
     lateinit var myEmployeesAdapter: TeamAdapter
+    lateinit var progressDialog: ProgressDialog
 
     //add dummy ui for now
     override fun onCreateView(
@@ -36,6 +42,17 @@ class TeamFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        progressDialog= ProgressDialog(activity)
+        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        progressDialog.setTitle("Loading data from server")
+        progressDialog.setMessage("Please wait...")
+        progressDialog.setContentView(com.saned.R.layout.custom_progress_dialog_layout)
+        progressDialog.setCancelable(false)
+        progressDialog.setCanceledOnTouchOutside(false)
+        progressDialog.show()
+        Handler().postDelayed({
+            progressDialog.dismiss()
+        },10000)
         binding  = FragmentTeamBinding.inflate(inflater, container, false)
         init()
 

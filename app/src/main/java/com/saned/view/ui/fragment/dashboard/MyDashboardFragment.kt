@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.databinding.DataBindingUtil
@@ -28,6 +29,11 @@ lateinit var ll3:LinearLayout
     lateinit var ll4:LinearLayout
     lateinit var rl5:RelativeLayout
     lateinit var ll5:LinearLayout
+    lateinit var img1:ImageView
+    lateinit var img2:ImageView
+    lateinit var img3:ImageView
+    lateinit var img4:ImageView
+    lateinit var img5:ImageView
     //add dummy ui for now
     lateinit var binding : FragmentMyDashboardBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -45,42 +51,57 @@ lateinit var ll3:LinearLayout
         ll4=binding.root.findViewById(R.id.ll4)
         rl5=binding.root.findViewById(R.id.rl5)
         ll5=binding.root.findViewById(R.id.ll5)
+        img1=binding.root.findViewById(R.id.img1)
+        img2=binding.root.findViewById(R.id.img2)
+        img3=binding.root.findViewById(R.id.img3)
+        img4=binding.root.findViewById(R.id.img4)
+        img5=binding.root.findViewById(R.id.img5)
         relativeLayout.setOnClickListener {
             if (linearLayout.visibility == View.GONE) {
+                img1.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24)
                 linearLayout.visibility = View.VISIBLE
             } else {
+                img1.setImageResource(R.drawable.ic_baseline_arrow_drop_down_24)
                 linearLayout.visibility = View.GONE
             }
 
         }
         rl2.setOnClickListener {
             if (ll2.visibility == View.GONE) {
+                img2.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24)
                 ll2.visibility = View.VISIBLE
             } else {
+                img2.setImageResource(R.drawable.ic_baseline_arrow_drop_down_24)
                 ll2.visibility = View.GONE
             }
 
         }
         rl3.setOnClickListener {
             if (ll3.visibility == View.GONE) {
+                img3.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24)
                 ll3.visibility = View.VISIBLE
             } else {
+                img3.setImageResource(R.drawable.ic_baseline_arrow_drop_down_24)
                 ll3.visibility = View.GONE
             }
 
         }
         rl4.setOnClickListener {
             if (ll4.visibility == View.GONE) {
+                img4.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24)
                 ll4.visibility = View.VISIBLE
             } else {
+                img4.setImageResource(R.drawable.ic_baseline_arrow_drop_down_24)
                 ll4.visibility = View.GONE
             }
 
         }
         rl5.setOnClickListener {
             if (ll5.visibility == View.GONE) {
+                img5.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24)
                 ll5.visibility = View.VISIBLE
             } else {
+                img5.setImageResource(R.drawable.ic_baseline_arrow_drop_down_24)
                 ll5.visibility = View.GONE
             }
 
@@ -140,3 +161,4 @@ lateinit var ll3:LinearLayout
         }
     }
 }
+

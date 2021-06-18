@@ -51,13 +51,14 @@
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimaryDark"/>
+
                     <ImageView
+                        android:id="@+id/img1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_arrow_drop_down_24"
                         android:layout_alignParentEnd="true"
                         android:layout_marginRight="5dp"
-                        android:layout_centerVertical="true"/>
+                        android:src="@drawable/ic_baseline_arrow_drop_down_24" />
                 </RelativeLayout>
                 <LinearLayout
                     android:id="@+id/ll1"
@@ -170,13 +171,14 @@
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimaryDark"/>
+
                     <ImageView
+                        android:id="@+id/img2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_arrow_drop_down_24"
                         android:layout_alignParentEnd="true"
                         android:layout_marginRight="5dp"
-                        android:layout_centerVertical="true"/>
+                        android:src="@drawable/ic_baseline_arrow_drop_down_24" />
                 </RelativeLayout>
 
 
@@ -539,13 +541,14 @@
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimaryDark"/>
+
                     <ImageView
+                        android:id="@+id/img3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_arrow_drop_down_24"
                         android:layout_alignParentEnd="true"
                         android:layout_marginRight="5dp"
-                        android:layout_centerVertical="true"/>
+                        android:src="@drawable/ic_baseline_arrow_drop_down_24" />
                 </RelativeLayout>
                 <LinearLayout
                     android:id="@+id/ll3"
@@ -700,13 +703,14 @@
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimaryDark"/>
+
                     <ImageView
+                        android:id="@+id/img4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_arrow_drop_down_24"
                         android:layout_alignParentEnd="true"
                         android:layout_marginRight="5dp"
-                        android:layout_centerVertical="true"/>
+                        android:src="@drawable/ic_baseline_arrow_drop_down_24" />
                 </RelativeLayout>
                 <LinearLayout
                     android:id="@+id/ll4"
@@ -838,13 +842,14 @@
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimaryDark"/>
+
                     <ImageView
+                        android:id="@+id/img5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_arrow_drop_down_24"
                         android:layout_alignParentEnd="true"
                         android:layout_marginRight="5dp"
-                        android:layout_centerVertical="true"/>
+                        android:src="@drawable/ic_baseline_arrow_drop_down_24" />
 
                 </RelativeLayout>
                 <LinearLayout
