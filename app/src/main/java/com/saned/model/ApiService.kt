@@ -154,6 +154,15 @@ interface ApiService {
             ): Deferred<DynamicForm>
 
 
+    @POST("v1/api/workflow/create")
+    @Multipart
+    fun sendHA(
+            @Part("form") form: RequestBody,
+            @Part("label") label: RequestBody,
+            @Part("value") value: RequestBody,
+            @Part files: ArrayList<MultipartBody.Part>?
+    ): Deferred<UserLoginData>
+
 
     ////////////////////////////
 
@@ -189,14 +198,7 @@ interface ApiService {
 
     ): Deferred<HADetailData>
 
-    @POST("v1/api/workflow/housing-advance/create")
-    @Multipart
-    fun sendHA(
-        @Part("Reason") reason: RequestBody,
-        @Part("Month No") months: RequestBody,
-        @Part("User ID") userID: RequestBody,
-        @Part files: ArrayList<MultipartBody.Part>?
-    ): Deferred<UserLoginData>
+
 
     //manager 1
     @POST( "v1/api/workflow/housing-advance/verify")

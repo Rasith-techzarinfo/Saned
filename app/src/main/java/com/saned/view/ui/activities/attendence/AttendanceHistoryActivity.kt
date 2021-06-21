@@ -86,6 +86,7 @@ class AttendanceHistoryActivity : AppCompatActivity(), AttendenceHistoryAdapter.
         val txt_to_date = dialogView.findViewById<View>(R.id.txt_to_date) as TextView
         val btn_submit = dialogView.findViewById<View>(R.id.btn_submit) as Button
         img_remove.setOnClickListener { alertDialog.dismiss() }
+
         txt_from_date.setOnClickListener {
             val c = Calendar.getInstance()
             val year = c.get(Calendar.YEAR)

@@ -76,6 +76,16 @@
             android:layout_height="wrap_content">
 
 
+
+            <RelativeLayout
+                android:id="@+id/levetype_visibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                >
+
+
+
             <TextView
                 android:id="@+id/leave_text"
                 android:layout_width="wrap_content"
@@ -90,6 +100,7 @@
 
             <LinearLayout
                 android:id="@+id/spinner_layout2"
+                android:layout_below="@id/leave_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -110,13 +121,23 @@
 
             </LinearLayout>
 
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/noofmonths_visibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                >
+
             <TextView
                 android:id="@+id/to_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="12dp"
-                android:text="No of months*"
+                android:text="No of days*"
                 android:paddingStart="8dp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
@@ -124,6 +145,7 @@
 
             <LinearLayout
                 android:id="@+id/spinner_layout"
+                android:layout_below="@id/to_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -144,6 +166,16 @@
 
             </LinearLayout>
 
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:id="@+id/startdate_visibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
 
             <TextView
                 android:id="@+id/start_text"
@@ -159,6 +191,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/start_layout"
+                android:layout_below="@id/start_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -195,6 +228,14 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/enddate_visible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
 
             <TextView
                 android:id="@+id/end_text"
@@ -210,6 +251,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/end_layout"
+                android:layout_below="@id/end_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -233,6 +275,9 @@
                     android:imeOptions="actionNext"
                     android:inputType="date"
                     android:maxLength="75"
+                    android:focusable="false"
+                    android:clickable="false"
+                    android:cursorVisible="false"
                     android:editable="false"
                     android:drawableEnd="@drawable/ic_calender_date"
                     android:maxLines="1"
@@ -243,8 +288,14 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            </RelativeLayout>
 
 
+        <RelativeLayout
+            android:id="@+id/reason_visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/noOfmonthsLabel"
@@ -263,6 +314,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/reason_layout"
+                android:layout_below="@+id/noOfmonthsLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -294,7 +346,15 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+        </RelativeLayout>
 
+
+
+            <RelativeLayout
+                android:id="@+id/attach_visible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
 
             <LinearLayout
@@ -357,6 +417,9 @@
             </LinearLayout>
 
 
+            </RelativeLayout>
+
+
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/submitButton"
@@ -366,6 +429,7 @@
                 android:layout_marginTop="36dp"
                 android:layout_marginEnd="84dp"
                 android:text="Submit"
+                android:visibility="gone"
                 style="@style/Widget.App.Button"
                 android:textStyle="bold"/>
 

@@ -134,14 +134,14 @@ class CreateDynamicWFActivity : AppCompatActivity() {
             val month = c.get(Calendar.MONTH)
             val day = c.get(Calendar.DAY_OF_MONTH)
 
-            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            val dpde = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
 
                 // Display Selected date in textbox
-                startEditText.setText("" + dayOfMonth + "-" + monthOfYear + "-" + year)
+                endEditText.setText("" + dayOfMonth + "-" + monthOfYear + "-" + year)
 
             }, year, month, day)
 
-            dpd.show()
+            dpde.show()
         }
 
         //spinner
@@ -180,7 +180,9 @@ class CreateDynamicWFActivity : AppCompatActivity() {
         }
 
     }
+
     private fun getDataFromService() {
+
         if (Utils.isInternetAvailable(this)) {
 
             //custom progress dialog
@@ -202,11 +204,13 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
                     if (result.success == "1") {
 
+
                        // var viewType = "" + result.data!!
                       //  Log.e("arjun", "this is " +result.data!!)
 
                         for(item in result.data!!) {
 //                            Log.e("current page info",""+item.question)
+
 
 
                             val v1 = DynamicFormList(
@@ -218,18 +222,43 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                                     "" + item.modu,
                                     "" + item.list
                             )
+
                             var typeget = "" + item.name
 
                             Log.e("arjun", "this is nme " + " " + item.name)
                             Log.e("arjun", "this is type " + " " + item.type)
 
-                            if (typeget == "Leave Type"){
+                            if (result.data!!.size > 0){
 
+                                submitButton.visibility = View.GONE
                             }
 
 
+                            if (typeget == "Leave Type"){
 
+                                levetype_visibility.visibility = View.VISIBLE
+                            }
 
+                            if (typeget == "No Of Days"){
+
+                                noofmonths_visibility.visibility = View.VISIBLE
+                            }
+
+                            if (typeget == "Start Date"){
+
+                                startdate_visibility.visibility = View.VISIBLE
+                            }
+
+                            if (typeget == "End Date" ){
+
+                                enddate_visible.visibility = View.VISIBLE
+
+                            }
+
+                            if (typeget == "File" ){
+
+                                attach_visible.visibility = View.VISIBLE
+                            }
 
                             dyamicArrayList.add(v1)
 
@@ -524,8 +553,8 @@ class CreateDynamicWFActivity : AppCompatActivity() {
         list.add("Un Normal")
 //        Log.e("List", list.toString())
 
-        val subscriberAdapter = object : ArrayAdapter<Any>(
-            this, R.layout.spinner_sample_one,
+        val subscriberbase2Adapter = object : ArrayAdapter<Any>(
+            this, R.layout.spinner_items_layout_sample,
             list as List<Any>
         ) {
             override fun getDropDownView(
@@ -576,8 +605,8 @@ class CreateDynamicWFActivity : AppCompatActivity() {
             }
         }
 
-        subscriberAdapter.setDropDownViewResource(R.layout.spinner_sample_one)
-        LeaveSpinner.adapter = subscriberAdapter
+        subscriberbase2Adapter.setDropDownViewResource(R.layout.spinner_items_layout_sample)
+        LeaveSpinner.adapter = subscriberbase2Adapter
 
         //spinner 1
         LeaveSpinner.setOnTouchListener(View.OnTouchListener { v, event ->
@@ -596,8 +625,8 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                 Log.e("Res", parent.getItemAtPosition(position).toString())
 
                 //check list
-                if(parent.getItemAtPosition(position).toString() == "Select No of months"){
-                    LeaveSpinnerSelected = "Select No of months"
+                if(parent.getItemAtPosition(position).toString() == "Select Leave type"){
+                    LeaveSpinnerSelected = "Select Leave type"
                 } else {
                     for (item in list){
                         if(parent.getItemAtPosition(position).toString() == item) {

@@ -30,7 +30,7 @@
                 android:layout_margin="8dp"
                 android:orientation="vertical">
                 <RelativeLayout
-                    android:id="@+id/rl"
+                    android:id="@+id/rl23"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
@@ -61,7 +61,7 @@
                         android:src="@drawable/ic_baseline_arrow_drop_down_24" />
                 </RelativeLayout>
                 <LinearLayout
-                    android:id="@+id/ll1"
+                    android:id="@+id/ll123"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -150,7 +150,7 @@
                 android:layout_margin="8dp"
                 android:orientation="vertical">
                 <RelativeLayout
-                    android:id="@+id/rl2"
+                    android:id="@+id/rl234"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
@@ -183,7 +183,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/ll2"
+                    android:id="@+id/ll234"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -530,7 +530,7 @@
                 android:layout_margin="8dp"
                 android:orientation="vertical">
                 <RelativeLayout
-                    android:id="@+id/rl3"
+                    android:id="@+id/rl345"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -551,7 +551,7 @@
                         android:src="@drawable/ic_baseline_arrow_drop_down_24" />
                 </RelativeLayout>
                 <LinearLayout
-                    android:id="@+id/ll3"
+                    android:id="@+id/ll3456"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -692,7 +692,7 @@
                 android:layout_margin="8dp"
                 android:orientation="vertical">
                 <RelativeLayout
-                    android:id="@+id/rl4"
+                    android:id="@+id/rl456"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -713,7 +713,7 @@
                         android:src="@drawable/ic_baseline_arrow_drop_down_24" />
                 </RelativeLayout>
                 <LinearLayout
-                    android:id="@+id/ll4"
+                    android:id="@+id/ll456"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -832,7 +832,7 @@
                 android:layout_margin="8dp"
                 android:orientation="vertical">
                 <RelativeLayout
-                    android:id="@+id/rl5"
+                    android:id="@+id/rl567"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
@@ -853,7 +853,7 @@
 
                 </RelativeLayout>
                 <LinearLayout
-                    android:id="@+id/ll5"
+                    android:id="@+id/ll5678"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
