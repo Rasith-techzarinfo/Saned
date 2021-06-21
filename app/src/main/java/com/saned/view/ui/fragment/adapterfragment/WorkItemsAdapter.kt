@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.saned.R
 import com.saned.model.Data
 import com.saned.view.ui.activities.PendingRequestsActivity
 import com.saned.view.ui.adapter.pendingRequests.PendingRequestsAdapter
 import kotlinx.android.synthetic.main.dynamic_wf_list_item.view.*
 import kotlinx.android.synthetic.main.empty_placeholder_item.view.*
+import kotlinx.android.synthetic.main.work_items_show.view.*
 
 class WorkItemsAdapter (private val dataList: List<Data>, val context: Context
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -29,7 +31,7 @@ class WorkItemsAdapter (private val dataList: List<Data>, val context: Context
         }else {
             view = ViewHolder(
                     LayoutInflater.from(context)
-                            .inflate(R.layout.dynamic_wf_list_item, parent, false)
+                            .inflate(R.layout.work_items_show, parent, false)
             )
         }
         return view
@@ -46,8 +48,8 @@ class WorkItemsAdapter (private val dataList: List<Data>, val context: Context
             val viewHolder: WorkItemsAdapter.ViewHolder = (holder as ViewHolder)
 
             viewHolder.itemVal1!!.text = "" + dataList[position].job_title
-            viewHolder.itemVal2!!.text = "" + dataList[position].status
-            viewHolder.itemVal3!!.text = "" + dataList[position].added_by
+            viewHolder.itemVal2!!.text = "" + dataList[position].reason
+            viewHolder.itemVal3!!.text = "" + dataList[position].status
 
         }else if(itemFlag == 0) {
             val emptyViewHolder: WorkItemsAdapter.EmptyHolder = (holder as EmptyHolder)
@@ -60,9 +62,9 @@ class WorkItemsAdapter (private val dataList: List<Data>, val context: Context
 
     internal inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
-        val itemVal1 = itemView.labelVal1
-        val itemVal2 = itemView.labelVal2
-        val itemVal3 = itemView.labelVal33
+        val itemVal1 = itemView.name
+        val itemVal2 = itemView.designation
+        val itemVal3 = itemView.email
 
         init {
             itemView.setOnClickListener {
@@ -80,3 +82,4 @@ class WorkItemsAdapter (private val dataList: List<Data>, val context: Context
         fun onListItemClicked(dummyData: Data, position: Int)
     }
 }
+

@@ -417,7 +417,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
     private fun addToSpinner() {
         //spinner 1  //static for now
-        list.add("Select No of months")
+        list.add("Select No of Months")
         list.add("3")
         list.add("6")
         list.add("12")
@@ -519,12 +519,12 @@ class CreateDynamicWFActivity : AppCompatActivity() {
     private fun addleaveToSpinner() {
         //spinner 1  //static for now
         list.add("Select Leave Type")
-        list.add("vacation")
+        list.add("Vacation")
         list.add("Normal")
         list.add("Un Normal")
 //        Log.e("List", list.toString())
 
-        val subscriberAdapter = object : ArrayAdapter<Any>(
+        val subscriberAdapter2 = object : ArrayAdapter<Any>(
             this, R.layout.spinner_sample_one,
             list as List<Any>
         ) {
@@ -576,8 +576,8 @@ class CreateDynamicWFActivity : AppCompatActivity() {
             }
         }
 
-        subscriberAdapter.setDropDownViewResource(R.layout.spinner_sample_one)
-        LeaveSpinner.adapter = subscriberAdapter
+        subscriberAdapter2.setDropDownViewResource(R.layout.spinner_sample_one)
+        LeaveSpinner.adapter = subscriberAdapter2
 
         //spinner 1
         LeaveSpinner.setOnTouchListener(View.OnTouchListener { v, event ->
@@ -596,8 +596,8 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                 Log.e("Res", parent.getItemAtPosition(position).toString())
 
                 //check list
-                if(parent.getItemAtPosition(position).toString() == "Select No of months"){
-                    LeaveSpinnerSelected = "Select No of months"
+                if(parent.getItemAtPosition(position).toString() == "Select Leave Type"){
+                    LeaveSpinnerSelected = "Select Leave Type"
                 } else {
                     for (item in list){
                         if(parent.getItemAtPosition(position).toString() == item) {

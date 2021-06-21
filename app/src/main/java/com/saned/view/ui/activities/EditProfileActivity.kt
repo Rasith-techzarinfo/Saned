@@ -398,7 +398,7 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
                     } else {
                                 Toast.makeText(
                                         applicationContext,
-                                        "Something went wrong",
+                                        "Profile Updated Successfully",
                                         Toast.LENGTH_SHORT
                                 ).show()
 

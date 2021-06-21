@@ -44,8 +44,7 @@ class TeamFragment : Fragment() {
         // Inflate the layout for this fragment
         progressDialog= ProgressDialog(activity)
         progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        progressDialog.setTitle("Loading data from server")
-        progressDialog.setMessage("Please wait...")
+        progressDialog.setMessage("Loading...")
         progressDialog.setContentView(com.saned.R.layout.custom_progress_dialog_layout)
         progressDialog.setCancelable(false)
         progressDialog.setCanceledOnTouchOutside(false)

@@ -16,6 +16,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.saned.R
 import com.saned.databinding.FragmentTeamBinding
 import com.saned.databinding.FragmentWorkItemsBinding
@@ -26,6 +27,9 @@ import com.saned.view.ui.adapter.pendingRequests.PendingRequestsAdapter
 import com.saned.view.ui.fragment.adapterfragment.WorkItemsAdapter
 import com.saned.view.utils.Utils
 import kotlinx.android.synthetic.main.activity_my_employees.*
+import kotlinx.android.synthetic.main.activity_my_employees.recyclerView
+import kotlinx.android.synthetic.main.activity_my_employees.shimmerLayout
+import kotlinx.android.synthetic.main.fragment_work_items.*
 import kotlinx.coroutines.launch
 
 class WorkItemsFragment : Fragment() {
@@ -43,9 +47,8 @@ class WorkItemsFragment : Fragment() {
         // Inflate the layout for this fragment
         progressDialog= ProgressDialog(activity)
         progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        progressDialog.setTitle("Loading data from server")
-        progressDialog.setMessage("Please wait...")
-        progressDialog.setContentView(R.layout.custom_progress_dialog_layout)
+        progressDialog.setMessage("Loading...")
+        progressDialog.setIcon(R.drawable.circle_pbr)
         progressDialog.setCancelable(false)
         progressDialog.setCanceledOnTouchOutside(false)
         progressDialog.show()
@@ -228,8 +231,6 @@ class WorkItemsFragment : Fragment() {
                 WorkItemsAdapter(myPendingsArrayList, context=requireContext())
         recyclerView.adapter = myPendingAdapter
     }
-
-
 
 
 

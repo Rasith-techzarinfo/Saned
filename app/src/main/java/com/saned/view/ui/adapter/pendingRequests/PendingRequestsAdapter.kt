@@ -46,8 +46,8 @@ class PendingRequestsAdapter(private val dataList: List<Data>, val context: Cont
             val viewHolder: PendingRequestsAdapter.ViewHolder = (holder as PendingRequestsAdapter.ViewHolder)
 
             viewHolder.itemVal1!!.text = "" + dataList[position].job_title
-            viewHolder.itemVal2!!.text = "" + dataList[position].status
-            viewHolder.itemVal3!!.text = "" + dataList[position].added_by
+            viewHolder.itemVal2!!.text = "" + dataList[position].reason
+            viewHolder.itemVal3!!.text = "" + dataList[position].status
 
         }else if(itemFlag == 0) {
             val emptyViewHolder: PendingRequestsAdapter.EmptyHolder = (holder as PendingRequestsAdapter.EmptyHolder)
