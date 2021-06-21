@@ -180,7 +180,7 @@ class LoginActivity : AppCompatActivity() {
                     ) {
                         super.onAuthenticationError(errorCode, errString)
                         if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
-                            // user clicked negative button
+                            finishAffinity()
                         } else {
 
 
@@ -194,7 +194,7 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(
                                 this@LoginActivity,
                                 "Login Succesfully",
-                                Toast.LENGTH_SHORT
+                                Toast.LENGTH_LONG
                         ).show()
                     }
 

@@ -39,7 +39,7 @@ class SplashScreenActivity : AppCompatActivity() {
                             ) {
                                 super.onAuthenticationError(errorCode, errString)
                                 if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
-                                    // user clicked negative button
+                                    finishAffinity()
                                 } else {
 
 
@@ -53,7 +53,7 @@ class SplashScreenActivity : AppCompatActivity() {
                                 Toast.makeText(
                                         this@SplashScreenActivity,
                                         "Login Succesfully",
-                                        Toast.LENGTH_SHORT
+                                        Toast.LENGTH_LONG
                                 ).show()
                             }
 
