@@ -16,6 +16,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.saned.R
 import com.saned.databinding.FragmentTeamBinding
 import com.saned.databinding.FragmentWorkItemsBinding
@@ -26,6 +27,9 @@ import com.saned.view.ui.adapter.pendingRequests.PendingRequestsAdapter
 import com.saned.view.ui.fragment.adapterfragment.WorkItemsAdapter
 import com.saned.view.utils.Utils
 import kotlinx.android.synthetic.main.activity_my_employees.*
+import kotlinx.android.synthetic.main.activity_my_employees.recyclerView
+import kotlinx.android.synthetic.main.activity_my_employees.shimmerLayout
+import kotlinx.android.synthetic.main.fragment_work_items.*
 import kotlinx.coroutines.launch
 
 class WorkItemsFragment : Fragment() {
@@ -34,18 +38,17 @@ class WorkItemsFragment : Fragment() {
 
     var currentPage: Int = 1
     var wkid: String = ""
-    lateinit var progressDialog: ProgressDialog
+    lateinit var progressDialog: Dialog
     lateinit var binding : FragmentWorkItemsBinding
 
     //add dummy ui for now
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        progressDialog= ProgressDialog(activity)
+        progressDialog= Dialog(requireContext())
         progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        progressDialog.setTitle("Loading data from server")
-        progressDialog.setMessage("Please wait...")
-        progressDialog.setContentView(R.layout.custom_progress_dialog_layout)
+        progressDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        progressDialog.setContentView(com.saned.R.layout.custom_progress_dialog_layout)
         progressDialog.setCancelable(false)
         progressDialog.setCanceledOnTouchOutside(false)
         progressDialog.show()
@@ -228,8 +231,6 @@ class WorkItemsFragment : Fragment() {
                 WorkItemsAdapter(myPendingsArrayList, context=requireContext())
         recyclerView.adapter = myPendingAdapter
     }
-
-
 
 
 

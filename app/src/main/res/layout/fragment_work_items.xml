@@ -6,69 +6,76 @@
     android:layout_height="match_parent"
     tools:context=".view.ui.activities.PendingRequestsActivity">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
-
-                                <androidx.core.widget.NestedScrollView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-
-                                        <RelativeLayout
-                                            android:id="@+id/rootLayout"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
 
-                                                <androidx.recyclerview.widget.RecyclerView
-                                                    android:id="@+id/recyclerView"
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="match_parent"
-                                                    android:layout_centerInParent="true" />
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
 
-                                        </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/rootLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
 
-                                </androidx.core.widget.NestedScrollView>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true" />
 
 
-                                <LinearLayout
-                                    android:id="@+id/emptyView"
-                                    android:orientation="vertical"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:visibility="gone">
+                    </RelativeLayout>
 
-                                        <include layout="@layout/empty_placeholder_item"/>
+                </androidx.core.widget.NestedScrollView>
 
-                                </LinearLayout>
 
-                                <com.facebook.shimmer.ShimmerFrameLayout
-                                    android:id="@+id/shimmerLayout"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:visibility="gone">
+                <LinearLayout
+                    android:id="@+id/emptyView"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
 
-                                        <LinearLayout
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:orientation="vertical">
+                    <include layout="@layout/empty_placeholder_item"/>
 
-                                                <include layout="@layout/employee_loader" />
+                </LinearLayout>
 
-                                                <include layout="@layout/employee_loader" />
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmerLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
 
-                                                <include layout="@layout/employee_loader" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                                        </LinearLayout>
+                        <include layout="@layout/employee_loader" />
 
-                                </com.facebook.shimmer.ShimmerFrameLayout>
+                        <include layout="@layout/employee_loader" />
 
-                        </RelativeLayout>
+                        <include layout="@layout/employee_loader" />
+
+                    </LinearLayout>
+
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+            </RelativeLayout>
+        
+
+    </RelativeLayout>
 
 
 
