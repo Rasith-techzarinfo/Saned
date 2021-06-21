@@ -463,7 +463,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         TabLayoutMediator(tablayout, viewPager) { tab, position ->
             tab.text = ResourceStore.tabList[position]
-            tab.setIcon(R.drawable.ic_baseline_bar_chart_24)
+            tab.setIcon(ResourceStore.tabIcons[position])
         }.attach()
 
         tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {

@@ -16,6 +16,7 @@ import android.util.Log
 import android.view.Window
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.biometric.BiometricPrompt
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.material.button.MaterialButton
@@ -114,7 +115,6 @@ class LoginActivity : AppCompatActivity() {
                             //for now, approval matrix
                             prefHelper.setManagerLevel( if(result.user.t_mail == "mm1@osaned.com") "HR Admin" else if(result.user.t_mail == "mm3@osaned.com") "HR Manager" else "") //"" not a manager
 
-                            Toast.makeText(this@LoginActivity, "Login Success", Toast.LENGTH_SHORT).show()
                             loginSuccess()
 
                         } else {
@@ -168,7 +168,54 @@ class LoginActivity : AppCompatActivity() {
 
 
     private  fun loginSuccess(){
-        openActivity(DashboardActivity::class.java, this){}
+        val executor = ContextCompat.getMainExecutor(this)
+        val biometricPrompt = BiometricPrompt(
+                this,
+                executor,
+                object : BiometricPrompt.AuthenticationCallback() {
+
+                    override fun onAuthenticationError(
+                            errorCode: Int,
+                            errString: CharSequence
+                    ) {
+                        super.onAuthenticationError(errorCode, errString)
+                        if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
+                            // user clicked negative button
+                        } else {
+
+
+                        }
+                    }
+
+                    override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                        super.onAuthenticationSucceeded(result)
+                        val intent=Intent(applicationContext, DashboardActivity::class.java)
+                        startActivity(intent)
+                        Toast.makeText(
+                                this@LoginActivity,
+                                "Login Succesfully",
+                                Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                    override fun onAuthenticationFailed() {
+                        super.onAuthenticationFailed()
+
+                        Toast.makeText(
+                                this@LoginActivity,
+                                "Can't authorized",
+                                Toast.LENGTH_SHORT
+                        ).show()
+
+                    }
+                })
+
+        val promptInfo = BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Use Fingerprint Authentication")
+                .setSubtitle("Punch your finger to Login")
+                .setNegativeButtonText("Cancel")
+                .build()
+        biometricPrompt.authenticate(promptInfo)
     }
 
 
