@@ -417,8 +417,8 @@ class CreateDynamicWFActivity : AppCompatActivity() {
     private fun addToSpinner() {
         val noofmonths = resources.getStringArray(R.array.no_of_months)
         val leave = resources.getStringArray(R.array.leave)
-        val spinner = findViewById<Spinner>(R.id.monthsSpinner)
-        val spinner2 = findViewById<Spinner>(R.id.LeaveSpinner)
+        val spinner = findViewById<Spinner>(R.id.LeaveSpinner)
+        val spinner2 = findViewById<Spinner>(R.id.monthsSpinner)
         if (spinner != null) {
             val adapter = ArrayAdapter(this,
                     android.R.layout.simple_spinner_item, leave)
