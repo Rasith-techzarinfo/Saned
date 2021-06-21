@@ -34,6 +34,18 @@
         <item>Unmarried</item>
         <item>Widowed</item>
     </string-array>
+    <string-array name="no_of_months">
+        <item>Select No of Months</item>
+        <item>3</item>
+        <item>6</item>
+        <item>12</item>
+    </string-array>
+    <string-array name="leave">
+        <item>Select Leave Type</item>
+        <item>Vacation</item>
+        <item>Normal</item>
+        <item>Un Normal</item>
+    </string-array>
 
     <array name="initial_slider_values">
         <item>0.0</item>

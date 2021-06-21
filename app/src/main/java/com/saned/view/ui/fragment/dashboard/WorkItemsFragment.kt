@@ -38,17 +38,17 @@ class WorkItemsFragment : Fragment() {
 
     var currentPage: Int = 1
     var wkid: String = ""
-    lateinit var progressDialog: ProgressDialog
+    lateinit var progressDialog: Dialog
     lateinit var binding : FragmentWorkItemsBinding
 
     //add dummy ui for now
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        progressDialog= ProgressDialog(activity)
+        progressDialog= Dialog(requireContext())
         progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        progressDialog.setMessage("Loading...")
-        progressDialog.setIcon(R.drawable.circle_pbr)
+        progressDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        progressDialog.setContentView(com.saned.R.layout.custom_progress_dialog_layout)
         progressDialog.setCancelable(false)
         progressDialog.setCanceledOnTouchOutside(false)
         progressDialog.show()
