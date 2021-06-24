@@ -11,273 +11,33 @@
     android:layout_margin="10dp">
 
 
-    <LinearLayout
-        android:id="@+id/list_item"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="5dp"
-        android:orientation="vertical"
-        >
+<!--    <LinearLayout-->
+<!--        android:id="@+id/list_item"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_margin="5dp"-->
+<!--        android:orientation="vertical"-->
+<!--        >-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:weightSum="2">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_marginBottom="4dp"-->
+<!--            android:weightSum="2">-->
 
-            <TextView
-                android:id="@+id/label15"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Name"
-                android:textColor="@color/heading"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                />
-
-            <TextView
-                android:id="@+id/labelVal15"
-                android:layout_width="0dp"
-                android:layout_weight="1.4"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="3"
-                android:textColor="@color/grey"
-                android:textSize="14sp"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:weightSum="2">
-
-            <TextView
-                android:id="@+id/label16"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Emp Code"
-                android:textColor="@color/heading"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                />
-
-            <TextView
-                android:id="@+id/labelVal16"
-                android:layout_width="0dp"
-                android:layout_weight="1.4"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="This is custom text."
-                android:textColor="@color/grey"
-                android:textSize="14sp"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:weightSum="2">
-
-            <TextView
-                android:id="@+id/label3"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Joining"
-                android:textColor="@color/heading"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                />
-
-            <TextView
-                android:id="@+id/labelVal3"
-                android:layout_width="0dp"
-                android:layout_weight="1.4"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="This is custom text."
-                android:textColor="@color/grey"
-                android:textSize="14sp"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:weightSum="2">
-
-            <TextView
-                android:id="@+id/label4"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Salary"
-                android:textColor="@color/heading"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                />
-
-            <TextView
-                android:id="@+id/labelVal4"
-                android:layout_width="0dp"
-                android:layout_weight="1.4"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="This is custom text."
-                android:textColor="@color/grey"
-                android:textSize="14sp"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:weightSum="2">
-
-            <TextView
-                android:id="@+id/label5"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Contract"
-                android:textColor="@color/heading"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                />
-
-            <TextView
-                android:id="@+id/labelVal5"
-                android:layout_width="0dp"
-                android:layout_weight="1.4"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="This is custom text."
-                android:textColor="@color/grey"
-                android:textSize="14sp"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:weightSum="2">
-
-            <TextView
-                android:id="@+id/label6"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Bank"
-                android:textColor="@color/heading"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                />
-
-            <TextView
-                android:id="@+id/labelVal6"
-                android:layout_width="0dp"
-                android:layout_weight="1.4"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="This is custom text."
-                android:textColor="@color/grey"
-                android:textSize="14sp"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:weightSum="2">
-
-            <TextView
-                android:id="@+id/label7"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Arab Name"
-                android:textColor="@color/heading"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+<!--            <TextView-->
+<!--                android:id="@+id/label15"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="Name"-->
+<!--                android:textColor="@color/heading"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold"/>-->
 
 <!--            <View-->
 <!--                android:layout_width="0dp"-->
@@ -285,304 +45,544 @@
 <!--                android:layout_weight="0.1"-->
 <!--                />-->
 
-            <TextView
-                android:id="@+id/labelVal7"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="This is custom text."
-                android:textColor="@color/grey"
-                android:textSize="14sp" />
+<!--            <TextView-->
+<!--                android:id="@+id/labelVal15"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1.4"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="3"-->
+<!--                android:textColor="@color/grey"-->
+<!--                android:textSize="14sp"/>-->
 
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:weightSum="2">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_marginBottom="4dp"-->
+<!--            android:weightSum="2">-->
 
-            <TextView
-                android:id="@+id/label8"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Passport"
-                android:textColor="@color/heading"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+<!--            <TextView-->
+<!--                android:id="@+id/label16"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="Emp Code"-->
+<!--                android:textColor="@color/heading"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold"/>-->
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                />
+<!--            <View-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="0.1"-->
+<!--                />-->
 
-            <TextView
-                android:id="@+id/labelVal8"
-                android:layout_width="0dp"
-                android:layout_weight="1.4"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="This is custom text."
-                android:textColor="@color/grey"
-                android:textSize="14sp"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:weightSum="2">
-
-            <TextView
-                android:id="@+id/label9"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Email"
-                android:textColor="@color/heading"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                />
-
-            <TextView
-                android:id="@+id/labelVal9"
-                android:layout_width="0dp"
-                android:layout_weight="1.4"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="This is custom text."
-                android:textColor="@color/grey"
-                android:textSize="14sp"/>
+<!--            <TextView-->
+<!--                android:id="@+id/labelVal16"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1.4"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="This is custom text."-->
+<!--                android:textColor="@color/grey"-->
+<!--                android:textSize="14sp"/>-->
 
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:weightSum="2">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_marginBottom="4dp"-->
+<!--            android:weightSum="2">-->
 
-            <TextView
-                android:id="@+id/label10"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Mobile"
-                android:textColor="@color/heading"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+<!--            <TextView-->
+<!--                android:id="@+id/label3"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="Joining"-->
+<!--                android:textColor="@color/heading"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold"/>-->
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                />
+<!--            <View-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="0.1"-->
+<!--                />-->
 
-            <TextView
-                android:id="@+id/labelVal10"
-                android:layout_width="0dp"
-                android:layout_weight="1.4"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="This is custom text."
-                android:textColor="@color/grey"
-                android:textSize="14sp"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:weightSum="2">
-
-            <TextView
-                android:id="@+id/label11"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Status"
-                android:textColor="@color/heading"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                />
-
-            <TextView
-                android:id="@+id/labelVal11"
-                android:layout_width="0dp"
-                android:layout_weight="1.4"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="This is custom text."
-                android:textColor="@color/grey"
-                android:textSize="14sp"/>
+<!--            <TextView-->
+<!--                android:id="@+id/labelVal3"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1.4"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="This is custom text."-->
+<!--                android:textColor="@color/grey"-->
+<!--                android:textSize="14sp"/>-->
 
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:weightSum="2">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_marginBottom="4dp"-->
+<!--            android:weightSum="2">-->
 
-            <TextView
-                android:id="@+id/label12"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="City"
-                android:textColor="@color/heading"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+<!--            <TextView-->
+<!--                android:id="@+id/label4"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="Salary"-->
+<!--                android:textColor="@color/heading"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold"/>-->
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                />
+<!--            <View-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="0.1"-->
+<!--                />-->
 
-            <TextView
-                android:id="@+id/labelVal12"
-                android:layout_width="0dp"
-                android:layout_weight="1.4"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="This is custom text."
-                android:textColor="@color/grey"
-                android:textSize="14sp"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:weightSum="2">
-
-            <TextView
-                android:id="@+id/label13"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Gender"
-                android:textColor="@color/heading"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                />
-
-            <TextView
-                android:id="@+id/labelVal13"
-                android:layout_width="0dp"
-                android:layout_weight="1.4"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="This is custom text."
-                android:textColor="@color/grey"
-                android:textSize="14sp"/>
+<!--            <TextView-->
+<!--                android:id="@+id/labelVal4"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1.4"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="This is custom text."-->
+<!--                android:textColor="@color/grey"-->
+<!--                android:textSize="14sp"/>-->
 
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:weightSum="2">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_marginBottom="4dp"-->
+<!--            android:weightSum="2">-->
 
-            <TextView
-                android:id="@+id/label14"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Religion"
-                android:textColor="@color/heading"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+<!--            <TextView-->
+<!--                android:id="@+id/label5"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="Contract"-->
+<!--                android:textColor="@color/heading"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold"/>-->
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                />
+<!--            <View-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="0.1"-->
+<!--                />-->
 
-            <TextView
-                android:id="@+id/labelVal14"
-                android:layout_width="0dp"
-                android:layout_weight="1.4"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="This is custom text."
-                android:textColor="@color/grey"
-                android:textSize="14sp"/>
-
-
-        </LinearLayout>
+<!--            <TextView-->
+<!--                android:id="@+id/labelVal5"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1.4"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="This is custom text."-->
+<!--                android:textColor="@color/grey"-->
+<!--                android:textSize="14sp"/>-->
 
 
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_marginBottom="4dp"-->
+<!--            android:weightSum="2">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/label6"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="Bank"-->
+<!--                android:textColor="@color/heading"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold"/>-->
+
+<!--            <View-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="0.1"-->
+<!--                />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/labelVal6"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1.4"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="This is custom text."-->
+<!--                android:textColor="@color/grey"-->
+<!--                android:textSize="14sp"/>-->
 
 
-    </LinearLayout>
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_marginBottom="4dp"-->
+<!--            android:weightSum="2">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/label7"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="Arab Name"-->
+<!--                android:textColor="@color/heading"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold"/>-->
+
+<!--&lt;!&ndash;            <View&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_weight="0.1"&ndash;&gt;-->
+<!--&lt;!&ndash;                />&ndash;&gt;-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/labelVal7"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1.5"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="This is custom text."-->
+<!--                android:textColor="@color/grey"-->
+<!--                android:textSize="14sp" />-->
+
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_marginBottom="4dp"-->
+<!--            android:weightSum="2">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/label8"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="Passport"-->
+<!--                android:textColor="@color/heading"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold"/>-->
+
+<!--            <View-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="0.1"-->
+<!--                />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/labelVal8"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1.4"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="This is custom text."-->
+<!--                android:textColor="@color/grey"-->
+<!--                android:textSize="14sp"/>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_marginBottom="4dp"-->
+<!--            android:weightSum="2">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/label9"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="Email"-->
+<!--                android:textColor="@color/heading"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold"/>-->
+
+<!--            <View-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="0.1"-->
+<!--                />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/labelVal9"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1.4"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="This is custom text."-->
+<!--                android:textColor="@color/grey"-->
+<!--                android:textSize="14sp"/>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_marginBottom="4dp"-->
+<!--            android:weightSum="2">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/label10"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="Mobile"-->
+<!--                android:textColor="@color/heading"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold"/>-->
+
+<!--            <View-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="0.1"-->
+<!--                />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/labelVal10"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1.4"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="This is custom text."-->
+<!--                android:textColor="@color/grey"-->
+<!--                android:textSize="14sp"/>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_marginBottom="4dp"-->
+<!--            android:weightSum="2">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/label11"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="Status"-->
+<!--                android:textColor="@color/heading"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold"/>-->
+
+<!--            <View-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="0.1"-->
+<!--                />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/labelVal11"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1.4"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="This is custom text."-->
+<!--                android:textColor="@color/grey"-->
+<!--                android:textSize="14sp"/>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_marginBottom="4dp"-->
+<!--            android:weightSum="2">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/label12"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="City"-->
+<!--                android:textColor="@color/heading"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold"/>-->
+
+<!--            <View-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="0.1"-->
+<!--                />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/labelVal12"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1.4"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="This is custom text."-->
+<!--                android:textColor="@color/grey"-->
+<!--                android:textSize="14sp"/>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_marginBottom="4dp"-->
+<!--            android:weightSum="2">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/label13"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="Gender"-->
+<!--                android:textColor="@color/heading"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold"/>-->
+
+<!--            <View-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="0.1"-->
+<!--                />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/labelVal13"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1.4"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="This is custom text."-->
+<!--                android:textColor="@color/grey"-->
+<!--                android:textSize="14sp"/>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_marginBottom="4dp"-->
+<!--            android:weightSum="2">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/label14"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="Religion"-->
+<!--                android:textColor="@color/heading"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold"/>-->
+
+<!--            <View-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="0.1"-->
+<!--                />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/labelVal14"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1.4"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="This is custom text."-->
+<!--                android:textColor="@color/grey"-->
+<!--                android:textSize="14sp"/>-->
+
+
+<!--        </LinearLayout>-->
+
+
+
+
+<!--    </LinearLayout>-->
 
 
 </androidx.cardview.widget.CardView>

@@ -229,10 +229,10 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                             Log.e("arjun", "this is name " + " " + item.name)
                             Log.e("arjun", "this is type " + " " + item.type)
 
-                            if (result.data!!.size > 0){
-
-                                submitButton.visibility = View.GONE
-                            }
+//                            if (result.data!!.size > 0){
+//
+//                                submitButton.visibility = View.GONE
+//                            }
 
 
                             if (typeget == "Leave Type"){

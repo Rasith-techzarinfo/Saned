@@ -50,20 +50,20 @@ class PendingDetailAdapter(private val dataList: List<PendingDetail>, val contex
         if(itemFlag != 0){
             val viewHolder: PendingDetailAdapter.ViewHolder = (holder as PendingDetailAdapter.ViewHolder)
 
-            viewHolder.itemVal1!!.text = "" + dataList[position].f_name
-            viewHolder.itemVal2!!.text = "" + dataList[position].emp_code
-            viewHolder.itemVal3!!.text = "" + dataList[position].join
-            viewHolder.itemVal4!!.text = "" + dataList[position].basic
-            viewHolder.itemVal5!!.text = "" + dataList[position].cnttyp
-            viewHolder.itemVal6!!.text = "" + dataList[position].bank
-            viewHolder.itemVal7!!.text = "" + dataList[position].a_name
-            viewHolder.itemVal8!!.text = "" + dataList[position].pspt
-            viewHolder.itemVal9!!.text = "" + dataList[position].email
-            viewHolder.itemVal10!!.text = "" + dataList[position].phon
-            viewHolder.itemVal11!!.text = "" + dataList[position].mart
-            viewHolder.itemVal12!!.text = "" + dataList[position].city
-            viewHolder.itemVal13!!.text = "" + dataList[position].gend
-            viewHolder.itemVal14!!.text = "" + dataList[position].relg
+//            viewHolder.itemVal1!!.text = "" + dataList[position].f_name
+//            viewHolder.itemVal2!!.text = "" + dataList[position].emp_code
+//            viewHolder.itemVal3!!.text = "" + dataList[position].join
+//            viewHolder.itemVal4!!.text = "" + dataList[position].basic
+//            viewHolder.itemVal5!!.text = "" + dataList[position].cnttyp
+//            viewHolder.itemVal6!!.text = "" + dataList[position].bank
+//            viewHolder.itemVal7!!.text = "" + dataList[position].a_name
+//            viewHolder.itemVal8!!.text = "" + dataList[position].pspt
+//            viewHolder.itemVal9!!.text = "" + dataList[position].email
+//            viewHolder.itemVal10!!.text = "" + dataList[position].phon
+//            viewHolder.itemVal11!!.text = "" + dataList[position].mart
+//            viewHolder.itemVal12!!.text = "" + dataList[position].city
+//            viewHolder.itemVal13!!.text = "" + dataList[position].gend
+//            viewHolder.itemVal14!!.text = "" + dataList[position].relg
 
 
 
@@ -78,20 +78,20 @@ class PendingDetailAdapter(private val dataList: List<PendingDetail>, val contex
 
     internal inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
-        val itemVal1 = itemView.labelVal15
-        val itemVal2 = itemView.labelVal16
-        val itemVal3 = itemView.labelVal3
-        val itemVal4 = itemView.labelVal4
-        val itemVal5 = itemView.labelVal5
-        val itemVal6 = itemView.labelVal6
-        val itemVal7 = itemView.labelVal7
-        val itemVal8 = itemView.labelVal8
-        val itemVal9 = itemView.labelVal9
-        val itemVal10 = itemView.labelVal10
-        val itemVal11 = itemView.labelVal11
-        val itemVal12 = itemView.labelVal12
-        val itemVal13 = itemView.labelVal13
-        val itemVal14 = itemView.labelVal14
+//        val itemVal1 = itemView.labelVal15
+//        val itemVal2 = itemView.labelVal16
+//        val itemVal3 = itemView.labelVal3
+//        val itemVal4 = itemView.labelVal4
+//        val itemVal5 = itemView.labelVal5
+//        val itemVal6 = itemView.labelVal6
+//        val itemVal7 = itemView.labelVal7
+//        val itemVal8 = itemView.labelVal8
+//        val itemVal9 = itemView.labelVal9
+//        val itemVal10 = itemView.labelVal10
+//        val itemVal11 = itemView.labelVal11
+//        val itemVal12 = itemView.labelVal12
+//        val itemVal13 = itemView.labelVal13
+//        val itemVal14 = itemView.labelVal14
 
         init {
             itemView.setOnClickListener {

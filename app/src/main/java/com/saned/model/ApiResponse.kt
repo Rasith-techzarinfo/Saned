@@ -247,7 +247,7 @@ data class PendinghistoryDetail (
 
         val success : String,
         val message : String,
-        val data : List<PendingDetail>
+        val data : PendingDetail
 )
 
 data class PendingDetail (
