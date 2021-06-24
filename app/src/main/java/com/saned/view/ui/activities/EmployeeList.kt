@@ -74,7 +74,7 @@ class EmployeeList : AppCompatActivity() {
 
         TabLayoutMediator(tablayout, viewPager) { tab, position ->
             tab.text = ResourceStore.tabList2[position]
-            tab.setIcon(R.drawable.ic_baseline_bar_chart_24)
+            tab.setIcon(ResourceStore.tabIcons2[position])
         }.attach()
 
         tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
