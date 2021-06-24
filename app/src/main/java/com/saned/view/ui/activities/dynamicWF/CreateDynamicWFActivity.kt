@@ -120,6 +120,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
             val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
 
                 // Display Selected date in textbox
+                val monthOfYear = monthOfYear+1
                 startEditText.setText("" + dayOfMonth + "-" + monthOfYear + "-" + year)
 
             }, year, month, day)
@@ -137,6 +138,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
             val dpde = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
 
                 // Display Selected date in textbox
+                val monthOfYear = monthOfYear+1
                 endEditText.setText("" + dayOfMonth + "-" + monthOfYear + "-" + year)
 
             }, year, month, day)
@@ -146,7 +148,6 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
         //spinner
         addToSpinner()
-        addleaveToSpinner()
         //btn listener
         submitButton.setOnClickListener{
 
@@ -225,7 +226,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
                             var typeget = "" + item.name
 
-                            Log.e("arjun", "this is nme " + " " + item.name)
+                            Log.e("arjun", "this is name " + " " + item.name)
                             Log.e("arjun", "this is type " + " " + item.type)
 
                             if (result.data!!.size > 0){
@@ -445,206 +446,46 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
 
     private fun addToSpinner() {
-        //spinner 1  //static for now
-        list.add("Select No of months")
-        list.add("3")
-        list.add("6")
-        list.add("12")
-//        Log.e("List", list.toString())
+        val noofmonths = resources.getStringArray(R.array.no_of_months)
+        val leave = resources.getStringArray(R.array.leave)
+        val spinner = findViewById<Spinner>(R.id.LeaveSpinner)
+        val spinner2 = findViewById<Spinner>(R.id.monthsSpinner)
+        if (spinner != null) {
+            val adapter = ArrayAdapter(this,
+                android.R.layout.simple_spinner_item, leave)
+            spinner.adapter = adapter
 
-        val subscriberAdapter = object : ArrayAdapter<Any>(
-                this, R.layout.spinner_item_layout,
-                list as List<Any>
-        ) {
-            override fun getDropDownView(
-                    position: Int,
-                    convertView: View?,
-                    parent: ViewGroup
-            ): View {
-                return super.getDropDownView(position, convertView, parent).also { view ->
-                    if (position == monthsSpinner.selectedItemPosition) {
-                        // view.setBackgroundColor(resources.getColor(R.color.color_light))
-//                        view.findViewById<TextView>(android.R.id.text1)
-//                            .setTextColor(Color.parseColor(primaryHexColor))
-                        if (position != 0) {
-                            view.findViewById<TextView>(android.R.id.text1)
-                                .setCompoundDrawablesWithIntrinsicBounds(
-                                        0,
-                                        0,
-                                        R.drawable.ic_tick_24dp,
-                                        0
-                                )
+            spinner.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>,
+                                            view: View, position: Int, id: Long) {
 
-                        } else {
-                            view.findViewById<TextView>(android.R.id.text1)
-                                .setCompoundDrawablesWithIntrinsicBounds(
-                                        0,
-                                        0,
-                                        0,
-                                        0
-                                )
-                        }
-                    } else {
+                }
 
-                        view.findViewById<TextView>(android.R.id.text1)
-                            .setTextColor(
-                                    resources.getColor(
-                                            android.R.color.black
-                                    )
-                            )
-                        view.findViewById<TextView>(android.R.id.text1)
-                            .setCompoundDrawablesWithIntrinsicBounds(
-                                    0,
-                                    0,
-                                    0,
-                                    0
-                            )
-                    }
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // write code to perform some action
                 }
             }
         }
+        if (spinner2 != null) {
+            val adapter = ArrayAdapter(this,
+                android.R.layout.simple_spinner_item, noofmonths)
+            spinner2.adapter = adapter
 
-        subscriberAdapter.setDropDownViewResource(R.layout.spinner_item_layout)
-        monthsSpinner.adapter = subscriberAdapter
-
-        //spinner 1
-        monthsSpinner.setOnTouchListener(View.OnTouchListener { v, event ->
-            Utils.hideKeyBoard(monthsSpinner, this)
-            false
-        })
-
-        // Set an on item selected listener for spinner object
-        monthsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                    parent: AdapterView<*>,
-                    view: View,
-                    position: Int,
-                    id: Long
-            ) {
-                Log.e("Res", parent.getItemAtPosition(position).toString())
-
-                //check list
-                if(parent.getItemAtPosition(position).toString() == "Select No of months"){
-                    monthsSpinnerSelected = "Select No of months"
-                } else {
-                    for (item in list){
-                        if(parent.getItemAtPosition(position).toString() == item) {
-                            Log.e("ResSelected", item)
-                            monthsSpinnerSelected = item
-                            Log.e("ResSelected", monthsSpinnerSelected.toString())
-                        }
-                    }
-                }
+            spinner2.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>,
+                                            view: View, position: Int, id: Long) {
 
                 }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // Another interface callback
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // write code to perform some action
+                }
             }
-
         }
     }
 
-    private fun addleaveToSpinner() {
-        //spinner 1  //static for now
-        list.add("Select Leave Type")
-        list.add("vacation")
-        list.add("Normal")
-        list.add("Un Normal")
-//        Log.e("List", list.toString())
-
-        val subscriberbase2Adapter = object : ArrayAdapter<Any>(
-            this, R.layout.spinner_items_layout_sample,
-            list as List<Any>
-        ) {
-            override fun getDropDownView(
-                position: Int,
-                convertView: View?,
-                parent: ViewGroup
-            ): View {
-                return super.getDropDownView(position, convertView, parent).also { view ->
-                    if (position == LeaveSpinner.selectedItemPosition) {
-                        // view.setBackgroundColor(resources.getColor(R.color.color_light))
-//                        view.findViewById<TextView>(android.R.id.text1)
-//                            .setTextColor(Color.parseColor(primaryHexColor))
-                        if (position != 0) {
-                            view.findViewById<TextView>(android.R.id.text1)
-                                .setCompoundDrawablesWithIntrinsicBounds(
-                                    0,
-                                    0,
-                                    R.drawable.ic_tick_24dp,
-                                    0
-                                )
-
-                        } else {
-                            view.findViewById<TextView>(android.R.id.text1)
-                                .setCompoundDrawablesWithIntrinsicBounds(
-                                    0,
-                                    0,
-                                    0,
-                                    0
-                                )
-                        }
-                    } else {
-
-                        view.findViewById<TextView>(android.R.id.text1)
-                            .setTextColor(
-                                resources.getColor(
-                                    android.R.color.black
-                                )
-                            )
-                        view.findViewById<TextView>(android.R.id.text1)
-                            .setCompoundDrawablesWithIntrinsicBounds(
-                                0,
-                                0,
-                                0,
-                                0
-                            )
-                    }
-                }
-            }
-        }
-
-        subscriberbase2Adapter.setDropDownViewResource(R.layout.spinner_items_layout_sample)
-        LeaveSpinner.adapter = subscriberbase2Adapter
-
-        //spinner 1
-        LeaveSpinner.setOnTouchListener(View.OnTouchListener { v, event ->
-            Utils.hideKeyBoard(LeaveSpinner, this)
-            false
-        })
-
-        // Set an on item selected listener for spinner object
-        LeaveSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
-                position: Int,
-                id: Long
-            ) {
-                Log.e("Res", parent.getItemAtPosition(position).toString())
-
-                //check list
-                if(parent.getItemAtPosition(position).toString() == "Select Leave type"){
-                    LeaveSpinnerSelected = "Select Leave type"
-                } else {
-                    for (item in list){
-                        if(parent.getItemAtPosition(position).toString() == item) {
-                            Log.e("ResSelected", item)
-                            LeaveSpinnerSelected = item
-                            Log.e("ResSelected", LeaveSpinnerSelected.toString())
-                        }
-                    }
-                }
-
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // Another interface callback
-            }
-
-        }
-    }
 
     public fun openDocuments(){
         var iCount = 1 - listImages.size

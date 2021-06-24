@@ -244,11 +244,11 @@ class PendingRequestsActivity : AppCompatActivity() {
 
     fun onListItemClicked(dummyData:Data, position: Int) {
 
-//        openActivityWithResult(PendingDetailActivity::class.java, this, 101){
-////            putString("t_mail", "" + dummyData.t_mail)
-////            putString("t_nama", "" + dummyData.t_nama)
-//             putString("wkid", "" + dummyData.wkid)
-//        }
+        openActivityWithResult(PendingDetailActivity::class.java, this, 101){
+//            putString("t_mail", "" + dummyData.t_mail)
+//            putString("t_nama", "" + dummyData.t_nama)
+             putString("wkid", "" + dummyData.wkid)
+        }
 
 
     }

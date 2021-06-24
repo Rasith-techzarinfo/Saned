@@ -95,6 +95,8 @@ class AttendanceHistoryActivity : AppCompatActivity(), AttendenceHistoryAdapter.
 
             val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
 
+                val monthOfYear = monthOfYear+1
+
                 // Display Selected date in textbox
                 txt_from_date.setText("" + year + "-" + monthOfYear + "-" + dayOfMonth )
 
@@ -111,6 +113,8 @@ class AttendanceHistoryActivity : AppCompatActivity(), AttendenceHistoryAdapter.
             val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
 
                 // Display Selected date in textbox
+                val monthOfYear = monthOfYear+1
+
                 txt_to_date.setText("" + year + "-" + monthOfYear + "-" + dayOfMonth)
 
             }, year, month, day)

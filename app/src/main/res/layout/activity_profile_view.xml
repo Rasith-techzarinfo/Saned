@@ -570,7 +570,7 @@
                             <TextView
                                 android:layout_width="175dp"
                                 android:layout_height="wrap_content"
-                                android:text="ID no : "
+                                android:text="ID NO : "
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                             <TextView
@@ -648,7 +648,7 @@
                             <TextView
                                 android:layout_width="175dp"
                                 android:layout_height="wrap_content"
-                                android:text="Passport no : "
+                                android:text="Passport No : "
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                             <TextView
@@ -724,7 +724,7 @@
                             <TextView
                                 android:layout_width="175dp"
                                 android:layout_height="wrap_content"
-                                android:text="Maritial Status : "
+                                android:text="Marital Status : "
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                             <TextView

@@ -15,13 +15,7 @@ import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.view.error.SANEDError
 import com.saned.view.ui.adapter.pendingDetail.PendingDetailAdapter
 import com.saned.view.utils.Utils
-import kotlinx.android.synthetic.main.activity_my_employees.*
-import kotlinx.android.synthetic.main.activity_my_employees.emptyView
-import kotlinx.android.synthetic.main.activity_my_employees.recyclerView
-import kotlinx.android.synthetic.main.activity_my_employees.rootLayout
-import kotlinx.android.synthetic.main.activity_my_employees.shimmerLayout
 import kotlinx.android.synthetic.main.activity_pending_detail.*
-import kotlinx.android.synthetic.main.activity_view_dynamic_w_f.*
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
@@ -44,6 +38,8 @@ class PendingDetailActivity : AppCompatActivity() {
 
         wkid = "" + intent.getStringExtra("wkid")
 
+        Log.e("arjun", "this is id" +wkid)
+
 //        swipeRefreshLayout.setOnRefreshListener {
 //            //getValues()
 //            getDataFromServer()
@@ -60,8 +56,8 @@ class PendingDetailActivity : AppCompatActivity() {
 
         if (Utils.isInternetAvailable(this)) {
 
-            Utils.startShimmerRL(shimmerLayout, rootLayout)
-            emptyView.visibility = View.GONE
+            Utils.startShimmerRL(shimmerLayoutpending, rootLayoutpending)
+            emptyViewpending.visibility = View.GONE
 
             coroutineScope.launch {
                 try {
@@ -166,12 +162,12 @@ class PendingDetailActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, "" + result.message, Toast.LENGTH_SHORT).show()
                     }
 
-                    Utils.stopShimmerRL(shimmerLayout, rootLayout)
+                    Utils.stopShimmerRL(shimmerLayoutpending, rootLayoutpending)
 
                     setupRecyclerView()
 
                 } catch (e: Exception) {
-                    Utils.stopShimmerRL(shimmerLayout, rootLayout)
+                    Utils.stopShimmerRL(shimmerLayoutpending, rootLayoutpending)
                     Log.e("error", "" + e.message)
                     if (e is SANEDError) {
                         Log.e("Err", "" + e.getErrorResponse())
@@ -200,11 +196,11 @@ class PendingDetailActivity : AppCompatActivity() {
 
 
     private fun setupRecyclerView() {
-        recyclerView.layoutManager = LinearLayoutManager(applicationContext)
-        recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        recyclerViewpending.layoutManager = LinearLayoutManager(applicationContext)
+        recyclerViewpending.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         myPendingDetailAdapter =
                 PendingDetailAdapter(myPendingsDetailArrayList, this, this@PendingDetailActivity)
-        recyclerView.adapter = myPendingDetailAdapter
+        recyclerViewpending.adapter = myPendingDetailAdapter
     }
 
     private fun setToolBar() {

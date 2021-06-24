@@ -83,14 +83,14 @@
 
 
                     <RelativeLayout
-                        android:id="@+id/rootLayout"
+                        android:id="@+id/rootLayoutpending"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         >
 
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recyclerView"
+                            android:id="@+id/recyclerViewpending"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_centerInParent="true" />
@@ -102,7 +102,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/emptyView"
+                    android:id="@+id/emptyViewpending"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -113,7 +113,7 @@
                 </LinearLayout>
 
                 <com.facebook.shimmer.ShimmerFrameLayout
-                    android:id="@+id/shimmerLayout"
+                    android:id="@+id/shimmerLayoutpending"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:visibility="gone">
