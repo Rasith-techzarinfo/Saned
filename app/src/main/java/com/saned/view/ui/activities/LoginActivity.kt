@@ -15,6 +15,7 @@ import android.provider.Settings
 import android.util.Log
 import android.view.Window
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
 import androidx.core.app.ActivityCompat
@@ -168,54 +169,32 @@ class LoginActivity : AppCompatActivity() {
 
 
     private  fun loginSuccess(){
-        val executor = ContextCompat.getMainExecutor(this)
-        val biometricPrompt = BiometricPrompt(
-                this,
-                executor,
-                object : BiometricPrompt.AuthenticationCallback() {
+        val builder = AlertDialog.Builder(this)
+        //set title for alert dialog
+        builder.setTitle("Login Via")
+        //set message for alert dialog
+        builder.setIcon(R.drawable.saned_logo)
 
-                    override fun onAuthenticationError(
-                            errorCode: Int,
-                            errString: CharSequence
-                    ) {
-                        super.onAuthenticationError(errorCode, errString)
-                        if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
-                            finishAffinity()
-                        } else {
+        //performing positive action
+        builder.setPositiveButton("Biometric"){dialogInterface, which ->
+            Biometric()
+        }
+        //performing negative action
+        builder.setNegativeButton("Skip"){dialogInterface, which ->
+            val intent=Intent(applicationContext, DashboardActivity::class.java)
+            startActivity(intent)
+            Toast.makeText(
+                    this@LoginActivity,
+                    "Login Succesfully",
+                    Toast.LENGTH_LONG
+            ).show()
+        }
+        // Create the AlertDialog
+        val alertDialog: AlertDialog = builder.create()
+        // Set other dialog properties
+        alertDialog.setCancelable(false)
+        alertDialog.show()
 
-
-                        }
-                    }
-
-                    override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
-                        super.onAuthenticationSucceeded(result)
-                        val intent=Intent(applicationContext, DashboardActivity::class.java)
-                        startActivity(intent)
-                        Toast.makeText(
-                                this@LoginActivity,
-                                "Login Succesfully",
-                                Toast.LENGTH_LONG
-                        ).show()
-                    }
-
-                    override fun onAuthenticationFailed() {
-                        super.onAuthenticationFailed()
-
-                        Toast.makeText(
-                                this@LoginActivity,
-                                "Can't authorized",
-                                Toast.LENGTH_SHORT
-                        ).show()
-
-                    }
-                })
-
-        val promptInfo = BiometricPrompt.PromptInfo.Builder()
-                .setTitle("Use Fingerprint Authentication")
-                .setSubtitle("Punch your finger to Login")
-                .setNegativeButtonText("Cancel")
-                .build()
-        biometricPrompt.authenticate(promptInfo)
     }
 
 
@@ -630,7 +609,62 @@ class LoginActivity : AppCompatActivity() {
         dialog.setCanceledOnTouchOutside(false)
 
     }
+private fun Biometric(){
+    val executor = ContextCompat.getMainExecutor(this)
+    val biometricPrompt = BiometricPrompt(
+            this,
+            executor,
+            object : BiometricPrompt.AuthenticationCallback() {
 
+                override fun onAuthenticationError(
+                        errorCode: Int,
+                        errString: CharSequence
+                ) {
+                    super.onAuthenticationError(errorCode, errString)
+                    if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
+                        val intent=Intent(applicationContext, DashboardActivity::class.java)
+                        startActivity(intent)
+                        Toast.makeText(
+                                this@LoginActivity,
+                                "Login Succesfully",
+                                Toast.LENGTH_LONG
+                        ).show()
+                    } else {
+
+
+                    }
+                }
+
+                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                    super.onAuthenticationSucceeded(result)
+                    val intent=Intent(applicationContext, DashboardActivity::class.java)
+                    startActivity(intent)
+                    Toast.makeText(
+                            this@LoginActivity,
+                            "Login Succesfully",
+                            Toast.LENGTH_LONG
+                    ).show()
+                }
+
+                override fun onAuthenticationFailed() {
+                    super.onAuthenticationFailed()
+
+                    Toast.makeText(
+                            this@LoginActivity,
+                            "Can't authorized",
+                            Toast.LENGTH_SHORT
+                    ).show()
+
+                }
+            })
+
+    val promptInfo = BiometricPrompt.PromptInfo.Builder()
+            .setTitle("Biometric Authentication")
+            .setSubtitle("Login using fingerprint or face")
+            .setNegativeButtonText("Cancel")
+            .build()
+    biometricPrompt.authenticate(promptInfo)
+}
 }
 
 

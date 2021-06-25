@@ -43,16 +43,6 @@ class TeamFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        progressDialog= Dialog(requireActivity())
-        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        progressDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        progressDialog.setContentView(com.saned.R.layout.custom_progress_dialog_layout)
-        progressDialog.setCancelable(false)
-        progressDialog.setCanceledOnTouchOutside(false)
-        progressDialog.show()
-        Handler().postDelayed({
-            progressDialog.dismiss()
-        },10000)
         binding  = FragmentTeamBinding.inflate(inflater, container, false)
         init()
 
@@ -78,7 +68,13 @@ class TeamFragment : Fragment() {
     private fun getServicesListFromServer(){
 
         myEmployeesArrayList.clear()
-
+        progressDialog= Dialog(requireActivity())
+        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        progressDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        progressDialog.setContentView(com.saned.R.layout.custom_progress_dialog_layout)
+        progressDialog.setCancelable(false)
+        progressDialog.setCanceledOnTouchOutside(false)
+        progressDialog.show()
 
 
             coroutineScope.launch {
@@ -148,7 +144,7 @@ class TeamFragment : Fragment() {
                     //load static data for now
 //                    dynamicWFArrayList.add(HAData("30", "This is so coolllll.", "101"))
 
-
+                    progressDialog.dismiss()
 
                     setupRecyclerView()
 
@@ -172,7 +168,6 @@ class TeamFragment : Fragment() {
                 }
 
             }
-
     }
 
     private fun setupRecyclerView() {

@@ -10,10 +10,12 @@ import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.view.Window
 import android.widget.*
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.saned.R
@@ -23,6 +25,7 @@ import com.saned.view.error.SANEDError
 import com.saned.view.service.ConnectivityReceiver
 import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.openActivity
+import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_edit_profile.submitButton
 import kotlinx.android.synthetic.main.activity_profile.toolbar
@@ -44,18 +47,27 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
     var spinnerSelectedInt4: Int = 0
     var spinnerSelectedInt5: Int = 0
     var spinnerSelectedInt6: Int = 0
+    private var disposable: Disposable? = null
     var spinnerInt1: Int = 0
     var spinnerInt2: Int = 0
     var spinnerInt3: Int = 0
     var spinnerInt4: Int = 0
     var spinnerInt5: Int = 0
     var spinnerInt6: Int = 0
+    var nameString: String = ""
+    var emailString: String = ""
+    var mobileString: String = ""
+    var profileUrl: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
         spinner()
         setToolBar()
+
+        addItemsOnSpinner()
+        spinnerListener()
+        getIntentValues(intent)
         init()
         var dob=findViewById(R.id.dobEditText) as TextInputEditText
         var ld=findViewById(R.id.lastdateEditText) as TextInputEditText
@@ -301,72 +313,7 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
 
 
                     if (result.success == "1") {
-                        when (result.data!!.gend) {
-                            "Male" -> spinnerSelectedInt1 = 1
-                            "Female" -> spinnerSelectedInt1 = 2
-                            else -> {
-                                spinnerSelectedInt1 = 0
-                            }
 
-                        }
-
-                        spinnerInt1 = spinnerSelectedInt1
-                        when (result.data!!.relg) {
-                            "Hindu" -> spinnerSelectedInt2 = 1
-                            "Christian" -> spinnerSelectedInt2 = 2
-                            "Muslim" -> spinnerSelectedInt2 = 3
-                            else -> {
-                                spinnerSelectedInt2 = 0
-                            }
-
-                        }
-
-                        spinnerInt2 = spinnerSelectedInt2
-                        when (result.data!!.jbtl) {
-                            "Android Developer" -> spinnerSelectedInt3 = 1
-                            "ios Developer" -> spinnerSelectedInt3 = 2
-                            "Web Developer" -> spinnerSelectedInt3 = 3
-                            else -> {
-                                spinnerSelectedInt3 = 0
-                            }
-
-                        }
-
-                        spinnerInt3 = spinnerSelectedInt3
-                        when (result.data!!.dept) {
-                            "Developer" -> spinnerSelectedInt4 = 1
-                            "Tester" -> spinnerSelectedInt4 = 2
-                            "HR" -> spinnerSelectedInt4 = 3
-                            else -> {
-                                spinnerSelectedInt4 = 0
-                            }
-
-                        }
-
-                        spinnerInt4 = spinnerSelectedInt4
-                        when (result.data!!.grade) {
-                            "A" -> spinnerSelectedInt5 = 1
-                            "A+" -> spinnerSelectedInt5 = 2
-                            "B" -> spinnerSelectedInt5 = 3
-                            else -> {
-                                spinnerSelectedInt5 = 0
-                            }
-
-                        }
-
-                        spinnerInt5 = spinnerSelectedInt5
-                        when (result.data!!.mart) {
-                            "Married" -> spinnerSelectedInt6 = 1
-                            "Unmarried" -> spinnerSelectedInt6 = 2
-                            "Widowed" -> spinnerSelectedInt6 = 3
-                            else -> {
-                                spinnerSelectedInt6 = 0
-                            }
-
-                        }
-
-                        spinnerInt6 = spinnerSelectedInt6
-                        //navigateback
                         res = "true"
                         Toast.makeText(
                                 applicationContext,
@@ -398,7 +345,7 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
                     } else {
                                 Toast.makeText(
                                         applicationContext,
-                                        "Profile Updated Successfully",
+                                        "Something went wrong",
                                         Toast.LENGTH_SHORT
                                 ).show()
 
@@ -411,6 +358,190 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
 
 
     }
+    private fun addItemsOnSpinner() {
+
+        val list: MutableList<String> = ArrayList()
+        list.add("Select Gender")
+        list.add("Male")
+        list.add("Female")
+        list.add("Other")
+
+        val genderAdapter = object : ArrayAdapter<Any>(
+                this, R.layout.spinner_sample_one,
+                list as List<Any>
+        ) {
+            override fun getDropDownView(
+                    position: Int,
+                    convertView: View?,
+                    parent: ViewGroup
+            ): View {
+                return super.getDropDownView(position, convertView, parent).also { view ->
+                    if (position == genderEditText.selectedItemPosition) {
+                        // view.setBackgroundColor(resources.getColor(R.color.color_light))
+                        view.findViewById<TextView>(android.R.id.text1)
+                                .setTextColor(resources.getColor(R.color.colorPrimary))
+                        if (position != 0) {
+                            view.findViewById<TextView>(android.R.id.text1)
+                                    .setCompoundDrawablesWithIntrinsicBounds(
+                                            0,
+                                            0,
+                                            R.drawable.ic_tick_24dp,
+                                            0
+                                    )
+
+                        } else {
+                            view.findViewById<TextView>(android.R.id.text1)
+                                    .setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+                        }
+                    } else {
+
+                        view.findViewById<TextView>(android.R.id.text1)
+                                .setTextColor(resources.getColor(android.R.color.black))
+                        view.findViewById<TextView>(android.R.id.text1)
+                                .setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+                    }
+                }
+            }
+        }
+
+        genderAdapter.setDropDownViewResource(R.layout.spinner_sample_one)
+        genderEditText.adapter = genderAdapter
+        val list2: MutableList<String> = ArrayList()
+        list2.add("Select religion")
+        list2.add("Hindu")
+        list2.add("Christian")
+        list2.add("Muslim")
+
+        val religionAdapter = object : ArrayAdapter<Any>(
+                this, R.layout.spinner_sample_one,
+                list as List<Any>
+        ) {
+            override fun getDropDownView(
+                    position: Int,
+                    convertView: View?,
+                    parent: ViewGroup
+            ): View {
+                return super.getDropDownView(position, convertView, parent).also { view ->
+                    if (position == religionEditText.selectedItemPosition) {
+                        // view.setBackgroundColor(resources.getColor(R.color.color_light))
+                        view.findViewById<TextView>(android.R.id.text1)
+                                .setTextColor(resources.getColor(R.color.colorPrimary))
+                        if (position != 0) {
+                            view.findViewById<TextView>(android.R.id.text1)
+                                    .setCompoundDrawablesWithIntrinsicBounds(
+                                            0,
+                                            0,
+                                            R.drawable.ic_tick_24dp,
+                                            0
+                                    )
+
+                        } else {
+                            view.findViewById<TextView>(android.R.id.text1)
+                                    .setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+                        }
+                    } else {
+
+                        view.findViewById<TextView>(android.R.id.text1)
+                                .setTextColor(resources.getColor(android.R.color.black))
+                        view.findViewById<TextView>(android.R.id.text1)
+                                .setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+                    }
+                }
+            }
+        }
+
+        religionAdapter.setDropDownViewResource(R.layout.spinner_sample_one)
+        religionEditText.adapter = genderAdapter
+    }
+
+    private fun spinnerListener() {
+
+        genderEditText.setOnTouchListener(View.OnTouchListener { v, event ->
+            Utils.hideKeyBoard(genderEditText, this@EditProfileActivity)
+            false
+        })
+
+        // Set an on item selected listener for spinner object
+        genderEditText.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+            ) {
+
+                when (parent.getItemAtPosition(position).toString()) {
+                    "Male" -> spinnerSelectedInt1 = 1
+                    "Female" -> spinnerSelectedInt1 = 2
+                    "Other" -> spinnerSelectedInt1 = 3
+                    else -> {
+                        spinnerSelectedInt1 = 0
+
+                    }
+                }
+
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Another interface callback
+            }
+
+        }
+        religionEditText.setOnTouchListener(View.OnTouchListener { v, event ->
+            Utils.hideKeyBoard(genderEditText, this@EditProfileActivity)
+            false
+        })
+
+        // Set an on item selected listener for spinner object
+        religionEditText.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+            ) {
+
+                when (parent.getItemAtPosition(position).toString()) {
+                    "Hindu" -> spinnerSelectedInt2 = 1
+                    "Christian" -> spinnerSelectedInt2 = 2
+                    "Muslim" -> spinnerSelectedInt2 = 3
+                    else -> {
+                        spinnerSelectedInt2 = 0
+
+                    }
+                }
+
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Another interface callback
+            }
+
+        }
+    }
+
+
+    private fun getIntentValues(intent: Intent?) {
+
+        nameString = "" + intent!!.getStringExtra("name")
+        emailString = "" + intent.getStringExtra("email")
+        mobileString = "" + intent.getStringExtra("mobile")
+        spinnerInt1 = intent.getIntExtra("gender", spinnerInt1)
+        profileUrl = "" + intent.getStringExtra("profile_pic")
+
+        setIntentValues()
+    }
+
+    private fun setIntentValues() {
+
+        fullNameEditText.setText(nameString)
+        emailEditText.setText(emailString)
+        phoneEditText.setText(mobileString)
+        genderEditText.setSelection(spinnerInt1)
+    }
+
 
     private fun getMyProfileData() {
         if (Utils.isInternetAvailable(this)) {
@@ -556,7 +687,6 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
         val religion = resources.getStringArray(R.array.religion)
         val job = resources.getStringArray(R.array.job)
         val department = resources.getStringArray(R.array.department)
-        val gosi = resources.getStringArray(R.array.gosi)
         val grade = resources.getStringArray(R.array.grade)
         val maritial = resources.getStringArray(R.array.maritial)
 

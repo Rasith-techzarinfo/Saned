@@ -45,16 +45,6 @@ class WorkItemsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        progressDialog= Dialog(requireContext())
-        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        progressDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        progressDialog.setContentView(com.saned.R.layout.custom_progress_dialog_layout)
-        progressDialog.setCancelable(false)
-        progressDialog.setCanceledOnTouchOutside(false)
-        progressDialog.show()
-        Handler().postDelayed({
-            progressDialog.dismiss()
-        },25000)
         binding  = FragmentWorkItemsBinding.inflate(inflater, container, false)
         init()
 
@@ -78,7 +68,13 @@ class WorkItemsFragment : Fragment() {
     private fun getPendingRequestFromServer() {
         myPendingsArrayList.clear()
         currentPage = 1
-
+        progressDialog= Dialog(requireContext())
+        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        progressDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        progressDialog.setContentView(com.saned.R.layout.custom_progress_dialog_layout)
+        progressDialog.setCancelable(false)
+        progressDialog.setCanceledOnTouchOutside(false)
+        progressDialog.show()
             sanedApplication.coroutineScope.launch {
 
                 try{
@@ -192,9 +188,8 @@ class WorkItemsFragment : Fragment() {
                          //       .show()
                     }
 
-
+                    progressDialog.dismiss()
                     setupRecyclerView()
-
 
                 }catch (e: Exception){
 
