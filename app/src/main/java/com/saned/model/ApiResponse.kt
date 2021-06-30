@@ -375,7 +375,8 @@ data class ServList (
         val dynamic : String,
         val createdAt : String,
         val updatedAt : String,
-        val deletedAt : String
+        val deletedAt : String,
+        val policy_id : String
 )
 
 data class ServiceListDetail (
@@ -480,6 +481,22 @@ data class DynamicFormList (
     val modu : String,
     val list : String
 )
+
+
+data class LeaveType (
+
+    val success : String,
+    val message : String,
+    val data : List<LeaveList>
+
+        )
+
+data class LeaveList (
+
+    val name: String,
+    val type: String
+
+        )
 
 
 data class LoginError(

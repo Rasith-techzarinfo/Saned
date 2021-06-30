@@ -81,8 +81,12 @@ class ServicesActionsActivity : AppCompatActivity(), ServiceActionsAdapter.ListA
                                     "" + item.dynamic,
                                     "" + item.createdAt,
                                     "" + item.updatedAt,
-                                    "" + item.deletedAt
+                                    "" + item.deletedAt,
+                                "" + item.policy_id
                             )
+
+
+                            Log.e("arjun policy", "arjun policy" + item.policy_id)
                             servicesArrayList.add(v1)
                         }
 //                        totalPages = result.data!!.last_page.toString()

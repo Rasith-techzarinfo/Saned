@@ -163,6 +163,12 @@ interface ApiService {
             @Part files: ArrayList<MultipartBody.Part>?
     ): Deferred<UserLoginData>
 
+    @GET("v1/api/workflow/policy")
+    fun getLeaveType(
+
+    ): Deferred<LeaveType>
+
+
 
     ////////////////////////////
 

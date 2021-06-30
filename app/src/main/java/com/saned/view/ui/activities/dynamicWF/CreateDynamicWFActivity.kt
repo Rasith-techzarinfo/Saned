@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.fxn.pix.Options
 import com.fxn.pix.Pix
+import com.google.android.material.snackbar.Snackbar
 import com.saned.R
 import com.saned.model.DynamicFormList
 import com.saned.sanedApplication.Companion.apiService
@@ -37,6 +38,7 @@ import kotlinx.android.synthetic.main.activity_create_dynamic_w_f.*
 import kotlinx.android.synthetic.main.activity_create_dynamic_w_f.rootLayout
 import kotlinx.android.synthetic.main.activity_create_dynamic_w_f.submitButton
 import kotlinx.android.synthetic.main.activity_create_dynamic_w_f.toolbar
+import kotlinx.android.synthetic.main.activity_spinner_list.view.*
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -66,6 +68,18 @@ class CreateDynamicWFActivity : AppCompatActivity() {
     var dyamicArrayList: ArrayList<DynamicFormList> = ArrayList()
 
 
+    var hashMap1 : HashMap<String, String> = HashMap<String, String> ()
+    var hashMap2 : HashMap<String, String> = HashMap<String, String> ()
+    val list1: MutableList<String> = ArrayList()
+    val list2: MutableList<String> = ArrayList()
+//    lateinit var leaveTypeView: LeaveType
+//    lateinit var noofdays : NoofDays
+
+    var leavepinnerSelected: String = ""
+    var noofdaysSpinnerSelected: String = ""
+    var isNoStatesData: Boolean = false
+
+
     private var docPaths: ArrayList<Uri> = ArrayList()
     private val REQUEST_CODE_CHOOSE = 104
     val PICKPHOTO_RESULT_CODE = 1105
@@ -79,6 +93,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_dynamic_w_f)
         setToolBar()
         init()
+        spinnerListener()
     }
 
 
@@ -138,7 +153,9 @@ class CreateDynamicWFActivity : AppCompatActivity() {
             val dpde = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
 
                 // Display Selected date in textbox
+
                 val monthOfYear = monthOfYear+1
+                val dayofMonth = dayOfMonth
                 endEditText.setText("" + dayOfMonth + "-" + monthOfYear + "-" + year)
 
             }, year, month, day)
@@ -147,7 +164,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
         }
 
         //spinner
-        addToSpinner()
+
         //btn listener
         submitButton.setOnClickListener{
 
@@ -172,7 +189,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
             if (endEditText.text.toString() == "") {
 
-                Toast.makeText(this, "Enter the start date", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Enter the end date", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -225,10 +242,11 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                             )
 
                             var typeget = "" + item.name
+                            var nameget = "" + item.type //Policy Date File  Number Text Dropdown
 
-                            Log.e("arjun", "this is name " + " " + item.name)
-                            Log.e("arjun", "this is type " + " " + item.type)
-
+                            Log.e("arjun name for view", "this is name " + " " + item.name)
+                            Log.e("arjun type for policy", "this is type " + " " + item.type)
+//
 //                            if (result.data!!.size > 0){
 //
 //                                submitButton.visibility = View.GONE
@@ -243,6 +261,16 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                             if (typeget == "No Of Days"){
 
                                 noofmonths_visibility.visibility = View.VISIBLE
+                            }
+
+                            if (typeget == "Months"){
+
+                                noofmonths_visibility.visibility = View.VISIBLE
+                            }
+
+                            if (typeget == "Repayment Terms") {
+
+                               // noofmonths_visibility.visibility = View.VISIBLE
                             }
 
                             if (typeget == "Start Date"){
@@ -445,44 +473,91 @@ class CreateDynamicWFActivity : AppCompatActivity() {
     }
 
 
-    private fun addToSpinner() {
-        val noofmonths = resources.getStringArray(R.array.no_of_months)
-        val leave = resources.getStringArray(R.array.leave)
-        val spinner = findViewById<Spinner>(R.id.LeaveSpinner)
-        val spinner2 = findViewById<Spinner>(R.id.monthsSpinner)
-        if (spinner != null) {
-            val adapter = ArrayAdapter(this,
-                android.R.layout.simple_spinner_item, leave)
-            spinner.adapter = adapter
+    private fun spinnerListener() {
+        //spinner 1
+        LeaveSpinner.setOnTouchListener(View.OnTouchListener { v, event ->
+            Utils.hideKeyBoard(LeaveSpinner, this)
+            false
+        })
 
-            spinner.onItemSelectedListener = object :
-                AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>,
-                                            view: View, position: Int, id: Long) {
+        // Set an on item selected listener for spinner object
+        LeaveSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long
+            ) {
+                Log.e("Res", parent.getItemAtPosition(position).toString())
 
+                //check list
+                if(parent.getItemAtPosition(position).toString() == "Select Leave Type"){
+                    leavepinnerSelected = "Select Leave Type"
+                } else {
+                    for (item in list1){
+                        if(parent.getItemAtPosition(position).toString() == item) {
+                            Log.e("ResSelected", item)
+                            leavepinnerSelected = hashMap1.get(item)!!
+                            Log.e("ResSelected", leavepinnerSelected)
+                            //get states data after selecction
+                    /////        getStateSpinnerData()
+                        }
+                    }
                 }
 
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // write code to perform some action
-                }
+
             }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Another interface callback
+            }
+
         }
-        if (spinner2 != null) {
-            val adapter = ArrayAdapter(this,
-                android.R.layout.simple_spinner_item, noofmonths)
-            spinner2.adapter = adapter
 
-            spinner2.onItemSelectedListener = object :
-                AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>,
-                                            view: View, position: Int, id: Long) {
+        //spinner 2
+        monthsSpinner.setOnTouchListener(View.OnTouchListener { v, event ->
+            Utils.hideKeyBoard(monthsSpinner, this)
+            false
+        })
 
+        // Set an on item selected listener for spinner object
+        monthsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long
+            ) {
+                Log.e("Res", parent.getItemAtPosition(position).toString())
+
+                //check list
+                if(parent.getItemAtPosition(position).toString() == "Select Days"){
+                    monthsSpinnerSelected = "Select Days"
+                } else {
+                    for (item in list2){
+                        if(parent.getItemAtPosition(position).toString() == item) {
+                            Log.e("ResSelected", item)
+                            monthsSpinnerSelected = hashMap2.get(item)!!
+                            Log.e("ResSelected", monthsSpinnerSelected)
+                            //send data to server
+//                            if (countrySpinner.selectedItemPosition == 0) {
+//                                Snackbar.make(rootLayout, "Select Country", Snackbar.LENGTH_LONG).show()
+//                            } else {
+//                                keyword1 = countrySpinnerSelected
+//                                keyword2 = stateSpinnerSelected
+//                                memberSearchFromServer()
+//                            }
+                        }
+                    }
                 }
 
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // write code to perform some action
-                }
+
             }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Another interface callback
+            }
+
         }
     }
 
