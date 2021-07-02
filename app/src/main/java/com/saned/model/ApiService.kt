@@ -1,5 +1,6 @@
 package com.saned.model
 
+import androidx.databinding.Observable
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.saned.view.error.ErrorInterceptor
@@ -11,7 +12,10 @@ import okhttp3.RequestBody
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
+import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 interface ApiService {
 
@@ -38,6 +42,7 @@ interface ApiService {
     @POST( "v1/api/user/profile/update")
     @Multipart
     fun editProfile(
+            @Part file: MultipartBody.Part?,
             @Part("fnme") fnme: RequestBody,
             @Part("lnme") lnme: RequestBody,
             @Part("mnme") mnme: RequestBody,
@@ -70,7 +75,7 @@ interface ApiService {
             @Part("cont") cont: RequestBody,
             @Part("medc") medc: RequestBody
 
-    ): Deferred<ProfileList>
+    ): io.reactivex.Observable<ProfileList>
 
     @POST("v1/api/user/reset-password")
     @FormUrlEncoded

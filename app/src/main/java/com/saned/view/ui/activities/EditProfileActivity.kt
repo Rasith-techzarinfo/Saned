@@ -25,12 +25,15 @@ import com.saned.view.error.SANEDError
 import com.saned.view.service.ConnectivityReceiver
 import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.openActivity
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_edit_profile.submitButton
 import kotlinx.android.synthetic.main.activity_profile.toolbar
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.util.*
 
@@ -55,8 +58,30 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
     var spinnerInt5: Int = 0
     var spinnerInt6: Int = 0
     var nameString: String = ""
+    var firstString: String =""
+    var lastString: String=""
+    var middleString: String=""
+    var arabString: String=""
+    var nationString: String=""
+    var emergencyString: String=""
     var emailString: String = ""
     var mobileString: String = ""
+    var dobString: String=""
+    var basicString: String=""
+    var houseString: String=""
+    var lastdateString: String=""
+    var idnoString: String=""
+    var idexString: String=""
+    var passportString: String=""
+    var passportexpString: String=""
+    var empcodeString: String=""
+    var subdeptString: String=""
+    var idString: String=""
+    var cityString: String=""
+    var locationString: String=""
+    var transportString: String=""
+    var contentString: String=""
+    var medicalString: String=""
     var profileUrl: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -163,6 +188,7 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
             progressDialog.setCancelable(false)
             progressDialog.setCanceledOnTouchOutside(false)
             progressDialog.show()
+            var body: MultipartBody.Part? = null
             val fnme: RequestBody =
                 RequestBody.create(
                     MediaType.parse("text/plain"),
@@ -300,58 +326,50 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
                     MediaType.parse("text/plain"),
                     medicalEditText.text.toString()
                 )
-            coroutineScope.launch {
 
-                try {
+                    disposable = sanedApplication.apiService.editProfile(
+                    body, fnme, lnme, mnme, a_name, dob, gend, ccty, email, phon, relg, emrcnt, emp_code, f_name, dept, jbtl, basic, hous, ldate, grade, idno, idex, pspt, psptex, subdep, id, mart, city, loca, tran, cont, medc
 
-                    var result = sanedApplication.apiService.editProfile(
-                    fnme, lnme, mnme, a_name, dob, gend, ccty, email, phon, relg, emrcnt, emp_code, f_name, dept, jbtl, basic, hous, ldate, grade, idno, idex, pspt, psptex, subdep, id, mart, city, loca, tran, cont, medc
+                    ).subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(
+                                    { result ->
+                                        Log.e("result", "" + result)
 
-                    ).await()
+                                        if (result.success == "1") {
 
-                    Log.e("result", "" + result)
+                                            Toast.makeText(
+                                                    this@EditProfileActivity,
+                                                    "Update Success",
+                                                    Toast.LENGTH_SHORT
+                                            ).show()
+                                            finish()
 
+                                        } else {
 
-                    if (result.success == "1") {
+                                            Toast.makeText(
+                                                    this,
+                                                    "Kindly check all the fields",
+                                                    Toast.LENGTH_SHORT
+                                            ).show()
 
-                        res = "true"
-                        Toast.makeText(
-                                applicationContext,
-                                "Profile Updated",
-                                Toast.LENGTH_SHORT
-                        ).show()
-                        onBackPressed()
+//                  custom error
+//                            Toast.makeText(this, "" + result.message, Toast.LENGTH_LONG).show()
 
-                    } else {
+                                        }
 
-                        Toast.makeText(
-                                this@EditProfileActivity,
-                                "" + result.message,
-                                Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                    progressDialog.dismiss()
+                                        progressDialog.dismiss()
 
-                } catch (e: Exception) {
-                    progressDialog.dismiss()
-                    Log.e("error", "" + e.message)
-                    if (e is SANEDError) {
-                        Log.e("Err", "" + e.getErrorResponse())
-                        if (e.getResponseCode() == 401) {
-                            Utils.logoutFromApp(applicationContext)
-                        } else if (e.getResponseCode() == 500) {
-                            Toast.makeText(applicationContext, "Server error", Toast.LENGTH_LONG).show()
-                        }
-                    } else {
-                                Toast.makeText(
-                                        applicationContext,
-                                        "Something went wrong",
-                                        Toast.LENGTH_SHORT
-                                ).show()
+                                    },
+                                    { error ->
 
-                    }
-                }
-            }
+                                        progressDialog.dismiss()
+                                        Log.e("error", "" + error.message)
+
+                                    }
+
+                            )
+
         } else {
             Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
         }
@@ -414,7 +432,7 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
 
         val religionAdapter = object : ArrayAdapter<Any>(
                 this, R.layout.spinner_sample_one,
-                list as List<Any>
+                list2 as List<Any>
         ) {
             override fun getDropDownView(
                     position: Int,
@@ -451,7 +469,191 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
         }
 
         religionAdapter.setDropDownViewResource(R.layout.spinner_sample_one)
-        religionEditText.adapter = genderAdapter
+        religionEditText.adapter = religionAdapter
+        val list3: MutableList<String> = ArrayList()
+        list3.add("Select job title")
+        list3.add("Android")
+        list3.add("ios")
+        list3.add("Web")
+
+        val jobtitleAdapter = object : ArrayAdapter<Any>(
+                this, R.layout.spinner_sample_one,
+                list3 as List<Any>
+        ) {
+            override fun getDropDownView(
+                    position: Int,
+                    convertView: View?,
+                    parent: ViewGroup
+            ): View {
+                return super.getDropDownView(position, convertView, parent).also { view ->
+                    if (position == jobTitleEditText.selectedItemPosition) {
+                        // view.setBackgroundColor(resources.getColor(R.color.color_light))
+                        view.findViewById<TextView>(android.R.id.text1)
+                                .setTextColor(resources.getColor(R.color.colorPrimary))
+                        if (position != 0) {
+                            view.findViewById<TextView>(android.R.id.text1)
+                                    .setCompoundDrawablesWithIntrinsicBounds(
+                                            0,
+                                            0,
+                                            R.drawable.ic_tick_24dp,
+                                            0
+                                    )
+
+                        } else {
+                            view.findViewById<TextView>(android.R.id.text1)
+                                    .setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+                        }
+                    } else {
+
+                        view.findViewById<TextView>(android.R.id.text1)
+                                .setTextColor(resources.getColor(android.R.color.black))
+                        view.findViewById<TextView>(android.R.id.text1)
+                                .setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+                    }
+                }
+            }
+        }
+
+        jobtitleAdapter.setDropDownViewResource(R.layout.spinner_sample_one)
+        jobTitleEditText.adapter = jobtitleAdapter
+        val list4: MutableList<String> = ArrayList()
+        list4.add("Select department")
+        list4.add("IT")
+        list4.add("HR")
+        list4.add("Manager")
+
+        val departmentAdapter = object : ArrayAdapter<Any>(
+                this, R.layout.spinner_sample_one,
+                list4 as List<Any>
+        ) {
+            override fun getDropDownView(
+                    position: Int,
+                    convertView: View?,
+                    parent: ViewGroup
+            ): View {
+                return super.getDropDownView(position, convertView, parent).also { view ->
+                    if (position == departmentEditText.selectedItemPosition) {
+                        // view.setBackgroundColor(resources.getColor(R.color.color_light))
+                        view.findViewById<TextView>(android.R.id.text1)
+                                .setTextColor(resources.getColor(R.color.colorPrimary))
+                        if (position != 0) {
+                            view.findViewById<TextView>(android.R.id.text1)
+                                    .setCompoundDrawablesWithIntrinsicBounds(
+                                            0,
+                                            0,
+                                            R.drawable.ic_tick_24dp,
+                                            0
+                                    )
+
+                        } else {
+                            view.findViewById<TextView>(android.R.id.text1)
+                                    .setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+                        }
+                    } else {
+
+                        view.findViewById<TextView>(android.R.id.text1)
+                                .setTextColor(resources.getColor(android.R.color.black))
+                        view.findViewById<TextView>(android.R.id.text1)
+                                .setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+                    }
+                }
+            }
+        }
+
+        departmentAdapter.setDropDownViewResource(R.layout.spinner_sample_one)
+        departmentEditText.adapter = departmentAdapter
+        val list5: MutableList<String> = ArrayList()
+        list5.add("Select grade")
+        list5.add("A")
+        list5.add("A+")
+        list5.add("B")
+
+        val gradeAdapter = object : ArrayAdapter<Any>(
+                this, R.layout.spinner_sample_one,
+                list5 as List<Any>
+        ) {
+            override fun getDropDownView(
+                    position: Int,
+                    convertView: View?,
+                    parent: ViewGroup
+            ): View {
+                return super.getDropDownView(position, convertView, parent).also { view ->
+                    if (position == gradeEditText.selectedItemPosition) {
+                        // view.setBackgroundColor(resources.getColor(R.color.color_light))
+                        view.findViewById<TextView>(android.R.id.text1)
+                                .setTextColor(resources.getColor(R.color.colorPrimary))
+                        if (position != 0) {
+                            view.findViewById<TextView>(android.R.id.text1)
+                                    .setCompoundDrawablesWithIntrinsicBounds(
+                                            0,
+                                            0,
+                                            R.drawable.ic_tick_24dp,
+                                            0
+                                    )
+
+                        } else {
+                            view.findViewById<TextView>(android.R.id.text1)
+                                    .setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+                        }
+                    } else {
+
+                        view.findViewById<TextView>(android.R.id.text1)
+                                .setTextColor(resources.getColor(android.R.color.black))
+                        view.findViewById<TextView>(android.R.id.text1)
+                                .setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+                    }
+                }
+            }
+        }
+
+        gradeAdapter.setDropDownViewResource(R.layout.spinner_sample_one)
+        gradeEditText.adapter = gradeAdapter
+        val list6: MutableList<String> = ArrayList()
+        list6.add("Select maritial status")
+        list6.add("Single")
+        list6.add("Married")
+        list6.add("Widowed")
+
+        val maritialAdapter = object : ArrayAdapter<Any>(
+                this, R.layout.spinner_sample_one,
+                list6 as List<Any>
+        ) {
+            override fun getDropDownView(
+                    position: Int,
+                    convertView: View?,
+                    parent: ViewGroup
+            ): View {
+                return super.getDropDownView(position, convertView, parent).also { view ->
+                    if (position == maritialEditText.selectedItemPosition) {
+                        // view.setBackgroundColor(resources.getColor(R.color.color_light))
+                        view.findViewById<TextView>(android.R.id.text1)
+                                .setTextColor(resources.getColor(R.color.colorPrimary))
+                        if (position != 0) {
+                            view.findViewById<TextView>(android.R.id.text1)
+                                    .setCompoundDrawablesWithIntrinsicBounds(
+                                            0,
+                                            0,
+                                            R.drawable.ic_tick_24dp,
+                                            0
+                                    )
+
+                        } else {
+                            view.findViewById<TextView>(android.R.id.text1)
+                                    .setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+                        }
+                    } else {
+
+                        view.findViewById<TextView>(android.R.id.text1)
+                                .setTextColor(resources.getColor(android.R.color.black))
+                        view.findViewById<TextView>(android.R.id.text1)
+                                .setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+                    }
+                }
+            }
+        }
+
+        maritialAdapter.setDropDownViewResource(R.layout.spinner_sample_one)
+        maritialEditText.adapter = maritialAdapter
     }
 
     private fun spinnerListener() {
@@ -489,7 +691,7 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
 
         }
         religionEditText.setOnTouchListener(View.OnTouchListener { v, event ->
-            Utils.hideKeyBoard(genderEditText, this@EditProfileActivity)
+            Utils.hideKeyBoard(religionEditText, this@EditProfileActivity)
             false
         })
 
@@ -520,15 +722,170 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
             }
 
         }
+        jobTitleEditText.setOnTouchListener(View.OnTouchListener { v, event ->
+            Utils.hideKeyBoard(jobTitleEditText, this@EditProfileActivity)
+            false
+        })
+
+        // Set an on item selected listener for spinner object
+        jobTitleEditText.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+            ) {
+
+                when (parent.getItemAtPosition(position).toString()) {
+                    "Android" -> spinnerSelectedInt3 = 1
+                    "ios" -> spinnerSelectedInt3 = 2
+                    "Web" -> spinnerSelectedInt3 = 3
+                    else -> {
+                        spinnerSelectedInt3 = 0
+
+                    }
+                }
+
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Another interface callback
+            }
+
+        }
+        departmentEditText.setOnTouchListener(View.OnTouchListener { v, event ->
+            Utils.hideKeyBoard(departmentEditText, this@EditProfileActivity)
+            false
+        })
+
+        // Set an on item selected listener for spinner object
+        departmentEditText.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+            ) {
+
+                when (parent.getItemAtPosition(position).toString()) {
+                    "IT" -> spinnerSelectedInt4 = 1
+                    "HR" -> spinnerSelectedInt4 = 2
+                    "Manager" -> spinnerSelectedInt4 = 3
+                    else -> {
+                        spinnerSelectedInt4 = 0
+
+                    }
+                }
+
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Another interface callback
+            }
+
+        }
+        gradeEditText.setOnTouchListener(View.OnTouchListener { v, event ->
+            Utils.hideKeyBoard(gradeEditText, this@EditProfileActivity)
+            false
+        })
+
+        // Set an on item selected listener for spinner object
+        gradeEditText.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+            ) {
+
+                when (parent.getItemAtPosition(position).toString()) {
+                    "A" -> spinnerSelectedInt5 = 1
+                    "A+" -> spinnerSelectedInt5 = 2
+                    "B" -> spinnerSelectedInt5 = 3
+                    else -> {
+                        spinnerSelectedInt5 = 0
+
+                    }
+                }
+
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Another interface callback
+            }
+
+        }
+        maritialEditText.setOnTouchListener(View.OnTouchListener { v, event ->
+            Utils.hideKeyBoard(maritialEditText, this@EditProfileActivity)
+            false
+        })
+
+        // Set an on item selected listener for spinner object
+        maritialEditText.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+            ) {
+
+                when (parent.getItemAtPosition(position).toString()) {
+                    "Single" -> spinnerSelectedInt6 = 1
+                    "Married" -> spinnerSelectedInt6 = 2
+                    "Widowed" -> spinnerSelectedInt6 = 3
+                    else -> {
+                        spinnerSelectedInt6 = 0
+
+                    }
+                }
+
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Another interface callback
+            }
+
+        }
     }
 
 
     private fun getIntentValues(intent: Intent?) {
 
-        nameString = "" + intent!!.getStringExtra("name")
+        nameString = "" + intent!!.getStringExtra("f_name")
         emailString = "" + intent.getStringExtra("email")
-        mobileString = "" + intent.getStringExtra("mobile")
-        spinnerInt1 = intent.getIntExtra("gender", spinnerInt1)
+        mobileString = "" + intent.getStringExtra("phon")
+        spinnerInt1 = intent.getIntExtra("gend", spinnerInt1)
+        spinnerInt2=intent.getIntExtra("relg",spinnerInt2)
+        firstString=""+intent.getStringExtra("fnme")
+        lastString=""+intent.getStringExtra("lnme")
+        middleString=""+intent.getStringExtra("mnme")
+        arabString=""+intent.getStringExtra("a_name")
+        nationString=""+intent.getStringExtra("ccty")
+        emergencyString=""+intent.getStringExtra("emrcnt")
+        spinnerInt3=intent.getIntExtra("jbtl",spinnerInt3)
+        spinnerInt4=intent.getIntExtra("dept",spinnerInt4)
+        spinnerInt5=intent.getIntExtra("grade",spinnerInt5)
+        spinnerInt6=intent.getIntExtra("mart",spinnerInt6)
+        dobString=""+intent.getStringExtra("dob")
+        empcodeString=""+intent.getStringExtra("emp_code")
+        basicString=""+intent.getStringExtra("basic")
+        houseString=""+intent.getStringExtra("hous")
+        lastdateString=""+intent.getStringExtra("ldate")
+        idnoString=""+intent.getStringExtra("idno")
+        idexString=""+intent.getStringExtra("idex")
+        passportString=""+intent.getStringExtra("pspt")
+        passportexpString=""+intent.getStringExtra("psptex")
+        subdeptString=""+intent.getStringExtra("subdep")
+        idString=""+intent.getStringExtra("id")
+        cityString=""+intent.getStringExtra("city")
+        locationString=""+intent.getStringExtra("loca")
+        transportString=""+intent.getStringExtra("tran")
+        contentString=""+intent.getStringExtra("cont")
+        medicalString=""+intent.getStringExtra("medc")
         profileUrl = "" + intent.getStringExtra("profile_pic")
 
         setIntentValues()
@@ -540,6 +897,29 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
         emailEditText.setText(emailString)
         phoneEditText.setText(mobileString)
         genderEditText.setSelection(spinnerInt1)
+        firstNameEditText.setText(firstString)
+        lastNameEditText.setText(lastString)
+        middleNameEditText.setText(middleString)
+        arabicNameEditText.setText(arabString)
+        religionEditText.setSelection(spinnerInt2)
+        nationalityEditText.setText(nationString)
+        dobEditText.setText(dobString)
+        emergencyEditText.setText(emergencyString)
+        empcodeEditText.setText(empcodeString)
+        basicEditText.setText(basicString)
+        housingEditText.setText(houseString)
+        lastdateEditText.setText(lastdateString)
+        idEditText.setText(idnoString)
+        idexpiryEditText.setText(idexString)
+        passEditText.setText(passportString)
+        passexpiryEditText.setText(passportexpString)
+        subDeptEditText.setText(subdeptString)
+        idempEditText.setText(idString)
+        cityEditText.setText(cityString)
+        locationEditText.setText(locationString)
+        transportEditText.setText(transportString)
+        contractstsEditText.setText(contentString)
+        medicalEditText.setText(medicalString)
     }
 
 
@@ -561,7 +941,6 @@ class EditProfileActivity : AppCompatActivity(), ConnectivityReceiver.Connectivi
                     Log.e("result", "" + result)
 
                     if (result.success == "1") {
-
 
 //                      arjn  firstNameEditText.setText("" + result.user!!.t_nama)
 //                        lastNameEditText.setText("" + result.user!!.t_mail)

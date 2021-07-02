@@ -140,7 +140,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="25dp"
             android:background="@color/white"
             >
 
@@ -165,7 +165,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pay Slips (2 Months)"
+                        android:text="Pay Slips (5 2021 Calendar Month)"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@id/pay"
                         android:textSize="18sp"
@@ -180,6 +180,37 @@
                         android:layout_marginRight="5dp"
                         android:src="@drawable/ic_baseline_arrow_drop_down_24" />
                 </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:weightSum="2"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:text="Obelican Investment Group"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:gravity="end"
+                        android:text="Mar 1 2020"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp"
+                        />
+
+                </LinearLayout>
 
 
                 <LinearLayout
@@ -188,39 +219,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="gone">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:weightSum="2"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1.5"
-                            android:maxLines="1"
-                            android:ellipsize="end"
-                            android:text="Obelican Investment Group"
-                            android:textColor="@color/grey"
-                            android:textSize="14sp"
-                            />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.5"
-                            android:maxLines="1"
-                            android:ellipsize="end"
-                            android:gravity="end"
-                            android:text="Mar 1 2020"
-                            android:textColor="@color/grey"
-                            android:textSize="14sp"
-                            />
-
-                    </LinearLayout>
-
 
                     <View
                         android:layout_width="match_parent"
@@ -520,7 +518,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="25dp"
             android:background="@color/white"
             >
 
@@ -533,8 +531,17 @@
                     android:id="@+id/rl345"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/abs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_baseline_person_search_24"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"/>
 
                     <TextView
+                        android:layout_toRightOf="@+id/abs"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Absense History"
@@ -682,7 +689,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="25dp"
             android:background="@color/white"
             >
 
@@ -695,8 +702,17 @@
                     android:id="@+id/rl456"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/train"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_baseline_downhill_skiing_24"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"/>
 
                     <TextView
+                        android:layout_toRightOf="@+id/train"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Training History"
@@ -822,7 +838,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginBottom="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="25dp"
             android:background="@color/white"
             >
 
@@ -835,7 +851,16 @@
                     android:id="@+id/rl567"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/salary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_baseline_monetization_on_24"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"/>
                     <TextView
+                        android:layout_toRightOf="@+id/salary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Basic Salary History"
