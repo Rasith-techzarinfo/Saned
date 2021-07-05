@@ -220,15 +220,6 @@ data class Pendinghistory (
 
 data class Data (
 
-//        val wkid : String,
-//        val form_name : String,
-//        val pending_since : String,
-//        val pending_with : String,
-//        val added_by : String,
-//        val added_at : String,
-//        val status : String,
-//        val last_action_date : String
-
         val wkid : String,
         val form_name : String,
         val pending_since : String,
@@ -245,76 +236,27 @@ data class Data (
 
 data class PendinghistoryDetail (
 
-        val success : String,
-        val message : String,
-        val data : PendingDetail
+    val success : String,
+    val message : String,
+    val data : List<PendingDetail>,
+    val status : String
 )
 
 data class PendingDetail (
 
-        val id : String,
-        val wkid : String,
-        val type : String,
-        val emno : String,
-        val date : String,
-        val time : String,
-        val step : String,
-        val stnm : String,
-        val nemn : String,
-        val ndat : String,
-        val ntim : String,
-        val emp_code : String,
-        val f_name : String,
-        val a_name : String,
-        val dept : String,
-        val jbtl : String,
-        val stat : String,
-        val join : String,
-        val dob : String,
-        val ccty : String,
-        val email : String,
-        val password : String,
-        val phon : String,
-        val mart : String,
-        val bank : String,
-        val city : String,
-        val loca : String,
-        val iban : String,
-        val mngr : String,
-        val basic : String,
-        val hous : String,
-        val tran : String,
-        val bnka : String,
-        val cont : String,
-        val medc : String,
-        val ldate : String,
-        val gend : String,
-        val grade : String,
-        val idno : String,
-        val relg : String,
-        val vacb : String,
-        val days : String,
-        val gosi : String,
-        val cash : String,
-        val refcntd : String,
-        val refcntu : String,
-        val fnme : String,
-        val lnme : String,
-        val mnme : String,
-        val prof : String,
-        val ovrt : String,
-        val idex : String,
-        val pspt : String,
-        val psptex : String,
-        val cnttyp : String,
-        val emrcnt : String,
-        val gosino : String,
-        val cntrex : String,
-        val subdep : String,
-        val proj : String,
-        val created_at : String,
-        val updated_at : String,
-        val deleted_at : String
+    val id : String,
+    val wkid : String,
+    val sern : String,
+    val labl : String,
+    val data : String,
+    val form_name : String,
+    val email : String,
+    val added_by : String,
+    val added_at : String,
+    val t_idno : String,
+    val emp_name : String,
+    val t_emno : String,
+    val emp_code : String
 )
 
 
@@ -414,7 +356,10 @@ data class DashboardDetail (
         val net : String,
         val earnings : String,
         val deduction : String,
-        val period : String
+        val period : String,
+        val id : String,
+        val vacb : String
+
 )
 
 
@@ -497,6 +442,34 @@ data class LeaveList (
     val type: String
 
         )
+
+data class RequestUpdate(
+
+    val success : String,
+    val message : String,
+    val data : String
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 data class LoginError(

@@ -50,8 +50,8 @@ class PendingDetailAdapter(private val dataList: List<PendingDetail>, val contex
         if(itemFlag != 0){
             val viewHolder: PendingDetailAdapter.ViewHolder = (holder as PendingDetailAdapter.ViewHolder)
 
-//            viewHolder.itemVal1!!.text = "" + dataList[position].f_name
-//            viewHolder.itemVal2!!.text = "" + dataList[position].emp_code
+            viewHolder.itemVal1!!.text = "" + dataList[position].labl
+            viewHolder.itemVal2!!.text = "" + dataList[position].data
 //            viewHolder.itemVal3!!.text = "" + dataList[position].join
 //            viewHolder.itemVal4!!.text = "" + dataList[position].basic
 //            viewHolder.itemVal5!!.text = "" + dataList[position].cnttyp
@@ -78,8 +78,8 @@ class PendingDetailAdapter(private val dataList: List<PendingDetail>, val contex
 
     internal inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
-//        val itemVal1 = itemView.labelVal15
-//        val itemVal2 = itemView.labelVal16
+        val itemVal1 = itemView.labelVal15
+        val itemVal2 = itemView.labelVal16
 //        val itemVal3 = itemView.labelVal3
 //        val itemVal4 = itemView.labelVal4
 //        val itemVal5 = itemView.labelVal5

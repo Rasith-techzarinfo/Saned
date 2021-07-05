@@ -175,6 +175,14 @@ interface ApiService {
 
 
 
+    @POST("v1/api/workflow/request-update")
+    @FormUrlEncoded
+    fun requestUpdate(
+        @FieldMap values: HashMap<String, String>
+    ): Deferred<RequestUpdate>
+
+
+
     ////////////////////////////
 
 

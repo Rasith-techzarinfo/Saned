@@ -185,9 +185,9 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         //set values
         profile_name.text = prefHelper.getUserName()
-        profile_detail.text = "Last Login: 6 min ago " + Utils.convertDbtoNormalDateTime1(
-            prefHelper.getLastLogin().toString()
-        )  //getUserEmail
+//        profile_detail.text = "Last Login: 6 min ago " + Utils.convertDbtoNormalDateTime1(
+//            prefHelper.getLastLogin().toString()
+//        )  //getUserEmail
 
         //set images
         Glide.with(this)
@@ -223,6 +223,17 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                     Log.e("profile", "" + result)
 
                     if (result.success == "1") {
+
+                        for (item in result.user!!){
+
+                            item.job_title
+
+                            val designation = item.job_title
+
+                            profile_detail.text = designation
+                            var emailTextView = drawer_layout.findViewById<TextView>(R.id.nav_userdetail)
+                            emailTextView.text = designation
+                        }
 
 
                         //save to pref
@@ -347,9 +358,9 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         var emailTextView = drawer_layout.findViewById<TextView>(R.id.nav_userdetail)
 
         nameTextView.text = prefHelper.getUserName().toString()
-        emailTextView.text = "Last Login: " + Utils.convertDbtoNormalDateTime1(
-            prefHelper.getLastLogin().toString()
-        )  //getUserEmail
+//        emailTextView.text = "Last Login: " + Utils.convertDbtoNormalDateTime1(
+//            prefHelper.getLastLogin().toString()
+//        )  //getUserEmail
         //set images
         Glide.with(this)
                 .load(profileUrl)

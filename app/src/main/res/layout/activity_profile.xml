@@ -116,11 +116,17 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <include layout="@layout/employee_loader" />
+                    <include layout="@layout/block_details_loader" />
 
-                    <include layout="@layout/employee_loader" />
+                    <include layout="@layout/block_details_loader" />
 
-                    <include layout="@layout/employee_loader" />
+                    <include layout="@layout/block_details_loader" />
+
+                    <include layout="@layout/block_details_loader" />
+
+                    <include layout="@layout/block_details_loader" />
+
+                    <include layout="@layout/block_details_loader" />
 
                 </LinearLayout>
 

@@ -7,22 +7,22 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.saned.R
 import com.saned.model.Data
 import com.saned.sanedApplication.Companion.apiService
 import com.saned.sanedApplication.Companion.coroutineScope
 import com.saned.view.error.SANEDError
+import com.saned.view.ui.adapter.myEmployees.MyEmployeesAdapter
 import com.saned.view.ui.adapter.pendingRequests.PendingRequestsAdapter
 import com.saned.view.utils.Utils
 import com.saned.view.utils.Utils.Companion.openActivityWithResult
-import kotlinx.android.synthetic.main.activity_history_dynamic_w_f.*
 import kotlinx.android.synthetic.main.activity_my_employees.*
-import kotlinx.android.synthetic.main.activity_my_employees.recyclerView
-import kotlinx.android.synthetic.main.activity_my_employees.rootLayout
-import kotlinx.android.synthetic.main.activity_my_employees.shimmerLayout
-import kotlinx.android.synthetic.main.activity_my_employees.swipeRefreshLayout
-import kotlinx.android.synthetic.main.activity_my_employees.toolbar
 import kotlinx.android.synthetic.main.activity_pending_requests.*
+import kotlinx.android.synthetic.main.activity_pending_requests.recyclerView
+import kotlinx.android.synthetic.main.activity_pending_requests.rootLayout
+import kotlinx.android.synthetic.main.activity_pending_requests.shimmerLayout
+import kotlinx.android.synthetic.main.activity_pending_requests.toolbar
 import kotlinx.coroutines.launch
 
 class PendingRequestsActivity : AppCompatActivity() {
@@ -34,6 +34,7 @@ class PendingRequestsActivity : AppCompatActivity() {
     var currentPage: Int = 1
 
     var wkid: String = ""
+    var form_name: String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,11 +48,11 @@ class PendingRequestsActivity : AppCompatActivity() {
 
     private fun init() {
 
-        swipeRefreshLayout.setOnRefreshListener {
-            //getValues()
-            getPendingRequestFromServer()
-            swipeRefreshLayout.isRefreshing = false
-        }
+//        swipeRefreshLayoutforpending.setOnRefreshListener {
+//            //getValues()
+//            getPendingRequestFromServer()
+//            swipeRefreshLayoutforpending.isRefreshing = false
+//        }
         //get data
       //  getValues()
         getPendingRequestFromServer()
@@ -218,29 +219,29 @@ class PendingRequestsActivity : AppCompatActivity() {
     }
 
 
-    private fun getValues() {
-        myPendingsArrayList.clear()
-        currentPage = 1
-
-        if (Utils.isInternetAvailable(this)) {
-
-            Utils.startShimmerRL(shimmerLayout, rootLayout)
-
-            //add dummy values
-//            myPendingsArrayList.add(HAData("3", "vacation", "123",  "ishaque@gmail.com",  "987654"))
-//            myPendingsArrayList.add(HAData("6", "housing alter", "124",  "ishaqu@gmail.com",  "9876543"))
-//            myPendingsArrayList.add(HAData("12", "leave", "125",  "ishaq@gmail.com",  "98765432"))
-//            myPendingsArrayList.add(HAData("3", "coffee", "126",  "isha@gmail.com",  "987654321"))
-
-
-            Utils.stopShimmerRL(shimmerLayout, rootLayout)
-            setupRecyclerView()
-
-
-        } else {
-            Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
-        }
-    }
+//    private fun getValues() {
+//        myPendingsArrayList.clear()
+//        currentPage = 1
+//
+//        if (Utils.isInternetAvailable(this)) {
+//
+//            Utils.startShimmerRL(shimmerLayout, rootLayout)
+//
+//            //add dummy values
+////            myPendingsArrayList.add(HAData("3", "vacation", "123",  "ishaque@gmail.com",  "987654"))
+////            myPendingsArrayList.add(HAData("6", "housing alter", "124",  "ishaqu@gmail.com",  "9876543"))
+////            myPendingsArrayList.add(HAData("12", "leave", "125",  "ishaq@gmail.com",  "98765432"))
+////            myPendingsArrayList.add(HAData("3", "coffee", "126",  "isha@gmail.com",  "987654321"))
+//
+//
+//            Utils.stopShimmerRL(shimmerLayout, rootLayout)
+//            setupRecyclerView()
+//
+//
+//        } else {
+//            Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
+//        }
+//    }
 
     fun onListItemClicked(dummyData:Data, position: Int) {
 
@@ -248,17 +249,71 @@ class PendingRequestsActivity : AppCompatActivity() {
 //            putString("t_mail", "" + dummyData.t_mail)
 //            putString("t_nama", "" + dummyData.t_nama)
              putString("wkid", "" + dummyData.wkid)
+             putString("form_name", "" + dummyData.form_name)
         }
 
 
     }
 
     private fun setupRecyclerView() {
-        recyclerView.layoutManager = LinearLayoutManager(applicationContext)
-        recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-        myPendingAdapter =
-            PendingRequestsAdapter(myPendingsArrayList, this, this@PendingRequestsActivity)
-        recyclerView.adapter = myPendingAdapter
+        if(myPendingsArrayList.isEmpty()) {
+            recyclerView.layoutManager = LinearLayoutManager(applicationContext)
+            recyclerView.addItemDecoration(
+                DividerItemDecoration(
+                    this,
+                    DividerItemDecoration.VERTICAL
+                )
+            )
+            myPendingAdapter =
+                PendingRequestsAdapter(myPendingsArrayList, this, this@PendingRequestsActivity)
+            recyclerView.adapter = myPendingAdapter
+        }else {
+            val linearLayoutManager = LinearLayoutManager(this)
+            linearLayoutManager.reverseLayout = true
+            recyclerView.layoutManager = linearLayoutManager
+
+            myPendingAdapter =
+                PendingRequestsAdapter(myPendingsArrayList, this, this@PendingRequestsActivity)
+            recyclerView.adapter = myPendingAdapter
+
+            //pagination code
+            var loading = true
+            var pastVisiblesItems: Int
+            var visibleItemCount: Int
+            var totalItemCount: Int
+            //first visible item value 0 - top of recyelrview (it called everytime once loaded)
+
+            recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+
+                    //scroll control
+//                    if (dy > 0) {
+//                        Log.e("tap", "Last Item !")
+//                        //   composeFabText!!.visibility = View.GONE
+//                        Utils.hideKeyBoard(rootLayout,this@ChatSearchUserActivity)
+//                    } else if(dy == dx) {
+//                        Log.e("tap", "Equal !")
+//                        Utils.hideKeyBoard(rootLayout,this@ChatSearchUserActivity)
+//                    } else {
+//                        Log.e("tap", "else !")
+//                        Utils.hideKeyBoard(rootLayout,this@ChatSearchUserActivity)
+//                    }
+
+
+                    //load more
+                    var firstVisiblesItems = linearLayoutManager.findFirstCompletelyVisibleItemPosition()
+                    var lastvisisbleitem = linearLayoutManager.findLastCompletelyVisibleItemPosition()
+                    if(lastvisisbleitem == myPendingsArrayList.size - 1){
+//                        Log.e("tap1", "TOP! ${chatSearchList.size - 1}")
+                    }
+                }
+
+            })
+
+
+
+        }
+
     }
 
     private fun setToolBar() {

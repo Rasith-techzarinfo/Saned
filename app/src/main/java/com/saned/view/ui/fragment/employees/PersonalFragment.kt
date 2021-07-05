@@ -2,6 +2,7 @@ package com.saned.view.ui.fragment.employees
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +12,21 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import com.saned.R
 import com.saned.databinding.FragmentPersonalBinding
+import com.saned.model.DashboardDetail
+import com.saned.sanedApplication
+import com.saned.view.error.SANEDError
 import com.saned.view.ui.fragment.dashboard.MyDashboardFragment
+import kotlinx.android.synthetic.main.fragment_personal.*
+import kotlinx.coroutines.launch
+import java.util.ArrayList
 
 
 class PersonalFragment : Fragment() {
+
+    var mydashbordArrayList1: ArrayList<DashboardDetail> = ArrayList()
+    var emp_no: String = ""
+
+
     lateinit var relativeLayout: RelativeLayout
     lateinit var linearLayout: LinearLayout
     lateinit var rl2: RelativeLayout
@@ -115,6 +127,9 @@ class PersonalFragment : Fragment() {
         //set dummy values to view
         binding.apply {
 //            accuralsPercentProgress.progress = 80
+
+            getdashbordtilesfromserver()
+
             ObjectAnimator.ofInt(accuralsPercentProgress, "progress", 3).start()
             accuralPercentTextView.text = "3"
 
@@ -134,6 +149,77 @@ class PersonalFragment : Fragment() {
         }
 
     }
+
+    private fun getdashbordtilesfromserver() {
+
+        sanedApplication.coroutineScope.launch {
+
+            try{
+
+                emp_no = sanedApplication.prefHelper.getEmpNo().toString()
+
+                Log.e("arjunfordash","" + emp_no)
+
+                val result = sanedApplication.apiService.getDashboardDetail(emp_no).await()
+
+                Log.e("result", "" + result)
+
+                if(result.success == "1"){
+
+                    for (item in result.data!!) {
+
+                        val v1 = DashboardDetail(
+                            "" + item.emp_code,
+                            "" + item.basic,
+                            "" + item.net,
+                            "" + item.earnings,
+                            "" + item.deduction,
+                            "" + item.period,
+                            "" + item.id,
+                            "" + item.vacb
+
+                        )
+                        mydashbordArrayList1.add(v1)
+
+                        earningAmtTextView.setText("" + item.earnings)
+                        deductionAmtTextView.setText("" + item.deduction)
+                        salaryAmtTextView.setText("" + item.net)
+                        basicsalary.setText("" + item.basic)
+
+                    }
+
+                }else {
+
+                    // Toast.makeText(this@PendingRequestsActivity, "" + result.message, Toast.LENGTH_SHORT)
+                    //       .show()
+                }
+
+
+            }catch (e: Exception){
+
+                //                   Utils.stopShimmerRL(shimmerLayout, rootLayout)
+                // Log.e("error", "" + e.message)
+//                    if(e.message == "Connection reset" || e.message == "Failed to connect to /40.123.199.239:3000"){
+//
+//                    } else
+                if (e is SANEDError) {
+                    // Log.e("Err", "" + e.getErrorResponse())
+                    if (e.getResponseCode() == 401) {
+                        // Utils.logoutFromApp(applicationContext)
+                    } else if (e.getResponseCode() == 500) {
+                        //Toast.makeText(applicationContext, "Server error", Toast.LENGTH_LONG).show()
+                    }
+                } else {
+                    // Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_SHORT)
+                    //        .show()
+                }
+
+            }
+
+        }
+    }
+
+
     companion object {
         fun create(): PersonalFragment {
             return PersonalFragment()

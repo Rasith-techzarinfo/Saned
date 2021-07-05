@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="Designation :"
+                android:text="Form Name :"
                 android:textColor="@color/heading"
                 android:textSize="16sp"
                 android:textStyle="bold"/>

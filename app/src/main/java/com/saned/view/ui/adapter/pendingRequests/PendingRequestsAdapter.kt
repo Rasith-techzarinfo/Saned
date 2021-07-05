@@ -45,15 +45,15 @@ class PendingRequestsAdapter(private val dataList: List<Data>, val context: Cont
         if(itemFlag != 0){
             val viewHolder: PendingRequestsAdapter.ViewHolder = (holder as PendingRequestsAdapter.ViewHolder)
 
-            viewHolder.itemVal1!!.text = "" + dataList[position].job_title
-            viewHolder.itemVal2!!.text = "" + dataList[position].added_by
-            viewHolder.itemVal3!!.text = "" + dataList[position].status
+            viewHolder.itemVal1!!.text = "" + dataList[position].form_name
+            viewHolder.itemVal2!!.text = "" + dataList[position].status
+            viewHolder.itemVal3!!.text = "" + dataList[position].added_by
 
         }else if(itemFlag == 0) {
-            val emptyViewHolder: PendingRequestsAdapter.EmptyHolder = (holder as PendingRequestsAdapter.EmptyHolder)
-
-//            emptyViewHolder.emptyImage.setImageResource(R.drawable.ic_notification)
-            emptyViewHolder.emptyText.text = "No Data Found"
+//            val emptyViewHolder: PendingRequestsAdapter.EmptyHolder = (holder as PendingRequestsAdapter.EmptyHolder)
+//
+////            emptyViewHolder.emptyImage.setImageResource(R.drawable.ic_notification)
+//            emptyViewHolder.emptyText.text = "No Data Found"
 
         }
     }

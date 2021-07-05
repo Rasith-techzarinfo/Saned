@@ -169,29 +169,29 @@ class CreateDynamicWFActivity : AppCompatActivity() {
         submitButton.setOnClickListener{
 
             // validate all fields
-            if (monthsSpinner.selectedItemPosition == 0) {
-
-                  Toast.makeText(this, "Select No of months", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            if (LeaveSpinner.selectedItemPosition == 0) {
-
-                Toast.makeText(this, "Select Leave type", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            if (startEditText.text.toString() == "") {
-
-                Toast.makeText(this, "Enter the start Date", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            if (endEditText.text.toString() == "") {
-
-                Toast.makeText(this, "Enter the end date", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+//            if (monthsSpinner.selectedItemPosition == 0) {
+//
+//                  Toast.makeText(this, "Select No of months", Toast.LENGTH_SHORT).show()
+//                return@setOnClickListener
+//            }
+//
+//            if (LeaveSpinner.selectedItemPosition == 0) {
+//
+//                Toast.makeText(this, "Select Leave type", Toast.LENGTH_SHORT).show()
+//                return@setOnClickListener
+//            }
+//
+//            if (startEditText.text.toString() == "") {
+//
+//                Toast.makeText(this, "Enter the start Date", Toast.LENGTH_SHORT).show()
+//                return@setOnClickListener
+//            }
+//
+//            if (endEditText.text.toString() == "") {
+//
+//                Toast.makeText(this, "Enter the end date", Toast.LENGTH_SHORT).show()
+//                return@setOnClickListener
+//            }
 
 
             sendDataToServer()
@@ -241,11 +241,268 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                                     "" + item.list
                             )
 
-                            var typeget = "" + item.name
-                            var nameget = "" + item.type //Policy Date File  Number Text Dropdown
+                            var serial = "" + item.sern
+                            var name = "" + item.name
+                            var type = "" + item.type //Policy Date File Number Text Dropdown
 
-                            Log.e("arjun name for view", "this is name " + " " + item.name)
-                            Log.e("arjun type for policy", "this is type " + " " + item.type)
+                            if (serial == "1" ){
+
+                                if (type == "Policy"){
+
+                                    policy_view.visibility = View.VISIBLE
+
+                                }
+                                else if (type == "Date"){
+
+                                    startdate_visibility.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "File"){
+                                    attach_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Number"){
+                                    reason_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Text"){
+                                    reason_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Dropdown"){
+                                    policy_view.visibility = View.VISIBLE
+
+                                }
+                            }
+
+                            if (serial == "2"){
+
+                                if (type == "Policy"){
+
+                                    policy_view.visibility = View.VISIBLE
+
+                                }
+                                else if (type == "Date"){
+
+                                    startdate_visibility.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "File"){
+                                    attach_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Number"){
+                                    reason_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Text"){
+                                    reason_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Dropdown"){
+                                    policy_view.visibility = View.VISIBLE
+
+                                }
+                            }
+
+                            if (serial == "3"){
+
+                                if (type == "Policy"){
+
+                                    policy_view.visibility = View.VISIBLE
+
+                                }
+                                else if (type == "Date"){
+
+                                    startdate_visibility.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "File"){
+                                    attach_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Number"){
+                                    reason_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Text"){
+                                    reason_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Dropdown"){
+                                    policy_view.visibility = View.VISIBLE
+
+                                }
+                            }
+
+                            if (serial == "4"){
+
+                                if (type == "Policy"){
+
+                                    policy_view.visibility = View.VISIBLE
+
+                                }
+                                else if (type == "Date"){
+
+                                    startdate_visibility.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "File"){
+                                    attach_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Number"){
+                                    reason_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Text"){
+                                    reason_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Dropdown"){
+                                    policy_view.visibility = View.VISIBLE
+
+                                }
+                            }
+
+                            if (serial == "5"){
+
+                                if (type == "Policy"){
+
+                                    policy_view.visibility = View.VISIBLE
+
+                                }
+                                else if (type == "Date"){
+
+                                    startdate_visibility.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "File"){
+                                    attach_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Number"){
+                                    reason_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Text"){
+                                    reason_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Dropdown"){
+                                    policy_view.visibility = View.VISIBLE
+
+                                }
+                            }
+
+                            if (serial == "6"){
+
+                                if (type == "Policy"){
+
+                                    policy_view.visibility = View.VISIBLE
+
+                                }
+                                else if (type == "Date"){
+
+                                    startdate_visibility.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "File"){
+                                    attach_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Number"){
+                                    reason_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Text"){
+                                    reason_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Dropdown"){
+                                    policy_view.visibility = View.VISIBLE
+
+                                }
+                            }
+
+                            if (serial == "7"){
+
+                                if (type == "Policy"){
+
+                                    policy_view.visibility = View.VISIBLE
+
+                                }
+                                else if (type == "Date"){
+
+                                    startdate_visibility.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "File"){
+                                    attach_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Number"){
+                                    reason_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Text"){
+                                    reason_visible.visibility = View.VISIBLE
+
+                                }
+
+                                else if(type == "Dropdown"){
+                                    policy_view.visibility = View.VISIBLE
+
+                                }
+                            }
+
+
+
+//                            when (item.type) {
+//
+//                                "Policy" -> policy_view.visibility = View.VISIBLE
+//
+//                                "Policy" -> policy_view.visibility = View.VISIBLE
+//
+//                                "Policy" -> policy_view.visibility = View.VISIBLE
+//
+//                                "Date" -> startdate_visibility.visibility = View.VISIBLE
+//
+//                                "File" -> attach_visible.visibility = View.VISIBLE
+//                                else -> {
+//                                   // spinnerValue = 0
+//                                }
+//                            }
+
+                            Log.e("arjun name for view", " " + " " + item.name)
+                            Log.e("arjun type for policy", " " + " " + item.type)
 //
 //                            if (result.data!!.size > 0){
 //
@@ -253,41 +510,42 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 //                            }
 
 
-                            if (typeget == "Leave Type"){
-
-                                levetype_visibility.visibility = View.VISIBLE
-                            }
-
-                            if (typeget == "No Of Days"){
-
-                                noofmonths_visibility.visibility = View.VISIBLE
-                            }
-
-                            if (typeget == "Months"){
-
-                                noofmonths_visibility.visibility = View.VISIBLE
-                            }
-
-                            if (typeget == "Repayment Terms") {
-
-                               // noofmonths_visibility.visibility = View.VISIBLE
-                            }
-
-                            if (typeget == "Start Date"){
-
-                                startdate_visibility.visibility = View.VISIBLE
-                            }
-
-                            if (typeget == "End Date" ){
-
-                                enddate_visible.visibility = View.VISIBLE
-
-                            }
-
-                            if (typeget == "File" ){
-
-                                attach_visible.visibility = View.VISIBLE
-                            }
+//                            if (typeget == "Leave Type") {
+//
+//                                levetype_visibility.visibility = View.VISIBLE
+//
+//                            }
+//
+//                            if (typeget == "No Of Days"){
+//
+//                                noofmonths_visibility.visibility = View.VISIBLE
+//                            }
+//
+//                            if (typeget == "Months"){
+//
+//                                noofmonths_visibility.visibility = View.VISIBLE
+//                            }
+//
+//                            if (typeget == "Repayment Terms") {
+//
+//                               // noofmonths_visibility.visibility = View.VISIBLE
+//                            }
+//
+//                            if (typeget == "Start Date"){
+//
+//                                startdate_visibility.visibility = View.VISIBLE
+//                            }
+//
+//                            if (typeget == "End Date" ){
+//
+//                                enddate_visible.visibility = View.VISIBLE
+//
+//                            }
+//
+//                            if (typeget == "File" ){
+//
+//                                attach_visible.visibility = View.VISIBLE
+//                            }
 
                             dyamicArrayList.add(v1)
 
@@ -475,13 +733,13 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
     private fun spinnerListener() {
         //spinner 1
-        LeaveSpinner.setOnTouchListener(View.OnTouchListener { v, event ->
-            Utils.hideKeyBoard(LeaveSpinner, this)
+        policy_spinner.setOnTouchListener(View.OnTouchListener { v, event ->
+            Utils.hideKeyBoard(policy_spinner, this)
             false
         })
 
         // Set an on item selected listener for spinner object
-        LeaveSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        policy_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,
                 view: View,

@@ -10,6 +10,7 @@ import com.saned.R
 import com.saned.model.Data
 import com.saned.view.ui.activities.PendingRequestsActivity
 import com.saned.view.ui.adapter.pendingRequests.PendingRequestsAdapter
+import com.saned.view.utils.Utils
 import kotlinx.android.synthetic.main.dynamic_wf_list_item.view.*
 import kotlinx.android.synthetic.main.empty_placeholder_item.view.*
 import kotlinx.android.synthetic.main.work_items_show.view.*
@@ -47,9 +48,10 @@ class WorkItemsAdapter (private val dataList: List<Data>, val context: Context
         if(itemFlag != 0){
             val viewHolder: WorkItemsAdapter.ViewHolder = (holder as ViewHolder)
 
-            viewHolder.itemVal1!!.text = "" + dataList[position].job_title
-            viewHolder.itemVal2!!.text = "" + dataList[position].reason
+            viewHolder.itemVal1!!.text = "" + dataList[position].form_name
+            viewHolder.itemVal2!!.text = "" + dataList[position].added_by
             viewHolder.itemVal3!!.text = "" + dataList[position].status
+            viewHolder.itemval4!!.text = Utils.convertDbtoNormalDateTime1("" + dataList[position].added_at )
 
         }else if(itemFlag == 0) {
             val emptyViewHolder: WorkItemsAdapter.EmptyHolder = (holder as EmptyHolder)
@@ -65,6 +67,7 @@ class WorkItemsAdapter (private val dataList: List<Data>, val context: Context
         val itemVal1 = itemView.name
         val itemVal2 = itemView.designation
         val itemVal3 = itemView.email
+        val itemval4 = itemView.date
 
         init {
             itemView.setOnClickListener {

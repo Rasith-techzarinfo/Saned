@@ -3,6 +3,7 @@ package com.saned.view.ui.fragment.dashboard
 import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,12 +14,21 @@ import android.widget.RelativeLayout
 import androidx.databinding.DataBindingUtil
 import com.saned.R
 import com.saned.databinding.FragmentMyDashboardBinding
+import com.saned.model.DashboardDetail
+import com.saned.sanedApplication
+import com.saned.view.error.SANEDError
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_my_dashboard.*
 import kotlinx.android.synthetic.main.fragment_my_dashboard.view.*
+import kotlinx.coroutines.launch
 import java.util.ArrayList
 
 class MyDashboardFragment : Fragment() {
+
+
+    var mydashbordArrayList: ArrayList<DashboardDetail> = ArrayList()
+    var emp_no: String = ""
+
 lateinit var relativeLayout: RelativeLayout
 lateinit var linearLayout: LinearLayout
 lateinit var rl2:RelativeLayout
@@ -38,6 +48,9 @@ lateinit var ll3:LinearLayout
     lateinit var binding : FragmentMyDashboardBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+
+
+
         // Inflate the layout for this fragment
         binding  = FragmentMyDashboardBinding.inflate(inflater, container, false)
         init()
@@ -116,6 +129,9 @@ lateinit var ll3:LinearLayout
         //set dummy values to view
         binding.apply {
 //            accuralsPercentProgress.progress = 80
+
+            getdashbordtilesfromserver()
+
             ObjectAnimator.ofInt(accuralsPercentProgress, "progress", 3).start()
             accuralPercentTextView.text = "3"
 
@@ -131,28 +147,78 @@ lateinit var ll3:LinearLayout
 //            absentRangeSlider.isEnabled = false
             ObjectAnimator.ofInt(absentPercentProgress, "progress", 50).start()
             absentPercentTextView.text = "50%"
-
         }
 
     }
 
+    private fun getdashbordtilesfromserver() {
+
+        sanedApplication.coroutineScope.launch {
+
+            try{
+
+              emp_no = sanedApplication.prefHelper.getEmpNo().toString()
+
+                Log.e("arjunfordash","" + emp_no)
+
+                val result = sanedApplication.apiService.getDashboardDetail(emp_no).await()
+
+                Log.e("result", "" + result)
+
+                if(result.success == "1"){
+
+                    for (item in result.data!!) {
+
+                        val v1 = DashboardDetail(
+                            "" + item.emp_code,
+                            "" + item.basic,
+                            "" + item.net,
+                            "" + item.earnings,
+                            "" + item.deduction,
+                            "" + item.period,
+                            "" + item.id,
+                            "" + item.vacb
+
+                        )
+                        mydashbordArrayList.add(v1)
+
+                        earningAmtTextView.setText("" + item.earnings)
+                        deductionAmtTextView.setText("" + item.deduction)
+                        salaryAmtTextView.setText("" + item.net)
+                        basicsalarytxt.setText("" + item.basic)
+
+                   }
+
+                }else {
+
+                    // Toast.makeText(this@PendingRequestsActivity, "" + result.message, Toast.LENGTH_SHORT)
+                    //       .show()
+                }
 
 
+            }catch (e: Exception){
 
+                //                   Utils.stopShimmerRL(shimmerLayout, rootLayout)
+                // Log.e("error", "" + e.message)
+//                    if(e.message == "Connection reset" || e.message == "Failed to connect to /40.123.199.239:3000"){
+//
+//                    } else
+                if (e is SANEDError) {
+                    // Log.e("Err", "" + e.getErrorResponse())
+                    if (e.getResponseCode() == 401) {
+                        // Utils.logoutFromApp(applicationContext)
+                    } else if (e.getResponseCode() == 500) {
+                        //Toast.makeText(applicationContext, "Server error", Toast.LENGTH_LONG).show()
+                    }
+                } else {
+                    // Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_SHORT)
+                    //        .show()
+                }
 
+            }
 
-
-
-
-
-
-
-
-
-
-
-
-
+        }
+    }
 
 
     companion object {

@@ -169,17 +169,20 @@
 
                     <TextView
                         android:id="@+id/profile_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="20dp"
-                        android:text="mohamedahamed@gmail.com"
-                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text=""
                         android:textColor="@color/white_smoke"
-                        android:textSize="16sp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="16sp" />
+
                     <com.google.android.material.tabs.TabLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:id="@+id/tablayout"
                         android:background="@drawable/tab"
                         app:tabIndicatorHeight="5dp"

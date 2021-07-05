@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:id="@+id/notify_card"
     android:clickable="true"
     android:focusable="true"
@@ -11,93 +11,93 @@
     android:layout_margin="10dp">
 
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/list_item"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_margin="5dp"-->
-<!--        android:orientation="vertical"-->
-<!--        >-->
+    <LinearLayout
+        android:id="@+id/list_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        >
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:layout_marginTop="4dp"-->
-<!--            android:layout_marginBottom="4dp"-->
-<!--            android:weightSum="2">-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:weightSum="2">
 
-<!--            <TextView-->
-<!--                android:id="@+id/label15"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_weight="0.5"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:ellipsize="end"-->
-<!--                android:maxLines="1"-->
-<!--                android:text="Name"-->
-<!--                android:textColor="@color/heading"-->
-<!--                android:textSize="16sp"-->
-<!--                android:textStyle="bold"/>-->
+            <TextView
+                android:id="@+id/label15"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Label"
+                android:textColor="@color/heading"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
 
-<!--            <View-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:layout_weight="0.1"-->
-<!--                />-->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                />
 
-<!--            <TextView-->
-<!--                android:id="@+id/labelVal15"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_weight="1.4"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:ellipsize="end"-->
-<!--                android:maxLines="1"-->
-<!--                android:text="3"-->
-<!--                android:textColor="@color/grey"-->
-<!--                android:textSize="14sp"/>-->
-
-
-<!--        </LinearLayout>-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:layout_marginTop="4dp"-->
-<!--            android:layout_marginBottom="4dp"-->
-<!--            android:weightSum="2">-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/label16"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_weight="0.5"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:ellipsize="end"-->
-<!--                android:maxLines="1"-->
-<!--                android:text="Emp Code"-->
-<!--                android:textColor="@color/heading"-->
-<!--                android:textSize="16sp"-->
-<!--                android:textStyle="bold"/>-->
-
-<!--            <View-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:layout_weight="0.1"-->
-<!--                />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/labelVal16"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_weight="1.4"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:ellipsize="end"-->
-<!--                android:maxLines="1"-->
-<!--                android:text="This is custom text."-->
-<!--                android:textColor="@color/grey"-->
-<!--                android:textSize="14sp"/>-->
+            <TextView
+                android:id="@+id/labelVal15"
+                android:layout_width="0dp"
+                android:layout_weight="1.4"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="3"
+                android:textColor="@color/grey"
+                android:textSize="14sp"/>
 
 
-<!--        </LinearLayout>-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/label16"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Data"
+                android:textColor="@color/heading"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                />
+
+            <TextView
+                android:id="@+id/labelVal16"
+                android:layout_width="0dp"
+                android:layout_weight="1.4"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="This is custom text."
+                android:textColor="@color/grey"
+                android:textSize="14sp"/>
+
+
+        </LinearLayout>
 
 <!--        <LinearLayout-->
 <!--            android:layout_width="match_parent"-->
@@ -114,7 +114,7 @@
 <!--                android:layout_height="wrap_content"-->
 <!--                android:ellipsize="end"-->
 <!--                android:maxLines="1"-->
-<!--                android:text="Joining"-->
+<!--                android:text="Employee Name"-->
 <!--                android:textColor="@color/heading"-->
 <!--                android:textSize="16sp"-->
 <!--                android:textStyle="bold"/>-->
@@ -582,7 +582,7 @@
 
 
 
-<!--    </LinearLayout>-->
+    </LinearLayout>
 
 
 </androidx.cardview.widget.CardView>

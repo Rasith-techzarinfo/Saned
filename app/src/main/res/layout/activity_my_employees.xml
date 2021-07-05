@@ -145,6 +145,18 @@
 
                 <include layout="@layout/employee_loader" />
 
+                <include layout="@layout/employee_loader" />
+
+                <include layout="@layout/employee_loader" />
+
+                <include layout="@layout/employee_loader" />
+
+                <include layout="@layout/employee_loader" />
+
+                <include layout="@layout/employee_loader" />
+
+
+
             </LinearLayout>
 
         </com.facebook.shimmer.ShimmerFrameLayout>
