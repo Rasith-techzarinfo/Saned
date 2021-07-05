@@ -126,7 +126,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
             }
         }
 
-        startEditText.setOnClickListener {
+        dateEditText.setOnClickListener {
             val c = Calendar.getInstance()
             val year = c.get(Calendar.YEAR)
             val month = c.get(Calendar.MONTH)
@@ -136,14 +136,14 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
                 // Display Selected date in textbox
                 val monthOfYear = monthOfYear+1
-                startEditText.setText("" + dayOfMonth + "-" + monthOfYear + "-" + year)
+                dateEditText.setText("" + dayOfMonth + "-" + monthOfYear + "-" + year)
 
             }, year, month, day)
 
             dpd.show()
         }
 
-        endEditText.setOnClickListener {
+        dateEditText.setOnClickListener {
 
             val c = Calendar.getInstance()
             val year = c.get(Calendar.YEAR)
@@ -156,7 +156,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
 
                 val monthOfYear = monthOfYear+1
                 val dayofMonth = dayOfMonth
-                endEditText.setText("" + dayOfMonth + "-" + monthOfYear + "-" + year)
+                dateEditText.setText("" + dayOfMonth + "-" + monthOfYear + "-" + year)
 
             }, year, month, day)
 
@@ -254,7 +254,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                                 }
                                 else if (type == "Date"){
 
-                                    startdate_visibility.visibility = View.VISIBLE
+                                 //   startdate_visibility.visibility = View.VISIBLE
 
                                 }
 
@@ -264,12 +264,12 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                                 }
 
                                 else if(type == "Number"){
-                                    reason_visible.visibility = View.VISIBLE
+                                  //  reason_visible.visibility = View.VISIBLE
 
                                 }
 
                                 else if(type == "Text"){
-                                    reason_visible.visibility = View.VISIBLE
+                                  //  reason_visible.visibility = View.VISIBLE
 
                                 }
 
@@ -288,7 +288,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                                 }
                                 else if (type == "Date"){
 
-                                    startdate_visibility.visibility = View.VISIBLE
+                                  //  startdate_visibility.visibility = View.VISIBLE
 
                                 }
 
@@ -298,12 +298,12 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                                 }
 
                                 else if(type == "Number"){
-                                    reason_visible.visibility = View.VISIBLE
+                                   // reason_visible.visibility = View.VISIBLE
 
                                 }
 
                                 else if(type == "Text"){
-                                    reason_visible.visibility = View.VISIBLE
+                                  //  reason_visible.visibility = View.VISIBLE
 
                                 }
 
@@ -322,7 +322,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                                 }
                                 else if (type == "Date"){
 
-                                    startdate_visibility.visibility = View.VISIBLE
+                                   // startdate_visibility.visibility = View.VISIBLE
 
                                 }
 
@@ -332,12 +332,12 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                                 }
 
                                 else if(type == "Number"){
-                                    reason_visible.visibility = View.VISIBLE
+                                  //  reason_visible.visibility = View.VISIBLE
 
                                 }
 
                                 else if(type == "Text"){
-                                    reason_visible.visibility = View.VISIBLE
+                                  //  reason_visible.visibility = View.VISIBLE
 
                                 }
 
@@ -356,7 +356,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                                 }
                                 else if (type == "Date"){
 
-                                    startdate_visibility.visibility = View.VISIBLE
+                                  //  startdate_visibility.visibility = View.VISIBLE
 
                                 }
 
@@ -366,12 +366,12 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                                 }
 
                                 else if(type == "Number"){
-                                    reason_visible.visibility = View.VISIBLE
+                                 //   reason_visible.visibility = View.VISIBLE
 
                                 }
 
                                 else if(type == "Text"){
-                                    reason_visible.visibility = View.VISIBLE
+                                 //   reason_visible.visibility = View.VISIBLE
 
                                 }
 
@@ -390,7 +390,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                                 }
                                 else if (type == "Date"){
 
-                                    startdate_visibility.visibility = View.VISIBLE
+                                  //  startdate_visibility.visibility = View.VISIBLE
 
                                 }
 
@@ -400,12 +400,12 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                                 }
 
                                 else if(type == "Number"){
-                                    reason_visible.visibility = View.VISIBLE
+                                  //  reason_visible.visibility = View.VISIBLE
 
                                 }
 
                                 else if(type == "Text"){
-                                    reason_visible.visibility = View.VISIBLE
+                                  //  reason_visible.visibility = View.VISIBLE
 
                                 }
 
@@ -424,7 +424,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                                 }
                                 else if (type == "Date"){
 
-                                    startdate_visibility.visibility = View.VISIBLE
+                                 //   startdate_visibility.visibility = View.VISIBLE
 
                                 }
 
@@ -434,12 +434,12 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                                 }
 
                                 else if(type == "Number"){
-                                    reason_visible.visibility = View.VISIBLE
+                                 //   reason_visible.visibility = View.VISIBLE
 
                                 }
 
                                 else if(type == "Text"){
-                                    reason_visible.visibility = View.VISIBLE
+                                 //   reason_visible.visibility = View.VISIBLE
 
                                 }
 
@@ -458,7 +458,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                                 }
                                 else if (type == "Date"){
 
-                                    startdate_visibility.visibility = View.VISIBLE
+                                 //   startdate_visibility.visibility = View.VISIBLE
 
                                 }
 
@@ -468,12 +468,12 @@ class CreateDynamicWFActivity : AppCompatActivity() {
                                 }
 
                                 else if(type == "Number"){
-                                    reason_visible.visibility = View.VISIBLE
+                                 //   reason_visible.visibility = View.VISIBLE
 
                                 }
 
                                 else if(type == "Text"){
-                                    reason_visible.visibility = View.VISIBLE
+                                  //  reason_visible.visibility = View.VISIBLE
 
                                 }
 

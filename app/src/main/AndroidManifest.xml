@@ -48,7 +48,8 @@
         <activity android:name=".view.ui.activities.ProfileView"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"></activity>
-        <activity android:name=".view.ui.activities.dynamicWF.DynamicOpen" />
+
+<!--        <activity android:name=".view.ui.activities.dynamicWF.DynamicOpen" />-->
         <activity android:name=".SpinnerList" />
         <activity android:name=".view.ui.activities.EmployeeList" />
         <activity
