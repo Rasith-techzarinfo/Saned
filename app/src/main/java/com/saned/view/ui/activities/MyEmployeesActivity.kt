@@ -170,7 +170,9 @@ class MyEmployeesActivity : AppCompatActivity(), MyEmployeesAdapter.ListAdapterL
                                 "" + item.emp_id,
                                 "" + item.f_name,
                                 "" + item.a_name,
-                                "" + item.jbtl
+                                "" + item.jbtl,
+                                "" + item.email,
+                                "" + item.job_title
 
 
 
@@ -299,8 +301,8 @@ class MyEmployeesActivity : AppCompatActivity(), MyEmployeesAdapter.ListAdapterL
     override fun onListItemClicked(dummyData: Empdata, position: Int) {
 
         openActivityWithResult(EmployeeList::class.java, this, 101){
-            putString("t_mail", "" + dummyData.t_mail)
-            putString("t_nama", "" + dummyData.t_nama)
+            putString("t_mail", "" + dummyData.email)
+            putString("t_nama", "" + dummyData.f_name)
            // putString("wkid", "" + dummyData.id)
         }
 //        val intent=Intent(applicationContext,EmployeeList::class.java)

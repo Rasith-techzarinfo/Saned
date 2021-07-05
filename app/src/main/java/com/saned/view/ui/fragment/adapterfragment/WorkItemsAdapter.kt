@@ -53,6 +53,13 @@ class WorkItemsAdapter (private val dataList: List<Data>, val context: Context
             viewHolder.itemVal3!!.text = "" + dataList[position].status
             viewHolder.itemval4!!.text = Utils.convertDbtoNormalDateTime1("" + dataList[position].added_at )
 
+            Glide.with(context)
+                .load("http://40.123.199.239:3000/images/" + dataList[position].profile)
+                .placeholder(R.drawable.ic_user)
+                .error(R.drawable.ic_user)
+                .into(viewHolder.itemVal5)
+
+
         }else if(itemFlag == 0) {
             val emptyViewHolder: WorkItemsAdapter.EmptyHolder = (holder as EmptyHolder)
 
@@ -68,6 +75,7 @@ class WorkItemsAdapter (private val dataList: List<Data>, val context: Context
         val itemVal2 = itemView.designation
         val itemVal3 = itemView.email
         val itemval4 = itemView.date
+        val itemVal5 = itemView.profile_image
 
         init {
             itemView.setOnClickListener {

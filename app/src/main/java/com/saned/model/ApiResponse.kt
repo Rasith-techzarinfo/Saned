@@ -292,7 +292,9 @@ data class Empdata (
         val emp_id : String,
         val f_name : String,
         val a_name : String,
-        val jbtl : String
+        val jbtl : String,
+        val email : String,
+        val job_title : String
 )
 
 data class ServicesList (

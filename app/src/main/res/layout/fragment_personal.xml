@@ -45,7 +45,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Accurals"
+                        android:text="Accruals"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@id/air"
                         android:textSize="18sp"
@@ -193,7 +193,7 @@
                         android:layout_weight="1.5"
                         android:maxLines="1"
                         android:ellipsize="end"
-                        android:text="Obelican Investment Group"
+                        android:text="Obeikan Investment Group"
                         android:textColor="@color/grey"
                         android:textSize="14sp"
                         />
@@ -205,7 +205,7 @@
                         android:maxLines="1"
                         android:ellipsize="end"
                         android:gravity="end"
-                        android:text="Mar 1 2020"
+                        android:text="Mar 5 2021"
                         android:textColor="@color/grey"
                         android:textSize="14sp"
                         />
@@ -544,7 +544,7 @@
                         android:layout_toRightOf="@+id/abs"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Absense History"
+                        android:text="Absence History"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimaryDark"/>

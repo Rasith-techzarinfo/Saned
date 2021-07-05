@@ -191,7 +191,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         //set images
         Glide.with(this)
-                .load(BASE_URL + prefHelper.getUserProfile())
+                .load("http://40.123.199.239:3000/images/" + prefHelper.getUserProfile())
                 .placeholder(R.drawable.ic_user)
                 .error(R.drawable.ic_user)
                 .into(profile_image)
@@ -362,11 +362,18 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 //            prefHelper.getLastLogin().toString()
 //        )  //getUserEmail
         //set images
+
+
         Glide.with(this)
-                .load(profileUrl)
-                .placeholder(R.drawable.ic_user)
-                .error(R.drawable.ic_user)
-                .into(profileImage)
+            .load("http://40.123.199.239:3000/images/" + prefHelper.getUserProfile())
+            .placeholder(R.drawable.ic_user)
+            .error(R.drawable.ic_user)
+            .into(profileImage)
+//        Glide.with(this)
+//                .load(profileUrl)
+//                .placeholder(R.drawable.ic_user)
+//                .error(R.drawable.ic_user)
+//                .into(profileImage)
 
         nav_view.setNavigationItemSelectedListener(this)
 

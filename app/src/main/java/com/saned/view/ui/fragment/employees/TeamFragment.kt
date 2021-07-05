@@ -117,7 +117,9 @@ class TeamFragment : Fragment() {
                                     "" + item.emp_id,
                                     "" + item.f_name,
                                     "" + item.a_name,
-                                    "" + item.jbtl
+                                    "" + item.jbtl,
+                                "" + item.email,
+                                "" + item.job_title
 
 
 

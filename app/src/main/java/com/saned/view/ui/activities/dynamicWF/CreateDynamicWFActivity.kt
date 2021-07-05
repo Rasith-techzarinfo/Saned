@@ -659,7 +659,7 @@ class CreateDynamicWFActivity : AppCompatActivity() {
             val reasonBody: RequestBody =
                 RequestBody.create(
                         MediaType.parse("text/plain"),
-                        reasonEditText.text.toString()
+                        textEditText.text.toString()
                 )
             val userIdBody: RequestBody =
                     RequestBody.create(

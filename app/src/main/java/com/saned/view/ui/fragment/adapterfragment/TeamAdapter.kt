@@ -43,9 +43,9 @@ class TeamAdapter(private val dataList: List<Empdata>, private val context: Cont
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if(itemFlag != 0){
             val viewHolder: ItemViewHolder = (holder as ItemViewHolder)
-            viewHolder.nameItem!!.text = "" + dataList[position].t_nama
-            viewHolder.designationItem!!.text = dataList.get(position).t_role
-            viewHolder.emailItem!!.text = dataList.get(position).t_mail
+            viewHolder.nameItem!!.text = "" + dataList[position].f_name
+            viewHolder.designationItem!!.text = dataList.get(position).job_title
+            viewHolder.emailItem!!.text = dataList.get(position).email
             viewHolder.expandteam
             viewHolder.expandperson
             viewHolder.expandTeamSearch
@@ -81,7 +81,7 @@ class TeamAdapter(private val dataList: List<Empdata>, private val context: Cont
             }
 
             Glide.with(context)
-                    .load(dataList[position].profile_pic)
+                    .load("http://40.123.199.239:3000/images/" + dataList[position].profile_pic)
                     .placeholder(R.drawable.ic_user)
                     .error(R.drawable.ic_user)
                     .into(viewHolder.notificationProfile)
